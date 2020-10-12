@@ -5,12 +5,14 @@ import clockReducer from './lib/slices/clockSlice'
 import counterReducer from './lib/slices/counterSlice'
 import notesReducer from './lib/slices/notesSlice'
 import projectReducer from './features/project/project.slice';
+import settingsReducer from './features/settings/settings.slice';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
   clock: clockReducer,
   notes: notesReducer,
-  project: projectReducer
+  project: projectReducer,
+  settings: settingsReducer,
 });
 
 const store = configureStore({
