@@ -10,7 +10,8 @@
 .page__panel {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  color: $white;
+  background-color: $white;
+  color: $blue;
   width: 100%;
   height: 100%;
 }
