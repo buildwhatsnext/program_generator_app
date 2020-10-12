@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux'
 
 import store from '../store'
+import '../styles/styles.global.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
