@@ -1,5 +1,5 @@
 import react from 'react';
-import styles from './panel.scss';
+import styles from './panel.module.scss';
 
 export interface IPanel {
   title?: string;

@@ -1,0 +1,16 @@
+@import '../styles/styles.colors.scss';
+
+.page {
+  color: $blue;
+  background-color: $white;
+  width: 100%;
+  height: 100%;
+}
+
+.page__panel {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  color: $white;
+  width: 100%;
+  height: 100%;
+}
