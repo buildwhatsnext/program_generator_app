@@ -12,6 +12,8 @@ export function Page({children, panel} : IPage) {
     ? <div className={styles.page}>{children}</div>
     : <div className={styles.page__panel}>
       <Panel />
-      {children}
+      <div className="page__content">
+        {children}
+      </div>
     </div>
 }
