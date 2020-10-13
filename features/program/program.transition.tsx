@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgramHeader } from '../../components/header';
+import { ProgramHeader } from '../../components/pages/page.header';
 import { TransitionPage } from '../../components/transition/page';
 import { TransitionSection, ISection } from '../../components/transition/section';
 import { BuildingInformationPanel } from '../../components/panels/panel.building';
