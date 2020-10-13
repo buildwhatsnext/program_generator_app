@@ -1,16 +1,20 @@
 export const ROUTES = {
   HOME: "/",
-  COUNTER: "/counter",
-  PROJECT: "/project",
+  PROJECT: {
+    SELECT: "/project/select",
+  },
   INFO : {
-    "START": "/info",
-    "GENERAL" : "/info/general",
-    "SPATIAL": "/info/spatial",
-    "CONSTRAINTS": "/info/constraints",
-    "TARGETS": "/info/targets"
+    GENERAL : "/info/general",
+    SPATIAL: "/info/spatial",
+    CONSTRAINTS: "/info/constraints",
+    TARGETS: "/info/targets"
   },
   PROGRAM : {
-    "START": "/program",
-    "UPDATE": "/program/update"
+    UPDATE: "/program/update"
+  },
+  TRANSITION: {
+    INFO: '/transition/info',
+    PROJECT: '/transition/project',
+    PROGRAM: '/transition/program',
   }
 }

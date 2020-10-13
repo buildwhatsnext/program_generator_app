@@ -23,13 +23,13 @@ function OpenOptions() {
       <InternalNavigationalButton
         className={styles.button__project}
         content="Create New"
-        to={ROUTES.PROJECT}
+        to={ROUTES.TRANSITION.PROJECT}
         execute={createNewProject}
       />
       <InternalNavigationalButton
         className={styles.button__project}
         content="Open Project"
-        to={ROUTES.PROJECT}
+        to={ROUTES.TRANSITION.PROJECT}
         execute={openProject}
         executableData={projectDetails}
       />

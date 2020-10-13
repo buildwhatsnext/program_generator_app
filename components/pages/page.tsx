@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import styles from './page.module.scss';
-import { Panel } from './panels/panel';
-import { ProgramHeader } from './header';
+import { Panel } from '../panels/panel';
+import { ProgramHeader } from '../header';
 
-interface IPage {
+export interface IPage {
   children?: ReactNode;
   showPanel?: boolean;
   panel?: JSX.Element;
