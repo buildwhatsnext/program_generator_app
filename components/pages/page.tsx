@@ -2,14 +2,16 @@ import React, { ReactNode } from 'react';
 import styles from './page.module.scss';
 import { Panel } from '../panels/panel';
 import { ProgramHeader } from './page.header';
+import { PageNavigation } from './page.nav';
 
 export interface IPage {
   children?: ReactNode;
   showPanel?: boolean;
   panel?: JSX.Element;
+  nextRoute: string;
 }
 
-export function Page({children, showPanel, panel } : IPage) {
+export function Page({children, showPanel, panel, nextRoute }: IPage) {
   return !showPanel && !panel
     ? <div className={styles.page}>
         <div className="page__header">
@@ -19,7 +21,11 @@ export function Page({children, showPanel, panel } : IPage) {
           {children}
         </div>
         <div className="page__nav">
-          
+          { 
+            nextRoute
+              ? <PageNavigation nextRoute={nextRoute } />
+              : null
+          }
         </div>
       </div>
     : <div className={styles.page__panel}>

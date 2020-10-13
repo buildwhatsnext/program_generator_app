@@ -22,4 +22,5 @@ export const ROUTES = {
     PROJECT: '/transition/project',
     PROGRAM: '/transition/program',
   },
+  ERROR: '/error'
 }
