@@ -6,7 +6,7 @@ export const ROUTES = {
   INFO : {
     GENERAL : "/info/general",
     CONSTRAINTS: "/info/constraints",
-    TARGETS: "/info/targets"
+    TARGET: "/info/target"
   },
   PROGRAM : {
     START: "/program/start",
