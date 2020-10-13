@@ -5,55 +5,28 @@ import TextInputBox from '../../components/info/input';
 import { DirectionalButton, BackButton } from '../../components/buttons/navigation';
 import { ROUTES } from '../../constants/routes';
 
+import { Page } from '../../components/pages/page';
+
 import styles from './general.module.scss';
 
 function TargetMetric () {
 
-  const Q1 = (
-    <p>
-      What's the
-      <em> target circulation factor? </em>
-    </p>
-  );
-
-  const Q2 = (
-    <p>
-      What's the
-      <em> target planning factor </em>
-    </p>
-  );
-
-  const Q3 = (
-    <p>
-      what's the
-      <em> target area per workseat </em>
-    </p>
-  );
-
-  const Q4 = (
-    <p>
-      If you have it, what are the
-      <em> target workseats? </em>
-    </p>
-  );
-
+  const Q1 = <p>What's the <em> target circulation factor? </em> </p>;
+  const Q2 = <p>What's the <em> target planning factor? </em> </p>;
+  const Q3 = <p>What's the <em> target area per workseat </em> </p>;
+  const Q4 = <p>If you have it, what are the <em> target workseats </em> ?</p>;
+  const next = ROUTES.PROGRAM.START;
 
   return (
 
+    <Page nextRoute={next}>
+      <QnA 
+        question={Q1} 
+        answers={[<TextInputBox content={`Enter the target circulation factor (%)`}/> ]} 
+      />
+    </Page>
+    /*
     <div className={styles.page}>
-
-      <div className={styles.page__logo}>
-        <p>hlw</p>
-        <p>Program Dashboard</p>
-        <div className={styles.page__logo__sub}>
-          <p>The Silmarillion Incorporated</p>
-        </div>
-      </div>
-
-      <div className={styles.page__title}>
-        <h2>Target Metrics</h2>
-      </div>
-
       <div className={styles.page__content}>
 
         <QnA
@@ -105,6 +78,7 @@ function TargetMetric () {
 
     </div>
 
+    */
 
   );
 };
