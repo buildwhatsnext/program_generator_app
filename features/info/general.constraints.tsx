@@ -1,7 +1,11 @@
 import React from 'react';
+
 import QnA from '../../components/question';
-import styles from './general.module.scss';
 import TextInputBox from '../../components/info/input';
+import { DirectionalButton, BackButton } from '../../components/buttons/navigation';
+import { ROUTES } from '../../constants/routes';
+
+import styles from './general.module.scss';
 
 function BuildingConstraint() {
 
@@ -73,8 +77,8 @@ function BuildingConstraint() {
       </div>
 
       <div className={styles.page__navigation}>
-        <button className={styles.Back}> BACK </button>
-        <button className={styles.Next}> NEXT </button>
+        <BackButton />
+        <DirectionalButton location={ROUTES.PROGRAM.START} content="Next" />
       </div>
     </div>
   );

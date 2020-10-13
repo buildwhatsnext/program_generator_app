@@ -9,6 +9,7 @@ export const ROUTES = {
     TARGETS: "/info/targets"
   },
   PROGRAM : {
+    START: "/program",
     UPDATE: "/program/update"
   },
   TRANSITION: {
