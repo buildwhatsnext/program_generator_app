@@ -10,18 +10,16 @@ export const ROUTES = {
   },
   PROGRAM : {
     START: "/program/start",
-    UPDATE: "/program/update"
+    UPDATE: "/program/update",
+    ENCLOSED: 'program/enclosed',
+    OPEN_PLAN: 'program/openplan',
+    MEETING: 'program/meeting',
+    AMENITY: 'program/amenity',
+    SUPPORT: 'program/support',
   },
   TRANSITION: {
     INFO: '/transition/info',
     PROJECT: '/transition/project',
     PROGRAM: '/transition/program',
   },
-  SPACES: {
-    ENCLOSED: 'space/enclosed',
-    OPEN_PLAN: 'space/openplan',
-    MEETING: 'space/meeting',
-    AMENITY: 'space/amenity',
-    SUPPORT: 'space/support',
-  }
 }
