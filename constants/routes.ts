@@ -5,7 +5,6 @@ export const ROUTES = {
   },
   INFO : {
     GENERAL : "/info/general",
-    SPATIAL: "/info/spatial",
     CONSTRAINTS: "/info/constraints",
     TARGETS: "/info/targets"
   },
