@@ -10,10 +10,10 @@ export function ProgramHeader() {
   return (
     <div className="header">
       <div className="header__company">
-        <h1>{company}</h1>
+        <h4>{company}</h4>
       </div>
       <div className="header__program">
-        <h2>{application}</h2>
+        <h4>{application}</h4>
       </div>
       <div className="header__client">
         <p className="header__client__name">{client}</p>
@@ -22,8 +22,8 @@ export function ProgramHeader() {
   );
 }
 
-interface IHeader {
-  companyName: string;
-  program: string;
-  clientName: string;
-};
+// interface IHeader {
+//   companyName: string;
+//   program: string;
+//   clientName: string;
+// };
