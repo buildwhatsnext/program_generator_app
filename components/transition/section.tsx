@@ -17,7 +17,7 @@ export function TransitionSection({
   );
 }
 
-interface ISection {
+export interface ISection {
   desc: string;
   fwdBtnText?: string;
   to: string;
