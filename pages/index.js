@@ -1,7 +1,9 @@
 import Home from '../features/home/home';
+import ProjectSelectionPage from './project/select';
 
 const IndexPage = () => {
-  return <Home />
+  // return <Home />
+  return <ProjectSelectionPage />
 }
 
 export default IndexPage
