@@ -1,18 +1,6 @@
-import { TransitionPage } from '../../components/transition/page';
-import { TransitionSection } from '../../components/transition/section';
-import { ROUTES } from '../../constants/routes';
+import React from 'react';
+import GeneralBldgInfo from '../../features/info/general.building';
 
-export default function InfoStartPage() {
-  const desc = `Let's get more information about the space you want to program`;
-  const forward = `Start General Information`;
-
-  return (
-    <TransitionPage showPanel>
-      <TransitionSection
-        desc={desc}
-        fwdBtnText={forward}
-        to={ROUTES.INFO.GENERAL}
-      />
-    </TransitionPage>
-  );
+export default function GeneralBuildingInfoPage() {
+  return <GeneralBldgInfo />;
 }
