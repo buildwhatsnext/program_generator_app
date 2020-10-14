@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ToggleButton from './buttons/toggle';
-// import styles, { textinputbox } from '../features/building/styles.building.info.scss';
+import styles from './question.module.scss';
 
 function QuestionAndAnswer(props: QnAProps) {
   const [answered, toggleAnswer] = useState(false);
@@ -16,14 +16,10 @@ function QuestionAndAnswer(props: QnAProps) {
   }
 
   return (
-    <div>
-      <div>{question}</div>
-      <div>{answerCollection}</div>
+    <div className={styles.QnA}>
+      <div className={styles.QnA__question}>{question}</div>
+      <div className={styles.QnA__answer}>{answerCollection}</div>
     </div>
-    // <div className={styles.qna}>
-    //   <div className={styles.questions}>{question}</div>
-    //   <div className={styles.answers}>{answerCollection}</div>
-    // </div>
   );
 }
 
@@ -33,12 +29,3 @@ type QnAProps = {
 };
 
 export default QuestionAndAnswer;
-
-/**
- key={i.toString} will tell you which button (index) has been clicked from array
- we can use that information to let 'Question know' that a button has been clicked
-
- 1. when someone clicks a button
- 2. console.log which index/button{text} is has been clicked
-
- */

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 
+import styles from './toggle.module.scss';
+
 function ToggableButton(props: ToggableButtonProps) {
   const [active, setActive] = useState(false);
   const { content } = props;

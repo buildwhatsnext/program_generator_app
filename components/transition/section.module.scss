@@ -1,0 +1,27 @@
+.section {
+  margin-top: 36rem;
+
+  &__desc {
+    font-size: 2.4rem;
+    text-align: center;
+    // border: orchid solid 10px;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // justify-self: center;
+
+    &__next {
+      grid-column: 1/2;
+      justify-self: end;
+      margin-right: 0rem;
+    }
+
+    &__back {
+      grid-column: 2/3;
+      justify-self: start;
+      margin-left: 10rem;
+    }
+  }
+}
