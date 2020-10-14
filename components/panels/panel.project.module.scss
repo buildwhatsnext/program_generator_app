@@ -1,6 +1,14 @@
-.button {
-  &__project{
+
+.open__options {
+  padding-top: 18rem;
+  line-height: 11rem;
+
+  button {
     color: white;
     text-transform: initial;
+
+    span {
+      font-size: 3.2rem;
+    }
   }
 }

@@ -1,0 +1,44 @@
+@import '../styles/styles.colors.scss';
+
+
+.QnA {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 2.4rem;
+  font-weight: 500;
+  height: 6rem;
+  margin-bottom: 3rem;
+
+  &__question {
+    align-self: center;
+    padding-left: 34rem;
+
+    p {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    em {
+      font-weight: 600;
+    }
+  }
+
+  &__answer {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    width: 35rem;
+    // border: green 2px solid;
+
+    button {
+      border: 3px $blue solid;
+      border-radius: 0px;
+      color: $blue;
+      width: 12rem;
+      height: 4rem;
+      font-size: 1.3rem;
+    }
+  }
+}

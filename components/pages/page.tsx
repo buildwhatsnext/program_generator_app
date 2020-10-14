@@ -21,7 +21,7 @@ export function Page({children, showPanel, panel, nextRoute }: IPage) {
         <div className="page__content">
           {children}
         </div>
-        <div className="page__nav">
+        <div className={styles.page__nav}>
           { 
             nextRoute
               ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } />

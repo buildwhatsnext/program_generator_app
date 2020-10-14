@@ -22,10 +22,10 @@ export function ProjectSelection() {
   const recent = displayRecentProjects(projects.recent);
 
   return (
-    <div className="project">
-      <div className="project__display">
+    <div className={styles.project}>
+      <div className={styles.project__display}>
         <h4>Recent Projects</h4>
-        <div className="display__options">{recent}</div>
+        <div className={styles.project__display__options}>{recent}</div>
       </div>
     </div>
   );
