@@ -2,12 +2,9 @@ import React from 'react';
 
 import QnA from '../../components/question';
 import TextInputBox from '../../components/info/input';
-import { DirectionalButton, BackButton } from '../../components/buttons/navigation';
 import { ROUTES } from '../../constants/routes';
 
 import { Page } from '../../components/pages/page';
-
-import styles from './general.module.scss';
 
 function TargetMetric () {
 
@@ -16,7 +13,7 @@ function TargetMetric () {
   const Q2 = <p>What's the <em> target planning factor? </em> </p>;
   const Q3 = <p>What's the <em> target area per workseat </em> </p>;
   const Q4 = <p>If you have it, what are the <em> target workseats </em> ?</p>;
-  const next = ROUTES.PROGRAM.ENCLOSED;
+  const next = ROUTES.PROGRAM.START;
 
   return (
     <Page nextRoute={next}>
