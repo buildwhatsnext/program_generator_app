@@ -1,9 +1,28 @@
 @import '../../styles/styles.colors.scss';
 
 .input {
-  &__text {
-    label {
-      color: $blue;
+  // border: 10px red solid;
+
+  form {
+    // border: royalblue 10px solid;
+
+    .input__text {
+      // border: seagreen 10px solid;
+      width: 30rem;
+      border-bottom: 2px $blue solid;
+
+      label {
+        position: relative;
+        text-align: center;
+        color: $blue;
+        font-size: 1.2rem;
+        font-weight: 400;
+        // border: slateblue 1px solid;
+
+        label:checked {
+          color: red;
+        }
+      }
     }
   }
 }

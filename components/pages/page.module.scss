@@ -38,3 +38,24 @@
     text-transform: capitalize;
   }
 }
+
+.nav {
+  // border: 10px red solid;
+  white-space: pre-line;
+
+  button {
+    border: 2px $blue solid;
+    color: $blue;
+    border-radius: 0px;
+    width: 10rem;
+    height: 3rem;
+  }
+
+  .navBack {
+
+  }
+
+  .navNext {
+
+  }
+}

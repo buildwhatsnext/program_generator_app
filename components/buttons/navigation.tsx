@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 
+import styles from '../../components/pages/page.module.scss';
+
 export function InternalNavigationalButton({
   content,
   execute,
@@ -44,7 +46,7 @@ export function BackButton() {
   const router = useRouter();
 
   return (
-    <div className="page__navigation__back">
+    <div>
       <Button variant="outlined" onClick={() => router.back()}>
         Back
       </Button>
