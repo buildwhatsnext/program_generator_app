@@ -8,7 +8,7 @@ import { ROUTES } from '../../constants/routes';
 
 import { Page } from '../../components/pages/page';
 
-import styles from './general.module.scss';
+import styles from '../../features/info/general.module.scss';
 
 
 function BuildingInformation() {
@@ -21,45 +21,49 @@ function BuildingInformation() {
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
+    <div className={styles.page}>
+      {/* <div className={styles.page__title}>General Building Information</div> */}
+      <div className={styles.page__content}>
+        <Page nextRoute={next}>
+          <QnA
+            question={Q1}
+            answers={[<TextInputBox content={`Please Tell Us Your Client's Name`}/>]}
+          />
 
-    <Page nextRoute={next}>
-      <QnA
-        question={Q1}
-        answers={[<TextInputBox content={`Please Tell Us Your Client's Name`}/>]}
-      />
+          <QnA
+            question={Q2}
+            answers={[
+              <ToggleButton content="Metric" />,
+              <ToggleButton content="Imperial" />,
+            ]}
+          />
 
-      <QnA
-        question={Q2}
-        answers={[
-          <ToggleButton content="Metric" />,
-          <ToggleButton content="Imperial" />,
-        ]}
-      />
+          <QnA
+            question={Q3}
+            answers={[
+              <ToggleButton content="Metric" />,
+              <ToggleButton content="Imperial" />,
+            ]}
+          />
 
-      <QnA
-        question={Q3}
-        answers={[
-          <ToggleButton content="Metric" />,
-          <ToggleButton content="Imperial" />,
-        ]}
-      />
+          <QnA
+            question={Q4}
+            answers={[
+              <ToggleButton content="Metric" />,
+              <ToggleButton content="Imperial" />,
+            ]}
+          />
 
-      <QnA
-        question={Q4}
-        answers={[
-          <ToggleButton content="Metric" />,
-          <ToggleButton content="Imperial" />,
-        ]}
-      />
-
-      <QnA
-        question={Q5}
-        answers={[
-          <ToggleButton content="Metric" />,
-          <ToggleButton content="Imperial" />,
-        ]}
-      />
-    </Page>
+          <QnA
+            question={Q5}
+            answers={[
+              <ToggleButton content="Metric" />,
+              <ToggleButton content="Imperial" />,
+            ]}
+          />
+        </Page>
+      </div>
+    </div>
     // <div className={styles.page}>
     //   <div className={styles.page__logo}>
     //     <p>hlw</p>
