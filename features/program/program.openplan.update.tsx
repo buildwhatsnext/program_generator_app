@@ -2,15 +2,15 @@ import React from 'react'
 import { ProgramTransition } from './program.transition';
 import { ROUTES } from '../../constants/routes';
 
-export function ProgramStart() {
-  const desc = `Let's take a look at the enclosed office workspace requirements`;
-  const forward = `Start Enclosed Offices`;
+export function OpenOfficeUpdate() {
+  const desc = `Let's take a look at the meeting space requirements`;
+  const forward = `Start Meeting Spaces`;
 
   return (
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.ENCLOSED}
+      to={ROUTES.PROGRAM.MEETING}
     />
   )
 }

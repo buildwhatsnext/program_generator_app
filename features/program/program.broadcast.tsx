@@ -4,10 +4,10 @@ import { ROUTES } from '../../constants/routes';
 import SpaceData from '../../components/display/display.table';
 import { WorkspaceDataEntrySection } from './program.data';
 
-export function EnclosedWorkspaces() {
+export function BroadcastSpaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.ENCLOSED_UPDATE }>
-      <WorkspaceDataEntrySection title="Enclosed Offices" data={<SpaceData />} />
+    <Page nextRoute={ ROUTES.PROGRAM.BROADCAST_UPDATE }>
+      <WorkspaceDataEntrySection title="Broadcast Spaces" data={<SpaceData />} />
     </Page>
   )
 }
