@@ -5,10 +5,10 @@ import { BackButton, DirectionalButton } from '../buttons/navigation';
 
 export function PageNavigation({nextRoute}: INavigation ) {
   return (
-    <div className={styles.nav}>
-      <div className={styles.navBack}><BackButton /></div>
-      <div className={styles.navNext}><DirectionalButton location={ nextRoute } content="Next" /></div>
-    </div>
+    <>
+      <div className={styles.page__nav__back}><BackButton /></div>
+      <div className={styles.page__nav__next}><DirectionalButton location={ nextRoute } content="Next" /></div>
+    </>
   )
 }
 

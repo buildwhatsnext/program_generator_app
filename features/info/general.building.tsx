@@ -7,8 +7,6 @@ import { ROUTES } from '../../constants/routes';
 
 import { Page } from '../../components/pages/page';
 
-import styles from '../../features/info/general.module.scss';
-
 
 function BuildingInformation() {
 
