@@ -1,0 +1,13 @@
+.QnA {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__question {
+    border: 5px solid green;
+  }
+
+  &__answer {
+    border: 5px solid blue;
+  }
+}
