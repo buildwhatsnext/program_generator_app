@@ -1,4 +1,23 @@
+
+.open__options {
+  padding-top: 20rem;
+
+  button {
+    color: white;
+    text-transform: initial;
+
+    span {
+      font-size: 3.2rem;
+    }
+  }
+
+  &__new {
+    border: 10px green solid;
+  }
+}
+
 .button {
+
   &__project{
     color: white;
     text-transform: initial;

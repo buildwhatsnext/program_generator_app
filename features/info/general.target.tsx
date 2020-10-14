@@ -16,7 +16,7 @@ function TargetMetric () {
   const Q2 = <p>What's the <em> target planning factor? </em> </p>;
   const Q3 = <p>What's the <em> target area per workseat </em> </p>;
   const Q4 = <p>If you have it, what are the <em> target workseats </em> ?</p>;
-  const next = ROUTES.INFO.CONSTRAINTS;
+  const next = ROUTES.PROGRAM.ENCLOSED;
 
   return (
     <Page nextRoute={next}>

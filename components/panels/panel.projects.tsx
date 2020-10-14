@@ -19,15 +19,13 @@ function OpenOptions() {
   };
 
   return (
-    <div className="open__options">
+    <div className={styles.open__options}>
       <InternalNavigationalButton
-        className={styles.button__project}
         content="Create New"
         to={ROUTES.TRANSITION.PROJECT}
         execute={createNewProject}
       />
       <InternalNavigationalButton
-        className={styles.button__project}
         content="Open Project"
         to={ROUTES.TRANSITION.PROJECT}
         execute={openProject}
