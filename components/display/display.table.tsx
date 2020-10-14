@@ -12,9 +12,9 @@ import { ISpace, SpaceType } from '../../components/spaces/space.type';
 
 interface ISpaceColumn {
   id: string,
-  // type: SpaceType,
   label: string,
   minWidth?: number,
+  align?: 'left' | 'center' | 'right',
   format?: (value: number) => string
 }
 
@@ -39,21 +39,18 @@ const columns: ISpaceColumn[] = [
     id: 'ratio',
     label: 'Ratio',
     minWidth: 100,
-    // align: 'right',
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'area',
     label: 'Area',
     minWidth: 100,
-    // align: 'right',
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'qty_selected',
     label: 'Quantity Selected',
     minWidth: 100,
-    // align: 'right',
     format: (value: number) => value.toFixed(2),
   },
   { 
@@ -68,47 +65,76 @@ const columns: ISpaceColumn[] = [
   },
 ];
 
-export default function StickyHeadTable() {
-  let start = new Array(2);
+export default function SpaceTable() {
+  const start = [
+    {
+      name: 'test',
+      seats: 0,
+      ratio: 'test',
+      area: 0,
+      quantity_selected: 0,
+      seats_total: 0,
+      area_total: 0,
+      type: SpaceType.Unknown
+    },
+  ]
   const [rowData, setRowData] = React.useState(start);
 
   return (
-    <Paper /* className={classes.root} */>
-      <TableContainer /*className={classes.container} */>
+    <Paper>
+      <TableContainer>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              rowData.map( (r,i) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={i++}>
-                    {columns.map((column) => {
-                      // const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          <TextField id="standard-basic" />
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })
-            }
-          </TableBody>
+          <SpaceTableHeader columns={columns} />
+          <SpaceTableData columns={columns} rows={rowData} />
         </Table>
       </TableContainer>
     </Paper>
   );
+}
+
+export function SpaceTableHeader({columns}) {
+  return (
+    <TableHead>
+      <TableRow>
+        {columns.map((column: ISpaceColumn) => (
+          <TableCell
+            key={column.id}
+            align={column.align}
+            style={{ minWidth: column.minWidth }}
+          >
+            {column.label}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  )
+}
+
+export function SpaceTableData({ columns, rows }: ISpaceTableData) {
+  return (
+    <TableBody>
+      {
+        rows.map((row,i) => {
+          return (
+            <TableRow hover role="checkbox" tabIndex={-1} key={i}>
+              {columns.map((column) => {
+                const value = row[column.id];
+                return (
+                  <TableCell key={column.id} align={column.align}>
+                    <TextField />
+                    {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          );
+        })
+      }
+  </TableBody>
+  )
+}
+
+interface ISpaceTableData {
+  columns: ISpaceColumn[],
+  rows: ISpace[]
 }

@@ -6,6 +6,7 @@ export interface ISpace {
   quantity_selected: number;
   seats_total: number;
   area_total: number;
+  type: SpaceType;
 }
 
 export enum SpaceType {
