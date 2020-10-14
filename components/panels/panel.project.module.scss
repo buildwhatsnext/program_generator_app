@@ -1,6 +1,7 @@
 
 .open__options {
-  padding-top: 20rem;
+  padding-top: 18rem;
+  line-height: 11rem;
 
   button {
     color: white;
@@ -9,17 +10,5 @@
     span {
       font-size: 3.2rem;
     }
-  }
-
-  &__new {
-    border: 10px green solid;
-  }
-}
-
-.button {
-
-  &__project{
-    color: white;
-    text-transform: initial;
   }
 }

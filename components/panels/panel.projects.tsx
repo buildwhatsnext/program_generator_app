@@ -25,6 +25,7 @@ function OpenOptions() {
         to={ROUTES.TRANSITION.PROJECT}
         execute={createNewProject}
       />
+      <br/>
       <InternalNavigationalButton
         content="Open Project"
         to={ROUTES.TRANSITION.PROJECT}

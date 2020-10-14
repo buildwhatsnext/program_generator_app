@@ -6,8 +6,8 @@ export const NamedValue = (props: INamedValue) => {
 
   return (
     <div className={styles.data}>
-      <p className="data__name">{name}</p>
-      <p className="data__value">{value}</p>
+      <p className={styles.data__name}>{name}</p>
+      <p className={styles.data__value}>{value}</p>
     </div>
   );
 };
