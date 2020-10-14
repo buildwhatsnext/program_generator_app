@@ -1,7 +1,9 @@
+@import '../../styles/styles.colors.scss';
+
 .input {
   &__text {
     label {
-      color: red;
+      color: $blue;
     }
   }
 }

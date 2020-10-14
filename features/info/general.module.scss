@@ -1,91 +1,115 @@
 @import '../../styles/styles.colors.scss';
 
-.page {
-  background-color: $white;
-  height: 100%;
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
+.QnA {
+  // border: 10px red solid;
 
-  .page__logo {
-
-    line-height: 10px;
-    text-align: right;
-    display: inline;
-
-    p {
-      font-size: 36px;
-      font-weight: 700;
+  &__question {
+    
+    p{
       color: $blue;
+      font-size: 2rem;
+    }
+  }
+
+  &__answer {
+
+    button {
+      color: $blue;
+      border: 2px $blue solid;
+      border-radius: 0px;
       margin-right: 5rem;
-      margin-top: 5rem;
-      text-align: right;
-    }
-  }
-
-  .page__title {
-    // border: red 2px solid;
-
-    h2 {
-      font-size: 36px;
-      color: $blue;
-      padding-left: 20rem;
-      margin-top: 5rem;
-    }
-  }
-
-  .page__content {
-    // border: red 2px solid;
-    p {
-      font-size: 20px;
-      font-weight: 500;
-      color: $blue;
-      float: left;
-      padding-left: 30rem;
-    }
-
-    button {
-      grid-row: 1/5;
-      color: $blue;
-      font-size: 1.4rem;
-      font-weight: 500;
-      height: 4rem;
-      width: 12rem;
-      border: 2px solid $blue;
-      // margin-right: 10rem;
-      float: right;
-      border-radius: 0px;
-      background-color: white;
-      margin-right: 15rem;
-      margin-bottom: 4rem;
-    }
-  }
-
-  .page__navigation {
-    // border: red 2px solid;
-
-    .Back {
-      // border: 10px red solid;
-      float: left;
-      margin-left: 15rem;
-    }
-
-    .Next {
-      // border: 10px red solid;
-      float: right;
-      margin-right: 15rem;
-    }
-
-    button {
-      grid-row: 1/5;
-      color: $blue;
-      font-size: 1.4rem;
-      font-weight: 500;
-      height: 4rem;
-      width: 12rem;
-      border: 2px solid $blue;
-      margin-top: 5rem;
-      border-radius: 0px;
-      background-color: white;
+      width: 10rem;
     }
   }
 }
+
+
+// .page {
+//   background-color: $white;
+//   height: 100%;
+//   display: grid;
+//   grid-template-rows: repeat(4, 1fr);
+
+//   .page__logo {
+
+//     line-height: 10px;
+//     text-align: right;
+//     display: inline;
+
+//     p {
+//       font-size: 36px;
+//       font-weight: 700;
+//       color: $blue;
+//       margin-right: 5rem;
+//       margin-top: 5rem;
+//       text-align: right;
+//     }
+//   }
+
+//   .page__title {
+//     // border: red 2px solid;
+
+//     h2 {
+//       font-size: 36px;
+//       color: $blue;
+//       padding-left: 20rem;
+//       margin-top: 5rem;
+//     }
+//   }
+
+//   .page__content {
+//     // border: red 2px solid;
+//     p {
+//       font-size: 20px;
+//       font-weight: 600;
+//       color: $blue;
+//       float: left;
+//       padding-left: 300rem;
+//     }
+
+//     button {
+//       grid-row: 1/5;
+//       color: $blue;
+//       font-size: 1.4rem;
+//       font-weight: 500;
+//       height: 4rem;
+//       width: 12rem;
+//       border: 2px solid $blue;
+//       // margin-right: 10rem;
+//       float: right;
+//       border-radius: 0px;
+//       background-color: white;
+//       margin-right: 15rem;
+//       margin-bottom: 4rem;
+//     }
+//   }
+
+//   .page__navigation {
+//     // border: red 2px solid;
+
+//     .Back {
+//       // border: 10px red solid;
+//       float: left;
+//       margin-left: 15rem;
+//     }
+
+//     .Next {
+//       // border: 10px red solid;
+//       float: right;
+//       margin-right: 15rem;
+//     }
+
+//     button {
+//       grid-row: 1/5;
+//       color: $blue;
+//       font-size: 1.4rem;
+//       font-weight: 500;
+//       height: 4rem;
+//       width: 12rem;
+//       border: 2px solid $blue;
+//       margin-top: 5rem;
+//       border-radius: 0px;
+//       background-color: white;
+//     }
+//   }
+// }

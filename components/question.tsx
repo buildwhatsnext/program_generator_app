@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ToggleButton from './buttons/toggle';
+import styles from '../features/info/general.module.scss'
 // import styles, { textinputbox } from '../features/building/styles.building.info.scss';
 
 function QuestionAndAnswer(props: QnAProps) {
@@ -16,9 +17,9 @@ function QuestionAndAnswer(props: QnAProps) {
   }
 
   return (
-    <div>
-      <div>{question}</div>
-      <div>{answerCollection}</div>
+    <div className={styles.QnA}>
+      <div className={styles.QnA__question}>{question}</div>
+      <div className={styles.QnA__answer}>{answerCollection}</div>
     </div>
     // <div className={styles.qna}>
     //   <div className={styles.questions}>{question}</div>

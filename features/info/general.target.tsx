@@ -18,9 +18,8 @@ function TargetMetric () {
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
-    
     <Page nextRoute={next}>
-      <QnA 
+      <QnA
         question={Q1} 
         answers={[<TextInputBox content={`Enter the target circulation factor (%)`}/> ]} 
       />

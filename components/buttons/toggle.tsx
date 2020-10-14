@@ -6,7 +6,7 @@ function ToggableButton(props: ToggableButtonProps) {
   const { content } = props;
 
   return !active ? (
-    <Button variant="outlined" onClick={() => setActive(!active)}>
+    <Button width="50px" variant="outlined" onClick={() => setActive(!active)}>
       {content}
     </Button>
   ) : (

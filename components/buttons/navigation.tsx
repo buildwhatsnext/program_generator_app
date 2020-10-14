@@ -44,9 +44,11 @@ export function BackButton() {
   const router = useRouter();
 
   return (
-    <Button variant="outlined" onClick={() => router.back()}>
-      Back
-    </Button>
+    <div className="page__navigation__back">
+      <Button variant="outlined" onClick={() => router.back()}>
+        Back
+      </Button>
+    </div>
   );
 }
 
