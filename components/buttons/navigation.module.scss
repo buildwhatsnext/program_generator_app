@@ -2,12 +2,14 @@
 
 .nextbutton {
 
+  padding-top: 4rem;
+
   button {
 
   border: 2px $blue solid;
   border-radius: 0px;
   color: $blue;
-  width: 12rem;
+  width: auto;
   height: 4rem;
   font-size: 1.3rem;
   }
@@ -15,12 +17,14 @@
 
 .backbutton {
 
+  padding-top: 4rem;
+
   button {
 
   border: 2px $blue solid;
   border-radius: 0px;
   color: $blue;
-  width: 12rem;
+  width: auto;
   height: 4rem;
   font-size: 1.3rem;
   }
