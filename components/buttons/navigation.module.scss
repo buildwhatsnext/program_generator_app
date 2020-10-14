@@ -1,0 +1,27 @@
+@import '../../styles/styles.colors.scss';
+
+.nextbutton {
+
+  button {
+
+  border: 2px $blue solid;
+  border-radius: 0px;
+  color: $blue;
+  width: 12rem;
+  height: 4rem;
+  font-size: 1.3rem;
+  }
+}
+
+.backbutton {
+
+  button {
+
+  border: 2px $blue solid;
+  border-radius: 0px;
+  color: $blue;
+  width: 12rem;
+  height: 4rem;
+  font-size: 1.3rem;
+  }
+}

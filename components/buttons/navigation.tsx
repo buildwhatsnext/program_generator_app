@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 
-import styles from '../../components/pages/page.module.scss';
+import styles from './navigation.module.scss';
 
 export function InternalNavigationalButton({
   content,
@@ -36,9 +36,11 @@ export function DirectionalButton({ location, content }: IDirectionalButton) {
   }
 
   return (
-    <Button variant='outlined' onClick={handleClick}>
-      {content}
-    </Button>
+    <div className={styles.nextbutton}>
+      <Button variant='outlined' onClick={handleClick}>
+        {content}
+      </Button>
+    </div>
   );
 }
 
@@ -46,7 +48,7 @@ export function BackButton() {
   const router = useRouter();
 
   return (
-    <div>
+    <div className={styles.backbutton}>
       <Button variant="outlined" onClick={() => router.back()}>
         Back
       </Button>
