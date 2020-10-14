@@ -3,12 +3,13 @@ import styles from './page.module.scss';
 import { Panel } from '../panels/panel';
 import { ProgramHeader } from './page.header';
 import { PageNavigation } from './page.nav';
+import { ROUTES } from '../../constants/routes';
 
 export interface IPage {
   children?: ReactNode;
   showPanel?: boolean;
   panel?: JSX.Element;
-  nextRoute: string;
+  nextRoute?: string;
 }
 
 export function Page({children, showPanel, panel, nextRoute }: IPage) {
@@ -23,7 +24,7 @@ export function Page({children, showPanel, panel, nextRoute }: IPage) {
         <div className="page__nav">
           { 
             nextRoute
-              ? <PageNavigation nextRoute={nextRoute } />
+              ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } />
               : null
           }
         </div>
