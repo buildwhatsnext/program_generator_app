@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import { ISpace, SpaceType } from '../../components/spaces/space.type';
-import { isConstructorDeclaration } from 'typescript';
+import { createNoSubstitutionTemplateLiteral, isConstructorDeclaration } from 'typescript';
 
 interface ISpaceColumn {
   id: string,
@@ -68,22 +68,18 @@ const columns: ISpaceColumn[] = [
 ];
 
 export default function SpaceTable() {
-  const empty = {};
-  const start = [empty];
+  const start = [{}];
   const [rowData, setRowData] = React.useState(start);
 
   const addRow = () => {
-    rowData.push(empty);
-    setRowData(rowData);
-    console.log(rowData);
+    const newRowData = Array.from(rowData);
+    newRowData.push({});
+    setRowData(newRowData);
   }
 
-  let rowDisplay =  <SpaceTableData columns={columns} rows={rowData} />
-  
-  useEffect(() => {
-    console.log(`There are ${rowData.length} rows of data`);
-    rowDisplay = <SpaceTableData columns={columns} rows={rowData} />
-  })
+  // const removeRow = () => {
+  //   rowData.
+  // }
 
   return (
     <>
@@ -92,7 +88,7 @@ export default function SpaceTable() {
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader columns={columns} />
-            { rowDisplay }
+            <SpaceTableData columns={columns} rows={rowData} />
           </Table>
         </TableContainer>
       </Paper>
@@ -121,19 +117,22 @@ export function SpaceTableHeader({columns}) {
 export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
   console.log(rows);
 
+  useEffect(() => {
+    console.log(`There are now ${rows.length} rows of data`);
+  })
+
   return (
     <TableBody>
       {
         rows.map((row,i) => {
+          console.log(i);
           return (
             <TableRow hover role="checkbox" tabIndex={-1} key={i}>
               {
                 columns.map((column) => {
-                  const value = row[column.id];
                   return (
                     <TableCell key={column.id} align={column.align}>
                       <TextField />
-                      {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
                     </TableCell>
                   );
                 }
