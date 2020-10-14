@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import { ISpace, SpaceType } from '../../components/spaces/space.type';
+import { isConstructorDeclaration } from 'typescript';
 
 interface ISpaceColumn {
   id: string,
@@ -66,29 +68,35 @@ const columns: ISpaceColumn[] = [
 ];
 
 export default function SpaceTable() {
-  const start = [
-    {
-      name: 'test',
-      seats: 0,
-      ratio: 'test',
-      area: 0,
-      quantity_selected: 0,
-      seats_total: 0,
-      area_total: 0,
-      type: SpaceType.Unknown
-    },
-  ]
+  const empty = {};
+  const start = [empty];
   const [rowData, setRowData] = React.useState(start);
 
+  const addRow = () => {
+    rowData.push(empty);
+    setRowData(rowData);
+    console.log(rowData);
+  }
+
+  let rowDisplay =  <SpaceTableData columns={columns} rows={rowData} />
+  
+  useEffect(() => {
+    console.log(`There are ${rowData.length} rows of data`);
+    rowDisplay = <SpaceTableData columns={columns} rows={rowData} />
+  })
+
   return (
-    <Paper>
-      <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
-          <SpaceTableHeader columns={columns} />
-          <SpaceTableData columns={columns} rows={rowData} />
-        </Table>
-      </TableContainer>
-    </Paper>
+    <>
+      <Button variant='text' onClick={() => addRow()}>Add New</Button>
+      <Paper>
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table">
+            <SpaceTableHeader columns={columns} />
+            { rowDisplay }
+          </Table>
+        </TableContainer>
+      </Paper>
+    </>
   );
 }
 
@@ -110,22 +118,26 @@ export function SpaceTableHeader({columns}) {
   )
 }
 
-export function SpaceTableData({ columns, rows }: ISpaceTableData) {
+export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
+  console.log(rows);
+
   return (
     <TableBody>
       {
         rows.map((row,i) => {
           return (
             <TableRow hover role="checkbox" tabIndex={-1} key={i}>
-              {columns.map((column) => {
-                const value = row[column.id];
-                return (
-                  <TableCell key={column.id} align={column.align}>
-                    <TextField />
-                    {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
-                  </TableCell>
-                );
-              })}
+              {
+                columns.map((column) => {
+                  const value = row[column.id];
+                  return (
+                    <TableCell key={column.id} align={column.align}>
+                      <TextField />
+                      {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
+                    </TableCell>
+                  );
+                }
+              )}
             </TableRow>
           );
         })
@@ -134,7 +146,7 @@ export function SpaceTableData({ columns, rows }: ISpaceTableData) {
   )
 }
 
-interface ISpaceTableData {
-  columns: ISpaceColumn[],
-  rows: ISpace[]
-}
+// interface ISpaceTableData {
+//   columns: ISpaceColumn[],
+//   rows: ISpace[]
+// }
