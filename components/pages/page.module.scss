@@ -8,6 +8,12 @@
   display: grid;
   grid-template-rows: 1fr 3fr 1fr;
 
+  h4 {
+    font-size: 4.6rem;
+    font-weight: 600;
+    padding-left: 24rem;
+  }
+
   &__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;

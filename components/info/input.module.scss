@@ -2,20 +2,23 @@
 
 .input {
   // border: 10px red solid;
+  justify-self: center;
 
   form {
     // border: royalblue 10px solid;
+    justify-self: center;
 
     .input__text {
       // border: seagreen 10px solid;
-      width: 30rem;
+      width: 35rem;
       border-bottom: 2px $blue solid;
 
       label {
         position: relative;
         text-align: center;
         color: $blue;
-        font-size: 1.2rem;
+        opacity: 60%;
+        font-size: 1.5rem;
         font-weight: 400;
         // border: slateblue 1px solid;
       }
