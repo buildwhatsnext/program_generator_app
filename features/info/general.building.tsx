@@ -10,6 +10,7 @@ import { Page } from '../../components/pages/page';
 
 function BuildingInformation() {
 
+  const title = 'General Building Information';
   const Q1 = <p>What is your client's name?</p>;
   const Q2 = <p>Which <em> units </em> should we use to measure your space? </p>;
   const Q3 = <p>Is your space a <em> multi-tenant </em> or <em> single-tenant? </em> </p>;
@@ -19,6 +20,9 @@ function BuildingInformation() {
 
   return (
     <Page nextRoute={next}>
+
+      <h4>{ title }</h4>
+
       <QnA
         question={Q1}
         answers={[<TextInputBox content={`Please Tell Us Your Client's Name`}/>]}
