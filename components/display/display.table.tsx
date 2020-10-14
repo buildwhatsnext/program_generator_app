@@ -90,7 +90,7 @@ export default function StickyHeadTable() {
 
   return (
     <Paper /* className={classes.root} */>
-      <TableContainer /*className={classes.container}>
+      <TableContainer /*className={classes.container} */>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
