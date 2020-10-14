@@ -24,7 +24,7 @@ export const ROUTES = {
     SUPPORT_UPDATE: '/program/support_update',
     BROADCAST_UPDATE: '/program/broadcast_update',
     LAB_UPDATE: '/program/lab_update',
-    END: '/program/end',
+    END: '/program/finalize',
   },
   TRANSITION: {
     INFO: '/transition/info',
