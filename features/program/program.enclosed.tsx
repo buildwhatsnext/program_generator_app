@@ -22,7 +22,6 @@ export function DataEntrySection({title, content = null}) {
   return (
     <div className="section">
       <div className="section__title">{title}</div>
-      {/* <div className="section__content">{content}</div> */}
       <div className="section__content">
         <SpaceData />
       </div>
