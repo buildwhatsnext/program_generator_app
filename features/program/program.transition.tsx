@@ -5,19 +5,17 @@ import { BuildingInformationPanel } from '../../components/panels/panel.building
 import { ProgrammedSpaceDisplay } from '../../components/display/display.pie';
 
 export function ProgramTransition({desc, fwdBtnText, to}: ISection) {
+  const nav = (
+    <TransitionSection
+      desc={desc}
+      fwdBtnText={fwdBtnText}
+      to={to}
+    />
+  );
 
   return (
-    <TransitionPage panel={<BuildingInformationPanel />}>
-      <div className="page__info">
-        {/* <ProgrammedSpaceDisplay /> */}
-      </div>
-      <div className="page__nav">
-        <TransitionSection
-          desc={desc}
-          fwdBtnText={fwdBtnText}
-          to={to}
-        />
-      </div>
+    <TransitionPage panel={<BuildingInformationPanel />} nav={nav}>
+      <ProgrammedSpaceDisplay />
     </TransitionPage>
   );
 }
