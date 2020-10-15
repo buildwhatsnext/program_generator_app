@@ -5,7 +5,7 @@ import { RootState } from '../../store';
 import bldgData from './program.data';
 import { IBuildingProgram, BuildingProgram, IGeneralProgramInformation } from './program.type';
 
-// let initialData: IBuildingProgram;
+// const initialData = new BuildingProgram();
 
 const programSlice = createSlice({
   name: 'program',
