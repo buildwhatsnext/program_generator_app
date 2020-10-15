@@ -11,21 +11,21 @@ export function BuildingInformationPanel() {
   const title = 'Building Information';
   const { overview } = useSelector(selectProgram);
   const [generalOpen, setGeneralOpenStatus] = useState(false);
-  const [formOpen, setFormOpenStatus] = useState(false);
+  const [basicOpen, setBasicOpenStatus] = useState(false);
   const [totalsOpen, setTotalsOpenStatus] = useState(false);
 
   const handleGeneral = () => {
     setGeneralOpenStatus(!generalOpen);
   };
-  const handleForm = () => {
-    setFormOpenStatus(!formOpen);
+  const handleBasic = () => {
+    setBasicOpenStatus(!basicOpen);
   };
   const handleTotals = () => {
     setTotalsOpenStatus(!totalsOpen);
   };
 
   const generalData = convertDataToINamedValues(overview.general);
-  const formData = convertDataToINamedValues(overview.basic);
+  const basicData = convertDataToINamedValues(overview.basic);
   const totalsData = convertDataToINamedValues(overview.totals);
 
   return (
@@ -39,9 +39,9 @@ export function BuildingInformationPanel() {
         />
         <PanelSection
           title="Basic Building Information"
-          handleClick={handleForm}
-          isActive={formOpen}
-          sectionData={formData}
+          handleClick={handleBasic}
+          isActive={basicOpen}
+          sectionData={basicData}
         />
         <PanelSection
           title="Programmed Space"

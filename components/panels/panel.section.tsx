@@ -45,7 +45,6 @@ export function PanelSectionItem({ name, value }: INamedValue) {
 }
 
 export function buildPanelSectionItem(data: Array<INamedValue>) {
-  console.log(data);
   const mapped = data.map((d: INamedValue, i: number) => {
     return <PanelSectionItem key={i} name={d.name} value={d.value} />;
   });
