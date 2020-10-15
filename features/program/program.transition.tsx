@@ -9,7 +9,7 @@ export function ProgramTransition({desc, fwdBtnText, to}: ISection) {
   return (
     <TransitionPage panel={<BuildingInformationPanel />}>
       <div className="page__info">
-        <ProgrammedSpaceDisplay />
+        {/* <ProgrammedSpaceDisplay /> */}
       </div>
       <div className="page__nav">
         <TransitionSection
