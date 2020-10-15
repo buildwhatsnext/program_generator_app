@@ -1,6 +1,6 @@
 import React from 'react';
 
-import QnA from '../../components/question';
+import { QuestionAndAnswer as QnA, Answer } from '../../components/question';
 import TextInputBox from '../../components/info/input';
 import { ROUTES } from '../../constants/routes';
 
