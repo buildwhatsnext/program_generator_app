@@ -21,6 +21,7 @@ export function ProgrammedSpaceDisplay() {
           {labels: labels,
           datasets: dataSets}
         }
+        height={100}
       />
     </div>
   )
