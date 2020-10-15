@@ -2,15 +2,14 @@
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { selectProject } from '../../features/project/project.slice';
+import { selectProgram } from '../../features/program/program.slice';
 import { convertDataToINamedValues } from '../NamedValue';
 import { PanelSection } from './panel.section';
 import { Panel } from './panel';
 
-
 export function BuildingInformationPanel() {
   const title = 'Building Information';
-  const { overview } = useSelector(selectProject);
+  const { overview } = useSelector(selectProgram);
   const [generalOpen, setGeneralOpenStatus] = useState(false);
   const [formOpen, setFormOpenStatus] = useState(false);
   const [totalsOpen, setTotalsOpenStatus] = useState(false);
@@ -26,7 +25,7 @@ export function BuildingInformationPanel() {
   };
 
   const generalData = convertDataToINamedValues(overview.general);
-  const formData = convertDataToINamedValues(overview.form);
+  const formData = convertDataToINamedValues(overview.basic);
   const totalsData = convertDataToINamedValues(overview.totals);
 
   return (
