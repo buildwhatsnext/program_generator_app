@@ -5,7 +5,7 @@ import { createNewProject, openProject } from '../../features/project/project.sl
 import { InternalNavigationalButton } from '../buttons/navigation';
 import { ROUTES } from '../../constants/routes';
 
-export const ProjectOpenPanel = () => (
+export const ProjectOpenPanel = (): JSX.Element => (
   <Panel>
     <OpenOptions />
   </Panel>

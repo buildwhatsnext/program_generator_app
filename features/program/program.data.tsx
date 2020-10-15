@@ -1,6 +1,7 @@
 import { IBuildingProgram } from './program.type';
 
-const INITIAL_PROGRAM_DATA: IBuildingProgram = {
+// const INITIAL_PROGRAM_DATA: IBuildingProgram = {
+const INITIAL_PROGRAM_DATA = {
   name: '',
   overview: {
     general: {
