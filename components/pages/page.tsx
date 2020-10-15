@@ -48,12 +48,8 @@ export function SimplePage({children, nav, nextRoute }: IPage) {
 export function PanelPage({children, panel, nav, nextRoute }: IPage) {
   return (
     <div className={styles.page__panel}>
-      <div className="page__panel">
-        { panel ?? <Panel /> }
-      </div>
-      <div className="page__whitespace">
-        <SimplePage nextRoute={nextRoute} nav={nav}>{children}</SimplePage>
-      </div>
+      { panel ?? <Panel /> }
+      <SimplePage nextRoute={nextRoute} nav={nav}>{children}</SimplePage>
     </div>
   )
 }

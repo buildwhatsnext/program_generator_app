@@ -7,6 +7,7 @@ import { convertDataToINamedValues } from '../NamedValue';
 import { PanelSection } from './panel.section';
 import { Panel } from './panel';
 
+
 export function BuildingInformationPanel() {
   const title = 'Building Information';
   const { overview } = useSelector(selectProject);
