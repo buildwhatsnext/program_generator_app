@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import ToggleButton from './buttons/toggle';
 import styles from './question.module.scss';
 
-function QuestionAndAnswer(props: QnAProps) {
+export type QnAProps = {
+  question: JSX.Element;
+  answers: Array<JSX.Element>;
+};
+
+export function QuestionAndAnswer(props: QnAProps) {
   const [answered, toggleAnswer] = useState(false);
   const [selectedAnswer, setAnswer] = useState(null);
   const { question, answers } = props;
@@ -23,9 +28,17 @@ function QuestionAndAnswer(props: QnAProps) {
   );
 }
 
-type QnAProps = {
-  question: JSX.Element;
-  answers: Array<JSX.Element>;
-};
+export function Answer({ answerHandler, children }: IAnswer) {
+  return (
+    <>
+      { children }
+    </>
+  )
+}
 
-export default QuestionAndAnswer;
+export interface IAnswer {
+  // asnwerValue: object;
+  answerHandler: () => void;
+  children: JSX.Element;
+}
+

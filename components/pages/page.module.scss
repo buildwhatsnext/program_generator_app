@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 15rem 1fr 15rem;
 
   h4 {
     font-size: 4.6rem;
@@ -15,8 +15,13 @@
   }
 
   &__nav {
+    position: fixed;
+    bottom: 0;
+    // right: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width: 100%;
+    padding: 10rem;
 
     &__back {
       padding-left: 2rem;
@@ -45,6 +50,7 @@
   &__company {
     font-size: 4.8rem;
     font-weight: 600;
+    cursor: pointer;
   }
 
   &__program {
