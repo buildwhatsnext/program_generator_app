@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import styles from './display.pie.module.scss';
 
 export function ProgrammedSpaceDisplay() {
   const labels = [
@@ -14,7 +15,7 @@ export function ProgrammedSpaceDisplay() {
   }];
 
   return (
-    <div className="pie">
+    <div className={styles.pie}>
       <Pie
         data={
           {labels: labels,

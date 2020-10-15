@@ -16,7 +16,7 @@ export interface IPage {
 export function Page({children, showPanel, nav, panel, nextRoute }: IPage) {
   return (
     !showPanel && !panel
-      ? <SimplePage nextRoute={nextRoute} nav={nav} >{children}</SimplePage>
+      ? <SimplePage nextRoute={nextRoute} nav={nav}>{children}</SimplePage>
       : <PanelPage showPanel={showPanel} panel={panel} nav={nav} nextRoute={nextRoute}>
         { children }
       </PanelPage>
@@ -34,8 +34,9 @@ export function SimplePage({children, nav, nextRoute }: IPage) {
       </div>
       <div className={styles.page__nav}>
         { 
-          nav ??
-            nextRoute
+          nav 
+          ? nav
+          : nextRoute
             ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } />
             : null
         }
