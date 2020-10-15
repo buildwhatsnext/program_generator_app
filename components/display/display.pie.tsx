@@ -1,24 +1,21 @@
 import React from 'react';
 import { Pie, Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
+import { SPACE_STANDARDS } from '../../constants/ark.standards';
 
 export function ProgrammedSpaceDisplay() {
-  const labels = [
-    '18 - 34',
-    '34 - 51',
-    '52 - 75',
-    '75+',
-  ]
+  const labels = Object.values(SPACE_STANDARDS).map(space => space.label);
+  const colors = Object.values(SPACE_STANDARDS).map(space => space.color);
 
   const dataSets = [{
     data: [2000, 4000, 2850, 150],
-    backgroundColor: ['red', 'blue', 'green', 'orange']
+    backgroundColor: colors
   }];
 
   const options = {
     segmentShowStroke: true,
-    segmentStrokeColor: '#fff',
-    segmentStrokeWidth: 2,
+    segmentStrokeColor: '#000000',
+    segmentStrokeWidth: 10,
     percentageInnerCutout: 50,
   }
 
