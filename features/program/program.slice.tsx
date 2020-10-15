@@ -10,7 +10,6 @@ import { IBuildingProgram, BuildingProgram, IGeneralProgramInformation } from '.
 const programSlice = createSlice({
   name: 'program',
   initialState: bldgData,
-  // initialState: new BuildingProgram(),
   reducers: {
     setUnits: (state, action: PayloadAction<IGeneralProgramInformation>) => {
       state.overview.general.units = action.payload.units;
