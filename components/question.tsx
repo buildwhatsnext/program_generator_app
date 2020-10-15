@@ -28,5 +28,17 @@ export function QuestionAndAnswer(props: QnAProps) {
   );
 }
 
+export function Answer({ answerHandler, children }: IAnswer) {
+  return (
+    <>
+      { children }
+    </>
+  )
+}
 
+export interface IAnswer {
+  // asnwerValue: object;
+  answerHandler: () => void;
+  children: JSX.Element;
+}
 

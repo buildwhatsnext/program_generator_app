@@ -18,8 +18,11 @@ export interface IBuildingOverview {
 }
 
 export interface IGeneralProgramInformation {
+  client: string;
   units: 'unknown' | 'metric' | 'imperial' ;
   tenancy: 'unknown' | 'single' | 'multiple';
+  hasBroadcast: boolean;
+  hasLab: boolean;
 }
 
 export interface IBasicBuildingInformation {
