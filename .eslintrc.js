@@ -31,6 +31,9 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  globals: {
+    'JSX': 'readonly'
+  },
   settings: {
     'import/resolver': {
       'node': {
