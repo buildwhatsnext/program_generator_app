@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useState } from 'react';
 import ToggleButton from './buttons/toggle';
 import styles from './question.module.scss';
@@ -8,6 +12,10 @@ export type QnAProps = {
 };
 
 export function QuestionAndAnswer(props: QnAProps) {
+  function handleclicks(i) {
+    console.log(i);
+  }
+
   const [answered, toggleAnswer] = useState(false);
   const [selectedAnswer, setAnswer] = useState(null);
   const { question, answers } = props;
@@ -16,9 +24,6 @@ export function QuestionAndAnswer(props: QnAProps) {
     <span key={i} onClick={() => handleclicks(i)}>{answer}</span>
   ));
 
-  function handleclicks(i) {
-    console.log(i);
-  }
 
   return (
     <div className={styles.QnA}>
@@ -26,6 +31,12 @@ export function QuestionAndAnswer(props: QnAProps) {
       <div className={styles.QnA__answer}>{answerCollection}</div>
     </div>
   );
+}
+
+export interface IAnswer {
+  // asnwerValue: object;
+  answerHandler: () => void;
+  children: JSX.Element;
 }
 
 export function Answer({ answerHandler, children }: IAnswer) {
@@ -36,9 +47,5 @@ export function Answer({ answerHandler, children }: IAnswer) {
   )
 }
 
-export interface IAnswer {
-  // asnwerValue: object;
-  answerHandler: () => void;
-  children: JSX.Element;
-}
+
 
