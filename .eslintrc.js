@@ -50,6 +50,7 @@ module.exports = {
     'global-require': 0,
     'no-use-before-define': RULESTATE.WARN,
     'no-unused-vars': RULESTATE.OFF,
+    'no-param-reassign': RULESTATE.OFF,
 
     'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
 

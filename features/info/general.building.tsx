@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useDispatch } from 'react-redux';
 import { QuestionAndAnswer as QnA, TextualAnswer, ClientQuestion } from '../../components/question';
 import ToggleButton from '../../components/buttons/toggle';
 import TextInputBox from '../../components/info/input';
@@ -11,7 +11,7 @@ import { Page } from '../../components/pages/page';
 
 
 function BuildingInformation() {
-
+  const dispatch = useDispatch();
   const title = 'General Building Information';
   const Q1 = <p>What is your <em>client's name?</em></p>;
   const Q2 = <p>Which <em> units </em> should we use to measure your space? </p>;
@@ -27,6 +27,8 @@ function BuildingInformation() {
 
       <ClientQuestion 
         question={Q1}
+        label='Please enter the name of your client'
+        answerHandler={(x) => dispatch(setClient(x))}
       />
       {/* <QnA
         question={Q1}

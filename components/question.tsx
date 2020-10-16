@@ -60,18 +60,41 @@ export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<H
 
 export interface IClientQuestion {
   question: JSX.Element;
-  // answers: Array<JSX.Element>;
+  label: string;
+  answerHandler?: (value) => void;
 };
 
+// export const ClientQuestion = React.forwardRef((props: IClientQuestion, answerRef: Ref<HTMLInputElement>) => {
+//   const { question, label, answerHandler } = props;
 
-export function ClientQuestion({question}: IClientQuestion) {
-  const label = 'If you have it, please enter the name of your client';
+//   const handleAnswer = () => {
+//     if(answerHandler)
+//       answerHandler(answerRef);
+//   }
+
+//   return (
+//     <div className={styles.QnA}>
+//       <div className={styles.QnA__question}>{question}</div>
+//       <div className={styles.QnA__answer}>
+//         <TextualAnswer 
+//           answerHandler={handleAnswer}
+//           label={label}
+//           passedRef={answerRef}
+//         />
+//       </div>
+//     </div>
+//   );
+// });
+
+
+export function ClientQuestion({ question, label, answerHandler }: IClientQuestion) {
   const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = () => {
     setAnswer(answerRef.current.value);
-    console.log(answer);
+    // console.log(answer);
+    answerHandler(answer);
   }
 
   return (

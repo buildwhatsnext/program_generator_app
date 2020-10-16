@@ -14,8 +14,9 @@ const programSlice = createSlice({
   name: 'program',
   initialState: bldgData,
   reducers: {
-    setClient: (state, action: PayloadAction<IGeneralProgramInformation>) => {
-      state.overview.general.client = action.payload.client;
+    setClient: (state, action) => {
+      state.overview.general.client = action.payload;
+      console.log(state)
     },
     setUnits: (state, action: PayloadAction<IGeneralProgramInformation>) => {
       state.overview.general.units = action.payload.units;
