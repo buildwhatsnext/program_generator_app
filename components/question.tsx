@@ -37,17 +37,53 @@ export function QuestionAndAnswer(props: QnAProps) {
 export interface IAnswer {
   label: string;
   answerHandler?: () => void;
+  passedRef?: Ref<HTMLInputElement>;
 }
 
-export function TextualAnswer({ answerHandler, label }: IAnswer) {
+export function TextualAnswer({ answerHandler, label, passedRef }: IAnswer) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const reporter = () => {
     console.log(inputRef.current.value);
   }
 
-  return <TextInput content={label} ref={inputRef} handler={answerHandler ?? reporter}/>;
+  return passedRef 
+    ? <TextualAnswerWithRef label={label} answerHandler={answerHandler ?? reporter} ref={passedRef} />
+    : <TextInput content={label} ref={inputRef} handler={answerHandler ?? reporter}/>;
 }
 
+export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
+  const { answerHandler, label } = props;
+
+  return <TextInput content={label} ref={ref} handler={answerHandler}/>;
+})
+
+export interface IClientQuestion {
+  question: JSX.Element;
+  // answers: Array<JSX.Element>;
+};
 
 
+export function ClientQuestion({question}: IClientQuestion) {
+  const label = 'If you have it, please enter the name of your client';
+  const [answer, setAnswer] = useState('');
+  const answerRef = useRef<HTMLInputElement>(null);
+
+  const handleAnswer = () => {
+    setAnswer(answerRef.current.value);
+    console.log(answer);
+  }
+
+  return (
+    <div className={styles.QnA}>
+      <div className={styles.QnA__question}>{question}</div>
+      <div className={styles.QnA__answer}>
+        <TextualAnswer 
+          answerHandler={handleAnswer}
+          label={label}
+          passedRef={answerRef}
+        />
+      </div>
+    </div>
+  );
+}
