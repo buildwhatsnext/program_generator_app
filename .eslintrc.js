@@ -1,77 +1,73 @@
-// const RULESTATE = {
-//   OFF: 'off',
-//   WARN: 'warn',
-// };
+const RULESTATE = {
+  OFF: 0,
+  WARN: 1,
+  ERROR: 2
+}
 
 module.exports = {
-  root: true,
   env: {
     browser: true,
+    es2020: true,
     node: true,
-    es6: true,
   },
+  extends: [
+    "eslint:recommended",
+    'plugin:react/recommended',
+    "plugin:@typescript-eslint/recommended",
+    'airbnb',
+    'prettier',
+    "prettier/@typescript-eslint",
+    "prettier/react",
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 2020,
     sourceType: 'module',
-    project: './tsconfig.json',
-    createDefaultProgram: true,
   },
   plugins: [
+    'react',
     '@typescript-eslint',
   ],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
-    rules: {
+  globals: {
+    'JSX': 'readonly'
+  },
+  settings: {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx']
+      },
+    }
+  },
+  rules: {
+    // 'prettier/prettier': 1,
+    '@typescript-eslint/no-use-before-define': 1,
+    '@typescript-eslint/no-unused-vars': RULESTATE.WARN,
+
+    'no-console': RULESTATE.OFF,
+    'global-require': 0,
+    'no-use-before-define': RULESTATE.WARN,
+    'no-unused-vars': RULESTATE.OFF,
+
+    'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
+
+    'import/no-dynamic-require': 0,
     // A temporary hack related to IDE not resolving correct package.json
-    // 'import/no-extraneous-dependencies': RULESTATE.OFF,
-    // 'import/prefer-default-export': RULESTATE.OFF,
-    // 'react/destructuring-assignment': RULESTATE.WARN,
-    // 'no-return-assign': RULESTATE.WARN,
-    // 'react/jsx-props-no-spreading': RULESTATE.WARN,
-    // 'react/no-access-state-in-setstate': RULESTATE.WARN,
-    // 'react/prefer-stateless-function': RULESTATE.WARN,
-    // 'react/static-property-placement': RULESTATE.OFF,
-    // 'prettier/prettier': RULESTATE.WARN,
-    // 'react/no-array-index-key': RULESTATE.WARN,
+    'import/no-extraneous-dependencies': 0,
+    'import/prefer-default-export': 0,
+    'import/extensions': 0,
+    'react/destructuring-assignment': 1,
+    'no-return-assign': 1,
+    "react/react-in-jsx-scope": 0,
+    'react/jsx-props-no-spreading': 1,
+    'react/no-access-state-in-setstate': 1,
+    'react/prefer-stateless-function': 1,
+    'react/static-property-placement': 0,
+    'react/no-array-index-key': 1,
+    'react/jsx-filename-extension': [ 2, 
+      { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }
+    ],
   },
 };
-
-
-
-// module.exports = {
-//   extends: 'erb/typescript',
-//   rules: {
-//     // A temporary hack related to IDE not resolving correct package.json
-//     'import/no-extraneous-dependencies': RULESTATE.OFF,
-//     'import/prefer-default-export': RULESTATE.OFF,
-//     'react/destructuring-assignment': RULESTATE.WARN,
-//     'no-return-assign': RULESTATE.WARN,
-//     'react/jsx-props-no-spreading': RULESTATE.WARN,
-//     'react/no-access-state-in-setstate': RULESTATE.WARN,
-//     'react/prefer-stateless-function': RULESTATE.WARN,
-//     'react/static-property-placement': RULESTATE.OFF,
-//     'prettier/prettier': RULESTATE.WARN,
-//     'react/no-array-index-key': RULESTATE.WARN,
-//   },
-//   parserOptions: {
-//     ecmaVersion: 2020,
-//     sourceType: 'module',
-//     project: './tsconfig.json',
-//     tsconfigRootDir: __dirname,
-//     createDefaultProgram: true,
-//   },
-//   settings: {
-//     'import/resolver': {
-//       // See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
-//       node: {},
-//       // webpack: {
-//       //   config: require.resolve('./configs/webpack.config.eslint.js'),
-//       // },
-//     },
-//     'import/parsers': {
-//       '@typescript-eslint/parser': ['.ts', '.tsx'],
-//     },
-//   },
-// };
