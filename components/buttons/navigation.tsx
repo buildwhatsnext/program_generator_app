@@ -5,6 +5,19 @@ import { Button } from '@material-ui/core';
 
 import styles from './navigation.module.scss';
 
+export type InternalNavBtnProps = {
+  content: string;
+  execute?: () => void;
+  executableData?: Record<string, unknown>;
+  to: string;
+};
+
+export interface IDirectionalButton {
+  content: string;
+  location: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function InternalNavigationalButton({
   content,
   execute,
@@ -54,16 +67,4 @@ export function BackButton() {
       </Button>
     </div>
   );
-}
-
-export type InternalNavBtnProps = {
-  content: string;
-  execute?: Function;
-  executableData?: Record<string, unknown>;
-  to: string;
-};
-
-export interface IDirectionalButton {
-  content: string;
-  location: string;
 }
