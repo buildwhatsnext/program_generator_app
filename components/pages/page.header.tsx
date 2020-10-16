@@ -17,7 +17,7 @@ export function ProgramHeader() {
 
   return (
     <div className={styles.header}>
-      <p className={styles.header__company} onClick={handleClick}>{company}</p>
+      <p className={styles.header__company} onClick={handleClick} onKeyDown={handleClick}>{company}</p>
       <p className={styles.header__program}>{application}</p>
       <p className={styles.header__client}>{client}</p>
     </div>

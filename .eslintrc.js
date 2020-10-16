@@ -1,5 +1,7 @@
 const RULESTATE = {
-  OFF: 0
+  OFF: 0,
+  WARN: 1,
+  ERROR: 2
 }
 
 module.exports = {
@@ -41,6 +43,10 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 1,
     'no-console': RULESTATE.OFF,
     'global-require': 0,
+    'no-use-before-define': RULESTATE.WARN,
+
+    'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
+
     'import/no-dynamic-require': 0,
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 0,

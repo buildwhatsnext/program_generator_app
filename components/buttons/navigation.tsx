@@ -7,7 +7,7 @@ import styles from './navigation.module.scss';
 
 export type InternalNavBtnProps = {
   content: string;
-  execute?: (data: Record<string, unknown>) => void;
+  execute?: (x) => void;
   executableData?: Record<string, unknown>;
   to: string;
 };
