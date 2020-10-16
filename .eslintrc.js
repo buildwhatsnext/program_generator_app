@@ -29,6 +29,13 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  settings: {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx']
+      },
+    }
+  },
   rules: {
     // 'prettier/prettier': 1,
     '@typescript-eslint/no-use-before-define': 1,
@@ -38,6 +45,7 @@ module.exports = {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 0,
+    'import/extensions': 0,
     'react/destructuring-assignment': 1,
     'no-return-assign': 1,
     "react/react-in-jsx-scope": 0,
