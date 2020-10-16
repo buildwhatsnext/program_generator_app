@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { QuestionAndAnswer as QnA, Answer } from '../../components/question';
+import { QuestionAndAnswer as QnA, TextualAnswer } from '../../components/question';
 import ToggleButton from '../../components/buttons/toggle';
 import TextInputBox from '../../components/info/input';
 import { ROUTES } from '../../constants/routes';
@@ -27,7 +27,8 @@ function BuildingInformation() {
 
       <QnA
         question={Q1}
-        answers={[<TextInputBox content={`Please Tell Us Your Client's Name`}/>]}
+        answers={[<TextualAnswer label='Please enter the name of the client' />]}
+        // answers={[<TextInputBox content={`Please Tell Us Your Client's Name`}/>]}
       />
 
       <QnA

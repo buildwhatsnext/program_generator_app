@@ -2,8 +2,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { useState } from 'react';
+import React, { Ref, useRef, useState } from 'react';
 import ToggleButton from './buttons/toggle';
+import TextInput from './info/input';
 import styles from './question.module.scss';
 
 export type QnAProps = {
@@ -34,17 +35,18 @@ export function QuestionAndAnswer(props: QnAProps) {
 }
 
 export interface IAnswer {
-  // asnwerValue: object;
-  answerHandler: () => void;
-  children: JSX.Element;
+  label: string;
+  answerHandler?: () => void;
 }
 
-export function Answer({ answerHandler, children }: IAnswer) {
-  return (
-    <>
-      { children }
-    </>
-  )
+export function TextualAnswer({ answerHandler, label }: IAnswer) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const reporter = () => {
+    console.log(inputRef.current.value);
+  }
+
+  return <TextInput content={label} ref={inputRef} handler={answerHandler ?? reporter}/>;
 }
 
 
