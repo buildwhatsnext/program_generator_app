@@ -6,8 +6,8 @@ export const NamedValue = (props: INamedValue) => {
 
   return (
     <div className={styles.data}>
-      <p className="data__name">{name}</p>
-      <p className="data__value">{value}</p>
+      <p className={styles.data__name}>{name}</p>
+      <p className={styles.data__value}>{value}</p>
     </div>
   );
 };
@@ -31,9 +31,14 @@ export function convertDataToNamedValues(data: Record<string, string>) {
 export function convertDataToINamedValues(
   data: Record<string, string>
 ): Array<INamedValue> {
-  const names = Object.keys(data);
 
-  const result = names.map((n) => ({ name: n, value: data[n] }));
+  try {
+    const names = Object.keys(data);
 
-  return result;
+    const result = names.map((n) => ({ name: n, value: data[n] }));
+  
+    return result;  
+  } catch (error) {
+    return null;
+  }
 }

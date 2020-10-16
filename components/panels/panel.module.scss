@@ -11,15 +11,17 @@
   font-size: 7.2rem;
   line-height: 86px;
   overflow-y: scroll;
-  scrollbar-color: red $blue;
-  scrollbar-arrow-color: red;
-  scrollbar-width: 100px;
+  // scrollbar-color: red $blue;
+  // scrollbar-arrow-color: red;
+  // scrollbar-width: 100px;
 
   &__title {
     position: sticky;
+    
   }
 
   &__content {
     margin-top: 10rem;
+    // overflow-y: scroll;
   }
 }

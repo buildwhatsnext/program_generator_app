@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 
+import styles from './toggle.module.scss';
+
 function ToggableButton(props: ToggableButtonProps) {
   const [active, setActive] = useState(false);
   const { content } = props;
 
   return !active ? (
-    <Button variant="outlined" onClick={() => setActive(!active)}>
+    <Button 
+      variant="outlined" 
+      className={styles.overridebutton}
+      onClick={() => setActive(!active)}
+    >
       {content}
     </Button>
   ) : (
     <Button
       variant="contained"
       color="primary"
+      className={styles.overridebutton__activated}
       onClick={() => setActive(!active)}
     >
       {content}

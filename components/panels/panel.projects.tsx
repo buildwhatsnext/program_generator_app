@@ -5,7 +5,7 @@ import { createNewProject, openProject } from '../../features/project/project.sl
 import { InternalNavigationalButton } from '../buttons/navigation';
 import { ROUTES } from '../../constants/routes';
 
-export const ProjectOpenPanel = () => (
+export const ProjectOpenPanel = (): JSX.Element => (
   <Panel>
     <OpenOptions />
   </Panel>
@@ -19,15 +19,14 @@ function OpenOptions() {
   };
 
   return (
-    <div className="open__options">
+    <div className={styles.open__options}>
       <InternalNavigationalButton
-        className={styles.button__project}
         content="Create New"
         to={ROUTES.TRANSITION.PROJECT}
         execute={createNewProject}
       />
+      <br/>
       <InternalNavigationalButton
-        className={styles.button__project}
         content="Open Project"
         to={ROUTES.TRANSITION.PROJECT}
         execute={openProject}

@@ -1,6 +1,5 @@
 import { Guid } from 'guid-typescript';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-cycle
 import { RootState } from '../../store';
 import data from './project.data';
 import { IProject } from './project.type';

@@ -1,0 +1,27 @@
+@import '../../styles/styles.colors.scss';
+
+.input {
+  // border: 10px red solid;
+  justify-self: center;
+
+  form {
+    // border: royalblue 10px solid;
+    justify-self: center;
+
+    .input__text {
+      // border: seagreen 10px solid;
+      width: 35rem;
+      border-bottom: 3px $blue solid;
+
+      label {
+        position: relative;
+        text-align: center;
+        color: $blue;
+        opacity: 60%;
+        font-size: 1.5rem;
+        font-weight: 400;
+        // border: slateblue 1px solid;
+      }
+    }
+  }
+}
