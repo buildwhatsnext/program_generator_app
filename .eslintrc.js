@@ -41,9 +41,12 @@ module.exports = {
   rules: {
     // 'prettier/prettier': 1,
     '@typescript-eslint/no-use-before-define': 1,
+    '@typescript-eslint/no-unused-vars': RULESTATE.WARN,
+
     'no-console': RULESTATE.OFF,
     'global-require': 0,
     'no-use-before-define': RULESTATE.WARN,
+    'no-unused-vars': RULESTATE.OFF,
 
     'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
 

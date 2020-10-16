@@ -6,12 +6,13 @@ import { SPACE_STANDARDS } from '../../constants/ark.standards';
 import { selectProject } from '../../features/project/project.slice';
 
 export function ProgrammedSpaceDisplay() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = useSelector(selectProject)
   const labels = Object.values(SPACE_STANDARDS).map(space => space.name);
   const colors = Object.values(SPACE_STANDARDS).map(space => space.color);
   const borders = Object.values(SPACE_STANDARDS).map(space => space.border);
 
-  const dataSets = [{
+  const datasets = [{
     data: [2000, 4000, 2850, 150],
     backgroundColor: colors,
     borderColor: borders
@@ -28,8 +29,8 @@ export function ProgrammedSpaceDisplay() {
     <div className={styles.pie}>
       <Doughnut
         data={{
-          labels: labels,
-          datasets: dataSets
+          labels,
+          datasets
         }}
         options={options}
         height={100}
