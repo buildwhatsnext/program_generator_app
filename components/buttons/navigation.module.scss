@@ -26,6 +26,11 @@
     height: 4rem;
     font-size: 1.3rem;
   }
+
+  button:hover {
+    background-color: $blue;
+    color: white;
+  }
 }
 
 .nav__back {
@@ -40,5 +45,10 @@
     width: auto;
     height: 4rem;
     font-size: 1.3rem;
+  }
+
+  button:hover {
+    background-color: $blue;
+    color: white;
   }
 }

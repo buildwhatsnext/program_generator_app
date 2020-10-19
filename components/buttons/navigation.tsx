@@ -33,11 +33,13 @@ export function InternalNavigationalButton({
   }
 
   const mouseOver = (event) => {
-    event.target.style.background = '';
+    event.target.style.background = 'white';
+    event.target.style.color = '#06038D';
   }
 
   const mouseOut = (event) => {
-    event.target.style.background = '';
+    event.target.style.background = '#06038D';
+    event.target.style.color = 'white';
   }
 
   return execute ? (
