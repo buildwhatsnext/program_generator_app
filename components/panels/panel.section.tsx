@@ -6,7 +6,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
-// import styles from './panel.section.module.scss';
+import styles from './panel.section.module.scss';
 
 export interface IPanelSection {
   title: string;
@@ -33,7 +33,7 @@ export function PanelSection({
   return (
     <>
       <ListItem button onClick={handleClick}>
-        <ListItemText primary={title} />
+        <ListItemText primary={title} className={styles.panelTitle} />
         {isActive ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={isActive} timeout="auto" unmountOnExit>
@@ -46,7 +46,13 @@ export function PanelSection({
 export function PanelSectionItem({ name, value }: INamedValue) {
   return (
     <ListItem>
-      <NamedValue name={name} value={value} />
+      <NamedValue 
+        name={name} 
+        value={value} 
+        className={styles.panelData}
+        nameClass={styles.panelData__name}
+        valueClass={styles.panelData__value}
+      />
     </ListItem>
   );
 }
@@ -109,7 +115,7 @@ export function GeneralInfoPanelSection({ handleClick, isActive, rawData}: IName
 
   return (
     <PanelSection
-      title="Basic Building Information"
+      title="General Information"
       handleClick={handleClick}
       isActive={isActive}
       sectionData={basicData}

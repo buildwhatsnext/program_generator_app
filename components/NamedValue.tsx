@@ -2,19 +2,26 @@ import React from 'react';
 import styles from './NamedValue.module.scss';
 
 export const NamedValue = (props: INamedValue) => {
-  const { name, value } = props;
+  const { name, value, className, nameClass, valueClass } = props;
 
   return (
-    <div className={styles.data}>
-      <p className={styles.data__name}>{name}</p>
-      <p className={styles.data__value}>{value}</p>
+    <div className={className ?? `${styles.data}`}>
+      <p className={nameClass ?? `${styles.data__name}`}>{name}</p>
+      <p className={valueClass ?? `${styles.data__value}`}>{value}</p>
     </div>
+    // <div className={`${className} ${styles.data}`}>
+    //   <p className={`${className}__name ${styles.data__name}`}>{name}</p>
+    //   <p className={`${className}__value ${styles.data__value}`}>{value}</p>
+    // </div>
   );
 };
 
 export interface INamedValue {
   name: string;
   value: string;
+  className?: string;
+  nameClass?: string;
+  valueClass?: string;
 }
 
 export function convertDataToNamedValues(data: Record<string, string>) {
