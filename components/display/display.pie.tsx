@@ -13,7 +13,6 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
   const { area } = overview;
   const areaData = Object.values(area);
   const data = areaData.slice(1, areaData.length - 1);
-  console.log(data);
   const labels = Object.values(SPACE_STANDARDS).map(space => space.name);
   const colors = Object.values(SPACE_STANDARDS).map(space => space.color);
   const borders = Object.values(SPACE_STANDARDS).map(space => space.border);

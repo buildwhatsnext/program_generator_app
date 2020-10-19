@@ -4,7 +4,7 @@ import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { selectProgram } from '../../features/program/program.slice';
 import { convertDataToINamedValues } from '../NamedValue';
-import { PanelSection } from './panel.section';
+import { PanelSection, BasicInfoPanelSection as BasicSection } from './panel.section';
 import { Panel } from './panel';
 
 export function BuildingInformationPanel() {
@@ -25,7 +25,7 @@ export function BuildingInformationPanel() {
   };
 
   const generalData = convertDataToINamedValues(overview.general);
-  const basicData = convertDataToINamedValues(overview.basic);
+  // const basicData = convertDataToINamedValues(overview.basic);
   const totalsData = convertDataToINamedValues(overview.totals);
 
   return (
@@ -37,11 +37,11 @@ export function BuildingInformationPanel() {
           isActive={generalOpen}
           sectionData={generalData}
         />
-        <PanelSection
+        <BasicSection
           title="Basic Building Information"
           handleClick={handleBasic}
           isActive={basicOpen}
-          sectionData={basicData}
+          rawData={overview.basic}
         />
         <PanelSection
           title="Programmed Space"

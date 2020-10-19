@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import { INamedValue, NamedValue } from '../NamedValue';
+import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
 // import styles from './panel.section.module.scss';
 
 export interface IPanelSection {
@@ -13,6 +13,13 @@ export interface IPanelSection {
   handleClick: () => void;
   isActive: boolean;
   sectionData: Array<INamedValue>;
+}
+
+export interface INamedPanelSection {
+  title: string;
+  handleClick: () => void;
+  isActive: boolean;
+  rawData: Record<string,string>;
 }
 
 export function PanelSection({
@@ -49,4 +56,42 @@ export function buildPanelSectionItem(data: Array<INamedValue>) {
     return <PanelSectionItem key={i} name={d.name} value={d.value} />;
   });
   return mapped;
+}
+
+export function reMapPanelData(originalData: Record<string, unknown>, newData: Record<string, unknown>): Record<string, unknown> {
+  const value = newData;
+  
+  Object
+    .values(originalData)
+    .forEach((v,i) => {
+      const name = Object.keys(value)[i];
+      console.log(name);
+      console.log(v);
+      value[name] = v;
+    });
+
+  return value;
+}
+
+export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
+  const data = {
+    "Gross Area": 0,
+    "Net Area": 0,
+    "Floors": 0,
+    "Circulation Factor": 0,
+    "Planning Factor": 0,
+  }
+
+  const reMapped = reMapPanelData(rawData, data);
+
+  const basicData = convertDataToINamedValues(reMapped);
+
+  return (
+    <PanelSection
+      title="Basic Building Information"
+      handleClick={handleClick}
+      isActive={isActive}
+      sectionData={basicData}
+    />
+  )
 }
