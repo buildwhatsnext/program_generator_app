@@ -1,3 +1,5 @@
+@import '../../styles/styles.colors.scss';
+
 .project {
   margin-top: 56rem;
   // border: 10px red solid;
@@ -16,14 +18,20 @@
 
     &__options {
       margin-right: 20rem;
-      
-      p {
-        // border: lime 2px solid;
-      }
     }
-  }
-}
 
-.project__display__table {
-  font-size: 2.4rem;
+    // &__options:hover .circle {
+    //   visibility: visible;
+    //   opacity: 1;
+    //   background-color: $blue;
+    // }
+
+    // .circle {
+    //   visibility: hidden;
+    //   height: 30px;
+    //   width: 30px;
+    //   border-radius: 99rem;
+    //   // margin-left: 24rem;
+    // }
+  }
 }

@@ -5,6 +5,7 @@ import { openProject } from './project.slice';
 import { NamedValue } from '../../components/NamedValue';
 import { selectSetting } from '../settings/settings.slice';
 import { IProject } from './project.type';
+import { Button } from '@material-ui/core';
 
 function displayRecentProjects(projects: Array<IProject>) {
   const recent = projects.map((p: IProject) => {
@@ -21,23 +22,14 @@ export function ProjectSelection() {
 
   const recent = displayRecentProjects(projects.recent);
 
-  const [isHovered, setHover] = useState(false);
-
-  const mouseOver = (event) => {
-    event.target.style.background = '#06038D';
-    event.target.style.color = 'white';
-  }
-
-  const mouseOut = (event) => {
-    event.target.style.background = 'white';
-    event.target.style.color = '#06038D';
-  }
-
   return (
     <div className={styles.project}>
       <div className={styles.project__display}>
         <h4>Recent Projects</h4>
-        <div className={styles.project__display__options} onMouseOver={mouseOver} onMouseOut={mouseOut}>{recent}</div>
+        <div className={styles.project__display__options}>
+          {recent}
+          <div className={styles.circle}></div>
+        </div>
       </div>
     </div>
   );

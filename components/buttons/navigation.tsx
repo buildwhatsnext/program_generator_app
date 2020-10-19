@@ -32,18 +32,10 @@ export function InternalNavigationalButton({
     router.push(to);
   }
 
-  const mouseOver = (event) => {
-    event.target.style.background = '';
-  }
-
-  const mouseOut = (event) => {
-    event.target.style.background = '';
-  }
-
   return execute ? (
     <div className={styles.panelElements}>
       <div className={styles.textButtons}>
-        <Button onClick={handleClick} onMouseOver={mouseOver} onMouseOut={mouseOut}>
+        <Button onClick={handleClick}>
           {content}
           <div className={styles.circle}></div>
         </Button>
