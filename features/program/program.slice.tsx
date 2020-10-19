@@ -33,6 +33,18 @@ const programSlice = createSlice({
     setFloorCount: (state, action) => {
       state.overview.basic.floors = Number(action.payload);
     },
+    setCirculation: (state, action) => {
+      state.overview.basic.floors = Number(action.payload);
+    },
+    setPlanning: (state, action) => {
+      state.overview.basic.floors = Number(action.payload);
+    },
+    setWorkseatArea: (state, action) => {
+      state.overview.basic.floors = Number(action.payload);
+    },
+    setWorkseatTarget: (state, action) => {
+      state.overview.basic.floors = Number(action.payload);
+    },
   },
 });
 
@@ -48,5 +60,9 @@ export const {
   setLab,
   setRsf,
   setLossFactor,
-  setFloorCount 
+  setFloorCount,
+  setCirculation,
+  setPlanning,
+  setWorkseatArea,
+  setWorkseatTarget 
 } = programSlice.actions;
