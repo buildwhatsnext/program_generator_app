@@ -1,8 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { QuestionAndAnswer as QnA, TextualQuestionAnswerCombo as TextQuestion } from '../../components/info/question';
-import ToggleButton from '../../components/buttons/toggle';
-import TextInputBox from '../../components/info/input';
+import { 
+  QuestionAndAnswer as QnA, 
+  TextualQuestionAnswerCombo as TextQuestion,
+  ToggleQuestionAnswerCombo as TogQuest 
+} from '../../components/info/question';
+// import ToggleButton from '../../components/buttons/toggle';
+// import TextInputBox from '../../components/info/input';
 import { ROUTES } from '../../constants/routes';
 
 import { setClient, setUnits, setTenancy } from '../program/program.slice';
@@ -31,7 +35,11 @@ function BuildingInformation() {
         answerHandler={(x) => dispatch(setClient(x))}
       />
 
-      <QnA
+      <TogQuest 
+        question={Q2}
+        answers={[ 'Metric', 'Imperial' ]}
+      />
+      {/* <QnA
         question={Q2}
         answers={[
           <ToggleButton content="Metric" />,
@@ -60,7 +68,7 @@ function BuildingInformation() {
         answers={[
           <ToggleButton content="Yes" />,
           <ToggleButton content="No" />,
-        ]}
+        ]} */}
       />
     </Page>
   );
