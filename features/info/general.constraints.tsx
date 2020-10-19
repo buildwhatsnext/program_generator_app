@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { QuestionAndAnswer as QnA, Answer } from '../../components/question';
+import { QuestionAndAnswer as QnA, Answer } from '../../components/info/question';
 import ToggleButton from '../../components/buttons/toggle';
 import TextInputBox from '../../components/info/input';
 import { DirectionalButton, BackButton } from '../../components/buttons/navigation';

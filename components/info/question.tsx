@@ -3,8 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { Ref, useRef, useState } from 'react';
-import ToggleButton from './buttons/toggle';
-import TextInput from './info/input';
+import ToggleButton from '../buttons/toggle';
+import TextInput from './input';
 import styles from './question.module.scss';
 
 export type QnAProps = {

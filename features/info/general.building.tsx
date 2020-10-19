@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { QuestionAndAnswer as QnA, TextualQuestion } from '../../components/question';
+import { QuestionAndAnswer as QnA, TextualQuestion } from '../../components/info/question';
 import ToggleButton from '../../components/buttons/toggle';
 import TextInputBox from '../../components/info/input';
 import { ROUTES } from '../../constants/routes';
