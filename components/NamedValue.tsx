@@ -36,13 +36,13 @@ export function convertDataToNamedValues(data: Record<string, string>) {
 }
 
 export function convertDataToINamedValues(
-  data: Record<string, string>
+  data: Record<string, unknown>
 ): Array<INamedValue> {
 
   try {
     const names = Object.keys(data);
 
-    const result = names.map((n) => ({ name: n, value: data[n] }));
+    const result = names.map((n) => ({ name: n, value: data[n].toString() }));
   
     return result;  
   } catch (error) {
