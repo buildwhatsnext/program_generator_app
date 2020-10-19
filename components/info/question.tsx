@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { Ref, useRef, useState } from 'react';
-import ToggleButton from '../buttons/toggle';
 import { TextualAnswer } from './answer';
 import styles from './question.module.scss';
 
@@ -34,13 +33,13 @@ export function QuestionAndAnswer(props: QnAProps) {
   );
 }
 
-export interface IClientQuestion {
+export interface ITextualQuestion {
   question: JSX.Element;
   label: string;
   answerHandler?: (value) => void;
 };
 
-export function TextualQuestionAnswerCombo({ question, label, answerHandler }: IClientQuestion) {
+export function TextualQuestionAnswerCombo({ question, label, answerHandler }: ITextualQuestion) {
   // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 

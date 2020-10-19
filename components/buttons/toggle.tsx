@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
 
 import styles from './toggle.module.scss';
 
-function ToggableButton(props: ToggableButtonProps) {
-  const [active, setActive] = useState(false);
-  const { content } = props;
+interface IToggleButton {
+  content: string;
+  active: boolean;
+  statusHandler: () => void;
+};
 
+export function ToggleButton({ content, active, statusHandler }: IToggleButton) : JSX.Element {
   return !active ? (
     <Button 
       variant="outlined" 
       className={styles.overridebutton}
-      onClick={() => setActive(!active)}
+      onClick={() => statusHandler()}
     >
       {content}
     </Button>
@@ -20,15 +23,9 @@ function ToggableButton(props: ToggableButtonProps) {
       variant="contained"
       color="primary"
       className={styles.overridebutton__activated}
-      onClick={() => setActive(!active)}
+      onClick={() => statusHandler()}
     >
       {content}
     </Button>
   );
 }
-
-type ToggableButtonProps = {
-  content: string;
-};
-
-export default ToggableButton;

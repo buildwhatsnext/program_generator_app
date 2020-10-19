@@ -1,4 +1,5 @@
 import React, { Ref, useRef, useState } from 'react';
+import { ToggleButton } from '../buttons/toggle';
 import TextInput from './input';
 
 export interface IAnswer {
@@ -23,4 +24,12 @@ export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<H
   const { answerHandler, label } = props;
 
   return <TextInput content={label} ref={ref} handler={answerHandler}/>;
-})
+});
+
+export interface IToggleAnswer extends IAnswer {
+  active: boolean;
+}
+
+export const ToggleAnswer : React.FC<IToggleAnswer> = ({ label, active, answerHandler }: IToggleAnswer) => {
+  return <ToggleButton content={label} active={active} statusHandler={answerHandler} />
+}
