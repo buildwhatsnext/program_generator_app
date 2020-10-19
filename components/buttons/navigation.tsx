@@ -32,10 +32,20 @@ export function InternalNavigationalButton({
     router.push(to);
   }
 
+  const mouseOver = (event) => {
+    event.target.style.background = '';
+  }
+
+  const mouseOut = (event) => {
+    event.target.style.background = '';
+  }
+
   return execute ? (
-    <Button onClick={handleClick}>
-      {content}
-    </Button>
+    <div className={styles.panelButtons}>
+      <Button onClick={handleClick} onMouseOver={mouseOver} onMouseOut={mouseOut}>
+        {content}
+      </Button>
+    </div>
   ) : (
     <DirectionalButton location={to} content={content} />
   );
