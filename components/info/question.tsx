@@ -72,8 +72,8 @@ export interface IToggleQuestion {
 export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: IToggleQuestion) {
   const [ currentAnswer, setAnswer ] = useState('');
 
-  const handler = async (answer: string) => {
-    await setAnswer(answer);
+  const handler = (answer: string) => {
+    setAnswer(answer);
     console.log(answer);
     console.log(currentAnswer);
   }

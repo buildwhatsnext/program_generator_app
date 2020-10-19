@@ -37,39 +37,24 @@ function BuildingInformation() {
 
       <TogQuest 
         question={Q2}
-        answers={[ 'Metric', 'Imperial' ]}
-      />
-      {/* <QnA
-        question={Q2}
-        answers={[
-          <ToggleButton content="Metric" />,
-          <ToggleButton content="Imperial" />,
-        ]}
+        answers={[ 'Metric', 'Imperial']}
       />
 
-      <QnA
+      <TogQuest 
         question={Q3}
-        answers={[
-          <ToggleButton content="Single" />,
-          <ToggleButton content="Multi" />,
-        ]}
+        answers={[ 'Single', 'Multi']}
       />
 
-      <QnA
+      <TogQuest 
         question={Q4}
-        answers={[
-          <ToggleButton content="Yes" />,
-          <ToggleButton content="No" />,
-        ]}
+        answers={[ 'Yes', 'No']}
       />
 
-      <QnA
+      <TogQuest 
         question={Q5}
-        answers={[
-          <ToggleButton content="Yes" />,
-          <ToggleButton content="No" />,
-        ]} */}
+        answers={[ 'Yes', 'No']}
       />
+      
     </Page>
   );
 }
