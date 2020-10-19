@@ -1,20 +1,27 @@
 import React from 'react';
-
-import { QuestionAndAnswer as QnA, Answer } from '../../components/info/question';
-import ToggleButton from '../../components/buttons/toggle';
-import TextInputBox from '../../components/info/input';
-import { DirectionalButton, BackButton } from '../../components/buttons/navigation';
+import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../constants/routes';
-
 import { Page } from '../../components/pages/page';
+import { 
+  TextualQuestionAnswerCombo as TextQuestion,
+  ToggleQuestionAnswerCombo as TogQuest 
+} from '../../components/info/question';
+import { 
+  setRsf,
+  setLossFactor,
+  setFloorCount
+} from '../program/program.slice';
 
-import styles from './general.module.scss';
+
 function BuildingConstraint() {
-
+  const dispatch = useDispatch();
   const title = 'General Building Constraints'
-  const Q1 = <p>What's the <em> total RSF of the space?</em></p>;
-  const Q2 = <p>What's the <em> RSF loss factor? </em></p>;
-  const Q3 = <p>Is your space a <em> multi-tenant </em> or <em> single-tenant? </em></p>;
+  const Q1 = <p>What's the <b> total RSF of the space?</b></p>;
+  const Q1Label = `Enter the total area of the space`;
+  const Q2 = <p>What's the <b> RSF loss factor? </b></p>;
+  const Q2Label = `Enter the target area per workseat`;
+  const Q3 = <p>How many <b>floors</b> are there in this space</p>;
+  const Q3Label = `Enter the amount of floors`;
   const next = ROUTES.INFO.TARGET;
 
   return (
@@ -22,20 +29,24 @@ function BuildingConstraint() {
 
       <h4>{title}</h4>
 
-      <QnA
+      <TextQuestion 
         question={Q1}
-        answers={[<TextInputBox content={`Enter the total area of the space`}/>]}
+        label={Q1Label}
+        answerHandler={(x) => dispatch(setRsf(x))}
       />
 
-      <QnA
+      <TextQuestion 
         question={Q2}
-        answers={[<TextInputBox content={`Enter the target area per workseat`}/>]}
+        label={Q2Label}
+        answerHandler={(x) => dispatch(setLossFactor(x))}
       />
 
-      <QnA
-        question={Q1}
-        answers={[<TextInputBox content={`Enter the amount of floors`}/>]}
+      <TextQuestion 
+        question={Q3}
+        label={Q3Label}
+        answerHandler={(x) => dispatch(setFloorCount(x))}
       />
+
     </Page>
   );
 };

@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../constants/routes';
 import { Page } from '../../components/pages/page';
 import { 
-  QuestionAndAnswer as QnA, 
   TextualQuestionAnswerCombo as TextQuestion,
   ToggleQuestionAnswerCombo as TogQuest 
 } from '../../components/info/question';

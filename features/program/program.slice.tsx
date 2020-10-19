@@ -24,11 +24,29 @@ const programSlice = createSlice({
     setLab: (state, action) => {
       state.overview.general.hasLab = action.payload.toString().toLowerCase() === 'yes';
     },
+    setRsf: (state, action) => {
+      state.overview.basic.area_gross = Number(action.payload);
+    },
+    setLossFactor: (state, action) => {
+      state.overview.basic.area_gross = Number(action.payload);
+    },
+    setFloorCount: (state, action) => {
+      state.overview.basic.floors = Number(action.payload);
+    },
   },
 });
-
-export const { setClient, setUnits, setTenancy, setBroadcast, setLab } = programSlice.actions;
 
 export default programSlice.reducer;
 
 export const selectProgram = (state: RootState) => state.program;
+
+export const { 
+  setClient, 
+  setUnits, 
+  setTenancy, 
+  setBroadcast, 
+  setLab,
+  setRsf,
+  setLossFactor,
+  setFloorCount 
+} = programSlice.actions;
