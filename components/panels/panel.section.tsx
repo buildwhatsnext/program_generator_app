@@ -95,3 +95,24 @@ export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedP
     />
   )
 }
+
+export function GeneralInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
+  const data = {
+    "Units": '',
+    "Tenancy": '',
+  }
+
+  data.Units = rawData.units;
+  data.Tenancy = rawData.tenancy;
+
+  const basicData = convertDataToINamedValues(data);
+
+  return (
+    <PanelSection
+      title="Basic Building Information"
+      handleClick={handleClick}
+      isActive={isActive}
+      sectionData={basicData}
+    />
+  )
+}
