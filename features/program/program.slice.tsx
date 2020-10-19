@@ -55,7 +55,8 @@ const programSlice = createSlice({
       const unplanned = circ + plan;
       const percentage = unplanned / 100;
       const value = total * percentage;
-      state.overview.area.area_unplanned = value;
+      state.overview.area.area_circulation = value;
+      state.overview.area.area_unplanned = total - value;
     }
   },
 });

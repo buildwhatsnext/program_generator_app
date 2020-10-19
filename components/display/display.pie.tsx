@@ -11,7 +11,8 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
   const dispatch = useDispatch();
   const { overview } = useSelector(selectProgram)
   const { area } = overview;
-  const data = Object.values(area);
+  const areaData = Object.values(area);
+  const data = areaData.slice(1, areaData.length - 1);
   console.log(data);
   const labels = Object.values(SPACE_STANDARDS).map(space => space.name);
   const colors = Object.values(SPACE_STANDARDS).map(space => space.color);
