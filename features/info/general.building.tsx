@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { QuestionAndAnswer as QnA, TextualQuestion } from '../../components/info/question';
+import { QuestionAndAnswer as QnA, TextualQuestionAnswerCombo as TextQuestion } from '../../components/info/question';
 import ToggleButton from '../../components/buttons/toggle';
 import TextInputBox from '../../components/info/input';
 import { ROUTES } from '../../constants/routes';
@@ -25,15 +25,11 @@ function BuildingInformation() {
 
       <h4>{ title }</h4>
 
-      <TextualQuestion 
+      <TextQuestion 
         question={Q1}
         label='Please enter the name of your client'
         answerHandler={(x) => dispatch(setClient(x))}
       />
-      {/* <QnA
-        question={Q1}
-        answers={[<TextualAnswer label='Please enter the name of the client' />]}
-      /> */}
 
       <QnA
         question={Q2}

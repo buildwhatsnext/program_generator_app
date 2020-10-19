@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { Ref, useRef, useState } from 'react';
 import ToggleButton from '../buttons/toggle';
-import TextInput from './input';
+import { TextualAnswer } from './answer';
 import styles from './question.module.scss';
 
 export type QnAProps = {
@@ -34,37 +34,13 @@ export function QuestionAndAnswer(props: QnAProps) {
   );
 }
 
-export interface IAnswer {
-  label: string;
-  answerHandler?: () => void;
-  passedRef?: Ref<HTMLInputElement>;
-}
-
-export function TextualAnswer({ answerHandler, label, passedRef }: IAnswer) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const reporter = () => {
-    console.log(inputRef.current.value);
-  }
-
-  return passedRef 
-    ? <TextualAnswerWithRef label={label} answerHandler={answerHandler ?? reporter} ref={passedRef} />
-    : <TextInput content={label} ref={inputRef} handler={answerHandler ?? reporter}/>;
-}
-
-export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
-  const { answerHandler, label } = props;
-
-  return <TextInput content={label} ref={ref} handler={answerHandler}/>;
-})
-
 export interface IClientQuestion {
   question: JSX.Element;
   label: string;
   answerHandler?: (value) => void;
 };
 
-export function TextualQuestion({ question, label, answerHandler }: IClientQuestion) {
+export function TextualQuestionAnswerCombo({ question, label, answerHandler }: IClientQuestion) {
   // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
