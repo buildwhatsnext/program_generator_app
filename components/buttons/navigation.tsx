@@ -41,10 +41,13 @@ export function InternalNavigationalButton({
   }
 
   return execute ? (
-    <div className={styles.panelButtons}>
-      <Button onClick={handleClick} onMouseOver={mouseOver} onMouseOut={mouseOut}>
-        {content}
-      </Button>
+    <div className={styles.panelElements}>
+      <div className={styles.textButtons}>
+        <Button onClick={handleClick} onMouseOver={mouseOver} onMouseOut={mouseOut}>
+          {content}
+        </Button>
+      </div>
+      <div className={styles.circle}>hello</div>
     </div>
   ) : (
     <DirectionalButton location={to} content={content} />

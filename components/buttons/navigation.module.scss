@@ -1,7 +1,15 @@
 @import '../../styles/styles.colors.scss';
 
-.panelButtons {
-  border: 10px solid salmon;
+.textButtons {
+  // border: 10px red solid;
+}
+
+.circle {
+  display: none;
+}
+
+.textButtons:hover + circle {
+  display: block;
 }
 
 .nav__next {
