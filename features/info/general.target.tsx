@@ -1,43 +1,56 @@
 import React from 'react';
-
-import { QuestionAndAnswer as QnA, Answer } from '../../components/question';
-import TextInputBox from '../../components/info/input';
+import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../constants/routes';
-
 import { Page } from '../../components/pages/page';
+import { 
+  TextualQuestionAnswerCombo as TextQuestion,
+  ToggleQuestionAnswerCombo as TogQuest 
+} from '../../components/info/question';
+import { 
+  setCirculation,
+  setPlanning,
+  setWorkseatArea,
+  setWorkseatTarget
+} from '../program/program.slice';
 
 function TargetMetric () {
-
+  const dispatch = useDispatch();
   const title = 'Target Metrics';
-  const Q1 = <p>What's the <em> target circulation factor? </em> </p>;
-  const Q2 = <p>What's the <em> target planning factor? </em> </p>;
-  const Q3 = <p>What's the <em> target area per workseat </em> </p>;
-  const Q4 = <p>If you have it, what are the <em> target workseats </em> ?</p>;
+  const Q1 = <p>What's the <b> target circulation factor? </b> </p>;
+  const Q2 = <p>What's the <b> target planning factor? </b> </p>;
+  const Q3 = <p>What's the <b> target area per workseat </b> </p>;
+  const Q4 = <p>If you have it, what are the <b> target workseats </b> ?</p>;
   const next = ROUTES.PROGRAM.START;
 
   return (
     <Page nextRoute={next}>
 
       <h4>{title}</h4>
-      <QnA
-        question={Q1} 
-        answers={[<TextInputBox content={`Enter the target circulation factor (%)`}/> ]} 
+      
+      <TextQuestion 
+        question={Q1}
+        label='Enter the target circulation factor (%)'
+        answerHandler={(x) => dispatch(setCirculation(x))}
       />
 
-      <QnA 
-        question={Q2} 
-        answers={[<TextInputBox content={`Enter the target planning factor (%)`}/> ]} 
+      <TextQuestion 
+        question={Q2}
+        label='Enter the target planning factor (%)'
+        answerHandler={(x) => dispatch(setPlanning(x))}
       />
 
-      <QnA 
-        question={Q3} 
-        answers={[<TextInputBox content={`Enter the target area per workseat (%)`}/> ]} 
+      <TextQuestion 
+        question={Q3}
+        label='Enter the target area per workseat'
+        answerHandler={(x) => dispatch(setWorkseatArea(x))}
       />
 
-      <QnA 
-        question={Q4} 
-        answers={[<TextInputBox content={`Enter the total area of the space`}/> ]} 
+      <TextQuestion 
+        question={Q4}
+        label='Enter the target for total number of workseats'
+        answerHandler={(x) => dispatch(setWorkseatTarget(x))}
       />
+
     </Page>
   );
 };

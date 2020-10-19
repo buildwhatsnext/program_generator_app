@@ -1,4 +1,4 @@
-@import '../styles/styles.colors.scss';
+@import '../../styles/styles.colors.scss';
 
 
 .QnA {
@@ -14,12 +14,8 @@
     padding-left: 34rem;
 
     p {
-      font-size: 2rem;
+      font-size: 2.4rem;
       font-weight: 400;
-    }
-
-    em {
-      font-weight: 600;
     }
   }
 

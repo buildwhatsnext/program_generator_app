@@ -21,14 +21,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    padding: 10rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-bottom: 5rem;
 
     &__back {
-      padding-left: 2rem;
+      // padding-left: 2rem;
     }
 
     &__next {
-      padding-right: 2rem;
+      // padding-right: 2rem;
       justify-self: right;
     }
   }

@@ -49,7 +49,7 @@ export function DirectionalButton({ location, content }: IDirectionalButton) {
   }
 
   return (
-    <div className={styles.nextbutton}>
+    <div className={styles.nav__next}>
       <Button variant='outlined' onClick={handleClick}>
         {content}
       </Button>
@@ -61,7 +61,7 @@ export function BackButton() {
   const router = useRouter();
 
   return (
-    <div className={styles.backbutton}>
+    <div className={styles.nav__back}>
       <Button variant="outlined" onClick={() => router.back()}>
         Back
       </Button>

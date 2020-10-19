@@ -34,11 +34,9 @@ export function SimplePage({children, nav, nextRoute }: IPage) {
       </div>
       <div className={styles.page__nav}>
         { 
-          nav 
-          ? nav
-          : nextRoute
+          nav || (nextRoute
             ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } />
-            : null
+            : null)
         }
       </div>
     </div>
