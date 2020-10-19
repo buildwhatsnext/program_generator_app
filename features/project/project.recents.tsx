@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './project.module.scss';
 import { openProject } from './project.slice';
@@ -21,11 +21,23 @@ export function ProjectSelection() {
 
   const recent = displayRecentProjects(projects.recent);
 
+  const [isHovered, setHover] = useState(false);
+
+  const mouseOver = (event) => {
+    event.target.style.background = '#06038D';
+    event.target.style.color = 'white';
+  }
+
+  const mouseOut = (event) => {
+    event.target.style.background = 'white';
+    event.target.style.color = '#06038D';
+  }
+
   return (
     <div className={styles.project}>
       <div className={styles.project__display}>
         <h4>Recent Projects</h4>
-        <div className={styles.project__display__options}>{recent}</div>
+        <div className={styles.project__display__options} onMouseOver={mouseOver} onMouseOut={mouseOut}>{recent}</div>
       </div>
     </div>
   );

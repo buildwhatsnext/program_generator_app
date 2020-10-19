@@ -6,6 +6,7 @@
     // border: 10px green solid;
     margin-left: 20rem;
     line-height: 8rem;
+    cursor: pointer;
 
     h4 {
       // border: 10px blue solid;
@@ -15,7 +16,10 @@
 
     &__options {
       margin-right: 20rem;
-      // border: lime 2px solid;
+      
+      p {
+        // border: lime 2px solid;
+      }
     }
   }
 }

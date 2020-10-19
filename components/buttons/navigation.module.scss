@@ -5,13 +5,22 @@
   line-height: 4rem;
 }
 
-.circle {
-  display: none;
+.textButtons:hover .circle {
+  visibility: visible;
+  opacity: 1;
+  background-color: white;
 }
 
-.textButtons:hover + circle {
-  display: block;
+
+.circle {
+  visibility: hidden;
+  height: 30px;
+  width: 30px;
+  border-radius: 99rem;
+  margin-left: 24rem;
 }
+
+
 
 .nav__next {
 

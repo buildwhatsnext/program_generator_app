@@ -33,13 +33,11 @@ export function InternalNavigationalButton({
   }
 
   const mouseOver = (event) => {
-    event.target.style.background = 'white';
-    event.target.style.color = '#06038D';
+    event.target.style.background = '';
   }
 
   const mouseOut = (event) => {
-    event.target.style.background = '#06038D';
-    event.target.style.color = 'white';
+    event.target.style.background = '';
   }
 
   return execute ? (
@@ -47,9 +45,9 @@ export function InternalNavigationalButton({
       <div className={styles.textButtons}>
         <Button onClick={handleClick} onMouseOver={mouseOver} onMouseOut={mouseOut}>
           {content}
+          <div className={styles.circle}></div>
         </Button>
       </div>
-      <div className={styles.circle}>hello</div>
     </div>
   ) : (
     <DirectionalButton location={to} content={content} />
