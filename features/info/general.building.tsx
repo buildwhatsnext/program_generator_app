@@ -38,6 +38,7 @@ function BuildingInformation() {
       <TogQuest 
         question={Q2}
         answers={[ 'Metric', 'Imperial']}
+        answerHandler={(x) => dispatch(setUnits(x))}
       />
 
       <TogQuest 

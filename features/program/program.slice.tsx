@@ -16,13 +16,12 @@ const programSlice = createSlice({
   reducers: {
     setClient: (state, action) => {
       state.overview.general.client = action.payload;
-      console.log(state)
     },
-    setUnits: (state, action: PayloadAction<IGeneralProgramInformation>) => {
-      state.overview.general.units = action.payload.units;
+    setUnits: (state, action) => {
+      state.overview.general.units = action.payload;
     },
-    setTenancy: (state, action: PayloadAction<IGeneralProgramInformation>) => {
-      state.overview.general.tenancy = action.payload.tenancy;
+    setTenancy: (state, action) => {
+      state.overview.general.tenancy = action.payload;
     },
   },
 });

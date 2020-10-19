@@ -64,8 +64,7 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler }: I
 
 export interface IToggleQuestion {
   question: JSX.Element;
-  answerHandler?: (index) => void;
-  // answers: JSX.Element[];
+  answerHandler?: (data) => void;
   answers: string[];
 }
 
@@ -74,8 +73,7 @@ export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: 
 
   const handler = (answer: string) => {
     setAnswer(answer);
-    console.log(answer);
-    console.log(currentAnswer);
+    answerHandler(answer);
   }
 
   const answerCollection = answers.map((answer) => (
