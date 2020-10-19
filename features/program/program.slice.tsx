@@ -26,18 +26,29 @@ const programSlice = createSlice({
     },
     setRsf: (state, action) => {
       state.overview.basic.area_gross = Number(action.payload);
+      state.overview.area.area_total = Number(action.payload);
     },
     setLossFactor: (state, action) => {
-      state.overview.basic.area_gross = Number(action.payload);
+      state.overview.basic.area_net = Number(action.payload);
     },
     setFloorCount: (state, action) => {
       state.overview.basic.floors = Number(action.payload);
     },
     setCirculation: (state, action) => {
-      state.overview.basic.floors = Number(action.payload);
+      const input = Number(action.payload);
+      // const total = state.overview.area.area_total;
+      // const percentage = input / 100;
+      // const value = total * percentage;
+      state.overview.basic.factor_circulation = input;
+      // state.overview.area.area_circulation = value;
     },
     setPlanning: (state, action) => {
-      state.overview.basic.floors = Number(action.payload);
+      const input = Number(action.payload);
+      // const total = state.overview.area.area_total;
+      // const percentage = input / 100;
+      // const value = total * percentage;
+      state.overview.basic.factor_planning = input;
+      // state.overview.area.area = value;
     },
     setWorkseatArea: (state, action) => {
       state.overview.basic.floors = Number(action.payload);
@@ -45,6 +56,15 @@ const programSlice = createSlice({
     setWorkseatTarget: (state, action) => {
       state.overview.basic.floors = Number(action.payload);
     },
+    setUnplanned: (state, action) => {
+      const total = state.overview.area.area_total;
+      const circ = state.overview.basic.factor_circulation;
+      const plan = state.overview.basic.factor_planning;
+      const unplanned = circ + plan;
+      const percentage = unplanned / 100;
+      const value = total * percentage;
+      state.overview.area.area_unplanned = value;
+    }
   },
 });
 
