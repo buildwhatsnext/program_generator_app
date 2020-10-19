@@ -64,7 +64,7 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler }: I
 
 export interface IToggleQuestion {
   question: JSX.Element;
-  answerHandler?: (data) => void;
+  answerHandler: (data) => void;
   answers: string[];
 }
 

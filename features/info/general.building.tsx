@@ -1,17 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { ROUTES } from '../../constants/routes';
+import { Page } from '../../components/pages/page';
 import { 
   QuestionAndAnswer as QnA, 
   TextualQuestionAnswerCombo as TextQuestion,
   ToggleQuestionAnswerCombo as TogQuest 
 } from '../../components/info/question';
-// import ToggleButton from '../../components/buttons/toggle';
-// import TextInputBox from '../../components/info/input';
-import { ROUTES } from '../../constants/routes';
+import { 
+  setClient, 
+  setUnits, 
+  setTenancy,
+  setBroadcast,
+  setLab 
+} from '../program/program.slice';
 
-import { setClient, setUnits, setTenancy } from '../program/program.slice';
 
-import { Page } from '../../components/pages/page';
 
 
 function BuildingInformation() {
@@ -44,16 +48,19 @@ function BuildingInformation() {
       <TogQuest 
         question={Q3}
         answers={[ 'Single', 'Multi']}
+        answerHandler={(x) => dispatch(setTenancy(x))}
       />
 
       <TogQuest 
         question={Q4}
         answers={[ 'Yes', 'No']}
+        answerHandler={(x) => dispatch(setBroadcast(x))}
       />
 
       <TogQuest 
         question={Q5}
         answers={[ 'Yes', 'No']}
+        answerHandler={(x) => dispatch(setLab(x))}
       />
       
     </Page>
