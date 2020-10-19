@@ -5,8 +5,7 @@
   // border: 10px red solid;
 
   &__display {
-    // border: 10px green solid;
-    margin-left: 20rem;
+
     line-height: 8rem;
     cursor: pointer;
 
@@ -18,20 +17,7 @@
 
     &__options {
       margin-right: 20rem;
+      margin-left: 20rem;
     }
-
-    // &__options:hover .circle {
-    //   visibility: visible;
-    //   opacity: 1;
-    //   background-color: $blue;
-    // }
-
-    // .circle {
-    //   visibility: hidden;
-    //   height: 30px;
-    //   width: 30px;
-    //   border-radius: 99rem;
-    //   // margin-left: 24rem;
-    // }
   }
 }
