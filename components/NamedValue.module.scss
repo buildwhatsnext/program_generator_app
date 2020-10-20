@@ -1,8 +1,10 @@
+@import '../styles/styles.colors.scss';
+
+
 .data {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  line-height: 9rem;
-  
+  grid-template-columns: 1fr 1fr auto;
+  line-height: 10rem;
 
   &__name {
     // border: orange solid 10px;
@@ -14,5 +16,20 @@
     text-align: right;
     font-size: 3.2rem;
     font-weight: 400;
+    padding-right: 12rem;
+  }
+
+  &__circle {
+    visibility: hidden;
+    height: 30px;
+    width: 30px;
+    border-radius: 99rem;
+    align-self: center;
+    background-color: $blue;
   }
 }
+
+.data:hover .data__circle {
+  visibility: visible;
+}
+

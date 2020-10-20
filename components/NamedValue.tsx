@@ -8,6 +8,7 @@ export const NamedValue = (props: INamedValue) => {
     <div className={styles.data}>
       <p className={styles.data__name}>{name}</p>
       <p className={styles.data__value}>{value}</p>
+      <div className={styles.data__circle}></div>
     </div>
   );
 };

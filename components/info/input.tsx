@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './input.module.scss';
+import { colors } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

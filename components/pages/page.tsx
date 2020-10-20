@@ -29,7 +29,7 @@ export function SimplePage({children, nav, nextRoute }: IPage) {
       <div className="page__header">
         <ProgramHeader />
       </div>
-      <div className="page__content">
+      <div className={styles.page__content}>
         {children}
       </div>
       <div className={styles.page__nav}>
