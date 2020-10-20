@@ -10,10 +10,22 @@
   font-style: normal;
   font-size: 7.2rem;
   line-height: 86px;
-  // overflow-y: scroll;
+  overflow-y: scroll;
+  scrollbar-width: none;
   // scrollbar-color: red $blue;
   // scrollbar-arrow-color: red;
   // scrollbar-width: 100px;
+
+  /*chrome*/
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  // /*firefox*/
+  // &*{
+  //   scrollbar-width: 100px;
+  // }
 
   &__title {
     position: sticky;
