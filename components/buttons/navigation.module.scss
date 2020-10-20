@@ -2,7 +2,6 @@
 
 .textButtons {
   // border: 10px red solid;
-  line-height: 4rem;
 }
 
 .textButtons:hover .circle {
@@ -14,10 +13,10 @@
 
 .circle {
   visibility: hidden;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   border-radius: 99rem;
-  margin-left: 24rem;
+  margin-left: 14rem;
 }
 
 
