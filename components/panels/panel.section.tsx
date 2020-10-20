@@ -22,6 +22,13 @@ export interface INamedPanelSection {
   rawData: Record<string,string>;
 }
 
+export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
+  const mapped = data.map((d: INamedValue) => {
+    return <PanelSectionItem key={d.name} name={d.name} value={d.value} />;
+  });
+  return mapped;
+}
+
 export function PanelSection({
   title,
   handleClick,
@@ -55,13 +62,6 @@ export function PanelSectionItem({ name, value }: INamedValue) {
       />
     </ListItem>
   );
-}
-
-export function buildPanelSectionItem(data: Array<INamedValue>) {
-  const mapped = data.map((d: INamedValue, i: number) => {
-    return <PanelSectionItem key={i} name={d.name} value={d.value} />;
-  });
-  return mapped;
 }
 
 export function reMapPanelData(originalData: Record<string, unknown>, newData: Record<string, unknown>): Record<string, unknown> {

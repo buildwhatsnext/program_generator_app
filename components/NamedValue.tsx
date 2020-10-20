@@ -9,10 +9,6 @@ export const NamedValue = (props: INamedValue) => {
       <p className={nameClass ?? `${styles.data__name}`}>{name}</p>
       <p className={valueClass ?? `${styles.data__value}`}>{value}</p>
     </div>
-    // <div className={`${className} ${styles.data}`}>
-    //   <p className={`${className}__name ${styles.data__name}`}>{name}</p>
-    //   <p className={`${className}__value ${styles.data__value}`}>{value}</p>
-    // </div>
   );
 };
 
