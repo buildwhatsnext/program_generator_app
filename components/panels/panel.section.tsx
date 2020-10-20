@@ -1,3 +1,4 @@
+/* eslint-disable lines-between-class-members */
 import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -5,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import { useSelector } from 'react-redux';
+import { selectProgram } from '../../features/program/program.slice';
 import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
 import styles from './panel.section.module.scss';
 
@@ -129,7 +132,32 @@ export function GeneralInfoPanelSection({ handleClick, isActive, rawData}: IName
   )
 }
 
+interface IStructuredProgramPanelData {
+  "Total Number of Offices": number,
+  "Total Number of Open Workspaces": number,
+  "Total Number of Meeting Spaces": number,
+  "Total Number of Amenity Spaces": number,
+  "Total Number of Support Spaces": number,
+  "Total Number of Broadcast Spaces": number,
+  "Total Number of Lab Spaces": number,
+  "Programmed Workseats": number,
+  "Programmed Meeting Seats/Work Seats": string
+}
+
+class StructuredProgramPanelData implements IStructuredProgramPanelData {
+  "Total Number of Offices": 0;
+  "Total Number of Open Workspaces": 0;
+  "Total Number of Meeting Spaces": 0;
+  "Total Number of Amenity Spaces": 0;
+  "Total Number of Support Spaces": 0;
+  "Total Number of Broadcast Spaces": 0;
+  "Total Number of Lab Spaces": 0;
+  "Programmed Workseats": 0;
+  "Programmed Meeting Seats/Work Seats": '0.0';
+}
+
 export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
+  // let data = new StructuredProgramPanelData();
   const data = {
     "Total Number of Offices": 0,
     "Total Number of Open Workspaces": 0,
@@ -139,11 +167,10 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
     "Total Number of Broadcast Spaces": 0,
     "Total Number of Lab Spaces": 0,
     "Programmed Workseats": 0,
-    "Programmed Meeting Seats/Work Seats": 0.0,
+    "Programmed Meeting Seats/Work Seats": '0.0'
   }
-
   const reMapped = reMapPanelData(rawData, data);
-
+  // const formatted = formatProgramPanelData(reMapped);
   const basicData = convertDataToINamedValues(reMapped);
 
   return (
@@ -154,4 +181,12 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
       sectionData={basicData}
     />
   )
+}
+
+function formatProgramPanelData(data: Record<string, unknown>) {
+  const { overview } = useSelector(selectProgram);
+  const { hasBroadcast, hasLab } = overview.general;
+
+  // if(!hasBroadcast)
+  //   data.
 }

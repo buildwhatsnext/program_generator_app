@@ -27,10 +27,6 @@ export function BuildingInformationPanel() {
     setTotalsOpenStatus(!totalsOpen);
   };
 
-  // const generalData = convertDataToINamedValues(overview.general);
-  // const basicData = convertDataToINamedValues(overview.basic);
-  // const totalsData = convertDataToINamedValues(overview.totals);
-
   return (
     <Panel title={title}>
       <List>
