@@ -24,7 +24,13 @@ export interface INamedPanelSection {
 
 export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
   const mapped = data.map((d: INamedValue) => {
-    return <PanelSectionItem key={d.name} name={d.name} value={d.value} />;
+    return (
+      <PanelSectionItem 
+        key={d.name} 
+        name={d.name} 
+        value={d.value} 
+      />
+    );
   });
   return mapped;
 }
