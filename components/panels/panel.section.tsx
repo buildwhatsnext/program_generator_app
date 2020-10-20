@@ -16,7 +16,7 @@ export interface IPanelSection {
 }
 
 export interface INamedPanelSection {
-  title: string;
+  // title: string;
   handleClick: () => void;
   isActive: boolean;
   rawData: Record<string,string>;
@@ -122,6 +122,33 @@ export function GeneralInfoPanelSection({ handleClick, isActive, rawData}: IName
   return (
     <PanelSection
       title="General Information"
+      handleClick={handleClick}
+      isActive={isActive}
+      sectionData={basicData}
+    />
+  )
+}
+
+export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
+  const data = {
+    "Total Number of Offices": 0,
+    "Total Number of Open Workspaces": 0,
+    "Total Number of Meeting Spaces": 0,
+    "Total Number of Amenity Spaces": 0,
+    "Total Number of Support Spaces": 0,
+    "Total Number of Broadcast Spaces": 0,
+    "Total Number of Lab Spaces": 0,
+    "Programmed Workseats": 0,
+    "Programmed Meeting Seats/Work Seats": 0.0,
+  }
+
+  const reMapped = reMapPanelData(rawData, data);
+
+  const basicData = convertDataToINamedValues(reMapped);
+
+  return (
+    <PanelSection
+      title="Programmed Space"
       handleClick={handleClick}
       isActive={isActive}
       sectionData={basicData}
