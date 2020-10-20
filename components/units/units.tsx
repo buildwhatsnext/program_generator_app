@@ -22,11 +22,9 @@ export function formatAreaData(data: INamedValue[]) {
   const areaUnitType = units.toString().toLowerCase() === 'metric' ? 'm2' : 'ft2';
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
-      console.log(`The property ${d.name} contains area`);
       const { value } = data[i];
       const newVal = `${value} ${areaUnitType}`;
       data[i].value = newVal;
-      console.log();
     }
   });
 
