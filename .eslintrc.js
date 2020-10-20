@@ -45,6 +45,7 @@ module.exports = {
     // 'prettier/prettier': 1,
     '@typescript-eslint/no-use-before-define': 1,
     '@typescript-eslint/no-unused-vars': RULESTATE.WARN,
+    '@typescript-eslint/explicit-module-boundary-types': RULESTATE.OFF,
 
     'no-console': RULESTATE.OFF,
     'global-require': 0,
