@@ -33,9 +33,14 @@ export function InternalNavigationalButton({
   }
 
   return execute ? (
-    <Button onClick={handleClick}>
-      {content}
-    </Button>
+    <div className={styles.panelElements}>
+      <div className={styles.textButtons}>
+        <Button onClick={handleClick}>
+          {content}
+          <div className={styles.circle}></div>
+        </Button>
+      </div>
+    </div>
   ) : (
     <DirectionalButton location={to} content={content} />
   );

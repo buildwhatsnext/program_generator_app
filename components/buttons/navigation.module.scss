@@ -1,8 +1,29 @@
 @import '../../styles/styles.colors.scss';
 
+.textButtons {
+  // border: 10px red solid;
+  line-height: 4rem;
+}
+
+.textButtons:hover .circle {
+  visibility: visible;
+  opacity: 1;
+  background-color: white;
+}
+
+
+.circle {
+  visibility: hidden;
+  height: 30px;
+  width: 30px;
+  border-radius: 99rem;
+  margin-left: 24rem;
+}
+
+
+
 .nav__next {
 
-  // padding-top: 4rem;
 
   button {
 
@@ -12,6 +33,14 @@
     width: auto;
     height: 4rem;
     font-size: 1.3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    text-transform: none;
+  }
+
+  button:hover {
+    background-color: $blue;
+    color: white;
   }
 }
 
@@ -27,5 +56,13 @@
     width: auto;
     height: 4rem;
     font-size: 1.3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    text-transform: none;
+  }
+
+  button:hover {
+    background-color: $blue;
+    color: white;
   }
 }
