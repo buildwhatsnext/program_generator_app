@@ -2,13 +2,12 @@ import React from 'react';
 import styles from './NamedValue.module.scss';
 
 export const NamedValue = (props: INamedValue) => {
-  const { name, value } = props;
+  const { name, value, className, nameClass, valueClass } = props;
 
   return (
-    <div className={styles.data}>
-      <p className={styles.data__name}>{name}</p>
-      <p className={styles.data__value}>{value}</p>
-      <div className={styles.data__circle}></div>
+    <div className={className ?? `${styles.data}`}>
+      <p className={nameClass ?? `${styles.data__name}`}>{name}</p>
+      <p className={valueClass ?? `${styles.data__value}`}>{value}</p>
     </div>
   );
 };
@@ -16,6 +15,9 @@ export const NamedValue = (props: INamedValue) => {
 export interface INamedValue {
   name: string;
   value: string;
+  className?: string;
+  nameClass?: string;
+  valueClass?: string;
 }
 
 export function convertDataToNamedValues(data: Record<string, string>) {
@@ -30,13 +32,13 @@ export function convertDataToNamedValues(data: Record<string, string>) {
 }
 
 export function convertDataToINamedValues(
-  data: Record<string, string>
+  data: Record<string, unknown>
 ): Array<INamedValue> {
 
   try {
     const names = Object.keys(data);
 
-    const result = names.map((n) => ({ name: n, value: data[n] }));
+    const result = names.map((n) => ({ name: n, value: data[n].toString() }));
   
     return result;  
   } catch (error) {

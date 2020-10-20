@@ -1,3 +1,9 @@
+interface SpaceDisplayStandard {
+  name: string;
+  color: string;
+  border?: string;
+}
+
 export const SPACE_STANDARDS: { [name: string]: SpaceDisplayStandard } = {
   UNPLANNED: {
     name: 'Unplanned',
@@ -36,10 +42,4 @@ export const SPACE_STANDARDS: { [name: string]: SpaceDisplayStandard } = {
     name: 'Lab',
     color: '#ff0000'
   },
-}
-
-interface SpaceDisplayStandard {
-  name: string;
-  color: string;
-  border?: string;
 }

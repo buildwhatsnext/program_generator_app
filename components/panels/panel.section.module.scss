@@ -1,0 +1,28 @@
+.panelTitle {
+  font-size: 2.4rem;
+
+  span {
+    font-size: 2.4rem;
+    // font-weight: 600;
+  }
+}
+
+.panelData {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto;
+
+  &__name {
+    // color: red;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  &__value {
+    // color: pink;
+    font-size: 6.4rem;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}
