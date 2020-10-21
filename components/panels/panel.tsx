@@ -6,7 +6,7 @@ export interface IPanel {
   children?: React.ReactNode;
 }
 
-export function Panel({title = 'Program Dashboard For All The World', children }: IPanel) {
+export function Panel({title = 'Program Dashboard', children }: IPanel) {
   return (
     <div className={styles.panel}>
       <div className={styles.panel__title}>{title}</div>

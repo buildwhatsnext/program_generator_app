@@ -18,7 +18,6 @@
   }
 
   &__title {
-    border: 1px solid red;
     position: sticky;
     margin-bottom: 12rem;
     font-size: 7.2rem;
@@ -27,7 +26,7 @@
   }
 
   &__content {
-    border: 1px solid sienna;
-    
+    display: flex;
+    // let the interior content align itself
   }
 }
