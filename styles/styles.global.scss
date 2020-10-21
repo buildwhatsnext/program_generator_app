@@ -1,7 +1,7 @@
 @import './styles.colors.scss';
 @import './styles.breakpoints.scss';
 @import './styles.placeholders.scss';
-@import url("https://use.typekit.net/acl1qnv.css");
+@import './styles.fonts.scss';
 
 :root {
   font-size: 10px;
@@ -19,9 +19,6 @@ html, body {
   background-color: $dark_blue;
   color: $white;
   overflow-y: hidden;
-  font-family: neue-haas-grotesk-display, sans-serif;
-  font-style: normal;
-  font-weight: 500;
 }
 
 #__next {
@@ -39,20 +36,6 @@ a {
     opacity: 1;
     cursor: pointer;
   }
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
-}
-
-p {
-  font-size: 1.4rem;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
 }
 
 li {
