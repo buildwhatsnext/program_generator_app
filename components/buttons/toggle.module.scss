@@ -8,8 +8,10 @@
 
   &__activated {
     @extend .overridebutton;
-    background-color: $blue;
-    color: $white;
+    button {
+      background-color: $blue;
+      color: $white;
+    }
   }
 }
 
