@@ -1,17 +1,24 @@
-@import '../../styles//styles.colors.scss';
+@import '../../styles/styles.colors.scss';
+
+%casing {
+  text-transform: initial;
+}
 
 .text__white {
+  @extend %casing;
   color: $white;
 }
 
 .text__blue {
+  @extend %casing;
   color: $blue;
 }
 
 .panel__button {
   @extend.text__white;
+  transition: all .5s;
 
-  &__wCircle {
-
+  &:hover {
+    color: darken($color: $white, $amount: 10%)
   }
 }
