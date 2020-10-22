@@ -1,25 +1,25 @@
 .section {
+  height: 100%;
+  display:grid;
+  grid-template-rows: 1fr 1fr;
+
   &__desc {
-    font-size: 2.4rem;
     text-align: center;
-    // border: orchid solid 10px;
+    align-self: center;
   }
 
   &__nav {
+    align-self: center;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     // justify-self: center;
 
     &__next {
-      grid-column: 1/2;
-      justify-self: end;
-      margin-right: 0rem;
     }
 
     &__back {
-      grid-column: 2/3;
-      justify-self: start;
-      margin-left: 10rem;
+      justify-self: center;
     }
   }
 }

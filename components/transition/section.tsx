@@ -2,6 +2,12 @@ import React from 'react';
 import { DirectionalButton, BackButton } from '../buttons/navigation';
 import styles from './section.module.scss';
 
+export interface ISection {
+  desc: string;
+  fwdBtnText?: string;
+  to: string;
+};
+
 export function TransitionSection({
   desc,
   fwdBtnText = "Next",
@@ -21,9 +27,3 @@ export function TransitionSection({
     </div>
   );
 }
-
-export interface ISection {
-  desc: string;
-  fwdBtnText?: string;
-  to: string;
-};

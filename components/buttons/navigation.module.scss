@@ -1,4 +1,5 @@
 @import '../../styles/styles.colors.scss';
+@import './buttons.module.scss';
 
 // .textButtons {
 //   // border: 10px red solid;
@@ -20,42 +21,13 @@
 
 .nav__next {
   button {
-    border: 3px $blue solid;
-    border-radius: 0px;
-    color: $blue;
-    width: auto;
-    height: 4rem;
-    // font-size: 1.3rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    text-transform: none;
-  }
-
-  button:hover {
-    background-color: $blue;
-    color: white;
+    @extend %button__typical;
+    width: 100%;
   }
 }
 
 .nav__back {
-
-  // padding-top: 4rem;
-
   button {
-
-    border: 3px $blue solid;
-    border-radius: 0px;
-    color: $blue;
-    width: auto;
-    height: 4rem;
-    font-size: 1.3rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    text-transform: none;
-  }
-
-  button:hover {
-    background-color: $blue;
-    color: white;
+    @extend %button__typical;
   }
 }
