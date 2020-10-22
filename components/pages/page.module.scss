@@ -10,6 +10,7 @@
   
   &__content {
     overflow-y: scroll;
+    overflow-x: hidden;
     border: 1px solid brown;
     height: 100%;
     padding: 1rem 1rem;
