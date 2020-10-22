@@ -6,7 +6,12 @@ import { SPACE_STANDARDS } from '../../constants/ark.standards';
 // import { selectProject } from '../../features/project/project.slice';
 import { calculateUnplanned, selectProgram } from '../../features/program/program.slice';
 
-export const ProgrammedSpaceDisplay: React.FC = () => {
+export interface PieProps {
+
+  backgroundColor?: string;
+}
+
+export const ProgrammedSpaceDisplay: React.FC<PieProps> = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
   const { overview } = useSelector(selectProgram)
