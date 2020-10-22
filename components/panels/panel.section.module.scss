@@ -1,28 +1,26 @@
 .panelTitle {
-  // font-size: 2.4rem;
-
-  span {
-    // font-size: 2.4rem;
-    // font-weight: 600;
-  }
+  // margin-bottom: 5rem;
 }
 
 .panelData {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   grid-template-columns: auto;
+  margin-bottom: 1rem;
 
   &__name {
     // color: red;
-    // font-size: 1.8rem;
-    font-weight: 500;
+    font-size: .75rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
   }
 
   &__value {
     // color: pink;
-    // font-size: 6.4rem;
-    // font-weight: 600;
+    font-size: 3rem;
+    font-weight: 600;
     text-align: left;
-    padding-left: 1rem;
+    padding-left: 2rem;
   }
 }
