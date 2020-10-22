@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 
 import navStyles from './navigation.module.scss';
-import buttonStyles from './buttons.module.scss';
 
 export type InternalNavBtnProps = {
   content: string;
   execute?: (x) => void;
   executableData?: Record<string, unknown>;
   to: string;
+  customButtonStyle?: string;
 };
 
 export interface IDirectionalButton {
@@ -24,6 +24,7 @@ export function InternalNavigationalButton({
   execute,
   to,
   executableData,
+  customButtonStyle
 }: InternalNavBtnProps) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -34,7 +35,7 @@ export function InternalNavigationalButton({
   }
 
   return execute ? (
-    <div className={navStyles.nav__next}>
+    <div className={customButtonStyle ?? navStyles.nav__next}>
       <Button onClick={handleClick}>
         <p>{content}</p>
       </Button>

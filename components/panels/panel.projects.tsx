@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './panel.project.module.scss';
+import buttonStyles from '../../components/buttons/navigation.module.scss';
 import { Panel } from './panel';
 import { createNewProject, openProject } from '../../features/project/project.slice';
 import { InternalNavigationalButton } from '../buttons/navigation';
@@ -24,13 +25,14 @@ function OpenOptions() {
         content="Create New"
         to={ROUTES.TRANSITION.PROJECT}
         execute={createNewProject}
+        customButtonStyle={buttonStyles.button__panel}
       />
-      <br/>
       <InternalNavigationalButton
         content="Open Project"
         to={ROUTES.TRANSITION.PROJECT}
         execute={openProject}
         executableData={projectDetails}
+        customButtonStyle={buttonStyles.button__panel}
       />
     </div>
   );

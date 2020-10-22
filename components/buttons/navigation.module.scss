@@ -4,12 +4,17 @@
 .nav__next {
   button {
     @extend %button__typical;
-    // width: 100%;
   }
 }
 
 .nav__back {
   button {
     @extend %button__typical;
+  }
+}
+
+.button__panel {
+  button {
+    @extend .panel__button;
   }
 }
