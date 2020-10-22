@@ -29,7 +29,7 @@ export function ProjectSelection() {
         <h2>Recent Projects</h2>
         <div className={styles.project__display__options}>
           {recent}
-          <div className={styles.circle}/>
+          {/* <div className={styles.circle}/> */}
         </div>
       </div>
     </div>
