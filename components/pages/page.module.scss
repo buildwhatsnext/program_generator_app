@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 10rem 1fr 10rem;
+  grid-template-rows: 10rem 1fr 8rem;
   
   &__content {
     // overflow-y: scroll;
@@ -22,9 +22,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    padding-left: 10rem;
-    padding-right: 10rem;
-    padding-bottom: 5rem;
+    padding: 0 2rem;
+    align-content: center;
 
     &__back {
       // padding-left: 2rem;
