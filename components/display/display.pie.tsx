@@ -11,8 +11,11 @@ export interface PieProps {
   backgroundColor?: string;
 }
 
-export const ProgrammedSpaceDisplay: React.FC<PieProps> = () => {
+export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  backgroundColor,
+  ...props
+}) => {
   const dispatch = useDispatch();
   const { overview } = useSelector(selectProgram)
   const { area } = overview;
