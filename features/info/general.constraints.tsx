@@ -4,7 +4,6 @@ import { ROUTES } from '../../constants/routes';
 import { Page } from '../../components/pages/page';
 import { 
   TextualQuestionAnswerCombo as TextQuestion,
-  ToggleQuestionAnswerCombo as TogQuest 
 } from '../../components/info/question';
 import { 
   setRsf,
@@ -16,9 +15,9 @@ import {
 function BuildingConstraint() {
   const dispatch = useDispatch();
   const title = 'General Building Constraints'
-  const Q1 = <p>What's the <b> total RSF of the space?</b></p>;
+  const Q1 = <p>What&apos;s the <b> total RSF of the space?</b></p>;
   const Q1Label = `Enter the total area of the space`;
-  const Q2 = <p>What's the <b> RSF loss factor? </b></p>;
+  const Q2 = <p>What&apos;s the <b> RSF loss factor? </b></p>;
   const Q2Label = `Enter the loss factor`;
   const Q3 = <p>How many <b>floors</b> are there in this space</p>;
   const Q3Label = `Enter the amount of floors`;
