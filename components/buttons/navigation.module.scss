@@ -1,34 +1,31 @@
 @import '../../styles/styles.colors.scss';
 
-.textButtons {
-  // border: 10px red solid;
-}
+// .textButtons {
+//   // border: 10px red solid;
+// }
 
-.textButtons:hover .circle {
-  visibility: visible;
-  opacity: 1;
-  background-color: white;
-}
+// .textButtons:hover .circle {
+//   visibility: visible;
+//   opacity: 1;
+//   background-color: white;
+// }
 
-.circle {
-  visibility: hidden;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 100rem;
-  margin-left: 8rem;
-}
+// .circle {
+//   visibility: hidden;
+//   height: 2.5rem;
+//   width: 2.5rem;
+//   border-radius: 100rem;
+//   margin-left: 8rem;
+// }
 
 .nav__next {
-
-
   button {
-
     border: 3px $blue solid;
     border-radius: 0px;
     color: $blue;
     width: auto;
     height: 4rem;
-    font-size: 1.3rem;
+    // font-size: 1.3rem;
     padding-left: 4rem;
     padding-right: 4rem;
     text-transform: none;

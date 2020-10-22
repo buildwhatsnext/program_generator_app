@@ -1,0 +1,17 @@
+@import '../../styles//styles.colors.scss';
+
+.text__white {
+  color: $white;
+}
+
+.text__blue {
+  color: $blue;
+}
+
+.panel__button {
+  @extend.text__white;
+
+  &__wCircle {
+
+  }
+}

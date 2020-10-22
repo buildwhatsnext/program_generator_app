@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 
-import styles from './navigation.module.scss';
+import navStyles from './navigation.module.scss';
+import buttonStyles from './buttons.module.scss';
 
 export type InternalNavBtnProps = {
   content: string;
@@ -33,14 +34,10 @@ export function InternalNavigationalButton({
   }
 
   return execute ? (
-    <div className={styles.panelElements}>
-      <div className={styles.textButtons}>
-        <Button onClick={handleClick}>
-          {content}
-          <div className={styles.circle}></div>
-        </Button>
-      </div>
-    </div>
+    <Button onClick={handleClick}>
+      <p className={buttonStyles.panel__button}>{content}</p>
+      {/* <div className={styles.circle}></div> */}
+    </Button>
   ) : (
     <DirectionalButton location={to} content={content} />
   );
@@ -54,9 +51,11 @@ export function DirectionalButton({ location, content }: IDirectionalButton) {
   }
 
   return (
-    <div className={styles.nav__next}>
+    <div className={navStyles.nav__next}>
       <Button variant='outlined' onClick={handleClick}>
-        {content}
+        <p>
+          {content}
+        </p>
       </Button>
     </div>
   );
@@ -66,9 +65,9 @@ export function BackButton() {
   const router = useRouter();
 
   return (
-    <div className={styles.nav__back}>
+    <div className={navStyles.nav__back}>
       <Button variant="outlined" onClick={() => router.back()}>
-        Back
+        <p>Back</p>
       </Button>
     </div>
   );
