@@ -11,21 +11,27 @@ interface IToggleButton {
 
 export function ToggleButton({ content, active, statusHandler }: IToggleButton) : JSX.Element {
   return !active ? (
-    <Button 
-      variant="outlined" 
-      className={styles.overridebutton}
-      onClick={() => statusHandler()}
-    >
-      {content}
-    </Button>
+    <div className={styles.overridebutton}>
+      <Button 
+        variant="outlined" 
+        onClick={() => statusHandler()}
+      >
+        <p>
+          {content}
+        </p>
+      </Button>
+    </div>
   ) : (
-    <Button
-      variant="contained"
-      color="primary"
-      className={styles.overridebutton__activated}
-      onClick={() => statusHandler()}
-    >
-      {content}
-    </Button>
+    <div className={styles.overridebutton__activated}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => statusHandler()}
+      >
+        <p>
+          {content}
+        </p>
+      </Button>
+    </div>
   );
 }

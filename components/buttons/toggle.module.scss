@@ -1,19 +1,15 @@
 @import '../../styles/styles.colors.scss';
+@import './buttons.module.scss';
 
 .overridebutton {
-  text-transform: capitalize !important;
-  border: 3px $blue solid !important;
-  border-radius: 0px !important;
-  background-color: $white !important;
-  color: $blue !important;
-  width: 12rem !important;
-  height: 4rem !important;
-  font-size: 1.8rem !important;
+  button {
+    @extend %button__typical;
+  }
 
   &__activated {
     @extend .overridebutton;
-    background-color: $blue !important;
-    color: $white !important;
+    background-color: $blue;
+    color: $white;
   }
 }
 
