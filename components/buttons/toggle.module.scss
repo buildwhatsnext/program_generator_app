@@ -2,13 +2,16 @@
 @import './buttons.module.scss';
 
 .overridebutton {
+  width: 100%;
   button {
     @extend %button__typical;
+    width: 100%;
   }
 
   &__activated {
     @extend .overridebutton;
     button {
+      width: 100%;
       background-color: $blue;
       color: $white;
     }
