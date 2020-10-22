@@ -10,6 +10,7 @@ import {
   setLossFactor,
   setFloorCount
 } from '../program/program.slice';
+import styles from '../../components/transition/section.module.scss';
 
 
 function BuildingConstraint() {
@@ -25,27 +26,30 @@ function BuildingConstraint() {
 
   return (
     <Page nextRoute={next}>
+      <div className={styles.section__questions}>
+        <div className={styles.section__questions__title}>
+          <h4>{title}</h4>
+        </div>
+        <div className={styles.section__questions__content}>
+          <TextQuestion 
+            question={Q1}
+            label={Q1Label}
+            answerHandler={(x) => dispatch(setRsf(x))}
+          />
 
-      <h4>{title}</h4>
+          <TextQuestion 
+            question={Q2}
+            label={Q2Label}
+            answerHandler={(x) => dispatch(setLossFactor(x))}
+          />
 
-      <TextQuestion 
-        question={Q1}
-        label={Q1Label}
-        answerHandler={(x) => dispatch(setRsf(x))}
-      />
-
-      <TextQuestion 
-        question={Q2}
-        label={Q2Label}
-        answerHandler={(x) => dispatch(setLossFactor(x))}
-      />
-
-      <TextQuestion 
-        question={Q3}
-        label={Q3Label}
-        answerHandler={(x) => dispatch(setFloorCount(x))}
-      />
-
+          <TextQuestion 
+            question={Q3}
+            label={Q3Label}
+            answerHandler={(x) => dispatch(setFloorCount(x))}
+          />
+        </div>
+      </div>
     </Page>
   );
 };
