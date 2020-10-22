@@ -28,7 +28,7 @@ function BuildingConstraint() {
     <Page nextRoute={next}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
-          <h4>{title}</h4>
+          <h2>{title}</h2>
         </div>
         <div className={styles.section__questions__content}>
           <TextQuestion 
