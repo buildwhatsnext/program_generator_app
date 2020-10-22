@@ -1,5 +1,9 @@
 @import '../../styles/styles.colors.scss';
 
+.questions {
+  padding: 2rem;
+}
+
 .QnA {
   display: grid;
   grid-template-columns: 1fr 1fr;

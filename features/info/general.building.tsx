@@ -13,6 +13,7 @@ import {
   setBroadcast,
   setLab 
 } from '../program/program.slice';
+import styles from '../../components/info/question.module.scss';
 
 function BuildingInformation() {
   const dispatch = useDispatch();
@@ -29,35 +30,38 @@ function BuildingInformation() {
 
       <h2>{ title }</h2>
 
-      <TextQuestion 
-        question={Q1}
-        label='Please enter the name of your client'
-        answerHandler={(x) => dispatch(setClient(x))}
-      />
+      <div className={styles.questions}>
+        <TextQuestion 
+          question={Q1}
+          label='Please enter the name of your client'
+          answerHandler={(x) => dispatch(setClient(x))}
+        />
 
-      <TogQuest 
-        question={Q2}
-        answers={[ 'Metric', 'Imperial']}
-        answerHandler={(x) => dispatch(setUnits(x))}
-      />
+        <TogQuest 
+          question={Q2}
+          answers={[ 'Metric', 'Imperial']}
+          answerHandler={(x) => dispatch(setUnits(x))}
+        />
 
-      <TogQuest 
-        question={Q3}
-        answers={[ 'Single', 'Multi']}
-        answerHandler={(x) => dispatch(setTenancy(x))}
-      />
+        <TogQuest 
+          question={Q3}
+          answers={[ 'Single', 'Multi']}
+          answerHandler={(x) => dispatch(setTenancy(x))}
+        />
 
-      <TogQuest 
-        question={Q4}
-        answers={[ 'Yes', 'No']}
-        answerHandler={(x) => dispatch(setBroadcast(x))}
-      />
+        <TogQuest 
+          question={Q4}
+          answers={[ 'Yes', 'No']}
+          answerHandler={(x) => dispatch(setBroadcast(x))}
+        />
 
-      <TogQuest 
-        question={Q5}
-        answers={[ 'Yes', 'No']}
-        answerHandler={(x) => dispatch(setLab(x))}
-      />
+        <TogQuest 
+          question={Q5}
+          answers={[ 'Yes', 'No']}
+          answerHandler={(x) => dispatch(setLab(x))}
+        />
+      </div>
+      
       
     </Page>
   );
