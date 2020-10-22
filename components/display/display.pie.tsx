@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Doughnut } from 'react-chartjs-2';
-// import styles from './display.pie.module.scss';
+import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../constants/ark.standards';
 // import { selectProject } from '../../features/project/project.slice';
 import { calculateUnplanned, selectProgram } from '../../features/program/program.slice';
