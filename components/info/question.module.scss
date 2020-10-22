@@ -1,22 +1,20 @@
 @import '../../styles/styles.colors.scss';
 
-.questions {
-  padding: 2rem;
-}
-
 .QnA {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 60% 40%;
+  margin-bottom: 1rem;
 
   &__question {
     align-self: center;
   }
 
   &__answer {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    text-align: center;
-    align-self: center;
-    justify-self: center;
+    // justify-content: space-between;
+    // text-align: center;
+    // align-self: center;
+    // justify-self: center;
   }
 }
