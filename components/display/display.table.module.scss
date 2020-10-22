@@ -1,0 +1,11 @@
+.tableCell {
+
+  .MuiInput-underline {
+    &:before {
+      border: 10px solid red;
+    }
+  }
+  input {
+    border: 0px solid red;
+  }
+}

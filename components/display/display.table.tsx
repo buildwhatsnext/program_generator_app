@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import { ISpace, SpaceType } from '../../components/spaces/space.type';
-import { createNoSubstitutionTemplateLiteral, isConstructorDeclaration } from 'typescript';
+import styles from './display.table.module.scss';
 
 interface ISpaceColumn {
   id: string,
@@ -84,14 +84,14 @@ export default function SpaceTable() {
   return (
     <>
       <Button variant='text' onClick={() => addRow()}>Add New</Button>
-      <Paper>
+      {/* <Paper> */}
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader columns={columns} />
             <SpaceTableData columns={columns} rows={rowData} />
           </Table>
         </TableContainer>
-      </Paper>
+      {/* </Paper> */}
     </>
   );
 }
@@ -104,9 +104,17 @@ export function SpaceTableHeader({columns}) {
           <TableCell
             key={column.id}
             align={column.align}
-            style={{ minWidth: column.minWidth }}
+            style={{ 
+              minWidth: column.minWidth,
+              borderBottom: 0,
+              backgroundColor: '#ffffff',
+              color: '#06038D',
+              fontWeight: 600
+            }}
           >
-            {column.label}
+            <p>
+              {column.label}
+            </p>
           </TableCell>
         ))}
       </TableRow>
@@ -131,7 +139,11 @@ export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
               {
                 columns.map((column) => {
                   return (
-                    <TableCell key={column.id} align={column.align}>
+                    <TableCell 
+                      key={column.id} 
+                      align={column.align} 
+                      className={styles.tableCell}
+                    >
                       <TextField />
                     </TableCell>
                   );
