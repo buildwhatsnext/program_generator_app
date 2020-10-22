@@ -5,17 +5,13 @@
   @extend .flex-grid;
   display: grid;
   grid-template-columns: 1fr auto auto;
-  line-height: 10rem;
+  // line-height: 10rem;
 
   &__name {
-    font-size: 3.6rem;
-    font-weight: 400;
     padding-right: 2rem;
   }
 
   &__value {
-    font-size: 3.6rem;
-    font-weight: 400;
   }
 
   &__circle {
