@@ -1,24 +1,6 @@
 @import '../../styles/styles.colors.scss';
 @import './buttons.module.scss';
 
-// .textButtons {
-//   // border: 10px red solid;
-// }
-
-// .textButtons:hover .circle {
-//   visibility: visible;
-//   opacity: 1;
-//   background-color: white;
-// }
-
-// .circle {
-//   visibility: hidden;
-//   height: 2.5rem;
-//   width: 2.5rem;
-//   border-radius: 100rem;
-//   margin-left: 8rem;
-// }
-
 .nav__next {
   button {
     @extend %button__typical;

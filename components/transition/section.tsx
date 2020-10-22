@@ -17,11 +17,11 @@ export function TransitionSection({
     <div className={styles.section}>
       <p className={styles.section__desc}>{desc}</p>
       <div className={styles.section__nav}>
-        <div className={styles.section__nav__next}>
-          <DirectionalButton location={to} content={fwdBtnText} />
-        </div>
         <div className={styles.section__nav__back}>
           <BackButton />
+        </div>
+        <div className={styles.section__nav__next}>
+          <DirectionalButton location={to} content={fwdBtnText} />
         </div>
       </div>
     </div>

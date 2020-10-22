@@ -34,10 +34,11 @@ export function InternalNavigationalButton({
   }
 
   return execute ? (
-    <Button onClick={handleClick}>
-      <p className={buttonStyles.panel__button}>{content}</p>
-      {/* <div className={styles.circle}></div> */}
-    </Button>
+    <div className={navStyles.nav__next}>
+      <Button onClick={handleClick}>
+        <p>{content}</p>
+      </Button>
+    </div>
   ) : (
     <DirectionalButton location={to} content={content} />
   );
