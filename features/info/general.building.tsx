@@ -27,7 +27,7 @@ function BuildingInformation() {
   return (
     <Page nextRoute={next}>
 
-      <h4>{ title }</h4>
+      <h2>{ title }</h2>
 
       <TextQuestion 
         question={Q1}
