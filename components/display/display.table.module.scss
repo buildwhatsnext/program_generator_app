@@ -1,11 +1,9 @@
-.tableCell {
+@import '../../styles/styles.colors.scss';
 
-  .MuiInput-underline {
-    &:before {
-      border: 10px solid red;
-    }
-  }
-  input {
-    border: 0px solid red;
+.tableCell {
+  &__override {
+    border: 0 !important;
+    background-color: $white !important;
+    color: $blue !important;
   }
 }

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
-import { ISpace, SpaceType } from '../../components/spaces/space.type';
+import { ISpace, SpaceType } from '../spaces/space.type';
 import styles from './display.table.module.scss';
 
 interface ISpaceColumn {
@@ -106,11 +105,8 @@ export function SpaceTableHeader({columns}) {
             align={column.align}
             style={{ 
               minWidth: column.minWidth,
-              borderBottom: 0,
-              backgroundColor: '#ffffff',
-              color: '#06038D',
-              fontWeight: 600
             }}
+            className={styles.tableCell__override}
           >
             <p>
               {column.label}
@@ -142,7 +138,7 @@ export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
                     <TableCell 
                       key={column.id} 
                       align={column.align} 
-                      className={styles.tableCell}
+                      className={styles.tableCell__override}
                     >
                       <TextField />
                     </TableCell>
