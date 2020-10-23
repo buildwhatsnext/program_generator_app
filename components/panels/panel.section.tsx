@@ -1,5 +1,6 @@
 /* eslint-disable lines-between-class-members */
 import React from 'react';
+import _, { map } from 'underscore';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -10,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { selectProgram } from '../../features/program/program.slice';
 import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
 import styles from './panel.section.module.scss';
+import { formatAreaData } from '../units/units';
 
 export interface IPanelSection {
   title: string;
@@ -80,13 +82,12 @@ export function reMapPanelData(originalData: Record<string, unknown>, newData: R
     .values(originalData)
     .forEach((v,i) => {
       const name = Object.keys(value)[i];
-      console.log(name);
-      console.log(v);
       value[name] = v;
     });
 
   return value;
 }
+
 
 export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
   const data = {
@@ -98,8 +99,8 @@ export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedP
   }
 
   const reMapped = reMapPanelData(rawData, data);
-
-  const basicData = convertDataToINamedValues(reMapped);
+  const converted = convertDataToINamedValues(reMapped);
+  const basicData = formatAreaData(converted);
 
   return (
     <PanelSection
@@ -170,8 +171,8 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
     "Programmed Meeting Seats/Work Seats": '0.0'
   }
   const reMapped = reMapPanelData(rawData, data);
-  // const formatted = formatProgramPanelData(reMapped);
-  const basicData = convertDataToINamedValues(reMapped);
+  const formatted = formatProgramPanelData(reMapped);
+  const basicData = convertDataToINamedValues(formatted);
 
   return (
     <PanelSection
@@ -187,6 +188,11 @@ function formatProgramPanelData(data: Record<string, unknown>) {
   const { overview } = useSelector(selectProgram);
   const { hasBroadcast, hasLab } = overview.general;
 
-  // if(!hasBroadcast)
-  //   data.
+  if(!hasBroadcast)
+    delete data["Total Number of Broadcast Spaces"];
+
+  if(!hasLab)
+    delete data["Total Number of Lab Spaces"];
+
+  return data;
 }
