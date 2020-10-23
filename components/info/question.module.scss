@@ -1,32 +1,18 @@
 @import '../../styles/styles.colors.scss';
 
-
 .QnA {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  font-size: 2.4rem;
-  font-weight: 500;
-  height: 6rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 70% 30%;
+  margin-bottom: 1rem;
 
   &__question {
     align-self: center;
-    padding-left: 34rem;
-
-    p {
-      font-size: 2.4rem;
-      font-weight: 400;
-      line-height: 8rem;
-    }
   }
 
   &__answer {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    text-align: center;
-    align-self: center;
-    justify-self: center;
-    width: 35rem;
-    // border: green 2px solid;
+    gap: 3rem;
   }
 }

@@ -9,8 +9,12 @@ export interface IPanel {
 export function Panel({title = 'Program Dashboard', children }: IPanel) {
   return (
     <div className={styles.panel}>
-      <div className={styles.panel__title}>{title}</div>
-      <div className={styles.panel__content}>{children}</div>
+      <div className={styles.panel__title}>
+        <h1>{title}</h1> 
+      </div>
+      <div className={styles.panel__content}>
+        {children}
+      </div>
     </div>
   )
 }

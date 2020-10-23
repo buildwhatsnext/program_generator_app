@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,8 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
-import { ISpace, SpaceType } from '../../components/spaces/space.type';
-import { createNoSubstitutionTemplateLiteral, isConstructorDeclaration } from 'typescript';
+import { ISpace, SpaceType } from '../spaces/space.type';
+import styles from './display.table.module.scss';
 
 interface ISpaceColumn {
   id: string,
@@ -30,40 +29,40 @@ const columns: ISpaceColumn[] = [
   { 
     id: 'name', 
     label: 'Name', 
-    minWidth: 170 
+    minWidth: 14
   },
   { 
     id: 'seats', 
     label: 'Seats', 
-    minWidth: 100 
+    minWidth: 2 
   },
   {
     id: 'ratio',
     label: 'Ratio',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'area',
     label: 'Area',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'qty_selected',
     label: 'Quantity Selected',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toFixed(2),
   },
   { 
     id: 'seats_total', 
     label: 'Total Seats', 
-    minWidth: 100 
+    minWidth: 2 
   },
   { 
     id: 'area_total', 
     label: 'Total Area', 
-    minWidth: 100 
+    minWidth: 2 
   },
 ];
 
@@ -84,14 +83,14 @@ export default function SpaceTable() {
   return (
     <>
       <Button variant='text' onClick={() => addRow()}>Add New</Button>
-      <Paper>
+      {/* <Paper> */}
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader columns={columns} />
             <SpaceTableData columns={columns} rows={rowData} />
           </Table>
         </TableContainer>
-      </Paper>
+      {/* </Paper> */}
     </>
   );
 }
@@ -104,9 +103,14 @@ export function SpaceTableHeader({columns}) {
           <TableCell
             key={column.id}
             align={column.align}
-            style={{ minWidth: column.minWidth }}
+            style={{ 
+              minWidth: `${column.minWidth}rem`,
+            }}
+            className={styles.tableCell__override}
           >
-            {column.label}
+            <p>
+              {column.label}
+            </p>
           </TableCell>
         ))}
       </TableRow>
@@ -131,7 +135,14 @@ export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
               {
                 columns.map((column) => {
                   return (
-                    <TableCell key={column.id} align={column.align}>
+                    <TableCell 
+                      key={column.id} 
+                      align={column.align} 
+                      style={{ 
+                        minWidth: `${column.minWidth}rem`,
+                      }}
+                      className={styles.tableCell__override}
+                    >
                       <TextField />
                     </TableCell>
                   );

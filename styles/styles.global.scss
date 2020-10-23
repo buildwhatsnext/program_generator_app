@@ -1,10 +1,7 @@
 @import './styles.colors.scss';
-// @import './styles.placeholders.scss';
-@import url("https://use.typekit.net/acl1qnv.css");
-
-:root {
-  font-size: 10px;
-}
+@import './styles.breakpoints.scss';
+@import './styles.placeholders.scss';
+@import './styles.fonts.scss';
 
 * {
   box-sizing: border-box;
@@ -13,22 +10,16 @@
 html, body {
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
-  font-size: 10px;
   margin: 0px;
   background-color: $dark_blue;
   color: $white;
-  overflow-y: hidden;
-  font-family: neue-haas-grotesk-display, sans-serif;
-  font-style: normal;
-  font-weight: 500;
+  overflow: hidden;
 }
 
 #__next {
-  height: 100vh;
-  font-size: 64px;
+  // height: 100vh;
+  height: 100%;
   box-sizing: inherit;
-  // border: 10px solid palegreen;
 }
 
 a {
@@ -41,20 +32,6 @@ a {
     opacity: 1;
     cursor: pointer;
   }
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
-}
-
-p {
-  font-size: 1.4rem;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
 }
 
 li {
