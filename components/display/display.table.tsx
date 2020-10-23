@@ -29,40 +29,40 @@ const columns: ISpaceColumn[] = [
   { 
     id: 'name', 
     label: 'Name', 
-    minWidth: 170 
+    minWidth: 14
   },
   { 
     id: 'seats', 
     label: 'Seats', 
-    minWidth: 100 
+    minWidth: 2 
   },
   {
     id: 'ratio',
     label: 'Ratio',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'area',
     label: 'Area',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'qty_selected',
     label: 'Quantity Selected',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toFixed(2),
   },
   { 
     id: 'seats_total', 
     label: 'Total Seats', 
-    minWidth: 100 
+    minWidth: 2 
   },
   { 
     id: 'area_total', 
     label: 'Total Area', 
-    minWidth: 100 
+    minWidth: 2 
   },
 ];
 
@@ -104,7 +104,7 @@ export function SpaceTableHeader({columns}) {
             key={column.id}
             align={column.align}
             style={{ 
-              minWidth: column.minWidth,
+              minWidth: `${column.minWidth}rem`,
             }}
             className={styles.tableCell__override}
           >
@@ -138,6 +138,9 @@ export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
                     <TableCell 
                       key={column.id} 
                       align={column.align} 
+                      style={{ 
+                        minWidth: `${column.minWidth}rem`,
+                      }}
                       className={styles.tableCell__override}
                     >
                       <TextField />
