@@ -11,15 +11,16 @@
     // justify-self: center;
 
     &__next {
-      grid-column: 1/2;
-      justify-self: end;
-      margin-right: 0rem;
+      grid-column: 2/3;
+      justify-self: start;
+      margin-right: 12rem;
     }
 
     &__back {
-      grid-column: 2/3;
-      justify-self: start;
-      margin-left: 10rem;
+      grid-column: 1/2;
+      grid-row: 1/2;
+      justify-self: end;
+      margin-right: 12rem;
     }
   }
 }

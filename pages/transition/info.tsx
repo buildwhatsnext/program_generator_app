@@ -10,8 +10,8 @@ export default function TransitionInfoPage() {
     <TransitionPage showPanel>
       <TransitionSection
         desc={desc}
-        fwdBtnText={forward}
         to={ROUTES.INFO.GENERAL}
+        fwdBtnText={forward}
       />
     </TransitionPage>
   );
