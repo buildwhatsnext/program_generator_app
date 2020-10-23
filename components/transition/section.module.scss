@@ -14,10 +14,8 @@
     align-self: center;
     width: 100%;
     display: grid;
-    // grid-template-rows: 1fr;
     grid-template-columns: auto 1fr;
     column-gap: 1rem;
-    // justify-self: center;
 
     &__next {
       width: 100%;
