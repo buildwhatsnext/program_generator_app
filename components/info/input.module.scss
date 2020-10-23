@@ -15,17 +15,14 @@
       label {
         color: $blue;
         opacity: 60%;
-        // font-size: 1.5rem;
-        // font-weight: 400;
+        text-align: center;
+        width: 100%;
       }
 
       input {
         color: $blue;
         text-align: left;
         width: 100%;
-        border: 1px red solid;
-        // font-size: 2.4rem;
-        // font-weight: 400;
       }
     }
   }
