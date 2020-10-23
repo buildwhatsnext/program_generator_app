@@ -16,10 +16,14 @@
 
 .panel__button {
   @extend.text__white;
-  transition: all .5s;
+  transition: all .25s;
+  border-radius: 0px;
 
   &:hover {
-    color: darken($color: $white, $amount: 10%)
+    // color: darken($color: $white, $amount: 50%)
+    color: $blue;
+    background-color: $white;
+    border-radius: 0px;
   }
 }
 
