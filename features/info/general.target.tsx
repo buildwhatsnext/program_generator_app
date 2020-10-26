@@ -30,7 +30,7 @@ function TargetMetric () {
 
   const title = 'Target Metrics';
   const Q1 = <p>What&apos;s the <b> target circulation factor? </b> </p>;
-  const Q2 = <p>What&apos;s the <b> target planning factor? </b> </p>;
+  const Q2 = <p>What&apos;s the <b> target loss factor? </b> </p>;
   const Q3 = <p>What&apos;s the <b> target area per workseat </b> </p>;
   const Q4 = <p>If you have it, what are the <b> target workseats </b> ?</p>;
   const next = ROUTES.PROGRAM.START;
@@ -50,7 +50,7 @@ function TargetMetric () {
 
           <TextQuestion 
             question={Q2}
-            label='Enter the target planning factor (%)'
+            label='Enter the target loss factor (%)'
             answerHandler={(x) => setAnswerTwo(x)}
           />
 
@@ -62,7 +62,7 @@ function TargetMetric () {
 
           <TextQuestion 
             question={Q4}
-            label='Enter the target for total number of workseats'
+            label='Enter the target for total workseats'
             answerHandler={(x) => setAnswerFour(x)}
           />
         </div>
