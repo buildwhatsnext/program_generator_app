@@ -31,13 +31,10 @@ const INITIAL_PROGRAM_DATA = {
       area_lab: 0,
     },
     totals: {
-      total_offices: 0,
-      total_open_workspaces: 0,
-      total_meeting_spaces: 0,
-      total_amenity_spaces: 0,
-      total_support_spaces: 0,
-      total_workseats: 0,
-      ratio: 0,
+      total_program_area: 0,
+      workseat_ratio: 0,
+      total_number_of_workseats: 0,
+      collaboration_ratio: 0,
     },
   },
   spaces: {

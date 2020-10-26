@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
 import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
