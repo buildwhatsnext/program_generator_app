@@ -25,7 +25,6 @@ function BuildingInformation() {
   const [answerFive, setAnswerFive] = React.useState(null);
 
   const passToStore = () => {
-    console.log('Passing to redux!');
     dispatch(setClient(answerOne));
     dispatch(setUnits(answerTwo));
     dispatch(setTenancy(answerThree));
