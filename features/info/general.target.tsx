@@ -15,6 +15,19 @@ import styles from '../../components/transition/section.module.scss';
 
 function TargetMetric () {
   const dispatch = useDispatch();
+
+  const [answerOne, setAnswerOne] = React.useState(null);
+  const [answerTwo, setAnswerTwo] = React.useState(null);
+  const [answerThree, setAnswerThree] = React.useState(null);
+  const [answerFour, setAnswerFour] = React.useState(null);
+
+  const passToStore = () => {
+    dispatch(setCirculation(answerOne));
+    dispatch(setPlanning(answerTwo));
+    dispatch(setWorkseatArea(answerThree));
+    dispatch(setWorkseatTarget(answerFour));
+  }
+
   const title = 'Target Metrics';
   const Q1 = <p>What&apos;s the <b> target circulation factor? </b> </p>;
   const Q2 = <p>What&apos;s the <b> target planning factor? </b> </p>;
@@ -23,7 +36,7 @@ function TargetMetric () {
   const next = ROUTES.PROGRAM.START;
 
   return (
-    <Page nextRoute={next}>
+    <Page nextRoute={next} navFx={passToStore}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{title}</h2>
@@ -32,25 +45,25 @@ function TargetMetric () {
           <TextQuestion 
             question={Q1}
             label='Enter the target circulation factor (%)'
-            answerHandler={(x) => dispatch(setCirculation(x))}
+            answerHandler={(x) => setAnswerOne(x)}
           />
 
           <TextQuestion 
             question={Q2}
             label='Enter the target planning factor (%)'
-            answerHandler={(x) => dispatch(setPlanning(x))}
+            answerHandler={(x) => setAnswerTwo(x)}
           />
 
           <TextQuestion 
             question={Q3}
             label='Enter the target area per workseat'
-            answerHandler={(x) => dispatch(setWorkseatArea(x))}
+            answerHandler={(x) => setAnswerThree(x)}
           />
 
           <TextQuestion 
             question={Q4}
             label='Enter the target for total number of workseats'
-            answerHandler={(x) => dispatch(setWorkseatTarget(x))}
+            answerHandler={(x) => setAnswerFour(x)}
           />
         </div>
       </div>

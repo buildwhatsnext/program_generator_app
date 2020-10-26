@@ -52,7 +52,6 @@ function BuildingInformation() {
             label='Please enter the name of your client'
             answerHandler={(x) => setAnswerOne(x)}
           />
-
           <TogQuest 
             question={Q2}
             answers={[ 'Metric', 'Imperial']}

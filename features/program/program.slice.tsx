@@ -10,13 +10,19 @@ const programSlice = createSlice({
   initialState: bldgData,
   reducers: {
     setClient: (state, action) => {
-      state.overview.general.client = action.payload;
+      const value = action?.payload ?? 'unknown'
+
+      state.overview.general.client = value;
     },
     setUnits: (state, action) => {
-      state.overview.general.units = action.payload;
+      const value = action?.payload ?? 'unknown'
+
+      state.overview.general.units = value;
     },
     setTenancy: (state, action) => {
-      state.overview.general.tenancy = action.payload;
+      const value = action?.payload ?? 'unknown'
+
+      state.overview.general.tenancy = value;
     },
     setBroadcast: (state, action) => {
       state.overview.general.hasBroadcast = action?.payload && action.payload.toString().toLowerCase() === 'yes';
