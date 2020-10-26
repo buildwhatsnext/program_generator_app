@@ -7,10 +7,13 @@ export interface IFxRoutingButton extends IFxButton {
   location: string;
 }
 
-export function FxRoutingButton({ location, content, customButtonStyle, outlined }: IFxRoutingButton) {
+export function FxRoutingButton({ location, content, customButtonStyle, outlined, handleClick }: IFxRoutingButton) {
   const router = useRouter();
 
-  const handleClick = () => {
+  const run = () => {
+    if(handleClick)
+      handleClick();
+      
     router.push(location);
   }
 
@@ -18,7 +21,7 @@ export function FxRoutingButton({ location, content, customButtonStyle, outlined
     <FxButton
       outlined={outlined}
       content={content}
-      handleClick={handleClick}
+      handleClick={run}
       customButtonStyle={customButtonStyle} 
     />
   );

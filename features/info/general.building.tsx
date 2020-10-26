@@ -25,14 +25,14 @@ function BuildingInformation() {
   const [answerFive, setAnswerFive] = React.useState(null);
 
   const passToStore = () => {
+    console.log('Passing to redux!');
     dispatch(setClient(answerOne));
     dispatch(setUnits(answerTwo));
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
   }
-  
-  
+
   const title = 'General Building Information';
   const Q1 = <p>What is your <b>client&apos;s name?</b></p>;
   const Q2 = <p>Which <b> units </b> should we use to measure your space? </p>;
@@ -42,7 +42,7 @@ function BuildingInformation() {
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
-    <Page nextRoute={next}>
+    <Page nextRoute={next} navFx={passToStore}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{ title }</h2>
