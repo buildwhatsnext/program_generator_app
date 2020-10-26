@@ -3,7 +3,7 @@ import styles from './panel.project.module.scss';
 import buttonStyles from '../buttons/navigation.module.scss';
 import { Panel } from './panel';
 import { createNewProject, openProject } from '../../features/project/project.slice';
-import { FxRoutingButton } from '../buttons/navigation';
+import { DFxRoutingButton } from '../buttons/navigation';
 import { ROUTES } from '../../constants/routes';
 
 export const ProjectOpenPanel = (): JSX.Element => (
@@ -21,15 +21,15 @@ function OpenOptions() {
 
   return (
     <div className={styles.open__options}>
-      <FxRoutingButton
+      <DFxRoutingButton
         content="Create New"
-        to={ROUTES.TRANSITION.PROJECT}
+        location={ROUTES.TRANSITION.PROJECT}
         execute={createNewProject}
         customButtonStyle={buttonStyles.button__panel}
       />
-      <FxRoutingButton
+      <DFxRoutingButton
         content="Open Project"
-        to={ROUTES.TRANSITION.PROJECT}
+        location={ROUTES.TRANSITION.PROJECT}
         execute={openProject}
         executableData={projectDetails}
         customButtonStyle={buttonStyles.button__panel}

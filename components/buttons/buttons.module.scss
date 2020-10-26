@@ -39,5 +39,7 @@
 }
 
 .button__typical {
-  @extend %button__typical;
+  button {
+    @extend %button__typical;
+  }
 }
