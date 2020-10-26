@@ -57,25 +57,25 @@ function BuildingInformation() {
           <TogQuest 
             question={Q2}
             answers={[ 'Metric', 'Imperial']}
-            answerHandler={(x) => dispatch(setUnits(x))}
+            answerHandler={(x) => setAnswerTwo(x)}
           />
 
           <TogQuest 
             question={Q3}
             answers={[ 'Single', 'Multi']}
-            answerHandler={(x) => dispatch(setTenancy(x))}
+            answerHandler={(x) => setAnswerThree(x)}
           />
 
           <TogQuest 
             question={Q4}
             answers={[ 'Yes', 'No']}
-            answerHandler={(x) => dispatch(setBroadcast(x))}
+            answerHandler={(x) => setAnswerFour(x)}
           />
 
           <TogQuest 
             question={Q5}
             answers={[ 'Yes', 'No']}
-            answerHandler={(x) => dispatch(setLab(x))}
+            answerHandler={(x) => setAnswerFive(x)}
           />
         </div>  
       </div>
