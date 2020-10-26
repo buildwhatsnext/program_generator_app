@@ -1,9 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
-import { Button } from '@material-ui/core';
-
-import navStyles from './navigation.module.scss';
+import FxButton from './button.component';
 
 export type InternalNavBtnProps = {
   content: string;
@@ -35,17 +33,20 @@ export function InternalNavigationalButton({
   }
 
   return execute ? (
-    <div className={customButtonStyle ?? navStyles.nav__next}>
-      <Button onClick={handleClick}>
-        <p>{content}</p>
-      </Button>
-    </div>
+    <FxButton 
+      content={content} 
+      handleClick={handleClick} 
+      customButtonStyle={customButtonStyle} 
+    />
   ) : (
-    <DirectionalButton location={to} content={content} />
+    <FxRoutingButton 
+      location={to} 
+      content={content} 
+    />
   );
 }
 
-export function DirectionalButton({ location, content }: IDirectionalButton) {
+export function FxRoutingButton({ location, content }: IDirectionalButton) {
   const router = useRouter();
 
   const handleClick = () => {
@@ -53,24 +54,26 @@ export function DirectionalButton({ location, content }: IDirectionalButton) {
   }
 
   return (
-    <div className={navStyles.nav__next}>
-      <Button variant='outlined' onClick={handleClick}>
-        <p>
-          {content}
-        </p>
-      </Button>
-    </div>
+    <FxButton
+      outlined
+      content={content}
+      handleClick={handleClick}
+    />
   );
 }
 
 export function BackButton() {
   const router = useRouter();
 
+  const handleClick = () => {
+    router.back()
+  }
+
   return (
-    <div className={navStyles.nav__back}>
-      <Button variant="outlined" onClick={() => router.back()}>
-        <p>Back</p>
-      </Button>
-    </div>
+    <FxButton
+      outlined
+      content='Back'
+      handleClick={handleClick}
+    />
   );
 }

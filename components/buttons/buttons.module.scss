@@ -37,3 +37,7 @@
     color: white;
   }
 }
+
+.button__typical {
+  @extend %button__typical;
+}
