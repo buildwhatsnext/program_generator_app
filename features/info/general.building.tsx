@@ -13,11 +13,26 @@ import {
   setBroadcast,
   setLab 
 } from '../program/program.slice';
-// import styles from '../../components/info/question.module.scss';
 import styles from '../../components/transition/section.module.scss';
 
 function BuildingInformation() {
   const dispatch = useDispatch();
+
+  const [answerOne, setAnswerOne] = React.useState(null);
+  const [answerTwo, setAnswerTwo] = React.useState(null);
+  const [answerThree, setAnswerThree] = React.useState(null);
+  const [answerFour, setAnswerFour] = React.useState(null);
+  const [answerFive, setAnswerFive] = React.useState(null);
+
+  const passToStore = () => {
+    dispatch(setClient(answerOne));
+    dispatch(setUnits(answerTwo));
+    dispatch(setTenancy(answerThree));
+    dispatch(setBroadcast(answerFour));
+    dispatch(setLab(answerFive));
+  }
+  
+  
   const title = 'General Building Information';
   const Q1 = <p>What is your <b>client&apos;s name?</b></p>;
   const Q2 = <p>Which <b> units </b> should we use to measure your space? </p>;
@@ -36,7 +51,7 @@ function BuildingInformation() {
           <TextQuestion 
             question={Q1}
             label='Please enter the name of your client'
-            answerHandler={(x) => dispatch(setClient(x))}
+            answerHandler={(x) => setAnswerOne(x)}
           />
 
           <TogQuest 
