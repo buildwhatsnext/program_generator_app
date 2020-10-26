@@ -19,10 +19,10 @@ const programSlice = createSlice({
       state.overview.general.tenancy = action.payload;
     },
     setBroadcast: (state, action) => {
-      state.overview.general.hasBroadcast = action.payload.toString().toLowerCase() === 'yes';
+      state.overview.general.hasBroadcast = action?.payload && action.payload.toString().toLowerCase() === 'yes';
     },
     setLab: (state, action) => {
-      state.overview.general.hasLab = action.payload.toString().toLowerCase() === 'yes';
+      state.overview.general.hasLab = action?.payload && action.payload.toString().toLowerCase() === 'yes';
     },
     setRsf: (state, action) => {
       state.overview.basic.area_gross = Number(action.payload);
