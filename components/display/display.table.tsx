@@ -27,6 +27,11 @@ function convertEnumToString(value: SpaceType) {
 
 const columns: ISpaceColumn[] = [
   { 
+    id: 'delete', 
+    label: '', 
+    minWidth: 1
+  },
+  { 
     id: 'name', 
     label: 'Name', 
     minWidth: 14
@@ -67,18 +72,27 @@ const columns: ISpaceColumn[] = [
 ];
 
 export default function SpaceTable() {
-  const start = [{}];
+  const [index, setIndex] = React.useState(0);
+  const start = [{index}];
   const [rowData, setRowData] = React.useState(start);
 
   const addRow = () => {
     const newRowData = Array.from(rowData);
-    newRowData.push({});
+    const newIndex = index + 1;
+    
+    newRowData.push({index:newIndex});
+    
+    setIndex(newIndex);
     setRowData(newRowData);
   }
 
-  // const removeRow = () => {
-  //   rowData.
-  // }
+  const removeRow = (index) => {
+    const newRowData = Array.from(rowData);
+    console.log(`I want to delete ${index}`);
+    newRowData.splice(index, 1);
+    console.log('This is what the data looks like: ', newRowData);
+    setRowData(newRowData);
+  }
 
   return (
     <>
@@ -87,7 +101,7 @@ export default function SpaceTable() {
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader columns={columns} />
-            <SpaceTableData columns={columns} rows={rowData} />
+            <SpaceTableData columns={columns} rows={rowData} handler={removeRow} />
           </Table>
         </TableContainer>
       {/* </Paper> */}
@@ -118,7 +132,7 @@ export function SpaceTableHeader({columns}) {
   )
 }
 
-export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
+export function SpaceTableData({ columns, rows, handler } /* : ISpaceTableData */) {
   console.log(rows);
 
   useEffect(() => {
@@ -129,22 +143,33 @@ export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
     <TableBody>
       {
         rows.map((row,i) => {
-          console.log(i);
           return (
             <TableRow hover role="checkbox" tabIndex={-1} key={i}>
               {
                 columns.map((column) => {
                   return (
-                    <TableCell 
-                      key={column.id} 
-                      align={column.align} 
-                      style={{ 
-                        minWidth: `${column.minWidth}rem`,
-                      }}
-                      className={styles.tableCell__override}
-                    >
-                      <TextField />
-                    </TableCell>
+                    column.id === 'delete' 
+                    ? (
+                      <p 
+                        className={styles.deleteKey}
+                        onClick={() => handler(i)}
+                        // onClick={() => handler(`${i} ${row}`)}
+                      >
+                        x
+                      </p>
+                    )
+                    : (
+                      <TableCell 
+                        key={column.id} 
+                        align={column.align} 
+                        style={{ 
+                          minWidth: `${column.minWidth}rem`,
+                        }}
+                        className={styles.tableCell__override}
+                      >
+                        <TextField />
+                      </TableCell>
+                    )
                   );
                 }
               )}
