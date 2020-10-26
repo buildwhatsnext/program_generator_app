@@ -1,5 +1,5 @@
 import React from 'react';
-import { FxRoutingButton, BackButton } from '../buttons/navigation';
+import { RoutingButton, BackButton } from '../buttons/navigation';
 import styles from './section.module.scss';
 
 export interface ISection {
@@ -27,7 +27,7 @@ export function TransitionSection({
           <BackButton />
         </div>
         <div className={styles.section__nav__next}>
-          <FxRoutingButton location={to} content={fwdBtnText} />
+          <RoutingButton location={to} content={fwdBtnText} />
         </div>
       </div>
     </div>

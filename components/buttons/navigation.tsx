@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
 import FxButton from './button.component';
 
-export type InternalNavBtnProps = {
+export type IFxRoutingButton = {
   content: string;
   execute?: (x) => void;
   executableData?: Record<string, unknown>;
@@ -17,13 +17,13 @@ export interface IDirectionalButton {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function InternalNavigationalButton({
+export function FxRoutingButton({
   content,
   execute,
   to,
   executableData,
   customButtonStyle
-}: InternalNavBtnProps) {
+}: IFxRoutingButton) {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -39,14 +39,14 @@ export function InternalNavigationalButton({
       customButtonStyle={customButtonStyle} 
     />
   ) : (
-    <FxRoutingButton 
+    <RoutingButton 
       location={to} 
       content={content} 
     />
   );
 }
 
-export function FxRoutingButton({ location, content }: IDirectionalButton) {
+export function RoutingButton({ location, content }: IDirectionalButton) {
   const router = useRouter();
 
   const handleClick = () => {
