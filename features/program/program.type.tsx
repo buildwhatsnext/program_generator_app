@@ -1,21 +1,5 @@
+/* eslint-disable lines-between-class-members */
 import { IFloor, IProgram, IUnplacedSpaceCollection } from '../../components/spaces/space.type';
-
-export interface IBuildingProgram extends IProgram {
-  overview: IBuildingOverview;
-}
-
-export class BuildingProgram implements IBuildingProgram {
-  name: string;
-  overview: IBuildingOverview;
-  spaces: IUnplacedSpaceCollection;
-  floors: IFloor[];
-}
-
-export interface IBuildingOverview {
-  general: IGeneralProgramInformation;
-  basic: IBasicBuildingInformation;
-  totals: IProgramTotals;
-}
 
 export interface IGeneralProgramInformation {
   client: string;
@@ -44,4 +28,21 @@ export interface IProgramTotals {
   total_support_spaces: number;
   total_workseats: number;
   ratio: number; 
+}
+
+export interface IBuildingOverview {
+  general: IGeneralProgramInformation;
+  basic: IBasicBuildingInformation;
+  totals: IProgramTotals;
+}
+
+export interface IBuildingProgram extends IProgram {
+  overview: IBuildingOverview;
+}
+
+export class BuildingProgram implements IBuildingProgram {
+  name: string;
+  overview: IBuildingOverview;
+  spaces: IUnplacedSpaceCollection;
+  floors: IFloor[];
 }
