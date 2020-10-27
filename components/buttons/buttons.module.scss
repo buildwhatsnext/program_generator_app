@@ -37,3 +37,9 @@
     color: white;
   }
 }
+
+.button__typical {
+  button {
+    @extend %button__typical;
+  }
+}
