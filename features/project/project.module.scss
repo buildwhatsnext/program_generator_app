@@ -1,22 +1,39 @@
 @import '../../styles/styles.colors.scss';
 
-.project {
-  
-  // margin-top: 40rem;
+.section {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding-left: 5rem;
 
-  // &__display {
-
-  //   line-height: 4rem;
-  //   cursor: pointer;
-
-  //   h4 {
-  //     font-size: 3.2rem;
-  //     font-weight: 600;
-  //   }
-
-  //   &__options {
-  //     margin-right: 20rem;
-  //     margin-left: 20rem;
-  //   }
+  // &__title {
   // }
+
+  &__content {
+    padding: 2rem;
+  }
+
+  &__none {
+    height: 100%;
+    display: grid;
+    align-content: center;
+    padding-left: 2rem;
+
+    p {
+      color: darken($grey, 10%);
+    }
+  }
+}
+
+.recent__item {
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  margin-bottom: 1rem;
+  transition: all ease .1s;
+
+  &:hover {
+    font-weight: 600;
+    cursor: pointer;
+  }
 }
