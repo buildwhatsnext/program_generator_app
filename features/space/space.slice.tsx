@@ -3,9 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { Program } from '../../components/spaces/Program';
 
+const program = {...new Program()}
+
 const programSlice = createSlice({
   name: 'program',
-  initialState: new Program(),
+  initialState: program,
   reducers: {
     calculateUnplanned: (state, action) => {
       const { 

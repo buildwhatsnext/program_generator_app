@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { ProgramOverview } from './OverviewGeneral';
 
-const program = {...new ProgramOverview()};
+const overview = {...new ProgramOverview()};
 
-const projectInfoSlice = createSlice({
-  name: 'info',
-  initialState: program,
+const overviewSlice = createSlice({
+  name: 'overview',
+  initialState: overview,
   reducers: {
     setClient: (state, action) => {
       const value = action?.payload ?? 'unknown'
@@ -68,9 +68,9 @@ const projectInfoSlice = createSlice({
   },
 });
 
-export default projectInfoSlice.reducer;
+export default overviewSlice.reducer;
 
-export const selectInfo = (state: RootState) => state.info;
+export const selectOverview = (state: RootState) => state.overview;
 
 export const { 
   setClient, 
@@ -86,4 +86,4 @@ export const {
   setWorkseatArea,
   setWorkseatTarget,
   // calculateUnplanned 
-} = projectInfoSlice.actions;
+} = overviewSlice.actions;

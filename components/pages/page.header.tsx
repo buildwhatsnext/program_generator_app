@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectInfo } from '../../features/info/info.slice';
+import { selectOverview } from '../../features/info/info.slice';
 import { selectSetting } from '../../features/settings/settings.slice';
 import styles from './page.module.scss';
 import { ROUTES } from '../../constants/routes';
 
 export function ProgramHeader() {
   const router = useRouter();
-  const { client } = useSelector(selectInfo);
+  const { client } = useSelector(selectOverview);
   const { application, company } = useSelector(selectSetting);
 
   const handleClick = () => {

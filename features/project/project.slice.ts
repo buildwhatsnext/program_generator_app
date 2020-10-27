@@ -5,7 +5,7 @@ import data from './project.data';
 import { IProject } from './project.type';
 
 const projectSlice = createSlice({
-  name: 'project',
+  name: 'app',
   initialState: data,
   reducers: {
     createNewProject: {
