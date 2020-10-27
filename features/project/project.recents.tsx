@@ -45,8 +45,8 @@ function displayRecentProjects(projects?: Array<IProject>) {
 export function ProjectSelection() {
   const { projects } = useSelector(selectSetting);
 
-  // const recent = displayRecentProjects(projects.recent);
-  const recent = displayRecentProjects();
+  const recent = displayRecentProjects(projects.recent);
+  // const recent = displayRecentProjects();
 
   return (
     <div className={styles.section}>
