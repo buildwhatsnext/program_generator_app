@@ -68,7 +68,7 @@ const projectInfoSlice = createSlice({
 
 export default projectInfoSlice.reducer;
 
-export const selectProgram = (state: RootState) => state.program;
+export const selectInfo = (state: RootState) => state.program;
 
 export const { 
   setClient, 
