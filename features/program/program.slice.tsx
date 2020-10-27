@@ -28,9 +28,9 @@ const programSlice = createSlice({
       state.overview.basic.area_gross = Number(action.payload);
       state.overview.area.area_total = Number(action.payload);
     },
-    setLossFactor: (state, action) => {
-      state.overview.basic.area_net = Number(action.payload);
-    },
+    // setLossFactor: (state, action) => {
+    //   state.overview.basic.area_net = Number(action.payload);
+    // },
     setFloorCount: (state, action) => {
       state.overview.basic.floors = Number(action.payload);
     },
@@ -72,7 +72,7 @@ export const {
   setBroadcast, 
   setLab,
   setRsf,
-  setLossFactor,
+  // setLossFactor,
   setFloorCount,
   setCirculation,
   setPlanning,

@@ -1,6 +1,5 @@
 /* eslint-disable lines-between-class-members */
 import React from 'react';
-import _, { map } from 'underscore';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -95,7 +94,7 @@ export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedP
     "Net Area": 0,
     "Floors": 0,
     "Circulation Factor": 0,
-    "Planning Factor": 0,
+    "Loss Factor": 0,
   }
 
   const reMapped = reMapPanelData(rawData, data);
@@ -160,19 +159,15 @@ class StructuredProgramPanelData implements IStructuredProgramPanelData {
 export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
   // let data = new StructuredProgramPanelData();
   const data = {
-    "Total Number of Offices": 0,
-    "Total Number of Open Workspaces": 0,
-    "Total Number of Meeting Spaces": 0,
-    "Total Number of Amenity Spaces": 0,
-    "Total Number of Support Spaces": 0,
-    "Total Number of Broadcast Spaces": 0,
-    "Total Number of Lab Spaces": 0,
-    "Programmed Workseats": 0,
-    "Programmed Meeting Seats/Work Seats": '0.0'
+    "Total Programmed Area": 0,
+    "Workseat Ratio": 0,
+    "Total Number of Work Seats": 0,
+    "Collaboration Ratio": 0,
   }
   const reMapped = reMapPanelData(rawData, data);
-  const formatted = formatProgramPanelData(reMapped);
-  const basicData = convertDataToINamedValues(formatted);
+  // const formatted = formatProgramPanelData(reMapped);
+  // const basicData = convertDataToINamedValues(formatted);
+  const basicData = convertDataToINamedValues(reMapped);
 
   return (
     <PanelSection
@@ -184,15 +179,15 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
   )
 }
 
-function formatProgramPanelData(data: Record<string, unknown>) {
-  const { overview } = useSelector(selectProgram);
-  const { hasBroadcast, hasLab } = overview.general;
+// function formatProgramPanelData(data: Record<string, unknown>) {
+//   const { overview } = useSelector(selectProgram);
+//   const { hasBroadcast, hasLab } = overview.general;
 
-  if(!hasBroadcast)
-    delete data["Total Number of Broadcast Spaces"];
+//   if(!hasBroadcast)
+//     delete data["Total Number of Broadcast Spaces"];
 
-  if(!hasLab)
-    delete data["Total Number of Lab Spaces"];
+//   if(!hasLab)
+//     delete data["Total Number of Lab Spaces"];
 
-  return data;
-}
+//   return data;
+// }
