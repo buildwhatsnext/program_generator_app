@@ -10,7 +10,7 @@ export function LabSpaceUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.END}
+      to={ROUTES.SPACE.END}
     />
   )
 }

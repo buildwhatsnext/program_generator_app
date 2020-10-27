@@ -6,7 +6,7 @@ import { WorkspaceDataEntrySection } from './space.entry';
 
 export function EnclosedWorkspaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.ENCLOSED_UPDATE }>
+    <Page nextRoute={ ROUTES.SPACE.ENCLOSED_UPDATE }>
       <WorkspaceDataEntrySection title="Enclosed Offices" data={<SpaceData />} />
     </Page>
   )

@@ -10,7 +10,7 @@ export function MeetingSpaceUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.AMENITY}
+      to={ROUTES.SPACE.AMENITY}
     />
   )
 }

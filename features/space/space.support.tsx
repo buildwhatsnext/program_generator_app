@@ -6,7 +6,7 @@ import { WorkspaceDataEntrySection } from './space.entry';
 
 export function SupportSpaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.SUPPORT_UPDATE }>
+    <Page nextRoute={ ROUTES.SPACE.SUPPORT_UPDATE }>
       <WorkspaceDataEntrySection title="Support Spaces" data={<SpaceData />} />
     </Page>
   )

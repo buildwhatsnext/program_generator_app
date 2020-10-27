@@ -6,7 +6,7 @@ import { WorkspaceDataEntrySection } from './space.entry';
 
 export function OpenPlanWorkspaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.OPEN_PLAN_UPDATE }>
+    <Page nextRoute={ ROUTES.SPACE.OPEN_PLAN_UPDATE }>
       <WorkspaceDataEntrySection title="Open Offices" data={<SpaceData />} />
     </Page>
   )

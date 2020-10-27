@@ -10,7 +10,7 @@ export function ProgramStart() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.ENCLOSED}
+      to={ROUTES.SPACE.ENCLOSED}
     />
   )
 }

@@ -23,36 +23,36 @@ export const SPACE_STANDARDS: { [name: string]: SpaceDisplayStandard } = {
   ENCLOSED_OFFICE: {
     name: PROGRAMS.ENCLOSED_OFFICE,
     color: '#06038D',
-    route: ROUTES.PROGRAM.ENCLOSED
+    route: ROUTES.SPACE.ENCLOSED
   },
   OPEN_OFFICE_AREA: {
     name: PROGRAMS.OPEN_OFFICE_AREA,
     color: '#0097cc',
-    route: ROUTES.PROGRAM.OPEN_PLAN
+    route: ROUTES.SPACE.OPEN_PLAN
   },
   MEETING: {
     name: PROGRAMS.MEETING,
     color: '#ffcc00',
-    route: ROUTES.PROGRAM.MEETING
+    route: ROUTES.SPACE.MEETING
   },
   AMENITY: {
     name: PROGRAMS.AMENITY,
     color: '#F08A02',
-    route: ROUTES.PROGRAM.AMENITY
+    route: ROUTES.SPACE.AMENITY
   },
   SUPPORT: {
     name: PROGRAMS.SUPPORT,
     color: '#92d050',
-    route: ROUTES.PROGRAM.SUPPORT
+    route: ROUTES.SPACE.SUPPORT
   },
   BROADCAST: {
     name: PROGRAMS.BROADCAST,
     color: '#7030A0',
-    route: ROUTES.PROGRAM.BROADCAST
+    route: ROUTES.SPACE.BROADCAST
   },
   LAB: {
     name: PROGRAMS.LAB,
     color: '#ff0000',
-    route: ROUTES.PROGRAM.LAB
+    route: ROUTES.SPACE.LAB
   },
 }

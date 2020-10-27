@@ -6,7 +6,7 @@ import { WorkspaceDataEntrySection } from './space.entry';
 
 export function MeetingWorkspaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.MEETING_UPDATE }>
+    <Page nextRoute={ ROUTES.SPACE.MEETING_UPDATE }>
       <WorkspaceDataEntrySection title="Meeting Spaces" data={<SpaceData />} />
     </Page>
   )

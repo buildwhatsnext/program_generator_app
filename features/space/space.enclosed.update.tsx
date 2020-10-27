@@ -10,7 +10,7 @@ export function EnclosedOfficeUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.OPEN_PLAN}
+      to={ROUTES.SPACE.OPEN_PLAN}
     />
   )
 }

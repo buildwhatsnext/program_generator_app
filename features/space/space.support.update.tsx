@@ -10,7 +10,7 @@ export function SupportSpaceUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.BROADCAST}
+      to={ROUTES.SPACE.BROADCAST}
     />
   )
 }

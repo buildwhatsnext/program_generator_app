@@ -10,7 +10,7 @@ export function AmenitySpacesUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.SUPPORT}
+      to={ROUTES.SPACE.SUPPORT}
     />
   )
 }

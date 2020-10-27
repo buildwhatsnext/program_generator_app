@@ -33,7 +33,7 @@ function TargetMetric () {
   const Q2 = <p>What&apos;s the <b> target loss factor? </b> </p>;
   const Q3 = <p>What&apos;s the <b> target area per workseat </b> </p>;
   const Q4 = <p>If you have it, what are the <b> target workseats </b> ?</p>;
-  const next = ROUTES.PROGRAM.START;
+  const next = ROUTES.SPACE.START;
 
   return (
     <Page nextRoute={next} navFx={passToStore}>

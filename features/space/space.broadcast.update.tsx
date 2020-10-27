@@ -10,7 +10,7 @@ export function BroadcastSpaceUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.LAB}
+      to={ROUTES.SPACE.LAB}
     />
   )
 }

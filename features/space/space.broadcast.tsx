@@ -6,7 +6,7 @@ import { WorkspaceDataEntrySection } from './space.entry';
 
 export function BroadcastSpaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.BROADCAST_UPDATE }>
+    <Page nextRoute={ ROUTES.SPACE.BROADCAST_UPDATE }>
       <WorkspaceDataEntrySection title="Broadcast Spaces" data={<SpaceData />} />
     </Page>
   )

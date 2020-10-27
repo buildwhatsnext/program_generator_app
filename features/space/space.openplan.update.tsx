@@ -10,7 +10,7 @@ export function OpenOfficeUpdate() {
     <ProgramTransition 
       desc={desc}
       fwdBtnText={forward}
-      to={ROUTES.PROGRAM.MEETING}
+      to={ROUTES.SPACE.MEETING}
     />
   )
 }

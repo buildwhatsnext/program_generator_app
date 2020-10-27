@@ -6,7 +6,7 @@ import { WorkspaceDataEntrySection } from './space.entry';
 
 export function AmenitySpaces() {
   return (
-    <Page nextRoute={ ROUTES.PROGRAM.AMENITY_UPDATE }>
+    <Page nextRoute={ ROUTES.SPACE.AMENITY_UPDATE }>
       <WorkspaceDataEntrySection title="Amenity Spaces" data={<SpaceData />} />
     </Page>
   )
