@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../constants/ark.standards';
 import { calculateUnplanned, selectProgram } from '../../features/program/program.slice';
+import { ROUTES } from '../../constants/routes';
+import AppNavigation from '../Navigator';
 
 export const ProgrammedSpaceDisplay: React.FC = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { overview } = useSelector(selectProgram)
   const { area } = overview;
   const { hasLab, hasBroadcast } = overview.general;
@@ -40,6 +44,17 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
     console.log('Done!');
   });
 
+  const handleClick = (data) => {
+    const element = data[0];
+    if(!element)
+      return;
+    
+    const { _model } = element;
+    const standard = SPACE_STANDARDS;
+    const program = _model.label;
+    router.push(standard[program.toUpperCase()].route);
+  }
+
   return (
     <div className={styles.pie}>
       <Doughnut
@@ -49,6 +64,7 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
         }}
         options={options}
         height={100}
+        onElementsClick={handleClick}
       />
     </div>
   )
