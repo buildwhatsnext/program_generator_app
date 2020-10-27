@@ -3,9 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { ProgramOverview } from './OverviewGeneral';
 
+const program = {...new ProgramOverview()};
+
 const projectInfoSlice = createSlice({
-  name: 'program',
-  initialState: new ProgramOverview(),
+  name: 'info',
+  initialState: program,
   reducers: {
     setClient: (state, action) => {
       const value = action?.payload ?? 'unknown'
@@ -53,22 +55,22 @@ const projectInfoSlice = createSlice({
       const input = Number(action.payload);
       state.targetNumOfWorkseats = input;
     },
-    calculateUnplanned: (state) => {
-      const total = state.areaNet
-      const circ = state.targetFactorCirculation
-      const plan = state.targetFactorLoss
-      const unplanned = circ + plan;
-      const percentage = unplanned / 100;
-      const value = total * percentage;
-      const areaCirculation = value;
-      const areaUnplanned = total - value;
-    }
+    // calculateUnplanned: (state) => {
+    //   const total = state.areaNet
+    //   const circ = state.targetFactorCirculation
+    //   const plan = state.targetFactorLoss
+    //   const unplanned = circ + plan;
+    //   const percentage = unplanned / 100;
+    //   const value = total * percentage;
+    //   const areaCirculation = value;
+    //   const areaUnplanned = total - value;
+    // }
   },
 });
 
 export default projectInfoSlice.reducer;
 
-export const selectInfo = (state: RootState) => state.program;
+export const selectInfo = (state: RootState) => state.info;
 
 export const { 
   setClient, 
@@ -83,5 +85,5 @@ export const {
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget,
-  calculateUnplanned 
+  // calculateUnplanned 
 } = projectInfoSlice.actions;
