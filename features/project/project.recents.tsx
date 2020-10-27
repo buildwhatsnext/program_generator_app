@@ -7,12 +7,18 @@ import { NamedValue } from '../../components/NamedValue';
 import { selectSetting } from '../settings/settings.slice';
 import { IProject } from './project.type';
 
-
 function displayRecentProjects(projects: Array<IProject>) {
   const recent = projects.map((p: IProject) => {
     const name = p.name ?? '';
 
-    return <RecentProjectItem key={p.id} name={name} date={p.dateModified} />;
+    return (
+      <NamedValue 
+        key={p.id} 
+        name={name} 
+        value={p.dateModified} 
+        className={styles.recent__item}
+      />
+    );
   });
 
   return recent;
@@ -24,25 +30,13 @@ export function ProjectSelection() {
   const recent = displayRecentProjects(projects.recent);
 
   return (
-    <div className={styles.project}>
-      <div className={styles.project__display}>
+    <div className={styles.section}>
+      <div className={styles.section__title}>
         <h2>Recent Projects</h2>
-        <div className={styles.project__display__options}>
-          {recent}
-          {/* <div className={styles.circle}/> */}
-        </div>
+      </div>
+      <div className={styles.section__content}>
+        {recent}
       </div>
     </div>
   );
 }
-
-type ProjectItemProps = {
-  name: string;
-  date: string;
-};
-
-const RecentProjectItem = (props: ProjectItemProps) => {
-  const { name, date } = props;
-
-  return <NamedValue name={name} value={date} />;
-};
