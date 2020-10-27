@@ -4,14 +4,14 @@ import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../constants/ark.standards';
-import { calculateUnplanned, selectProgram } from '../../features/space/space.slice';
+import { selectInfo } from '../../features/info/info.slice';
 // import { ROUTES } from '../../constants/routes';
 // import AppNavigation from '../Navigator';
 
 export const ProgrammedSpaceDisplay: React.FC = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { overview } = useSelector(selectProgram)
+  const overview = useSelector(selectInfo)
   const { area } = overview;
   const { hasLab, hasBroadcast } = overview.general;
   const standards = SPACE_STANDARDS;
@@ -40,7 +40,7 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
 
   useEffect(() => {
     console.log('Calculating...');
-    dispatch(calculateUnplanned());
+    // dispatch(calculateUnplanned());
     console.log('Done!');
   });
 

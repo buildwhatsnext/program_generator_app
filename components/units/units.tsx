@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { INamedValue } from '../NamedValue';
-import { selectProgram } from '../../features/space/space.slice';
+import { selectInfo } from '../../features/info/info.slice';
 import styles from './units.module.scss';
 
 const areaMeters = (
@@ -16,8 +16,8 @@ const areaFeet = (
 )
 
 export function formatAreaData(data: INamedValue[]) {
-  const { overview } = useSelector(selectProgram);
-  const { units } = overview.general;
+  const overview = useSelector(selectInfo);
+  const { units } = overview;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
   const areaUnitType = units.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
   data.forEach((d, i) => {

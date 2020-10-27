@@ -22,7 +22,7 @@ export function ProgramTransition({desc, fwdBtnText, to}: ISection) {
       nav={nav}
       extraNavClasses={styles.program__nav}
     >
-      <ProgrammedSpaceDisplay />
+      {/* <ProgrammedSpaceDisplay /> */}
     </TransitionPage>
   );
 }

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/space/space.slice';
+import { selectInfo } from '../../features/info/info.slice';
 import { 
   GeneralInfoPanelSection, 
   BasicInfoPanelSection as BasicSection, 
@@ -12,7 +12,7 @@ import { Panel } from './panel';
 
 export function BuildingInformationPanel() {
   const title = 'Building Information';
-  const { overview } = useSelector(selectProgram);
+  const overview = useSelector(selectInfo);
   const [generalOpen, setGeneralOpenStatus] = useState(false);
   const [basicOpen, setBasicOpenStatus] = useState(false);
   const [totalsOpen, setTotalsOpenStatus] = useState(false);
@@ -33,17 +33,17 @@ export function BuildingInformationPanel() {
         <GeneralInfoPanelSection
           handleClick={handleGeneral}
           isActive={generalOpen}
-          rawData={overview.general}
+          rawData={overview}
         />
         <BasicSection
           handleClick={handleBasic}
           isActive={basicOpen}
-          rawData={overview.basic}
+          rawData={overview}
         />
         <ProgramSection
           handleClick={handleTotals}
           isActive={totalsOpen}
-          rawData={overview.totals}
+          rawData={overview}
         />
       </List>
     </Panel>
