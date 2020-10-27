@@ -13,6 +13,17 @@
   &__content {
     padding: 2rem;
   }
+
+  &__none {
+    height: 100%;
+    display: grid;
+    align-content: center;
+    padding-left: 2rem;
+
+    p {
+      color: darken($grey, 10%);
+    }
+  }
 }
 
 .recent__item {

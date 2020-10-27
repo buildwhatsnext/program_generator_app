@@ -7,7 +7,11 @@ import { NamedValue } from '../../components/NamedValue';
 import { selectSetting } from '../settings/settings.slice';
 import { IProject } from './project.type';
 
-function displayRecentProjects(projects: Array<IProject>) {
+const RecentProjects = (projects?: IProject[]) => {
+
+  if(!projects)
+    return null;
+
   const recent = projects.map((p: IProject) => {
     const name = p.name ?? '';
 
@@ -24,10 +28,25 @@ function displayRecentProjects(projects: Array<IProject>) {
   return recent;
 }
 
+function displayRecentProjects(projects?: Array<IProject>) {
+
+  const content = projects?.length > 0 
+    ? RecentProjects(projects)
+    : (
+      <div className={styles.section__none}>
+        <p>There are no recent projects available - make a new one!</p>
+      </div>
+    );
+
+  return content;
+
+}
+
 export function ProjectSelection() {
   const { projects } = useSelector(selectSetting);
 
-  const recent = displayRecentProjects(projects.recent);
+  // const recent = displayRecentProjects(projects.recent);
+  const recent = displayRecentProjects();
 
   return (
     <div className={styles.section}>
