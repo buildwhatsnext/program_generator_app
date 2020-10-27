@@ -45,22 +45,14 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
   });
 
   const handleClick = (data) => {
-    if(!data[0])
-      return;
-
-    console.log(`User clicked something here!`)
     const element = data[0];
-    console.log(`It was:`, element);
-    // console.log(`It was:`, ...data);
-    // eslint-disable-next-line no-underscore-dangle
+    if(!element)
+      return;
+    
     const { _model } = element;
-    console.log(`User wants to edit data about:`,_model.label);
     const standard = SPACE_STANDARDS;
     const program = _model.label;
     router.push(standard[program.toUpperCase()].route);
-    // const route = _model.label === 'Unplanned' ? ROUTES.INFO.CONSTRAINTS : ROUTES.INFO.GENERAL;
-    // router.push(route);
-    // AppNavigation.routeByProgram(_model.label, router);
   }
 
   return (
