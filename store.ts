@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 import clockReducer from './lib/slices/clockSlice'
 import counterReducer from './lib/slices/counterSlice'
 import notesReducer from './lib/slices/notesSlice'
-import programReducer from './features/space/space.slice';
+import infoReducer from './features/info/info.slice';
 import projectReducer from './features/project/project.slice';
 import settingsReducer from './features/settings/settings.slice';
 
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   counter: counterReducer,
   clock: clockReducer,
   notes: notesReducer,
-  program: programReducer,
+  info: infoReducer,
   project: projectReducer,
   settings: settingsReducer,
 });

@@ -10,7 +10,8 @@ const projectSlice = createSlice({
   reducers: {
     createNewProject: {
       reducer(state, action: PayloadAction<IProject>) {
-        console.log(state);
+        // console.log(state);
+        state.dateModified = Date.now().toString();
       },
       prepare(): PayloadAction<IProject> {
         const now = new Date();
