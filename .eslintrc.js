@@ -52,6 +52,8 @@ module.exports = {
     'no-use-before-define': RULESTATE.WARN,
     'no-unused-vars': RULESTATE.OFF,
     'no-param-reassign': RULESTATE.OFF,
+    'lines-between-class-members': RULESTATE.OFF,
+    'no-array-constructor': RULESTATE.OFF,
 
     'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
 

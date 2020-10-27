@@ -43,7 +43,6 @@ export class ProgramOverview implements IProgramOverview{
     this.initialize();
   }
 
-
   initialize(){
     this.client = '';
     this.units = 'unknown';
