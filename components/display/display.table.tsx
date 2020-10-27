@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
+import { Guid } from 'guid-typescript';
 import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -74,17 +77,18 @@ const columns: ISpaceColumn[] = [
 ];
 
 export default function SpaceTable() {
-  const [index, setIndex] = React.useState(0);
-  const start = [{index}];
-  const [rowData, setRowData] = React.useState(start);
+  // const [index, setIndex] = React.useState(0);
+  // const start = [{index}];
+  const initialId = Guid.create().toString();
+  const initialRow = [{id: initialId}]
+  const [rowData, setRowData] = React.useState(initialRow);
 
   const addRow = () => {
     const newRowData = Array.from(rowData);
-    const newIndex = index + 1;
+    const newIndex = Guid.create().toString();
     
-    newRowData.push({index:newIndex});
+    newRowData.push({id:newIndex});
     
-    setIndex(newIndex);
     setRowData(newRowData);
   }
 
@@ -146,7 +150,7 @@ export function SpaceTableData({ columns, rows, handler } /* : ISpaceTableData *
       {
         rows.map((row,i) => {
           return (
-            <TableRow hover role="checkbox" tabIndex={-1} key={i}>
+            <TableRow hover role="checkbox" tabIndex={-1} key={rows[i].id}>
               {
                 columns.map((column) => {
                   return (
