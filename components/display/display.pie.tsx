@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../constants/ark.standards';
 import { calculateUnplanned, selectProgram } from '../../features/program/program.slice';
+import { ROUTES } from '../../constants/routes';
 
 export const ProgrammedSpaceDisplay: React.FC = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { overview } = useSelector(selectProgram)
   const { area } = overview;
   const { hasLab, hasBroadcast } = overview.general;
@@ -40,6 +43,18 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
     console.log('Done!');
   });
 
+  const handleClick = (data) => {
+    console.log(`User clicked something here!`)
+    const element = data[0];
+    console.log(`It was:`, element);
+    // console.log(`It was:`, ...data);
+    // eslint-disable-next-line no-underscore-dangle
+    const { _model } = element;
+    console.log(`User wants to edit data about:`,_model.label);
+    const route = _model.label === 'Unplanned' ? ROUTES.INFO.CONSTRAINTS : ROUTES.INFO.GENERAL;
+    router.push(route);
+  }
+
   return (
     <div className={styles.pie}>
       <Doughnut
@@ -49,6 +64,7 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
         }}
         options={options}
         height={100}
+        onElementsClick={handleClick}
       />
     </div>
   )
