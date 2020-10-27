@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/program/program.slice';
+import { selectProgram } from '../../features/space/space.slice';
 import { selectSetting } from '../../features/settings/settings.slice';
 import styles from './page.module.scss';
 import { ROUTES } from '../../constants/routes';

@@ -1,4 +1,4 @@
-import { EnclosedOfficeUpdate } from '../../features/program/program.enclosed.update';
+import { EnclosedOfficeUpdate } from '../../features/space/space.enclosed.update';
 
 export default function EnclosedUpdatePage() {
   return <EnclosedOfficeUpdate />

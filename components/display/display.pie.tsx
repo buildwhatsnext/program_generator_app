@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../constants/ark.standards';
-import { calculateUnplanned, selectProgram } from '../../features/program/program.slice';
+import { calculateUnplanned, selectProgram } from '../../features/space/space.slice';
 // import { ROUTES } from '../../constants/routes';
 // import AppNavigation from '../Navigator';
 

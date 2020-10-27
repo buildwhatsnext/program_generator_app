@@ -9,7 +9,7 @@ import {
   setRsf,
   setNetArea,
   setFloorCount
-} from '../program/program.slice';
+} from '../space/space.slice';
 import styles from '../../components/transition/section.module.scss';
 
 

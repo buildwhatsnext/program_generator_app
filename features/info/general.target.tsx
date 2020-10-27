@@ -10,7 +10,7 @@ import {
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget
-} from '../program/program.slice';
+} from '../space/space.slice';
 import styles from '../../components/transition/section.module.scss';
 
 function TargetMetric () {

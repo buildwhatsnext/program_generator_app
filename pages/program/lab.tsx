@@ -1,5 +1,5 @@
 import React from 'react';
-import { LabSpaces } from '../../features/program/program.lab';
+import { LabSpaces } from '../../features/space/space.lab';
 
 export default function LabSpacesPage() {
   return <LabSpaces />

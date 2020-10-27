@@ -1,5 +1,5 @@
 import React from 'react';
-import { AmenitySpaces } from '../../features/program/program.amenity';
+import { AmenitySpaces } from '../../features/space/space.amenity';
 
 export default function AmenitySpacePage() {
   return <AmenitySpaces />

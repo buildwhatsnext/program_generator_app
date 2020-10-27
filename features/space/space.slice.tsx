@@ -1,7 +1,7 @@
 import { Guid } from 'guid-typescript';
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import bldgData from './program.data';
+import bldgData from './space.data';
 
 // const initialData = new BuildingProgram();
 

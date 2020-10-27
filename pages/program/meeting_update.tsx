@@ -1,4 +1,4 @@
-import { MeetingSpaceUpdate } from '../../features/program/program.meeting.update';
+import { MeetingSpaceUpdate } from '../../features/space/space.meeting.update';
 
 export default function MeetinSpaceUpdatePage() {
   return <MeetingSpaceUpdate />

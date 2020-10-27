@@ -12,7 +12,7 @@ import {
   setTenancy,
   setBroadcast,
   setLab 
-} from '../program/program.slice';
+} from '../space/space.slice';
 import styles from '../../components/transition/section.module.scss';
 
 function BuildingInformation() {

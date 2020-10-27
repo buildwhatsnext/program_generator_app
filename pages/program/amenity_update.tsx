@@ -1,4 +1,4 @@
-import { AmenitySpacesUpdate } from '../../features/program/program.amenity.update';
+import { AmenitySpacesUpdate } from '../../features/space/space.amenity.update';
 
 export default function AmenitySpacesUpdatePage() {
   return <AmenitySpacesUpdate />

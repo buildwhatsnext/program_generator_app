@@ -1,4 +1,4 @@
-import { IBuildingProgram } from './program.type';
+import { IBuildingProgram } from './space.type';
 
 // const INITIAL_PROGRAM_DATA: IBuildingProgram = {
 const INITIAL_PROGRAM_DATA = {

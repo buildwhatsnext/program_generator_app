@@ -7,7 +7,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/program/program.slice';
+import { selectProgram } from '../../features/space/space.slice';
 import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
 import styles from './panel.section.module.scss';
 import { formatAreaData } from '../units/units';

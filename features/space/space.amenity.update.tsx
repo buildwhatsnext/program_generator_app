@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgramTransition } from './program.transition';
+import { ProgramTransition } from './space.transition';
 import { ROUTES } from '../../constants/routes';
 
 export function AmenitySpacesUpdate() {

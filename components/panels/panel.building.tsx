@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/program/program.slice';
+import { selectProgram } from '../../features/space/space.slice';
 import { 
   GeneralInfoPanelSection, 
   BasicInfoPanelSection as BasicSection, 

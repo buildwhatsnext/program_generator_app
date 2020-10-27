@@ -3,7 +3,7 @@ import { TransitionPage } from '../../components/transition/page';
 import { TransitionSection, ISection } from '../../components/transition/section';
 import { BuildingInformationPanel } from '../../components/panels/panel.building';
 import { ProgrammedSpaceDisplay } from '../../components/display/display.pie';
-import styles from './program.module.scss';
+import styles from './space.module.scss';
 
 export function ProgramTransition({desc, fwdBtnText, to}: ISection) {
   const nav = (

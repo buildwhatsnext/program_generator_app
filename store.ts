@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 import clockReducer from './lib/slices/clockSlice'
 import counterReducer from './lib/slices/counterSlice'
 import notesReducer from './lib/slices/notesSlice'
-import programReducer from './features/program/program.slice';
+import programReducer from './features/space/space.slice';
 import projectReducer from './features/project/project.slice';
 import settingsReducer from './features/settings/settings.slice';
 
