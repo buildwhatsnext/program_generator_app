@@ -54,14 +54,14 @@ const projectInfoSlice = createSlice({
       state.targetNumOfWorkseats = input;
     },
     calculateUnplanned: (state) => {
-      // const total = state.overview.area.area_total;
-      // const circ = state.overview.basic.factor_circulation;
-      // const plan = state.overview.basic.factor_planning;
-      // const unplanned = circ + plan;
-      // const percentage = unplanned / 100;
-      // const value = total * percentage;
-      // state.overview.area.area_circulation = value;
-      // state.overview.area.area_unplanned = total - value;
+      const total = state.areaNet
+      const circ = state.targetFactorCirculation
+      const plan = state.targetFactorLoss
+      const unplanned = circ + plan;
+      const percentage = unplanned / 100;
+      const value = total * percentage;
+      const areaCirculation = value;
+      const areaUnplanned = total - value;
     }
   },
 });
