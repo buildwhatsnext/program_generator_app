@@ -10,27 +10,33 @@ const programSlice = createSlice({
   initialState: bldgData,
   reducers: {
     setClient: (state, action) => {
-      state.overview.general.client = action.payload;
+      const value = action?.payload ?? 'unknown'
+
+      state.overview.general.client = value;
     },
     setUnits: (state, action) => {
-      state.overview.general.units = action.payload;
+      const value = action?.payload ?? 'unknown'
+
+      state.overview.general.units = value;
     },
     setTenancy: (state, action) => {
-      state.overview.general.tenancy = action.payload;
+      const value = action?.payload ?? 'unknown'
+
+      state.overview.general.tenancy = value;
     },
     setBroadcast: (state, action) => {
-      state.overview.general.hasBroadcast = action.payload.toString().toLowerCase() === 'yes';
+      state.overview.general.hasBroadcast = action?.payload && action.payload.toString().toLowerCase() === 'yes';
     },
     setLab: (state, action) => {
-      state.overview.general.hasLab = action.payload.toString().toLowerCase() === 'yes';
+      state.overview.general.hasLab = action?.payload && action.payload.toString().toLowerCase() === 'yes';
     },
     setRsf: (state, action) => {
       state.overview.basic.area_gross = Number(action.payload);
       state.overview.area.area_total = Number(action.payload);
     },
-    // setLossFactor: (state, action) => {
-    //   state.overview.basic.area_net = Number(action.payload);
-    // },
+    setNetArea: (state, action) => {
+      state.overview.basic.area_net = Number(action.payload);
+    },
     setFloorCount: (state, action) => {
       state.overview.basic.floors = Number(action.payload);
     },
@@ -72,7 +78,7 @@ export const {
   setBroadcast, 
   setLab,
   setRsf,
-  // setLossFactor,
+  setNetArea,
   setFloorCount,
   setCirculation,
   setPlanning,

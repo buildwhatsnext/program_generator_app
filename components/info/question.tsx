@@ -72,6 +72,9 @@ export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: 
   const [ currentAnswer, setAnswer ] = useState('');
 
   const handler = (answer: string) => {
+    if(currentAnswer === answer )
+      answer = '';
+
     setAnswer(answer);
     answerHandler(answer);
   }

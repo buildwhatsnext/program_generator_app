@@ -12,9 +12,12 @@ export interface IPage {
   panel?: JSX.Element;
   nextRoute?: string;
   extraNavClasses?: string;
+  navFx?: () => void;
 }
 
-export function Page({children, showPanel, nav, panel, nextRoute, extraNavClasses }: IPage) {
+export function Page({
+  children, showPanel, nav, panel, nextRoute, extraNavClasses, navFx 
+}: IPage) {
   return (
     !showPanel && !panel
       ? (
@@ -22,6 +25,7 @@ export function Page({children, showPanel, nav, panel, nextRoute, extraNavClasse
         nextRoute={nextRoute} 
         nav={nav} 
         extraNavClasses={extraNavClasses}
+        navFx={navFx}
       >
         {children}
       </SimplePage>)
@@ -32,13 +36,14 @@ export function Page({children, showPanel, nav, panel, nextRoute, extraNavClasse
         nav={nav} 
         nextRoute={nextRoute} 
         extraNavClasses={extraNavClasses}
+        navFx={navFx}
       >
         { children }
       </PanelPage>)
     )
 }
 
-export function SimplePage({children, nav, nextRoute, extraNavClasses }: IPage) {
+export function SimplePage({children, nav, nextRoute, extraNavClasses, navFx }: IPage) {
   return (
     <div className={styles.page}>
       <div className="page__header">
@@ -50,7 +55,7 @@ export function SimplePage({children, nav, nextRoute, extraNavClasses }: IPage) 
       <div className={`${styles.page__nav} ${extraNavClasses}`}>
         { 
           nav || (nextRoute
-            ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } />
+            ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } navFx={navFx}/>
             : null)
         }
       </div>
@@ -58,7 +63,7 @@ export function SimplePage({children, nav, nextRoute, extraNavClasses }: IPage) 
   )
 }
 
-export function PanelPage({children, panel, nav, nextRoute, extraNavClasses }: IPage) {
+export function PanelPage({children, panel, nav, nextRoute, extraNavClasses, navFx }: IPage) {
   return (
     <div className={styles.page__panel}>
       { panel ?? <Panel /> }
@@ -66,6 +71,7 @@ export function PanelPage({children, panel, nav, nextRoute, extraNavClasses }: I
         nextRoute={nextRoute} 
         nav={nav} 
         extraNavClasses={extraNavClasses}
+        navFx={navFx}
       >
         {children}
       </SimplePage>

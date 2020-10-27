@@ -19,7 +19,7 @@ export function formatAreaData(data: INamedValue[]) {
   const { overview } = useSelector(selectProgram);
   const { units } = overview.general;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
-  const areaUnitType = units.toString().toLowerCase() === 'metric' ? 'm2' : 'ft2';
+  const areaUnitType = units.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
       const { value } = data[i];
