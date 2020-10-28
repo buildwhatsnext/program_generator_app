@@ -65,11 +65,6 @@ function composeAreaData(state: ProgramState): {
   let final = []
 
   final = spatialMap.filter((slice) => slice.area > 0);
-  // final = spatialMap.map((slice) => {
-  //   if(slice.area > 0)
-  //     console.log(slice);
-  //   return slice;
-  // })
 
   return final;
 }
