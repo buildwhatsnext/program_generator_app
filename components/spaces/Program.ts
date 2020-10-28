@@ -14,8 +14,6 @@ import {
 
 export interface IProgram {
   name: string;
-  // spaces: IUnplacedSpaceCollection;
-  // floors: IFloor[];
   Enclosed: EnclosedOfficeSpace[]
   OpenPlan: OpenOfficeSpace[]
   Meeting: MeetingSpace[]
@@ -24,9 +22,8 @@ export interface IProgram {
   Broadcast: BroadcastSpace[]
   Lab: LabSpace[]
   totalAreaBuilding: number;
-  totalAreaProgrammed: number;
-  totalAreaUnplanned: number;
-  totalAreaCirculation: number;
+  totalAreaHold: number;
+  totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;
   totalAreaOpen: number;
   totalAreaMeeting: number;
@@ -38,8 +35,6 @@ export interface IProgram {
 
 export class Program implements IProgram{
   name: string;
-  // spaces: IUnplacedSpaceCollection;
-  // floors: IFloor[];
   Enclosed: EnclosedOfficeSpace[]
   OpenPlan: OpenOfficeSpace[]
   Meeting: MeetingSpace[]
@@ -48,9 +43,8 @@ export class Program implements IProgram{
   Broadcast: BroadcastSpace[]
   Lab: LabSpace[]
   totalAreaBuilding: number;
-  totalAreaProgrammed: number;
-  totalAreaUnplanned: number;
-  totalAreaCirculation: number;
+  totalAreaHold: number;
+  totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;
   totalAreaOpen: number;
   totalAreaMeeting: number;
@@ -65,12 +59,9 @@ export class Program implements IProgram{
 
   private initialize() {
     this.name = '';
-    // this.spaces = new UnplacedSpaceCollection();
-    // this.floors = new Array<IFloor>();
     this.totalAreaBuilding = 0;
-    this.totalAreaProgrammed = 0;
-    this.totalAreaUnplanned = 0;
-    this.totalAreaCirculation = 0;
+    this.totalAreaHold = 0;
+    this.totalAreaUnprogrammed = 0;
     this.totalAreaEnclosed = 0;
     this.totalAreaOpen = 0;
     this.totalAreaMeeting = 0;
@@ -86,5 +77,6 @@ export class Program implements IProgram{
     this.Broadcast = new Array<BroadcastSpace>();
     this.Lab = new Array<LabSpace>();
   }
-
 }
+
+export type ProgramState = IProgram;

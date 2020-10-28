@@ -1,3 +1,4 @@
+import { Space } from '../components/spaces/Space';
 import PROGRAMS from './ark.programs';
 import { ROUTES } from './routes';
 
@@ -8,7 +9,7 @@ export interface SpaceDisplayStandard {
   route: string;
 }
 
-export const SPACE_STANDARDS: { [name: string]: SpaceDisplayStandard } = {
+export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   UNPLANNED: {
     name: PROGRAMS.UNPLANNED,
     color: '#ffffff',

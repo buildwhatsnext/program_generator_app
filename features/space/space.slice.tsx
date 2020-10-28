@@ -15,6 +15,14 @@ const programSlice = createSlice({
       const input = tryConvertToNumber(action.payload);
       state.totalAreaBuilding = input;
     },
+    setUnprogrammedArea: (state, action) => {
+      const input = tryConvertToNumber(action.payload);
+      state.totalAreaUnprogrammed = input;
+    },
+    setHoldArea: (state, action) => {
+      const input = tryConvertToNumber(action.payload);
+      state.totalAreaHold = input;
+    }
     // calculateUnplanned: (state, action) => {
     //   const { 
     //     totalAreaBuilding, 
@@ -37,5 +45,7 @@ export const selectProgram = (state: RootState) => state.program;
 
 export const { 
   // calculateUnplanned,
-  setTotalBuildingArea, 
+  setTotalBuildingArea,
+  setUnprogrammedArea, 
+  setHoldArea,
 } = programSlice.actions;

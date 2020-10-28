@@ -59,16 +59,6 @@ const overviewSlice = createSlice({
       const input = Number(action.payload);
       state.targetNumOfWorkseats = input;
     },
-    // calculateUnplanned: (state) => {
-    //   const total = state.areaNet
-    //   const circ = state.targetFactorCirculation
-    //   const plan = state.targetFactorLoss
-    //   const unplanned = circ + plan;
-    //   const percentage = unplanned / 100;
-    //   const value = total * percentage;
-    //   const areaCirculation = value;
-    //   const areaUnplanned = total - value;
-    // }
   },
 });
 
