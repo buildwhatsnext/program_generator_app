@@ -4,10 +4,12 @@ import './button.css';
 
 export interface ButtonProps {
 
-  primary: boolean;
+  primary?: boolean;
   backgroundColor?: string;
-  nextlabel: string;
-  prevlabel: string;
+  nextlabel?: string;
+  prevlabel?: string;
+  size?: string;
+  onClick?: () => void;
 
 }
 
