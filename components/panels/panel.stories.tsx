@@ -6,7 +6,7 @@ export default {
   title: 'PGAPP/Panel',
   component: Panel,
   argTypes: {
-    title: { control: 'string' },
+    backgroundColor: { control: 'color' }
   }
 } as Meta;
 
