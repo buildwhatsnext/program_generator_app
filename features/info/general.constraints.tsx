@@ -7,9 +7,11 @@ import {
 } from '../../components/info/question';
 import { 
   setRsf,
-  setNetArea,
+  // setNetArea,
   setFloorCount
 } from './info.slice';
+import { updateBuildingArea } from '../../lib/updaters';
+import { setTotalBuildingArea } from '../space/space.slice';
 import styles from '../../components/transition/section.module.scss';
 
 
@@ -22,7 +24,9 @@ function BuildingConstraint() {
 
   const passToStore = () => {
     dispatch(setRsf(answerOne));
-    dispatch(setNetArea(answerTwo));
+    dispatch(setTotalBuildingArea(answerTwo));
+    // dispatch(updateBuildingArea(answerTwo));
+    // dispatch(setNetArea(answerTwo));
     dispatch(setFloorCount(answerThree));
   }
 

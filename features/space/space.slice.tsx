@@ -10,19 +10,19 @@ const programSlice = createSlice({
   name: 'program',
   initialState: program,
   reducers: {
-    calculateUnplanned: (state, action) => {
-      const { 
-        totalAreaBuilding, 
-        targetFactorCirculation, 
-        targetFactorLoss 
-      } = action.payload;
+    // calculateUnplanned: (state, action) => {
+    //   const { 
+    //     totalAreaBuilding, 
+    //     targetFactorCirculation, 
+    //     targetFactorLoss 
+    //   } = action.payload;
 
-      const unplanned = targetFactorCirculation + targetFactorLoss;
-      const percentage = unplanned / 100;
-      const value = totalAreaBuilding * percentage;
-      state.totalAreaCirculation = value;
-      state.totalAreaUnplanned = totalAreaBuilding - value;
-    },
+    //   const unplanned = targetFactorCirculation + targetFactorLoss;
+    //   const percentage = unplanned / 100;
+    //   const value = totalAreaBuilding * percentage;
+    //   state.totalAreaCirculation = value;
+    //   state.totalAreaUnplanned = totalAreaBuilding - value;
+    // },
     setTotalBuildingArea: (state, action) => {
       console.log('Setting building area')
       const input = tryConvertToNumber(action.payload);
@@ -36,6 +36,6 @@ export default programSlice.reducer;
 export const selectProgram = (state: RootState) => state.program;
 
 export const { 
-  calculateUnplanned,
+  // calculateUnplanned,
   setTotalBuildingArea, 
 } = programSlice.actions;

@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
 import clockReducer from './lib/slices/clockSlice'
 import counterReducer from './lib/slices/counterSlice'
@@ -26,3 +27,4 @@ const store = configureStore({
 
 export default store;
 export type RootState = ReturnType<typeof rootReducer>;
+export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>

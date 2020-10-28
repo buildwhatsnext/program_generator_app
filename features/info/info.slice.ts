@@ -1,6 +1,6 @@
 import { Guid } from 'guid-typescript';
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
+import { AppThunk, RootState } from '../../store';
 import { ProgramOverview } from './OverviewGeneral';
 import { tryConvertToNumber } from '../../lib/conversion';
 import { setTotalBuildingArea } from '../space/space.slice';
@@ -36,10 +36,9 @@ const overviewSlice = createSlice({
       state.areaGross = Number(action.payload);
     },
     setNetArea: (state, action) => {
+      console.log('Setting net area')
       const input = tryConvertToNumber(action.payload);
       state.areaNet = input;
-      console.log('Setting net area')
-      setTotalBuildingArea(input);
     },
     setFloorCount: (state, action) => {
       state.floors = Number(action.payload);
