@@ -1,35 +1,30 @@
 @import '../styles/styles.colors.scss';
-
+@import '../styles/styles.placeholders.scss';
 
 .data {
+  @extend .flex-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  line-height: 10rem;
+  // grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
+  // line-height: 10rem;
 
   &__name {
-    // border: orange solid 10px;
-    font-size: 3.2rem;
-    font-weight: 400;
+    padding-right: 2rem;
   }
 
   &__value {
-    text-align: right;
-    font-size: 3.2rem;
-    font-weight: 400;
-    padding-right: 12rem;
   }
 
-  &__circle {
-    visibility: hidden;
-    height: 30px;
-    width: 30px;
-    border-radius: 99rem;
-    align-self: center;
-    background-color: $blue;
-  }
+  // &__circle {
+  //   visibility: hidden;
+  //   height: 30px;
+  //   width: 30px;
+  //   border-radius: 99rem;
+  //   align-self: center;
+  //   background-color: $blue;
+  // }
 }
 
-.data:hover .data__circle {
-  visibility: visible;
-}
-
+// .data:hover .data__circle {
+//   visibility: visible;
+// }

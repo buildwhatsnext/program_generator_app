@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { selectProgram } from '../../features/program/program.slice';
 import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
 import styles from './panel.section.module.scss';
+import { formatAreaData } from '../units/units';
 
 export interface IPanelSection {
   title: string;
@@ -80,13 +81,12 @@ export function reMapPanelData(originalData: Record<string, unknown>, newData: R
     .values(originalData)
     .forEach((v,i) => {
       const name = Object.keys(value)[i];
-      console.log(name);
-      console.log(v);
       value[name] = v;
     });
 
   return value;
 }
+
 
 export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
   const data = {
@@ -94,12 +94,12 @@ export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedP
     "Net Area": 0,
     "Floors": 0,
     "Circulation Factor": 0,
-    "Planning Factor": 0,
+    "Loss Factor": 0,
   }
 
   const reMapped = reMapPanelData(rawData, data);
-
-  const basicData = convertDataToINamedValues(reMapped);
+  const converted = convertDataToINamedValues(reMapped);
+  const basicData = formatAreaData(converted);
 
   return (
     <PanelSection
@@ -159,18 +159,14 @@ class StructuredProgramPanelData implements IStructuredProgramPanelData {
 export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
   // let data = new StructuredProgramPanelData();
   const data = {
-    "Total Number of Offices": 0,
-    "Total Number of Open Workspaces": 0,
-    "Total Number of Meeting Spaces": 0,
-    "Total Number of Amenity Spaces": 0,
-    "Total Number of Support Spaces": 0,
-    "Total Number of Broadcast Spaces": 0,
-    "Total Number of Lab Spaces": 0,
-    "Programmed Workseats": 0,
-    "Programmed Meeting Seats/Work Seats": '0.0'
+    "Total Programmed Area": 0,
+    "Workseat Ratio": 0,
+    "Total Number of Work Seats": 0,
+    "Collaboration Ratio": 0,
   }
   const reMapped = reMapPanelData(rawData, data);
   // const formatted = formatProgramPanelData(reMapped);
+  // const basicData = convertDataToINamedValues(formatted);
   const basicData = convertDataToINamedValues(reMapped);
 
   return (
@@ -183,10 +179,15 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
   )
 }
 
-function formatProgramPanelData(data: Record<string, unknown>) {
-  const { overview } = useSelector(selectProgram);
-  const { hasBroadcast, hasLab } = overview.general;
+// function formatProgramPanelData(data: Record<string, unknown>) {
+//   const { overview } = useSelector(selectProgram);
+//   const { hasBroadcast, hasLab } = overview.general;
 
-  // if(!hasBroadcast)
-  //   data.
-}
+//   if(!hasBroadcast)
+//     delete data["Total Number of Broadcast Spaces"];
+
+//   if(!hasLab)
+//     delete data["Total Number of Lab Spaces"];
+
+//   return data;
+// }

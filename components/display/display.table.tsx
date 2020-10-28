@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Guid } from 'guid-typescript';
 import { Button } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,8 +13,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
-import { ISpace, SpaceType } from '../../components/spaces/space.type';
-import { createNoSubstitutionTemplateLiteral, isConstructorDeclaration } from 'typescript';
+import { ISpace, SpaceType } from '../spaces/space.type';
+import styles from './display.table.module.scss';
 
 interface ISpaceColumn {
   id: string,
@@ -28,70 +32,85 @@ function convertEnumToString(value: SpaceType) {
 
 const columns: ISpaceColumn[] = [
   { 
+    id: 'delete', 
+    label: '', 
+    minWidth: 1
+  },
+  { 
     id: 'name', 
     label: 'Name', 
-    minWidth: 170 
+    minWidth: 14
   },
   { 
     id: 'seats', 
     label: 'Seats', 
-    minWidth: 100 
+    minWidth: 2 
   },
   {
     id: 'ratio',
     label: 'Ratio',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'area',
     label: 'Area',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'qty_selected',
     label: 'Quantity Selected',
-    minWidth: 100,
+    minWidth: 2,
     format: (value: number) => value.toFixed(2),
   },
   { 
     id: 'seats_total', 
     label: 'Total Seats', 
-    minWidth: 100 
+    minWidth: 2 
   },
   { 
     id: 'area_total', 
     label: 'Total Area', 
-    minWidth: 100 
+    minWidth: 2 
   },
 ];
 
 export default function SpaceTable() {
-  const start = [{}];
-  const [rowData, setRowData] = React.useState(start);
+  // const [index, setIndex] = React.useState(0);
+  // const start = [{index}];
+  const initialId = Guid.create().toString();
+  const initialRow = [{id: initialId}]
+  const [rowData, setRowData] = React.useState(initialRow);
 
   const addRow = () => {
     const newRowData = Array.from(rowData);
-    newRowData.push({});
+    const newIndex = Guid.create().toString();
+    
+    newRowData.push({id:newIndex});
+    
     setRowData(newRowData);
   }
 
-  // const removeRow = () => {
-  //   rowData.
-  // }
+  const removeRow = (index) => {
+    const newRowData = Array.from(rowData);
+    console.log(`I want to delete ${index}`);
+    newRowData.splice(index, 1);
+    console.log('This is what the data looks like: ', newRowData);
+    setRowData(newRowData);
+  }
 
   return (
     <>
       <Button variant='text' onClick={() => addRow()}>Add New</Button>
-      <Paper>
+      {/* <Paper> */}
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader columns={columns} />
-            <SpaceTableData columns={columns} rows={rowData} />
+            <SpaceTableData columns={columns} rows={rowData} handler={removeRow} />
           </Table>
         </TableContainer>
-      </Paper>
+      {/* </Paper> */}
     </>
   );
 }
@@ -104,9 +123,14 @@ export function SpaceTableHeader({columns}) {
           <TableCell
             key={column.id}
             align={column.align}
-            style={{ minWidth: column.minWidth }}
+            style={{ 
+              minWidth: `${column.minWidth}rem`,
+            }}
+            className={styles.tableCell__override}
           >
-            {column.label}
+            <p>
+              {column.label}
+            </p>
           </TableCell>
         ))}
       </TableRow>
@@ -114,7 +138,7 @@ export function SpaceTableHeader({columns}) {
   )
 }
 
-export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
+export function SpaceTableData({ columns, rows, handler } /* : ISpaceTableData */) {
   console.log(rows);
 
   useEffect(() => {
@@ -125,15 +149,33 @@ export function SpaceTableData({ columns, rows } /* : ISpaceTableData */) {
     <TableBody>
       {
         rows.map((row,i) => {
-          console.log(i);
           return (
-            <TableRow hover role="checkbox" tabIndex={-1} key={i}>
+            <TableRow hover role="checkbox" tabIndex={-1} key={rows[i].id}>
               {
                 columns.map((column) => {
                   return (
-                    <TableCell key={column.id} align={column.align}>
-                      <TextField />
-                    </TableCell>
+                    column.id === 'delete' 
+                    ? (
+                      <p 
+                        className={styles.deleteKey}
+                        onClick={() => handler(i)}
+                        // onClick={() => handler(`${i} ${row}`)}
+                      >
+                        x
+                      </p>
+                    )
+                    : (
+                      <TableCell 
+                        key={column.id} 
+                        align={column.align} 
+                        style={{ 
+                          minWidth: `${column.minWidth}rem`,
+                        }}
+                        className={styles.tableCell__override}
+                      >
+                        <TextField />
+                      </TableCell>
+                    )
                   );
                 }
               )}

@@ -19,9 +19,9 @@ export function ProgramHeader() {
 
   return (
     <div className={styles.header}>
-      <p className={styles.header__company} onClick={handleClick} onKeyDown={handleClick}>{company}</p>
-      <p className={styles.header__program}>{application}</p>
-      <p className={styles.header__client}>{client}</p>
+      <h2 className={styles.header__company} onClick={handleClick} onKeyDown={handleClick}>{company}</h2>
+      <h3 className={styles.header__program}>{application}</h3>
+      <h4 className={styles.header__client}>{client}</h4>
     </div>
   );
 }

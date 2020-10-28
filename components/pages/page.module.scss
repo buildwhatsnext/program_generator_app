@@ -6,31 +6,27 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 15rem 1fr 15rem;
+  grid-template-rows: 10rem 1fr 8rem;
   
   &__content {
-    h4 {
-      padding-left: 20rem;
-    }
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    padding: 1rem 1rem;
+    scrollbar-width: none;
   }
 
   &__nav {
-    position: fixed;
-    bottom: 0;
-    // right: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    padding-left: 10rem;
-    padding-right: 10rem;
-    padding-bottom: 5rem;
+    padding: 0 2rem;
+    align-content: center;
 
     &__back {
-      // padding-left: 2rem;
     }
 
     &__next {
-      // padding-right: 2rem;
       justify-self: right;
     }
   }
@@ -47,24 +43,20 @@
 
 .header {
   text-align: right;
-  padding-right: 4rem;
-  padding-top: 4rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
 
   &__company {
-    font-size: 4.8rem;
-    font-weight: 600;
     cursor: pointer;
   }
 
   &__program {
-    font-size: 3.6rem;
-    font-weight: 700;
     text-transform: capitalize;
   }
 
   &__client {
-    font-size: 2.4rem;
-    font-weight: 400;
     text-transform: capitalize;
+    font-weight: 200;
+    margin-top: .25rem;
   }
 }

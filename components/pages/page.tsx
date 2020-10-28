@@ -11,19 +11,39 @@ export interface IPage {
   nav?: JSX.Element;
   panel?: JSX.Element;
   nextRoute?: string;
+  extraNavClasses?: string;
+  navFx?: () => void;
 }
 
-export function Page({children, showPanel, nav, panel, nextRoute }: IPage) {
+export function Page({
+  children, showPanel, nav, panel, nextRoute, extraNavClasses, navFx 
+}: IPage) {
   return (
     !showPanel && !panel
-      ? <SimplePage nextRoute={nextRoute} nav={nav}>{children}</SimplePage>
-      : <PanelPage showPanel={showPanel} panel={panel} nav={nav} nextRoute={nextRoute}>
+      ? (
+      <SimplePage 
+        nextRoute={nextRoute} 
+        nav={nav} 
+        extraNavClasses={extraNavClasses}
+        navFx={navFx}
+      >
+        {children}
+      </SimplePage>)
+      : (
+      <PanelPage 
+        showPanel={showPanel} 
+        panel={panel} 
+        nav={nav} 
+        nextRoute={nextRoute} 
+        extraNavClasses={extraNavClasses}
+        navFx={navFx}
+      >
         { children }
-      </PanelPage>
+      </PanelPage>)
     )
 }
 
-export function SimplePage({children, nav, nextRoute }: IPage) {
+export function SimplePage({children, nav, nextRoute, extraNavClasses, navFx }: IPage) {
   return (
     <div className={styles.page}>
       <div className="page__header">
@@ -32,10 +52,10 @@ export function SimplePage({children, nav, nextRoute }: IPage) {
       <div className={styles.page__content}>
         {children}
       </div>
-      <div className={styles.page__nav}>
+      <div className={`${styles.page__nav} ${extraNavClasses}`}>
         { 
           nav || (nextRoute
-            ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } />
+            ? <PageNavigation nextRoute={nextRoute ?? ROUTES.ERROR } navFx={navFx}/>
             : null)
         }
       </div>
@@ -43,11 +63,18 @@ export function SimplePage({children, nav, nextRoute }: IPage) {
   )
 }
 
-export function PanelPage({children, panel, nav, nextRoute }: IPage) {
+export function PanelPage({children, panel, nav, nextRoute, extraNavClasses, navFx }: IPage) {
   return (
     <div className={styles.page__panel}>
       { panel ?? <Panel /> }
-      <SimplePage nextRoute={nextRoute} nav={nav}>{children}</SimplePage>
+      <SimplePage 
+        nextRoute={nextRoute} 
+        nav={nav} 
+        extraNavClasses={extraNavClasses}
+        navFx={navFx}
+      >
+        {children}
+      </SimplePage>
     </div>
   )
 }

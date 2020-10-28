@@ -1,0 +1,75 @@
+@import url("https://use.typekit.net/acl1qnv.css");
+@import "./styles.colors.scss";
+
+$text-xs: 0.75rem;
+$text-sm: 1rem;
+$text-md: 1.25rem;
+$text-lg: 1.5rem;
+$text-xl: 2rem;
+$text-xxl: 3rem;
+$text-xxxl: 4rem;
+
+$font-head: neue-haas-grotesk-display, sans-serif;
+$font-body: neue-haas-grotesk-display, sans-serif;
+
+%content-title {
+  font-weight: 300;
+  color: $black_true;
+  font-size: $text-lg;
+}
+
+%content-subtitle {
+  font-weight: 700;
+  color: $blue;
+  font-size: $text-sm;
+}
+
+%content-text {
+  white-space: pre-line;
+  font-size: $text-md;
+}
+
+.brand-head {
+  font-family: $font-head;
+  font-size: 2rem;
+}
+
+body {
+  font-family: $font-body;
+  color: $blue;
+
+  h1,h2,h3,h4,h5 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: $text-xxl;
+  }
+
+  h2 {
+    font-size: $text-xl;
+  }
+
+  h3 {
+    font-size: $text-lg;
+  }
+
+  h4 {
+    font-size: $text-md;
+  }
+
+  h5 {
+    font-size: $text-xs;
+    font-weight: 700;
+  }
+
+  p {
+    // color: $blue;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
+
+  a {
+    color: $blue;
+  }
+}
