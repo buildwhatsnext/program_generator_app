@@ -1,4 +1,5 @@
 import React from 'react';
+import { tryConvertToNumber } from '../../lib/conversion';
 import { convertDataToINamedValues } from '../NamedValue';
 import { INamedPanelSection, PanelSection, reMapPanelData } from './panel.section';
 
@@ -10,10 +11,12 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
     "Total Number of Work Seats": 0,
     "Collaboration Ratio": 0,
   }
-  const reMapped = reMapPanelData(rawData, data);
-  // const formatted = formatProgramPanelData(reMapped);
-  // const basicData = convertDataToINamedValues(formatted);
-  const basicData = convertDataToINamedValues(reMapped);
+
+  data["Total Programmed Area"] = tryConvertToNumber(rawData.totalProgrammedArea);
+  data["Workseat Ratio"] = tryConvertToNumber(rawData.totalWorkseatRatio);
+  data["Total Number of Work Seats"] = tryConvertToNumber(rawData.totalNumOfWorkseats);
+  data["Collaboration Ratio"] = tryConvertToNumber(rawData.totalCollaborationRatio);
+  const basicData = convertDataToINamedValues(data);
 
   return (
     <PanelSection
