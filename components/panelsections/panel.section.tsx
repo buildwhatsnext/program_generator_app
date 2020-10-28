@@ -88,49 +88,9 @@ export function reMapPanelData(originalData: Record<string, unknown>, newData: R
 }
 
 
-export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
-  const data = {
-    "Gross Area": 0,
-    "Net Area": 0,
-    "Floors": 0,
-    "Circulation Factor": 0,
-    "Loss Factor": 0,
-  }
 
-  const reMapped = reMapPanelData(rawData, data);
-  const converted = convertDataToINamedValues(reMapped);
-  const basicData = formatAreaData(converted);
 
-  return (
-    <PanelSection
-      title="Basic Building Information"
-      handleClick={handleClick}
-      isActive={isActive}
-      sectionData={basicData}
-    />
-  )
-}
 
-export function GeneralInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
-  const data = {
-    "Units": '',
-    "Tenancy": '',
-  }
-
-  data.Units = rawData.units;
-  data.Tenancy = rawData.tenancy;
-
-  const basicData = convertDataToINamedValues(data);
-
-  return (
-    <PanelSection
-      title="General Information"
-      handleClick={handleClick}
-      isActive={isActive}
-      sectionData={basicData}
-    />
-  )
-}
 
 interface IStructuredProgramPanelData {
   "Total Number of Offices": number,
@@ -156,28 +116,7 @@ class StructuredProgramPanelData implements IStructuredProgramPanelData {
   "Programmed Meeting Seats/Work Seats": '0.0';
 }
 
-export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
-  // let data = new StructuredProgramPanelData();
-  const data = {
-    "Total Programmed Area": 0,
-    "Workseat Ratio": 0,
-    "Total Number of Work Seats": 0,
-    "Collaboration Ratio": 0,
-  }
-  const reMapped = reMapPanelData(rawData, data);
-  // const formatted = formatProgramPanelData(reMapped);
-  // const basicData = convertDataToINamedValues(formatted);
-  const basicData = convertDataToINamedValues(reMapped);
 
-  return (
-    <PanelSection
-      title="Programmed Space"
-      handleClick={handleClick}
-      isActive={isActive}
-      sectionData={basicData}
-    />
-  )
-}
 
 // function formatProgramPanelData(data: Record<string, unknown>) {
 //   const { overview } = useSelector(selectProgram);

@@ -3,11 +3,9 @@ import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { selectOverview } from '../../features/info/info.slice';
-import { 
-  GeneralInfoPanelSection, 
-  BasicInfoPanelSection as BasicSection, 
-  ProgramInfoPanelSection as ProgramSection
-} from './panel.section';
+import { GeneralInfoPanelSection as GenSection } from '../panelsections/section.general';
+import { BasicInfoPanelSection as BasicSection, } from '../panelsections/section.basic';
+import { ProgramInfoPanelSection as ProgramSection } from '../panelsections/section.program';
 import { Panel } from './panel';
 
 export function BuildingInformationPanel() {
@@ -30,7 +28,7 @@ export function BuildingInformationPanel() {
   return (
     <Panel title={title}>
       <List>
-        <GeneralInfoPanelSection
+        <GenSection
           handleClick={handleGeneral}
           isActive={generalOpen}
           rawData={overview}
