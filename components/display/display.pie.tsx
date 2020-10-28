@@ -10,7 +10,13 @@ import { updateAreaOnHold } from '../../lib/updaters';
 import { selectProgram } from '../../features/space/space.slice';
 import { ProgramState } from '../spaces/Program';
 
-function composeAreaData(state: ProgramState) {
+function composeAreaData(state: ProgramState): {
+  area: number,  
+  name: string;
+  color: string;
+  border?: string;
+  route: string;
+}[] {
   const spatialMap = [];
 
   const {
@@ -39,15 +45,10 @@ function composeAreaData(state: ProgramState) {
   ]
   
   Object.keys(PROGRAMS).forEach((key, i) => {
-    // console.log(`Here's the map at the start: `, spatialMap);
-    // console.log(`Adding element to index: ${i}`);
-    // console.log(`${i} - ${key} - `, SPACE_STANDARDS[key]);
     const data = SPACE_STANDARDS[key];
-    // console.log(`Now let's add`, data);
     const area = spatialDataArray[i];
     spatialMap.push(data);
     spatialMap[i].area = area;
-    // console.log(`Here's the map at the end: `, spatialMap)
   })
 
   return spatialMap;
@@ -66,7 +67,8 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
   if(!hasBroadcast)
     delete standards.BROADCAST;
 
-  const data = composeAreaData(program);
+  const areaData = composeAreaData(program);
+  const data = Object.values(areaData).map(space => space.area);
   const labels = Object.values(standards).map(space => space.name);
   const colors = Object.values(standards).map(space => space.color);
   const borders = Object.values(standards).map(space => space.border);
