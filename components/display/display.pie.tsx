@@ -17,7 +17,13 @@ function composeAreaData(state: ProgramState): {
   border?: string;
   route: string;
 }[] {
-  const spatialMap = [];
+  const spatialMap: {
+    area: number,  
+    name: string;
+    color: string;
+    border?: string;
+    route: string;
+  }[]  = [];
 
   const {
     // totalAreaBuilding,
@@ -47,11 +53,25 @@ function composeAreaData(state: ProgramState): {
   Object.keys(PROGRAMS).forEach((key, i) => {
     const data = SPACE_STANDARDS[key];
     const area = spatialDataArray[i];
-    spatialMap.push(data);
-    spatialMap[i].area = area;
+    spatialMap.push({
+      area,
+      name: data.name,
+      color: data.color,
+      border: data.border,
+      route: data.route
+    });
   })
 
-  return spatialMap;
+  let final = []
+
+  final = spatialMap.filter((slice) => slice.area > 0);
+  // final = spatialMap.map((slice) => {
+  //   if(slice.area > 0)
+  //     console.log(slice);
+  //   return slice;
+  // })
+
+  return final;
 }
 
 export const ProgrammedSpaceDisplay: React.FC = () => {
@@ -69,9 +89,9 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
 
   const areaData = composeAreaData(program);
   const data = Object.values(areaData).map(space => space.area);
-  const labels = Object.values(standards).map(space => space.name);
-  const colors = Object.values(standards).map(space => space.color);
-  const borders = Object.values(standards).map(space => space.border);
+  const labels = Object.values(areaData).map(space => space.name);
+  const colors = Object.values(areaData).map(space => space.color);
+  const borders = Object.values(areaData).map(space => space.border);
 
   const datasets = [{
     data,
