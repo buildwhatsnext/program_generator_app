@@ -5,6 +5,6 @@ import { AppThunk } from "../store"
 export const updateBuildingArea = (
   area: any
 ): AppThunk => dispatch => {
-  // dispatch(setTotalBuildingArea(area));
+  dispatch(setTotalBuildingArea(area));
   dispatch(setNetArea(area));
 }

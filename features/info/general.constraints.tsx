@@ -24,8 +24,8 @@ function BuildingConstraint() {
 
   const passToStore = () => {
     dispatch(setRsf(answerOne));
-    dispatch(setTotalBuildingArea(answerTwo));
-    // dispatch(updateBuildingArea(answerTwo));
+    dispatch(updateBuildingArea(answerTwo));
+    // dispatch(setTotalBuildingArea(answerTwo));
     // dispatch(setNetArea(answerTwo));
     dispatch(setFloorCount(answerThree));
   }

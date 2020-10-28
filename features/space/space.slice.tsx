@@ -10,6 +10,11 @@ const programSlice = createSlice({
   name: 'program',
   initialState: program,
   reducers: {
+    setTotalBuildingArea: (state, action) => {
+      console.log('Setting building area')
+      const input = tryConvertToNumber(action.payload);
+      state.totalAreaBuilding = input;
+    },
     // calculateUnplanned: (state, action) => {
     //   const { 
     //     totalAreaBuilding, 
@@ -23,11 +28,6 @@ const programSlice = createSlice({
     //   state.totalAreaCirculation = value;
     //   state.totalAreaUnplanned = totalAreaBuilding - value;
     // },
-    setTotalBuildingArea: (state, action) => {
-      console.log('Setting building area')
-      const input = tryConvertToNumber(action.payload);
-      state.totalAreaBuilding = input;
-    },
   },
 });
 
