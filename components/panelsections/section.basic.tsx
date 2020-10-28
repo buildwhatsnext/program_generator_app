@@ -1,4 +1,5 @@
 import React from 'react';
+import { tryConvertToNumber } from '../../lib/conversion';
 import { convertDataToINamedValues } from '../NamedValue';
 import { formatAreaData } from '../units/units';
 import { INamedPanelSection, PanelSection, reMapPanelData } from './panel.section';
@@ -12,8 +13,15 @@ export function BasicInfoPanelSection({ handleClick, isActive, rawData}: INamedP
     "Loss Factor": 0,
   }
 
-  const reMapped = reMapPanelData(rawData, data);
-  const converted = convertDataToINamedValues(reMapped);
+  data['Gross Area'] = tryConvertToNumber(rawData.areaGross);
+  data['Net Area'] = tryConvertToNumber(rawData.areaNet);
+  // eslint-disable-next-line dot-notation
+  data['Floors'] = tryConvertToNumber(rawData.floors);
+  data['Circulation Factor'] = tryConvertToNumber(rawData.targetFactorCirculation);
+  data['Loss Factor'] = tryConvertToNumber(rawData.targetFactorLoss);
+
+  // const reMapped = reMapPanelData(rawData, data);
+  const converted = convertDataToINamedValues(data);
   const basicData = formatAreaData(converted);
 
   return (
