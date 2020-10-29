@@ -12,6 +12,7 @@ import programReducer from './features/space/space.slice';
 import settingsReducer from './features/settings/settings.slice';
 
 import logger from './lib/middleware/middleware.logging';
+import calc from './lib/middleware/middleware.space';
 
 
 const rootReducer = combineReducers({
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(calc),
+    // => getDefaultMiddleware().concat(logger),
   devTools: true,
 })
 
