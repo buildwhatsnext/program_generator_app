@@ -29,21 +29,7 @@ const programSlice = createSlice({
       const dehydrated = dehydrateSpaceData(input);
 
       state.EnclosedState = dehydrated;
-      // state.Enclosed = input ?? state.Enclosed;
     }
-    // calculateUnplanned: (state, action) => {
-    //   const { 
-    //     totalAreaBuilding, 
-    //     targetFactorCirculation, 
-    //     targetFactorLoss 
-    //   } = action.payload;
-
-    //   const unplanned = targetFactorCirculation + targetFactorLoss;
-    //   const percentage = unplanned / 100;
-    //   const value = totalAreaBuilding * percentage;
-    //   state.totalAreaCirculation = value;
-    //   state.totalAreaUnplanned = totalAreaBuilding - value;
-    // },
   },
 });
 
