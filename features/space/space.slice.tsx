@@ -24,11 +24,9 @@ const programSlice = createSlice({
       const input = tryConvertToNumber(action.payload);
       state.totalAreaHold = input;
     },
-    setEnclosedData: (state, action: PayloadAction<EnclosedOfficeSpace[]>) => {
+    setEnclosedData: (state, action: PayloadAction<string[]>) => {
       const input = action.payload;
-      const dehydrated = dehydrateSpaceData(input);
-
-      state.EnclosedState = dehydrated;
+      state.EnclosedState = input;
     }
   },
 });
@@ -45,7 +43,7 @@ export const {
   setEnclosedData
 } = programSlice.actions;
 
-function dehydrateSpaceData<T extends Space>(elements: T[]) {
+export function dehydrateSpaceData<T extends Space>(elements: T[]) {
   const serialized = elements.map(space => {
     const reduced = JSON.stringify(space);
     return reduced;

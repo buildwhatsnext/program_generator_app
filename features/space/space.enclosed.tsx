@@ -5,14 +5,16 @@ import { ROUTES } from '../../constants/routes';
 import SpaceData from '../../components/table/table.component';
 import { WorkspaceDataEntrySection } from './space.entry';
 import { EnclosedOfficeSpace } from '../../components/spaces/Space';
-import { setEnclosedData } from './space.slice';
+import { dehydrateSpaceData, setEnclosedData } from './space.slice';
 
 export function EnclosedWorkspaces() {
   const dispatch = useDispatch();
   const [tableData, setTableData] = React.useState<EnclosedOfficeSpace[]>(null);
 
   const passToStore = () => {
-    dispatch(setEnclosedData(tableData));
+    const serialized = dehydrateSpaceData(tableData);
+
+    dispatch(setEnclosedData(serialized));
   }
 
   const updateTableData = (data: EnclosedOfficeSpace[]) => {
