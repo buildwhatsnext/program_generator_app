@@ -2,17 +2,9 @@
 import { Middleware, MiddlewareAPI, Dispatch, Action } from "redux";
 import { RootState } from '../../store';
 
-// const logger = (api: Middleware<RootState>) => {
-//   return (next: Dispatch) => (action: Action) => {
-
-//     console.log(action);
-
-//     return next(action);
-//   };
-// };
-
-const logger = (api) => (next) => (action) => {
+const logger = (api: MiddlewareAPI) => (next: Dispatch) => (action: Action) => {
   console.log(action);
+  console.log(api.getState());
   return next(action);
 };
 
