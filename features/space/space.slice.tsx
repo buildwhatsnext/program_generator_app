@@ -1,8 +1,9 @@
 import { Guid } from 'guid-typescript';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { Program } from '../../components/spaces/Program';
 import { tryConvertToNumber } from '../../lib/conversion';
+import { EnclosedOfficeSpace, Space } from '../../components/spaces/Space';
 
 const program = {...new Program()}
 
@@ -22,6 +23,13 @@ const programSlice = createSlice({
     setHoldArea: (state, action) => {
       const input = tryConvertToNumber(action.payload);
       state.totalAreaHold = input;
+    },
+    setEnclosedData: (state, action: PayloadAction<EnclosedOfficeSpace[]>) => {
+      const input = action.payload;
+      const dehydrated = dehydrateSpaceData(input);
+
+      state.EnclosedState = dehydrated;
+      // state.Enclosed = input ?? state.Enclosed;
     }
     // calculateUnplanned: (state, action) => {
     //   const { 
@@ -48,4 +56,14 @@ export const {
   setTotalBuildingArea,
   setUnprogrammedArea, 
   setHoldArea,
+  setEnclosedData
 } = programSlice.actions;
+
+function dehydrateSpaceData<T extends Space>(elements: T[]) {
+  const serialized = elements.map(space => {
+    const reduced = JSON.stringify(space);
+    return reduced;
+  })
+
+  return serialized;
+}

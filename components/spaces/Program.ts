@@ -21,6 +21,13 @@ export interface IProgram {
   Support: SupportSpace[]
   Broadcast: BroadcastSpace[]
   Lab: LabSpace[]
+  EnclosedState: string[]
+  OpenPlanState: string[]
+  MeetingState: string[]
+  AmenityState: string[]
+  SupportState: string[]
+  BroadcastState: string[]
+  LabState: string[]
   totalAreaBuilding: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
@@ -42,6 +49,13 @@ export class Program implements IProgram{
   Support: SupportSpace[]
   Broadcast: BroadcastSpace[]
   Lab: LabSpace[]
+  EnclosedState: string[]
+OpenPlanState: string[]
+  MeetingState: string[]
+AmenityState: string[]
+SupportState: string[]
+BroadcastState: string[]
+  LabState: string[]
   totalAreaBuilding: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
@@ -69,6 +83,13 @@ export class Program implements IProgram{
     this.totalAreaSupport = 0;
     this.totalAreaBroadcast = 0;
     this.totalAreaLab = 0;
+    this.EnclosedState = []
+    this.OpenPlanState = []
+    this.MeetingState = []
+    this.AmenityState = []
+    this.SupportState = []
+    this.BroadcastState = []
+    this.LabState = []
     this.Enclosed = new Array<EnclosedOfficeSpace>();
     this.OpenPlan = new Array<OpenOfficeSpace>();
     this.Meeting = new Array<MeetingSpace>();
