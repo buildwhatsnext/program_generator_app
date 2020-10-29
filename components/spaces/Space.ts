@@ -1,5 +1,7 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable lines-between-class-members */
+import { Guid } from 'guid-typescript';
+
 // eslint-disable-next-line no-shadow
 export enum SpaceType {
   Unknown = -1,
@@ -14,6 +16,7 @@ export enum SpaceType {
 }
 
 export interface ISpace {
+  id: string;
   name: string;
   seats: number;
   ratio: string;
@@ -25,6 +28,7 @@ export interface ISpace {
 }
 
 export abstract class Space implements ISpace{
+  id: string;
   name: string;
   seats: number;
   ratio: string;
@@ -39,6 +43,7 @@ export abstract class Space implements ISpace{
   }
 
   private initialize(): void {
+    this.id = Guid.create().toString();
     this.name = '';
     this.seats = 0;
     this.ratio = '1:1';
@@ -92,5 +97,12 @@ export class BroadcastSpace extends Space {
 export class LabSpace extends Space {
   setSpaceType() {
     this.type = SpaceType.Lab;
+  }
+}
+
+export class SpaceFactory {
+  static create<T extends Space>(type: (new () => T)): T {
+    // eslint-disable-next-line new-cap
+    return new type();
   }
 }

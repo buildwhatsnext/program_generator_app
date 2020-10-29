@@ -6,9 +6,18 @@ import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import TableCell from '@material-ui/core/TableCell';
 import styles from './table.module.scss';
+import { ISpaceColumn, SpaceColumns } from './table.column';
+import { ISpace, Space, SpaceType } from '../spaces/Space';
 
-export function SpaceTableBody({ columns, rows, handler } /* : ISpaceTableData */) {
-  console.log(rows);
+
+export interface ISpaceTableData {
+  // columns: ISpaceColumn[];
+  rows?: ISpace[];
+  handler?: (x?: unknown) => void;
+}
+
+export function SpaceTableBody({ rows, handler } : ISpaceTableData) {
+  const columns = SpaceColumns;
 
   useEffect(() => {
     console.log(`There are now ${rows.length} rows of data`);

@@ -3,20 +3,18 @@ import { Guid } from 'guid-typescript';
 import { Button } from '@material-ui/core';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
-import { SpaceTableHeader } from './table.header';
-import { SpaceTableBody } from './table.body';
+import { SpaceTableHeader, IHeaderData } from './table.header';
+import { ISpaceTableData, SpaceTableBody } from './table.body';
+import { ISpace, Space, SpaceFactory } from '../spaces/Space';
+import { ISpaceColumn } from './table.column';
 
-export default function SpaceTable() {
-  const initialId = Guid.create().toString();
-  const initialRow = [{id: initialId}]
-  const [rowData, setRowData] = React.useState(initialRow);
+export default function SpaceTable<T extends Space>(type: (new () => T)) {
+  const initialSpace = SpaceFactory.create(type);
+  const initialData = [initialSpace];
+  const [rowData, setRowData] = React.useState(initialData);
 
   const addRow = () => {
-    const newRowData = Array.from(rowData);
-    const newIndex = Guid.create().toString();
-    
-    newRowData.push({id:newIndex});
-    
+    const newRowData = Array.from(Object.values(rowData));
     setRowData(newRowData);
   }
 
@@ -31,14 +29,12 @@ export default function SpaceTable() {
   return (
     <>
       <Button variant='text' onClick={() => addRow()}>Add New</Button>
-      {/* <Paper> */}
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
-            <SpaceTableHeader columns={columns} />
-            <SpaceTableBody columns={columns} rows={rowData} handler={removeRow} />
+            <SpaceTableHeader />
+            <SpaceTableBody rows={rowData} handler={removeRow} />
           </Table>
         </TableContainer>
-      {/* </Paper> */}
     </>
   );
 }

@@ -2,9 +2,16 @@ import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { ISpaceColumn } from './table.column';
+import { ISpaceColumn, SpaceColumns } from './table.column';
+import styles from './table.module.scss';
 
-export function SpaceTableHeader(columns: ISpaceColumn[]) {
+export interface IHeaderData {
+  columns: ISpaceColumn[]
+}
+
+export function SpaceTableHeader() {
+  const columns = SpaceColumns;
+
   return (
     <TableHead>
       <TableRow>
