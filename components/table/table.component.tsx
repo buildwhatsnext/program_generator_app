@@ -8,7 +8,11 @@ import { ISpaceTableData, SpaceTableBody } from './table.body';
 import { ISpace, Space, SpaceFactory } from '../spaces/Space';
 import { ISpaceColumn } from './table.column';
 
-export default function SpaceTable<T extends Space>(type: (new () => T)) {
+interface IGenericTable<T extends Space> {
+  type: new () => T
+}
+
+export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
   const initialSpace = SpaceFactory.create(type);
   const initialData = [initialSpace];
   const [rowData, setRowData] = React.useState(initialData);

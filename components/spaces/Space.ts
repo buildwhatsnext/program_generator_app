@@ -101,8 +101,10 @@ export class LabSpace extends Space {
 }
 
 export class SpaceFactory {
-  static create<T extends Space>(type: (new () => T)): T {
+  static create<T extends Space>(type: new () => T): T {
     // eslint-disable-next-line new-cap
-    return new type();
+    const obj = new type();
+
+    return obj;
   }
 }
