@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Guid } from 'guid-typescript';
 import { Button } from '@material-ui/core';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -9,10 +9,11 @@ import { ISpace, Space, SpaceFactory } from '../spaces/Space';
 import { ISpaceColumn } from './table.column';
 
 interface IGenericTable<T extends Space> {
-  type: new () => T
+  type: new () => T;
+  tableDataHandler: (data: T[]) => void;
 }
 
-export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
+export default function SpaceTable<T extends Space>({type, tableDataHandler}: IGenericTable<T> ) {
   const initialSpace = SpaceFactory.create(type);
   const initialData = [initialSpace];
   const [rowData, setRowData] = React.useState(initialData);
@@ -51,6 +52,11 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
     newRowData[idRow][columnName] = data;
     setRowData(newRowData);
   }
+
+  useEffect(() => {
+    console.log('The table data updated');
+    tableDataHandler(rowData);
+  })
 
   return (
     <>
