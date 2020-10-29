@@ -27,7 +27,11 @@ const programSlice = createSlice({
     setEnclosedData: (state, action: PayloadAction<string[]>) => {
       const input = action.payload;
       state.EnclosedState = input;
-    }
+    },
+    setEnclosedTotalArea: (state, action) => {
+      const input = action.payload;
+      state.totalAreaEnclosed = input;
+    },
   },
 });
 
@@ -40,7 +44,8 @@ export const {
   setTotalBuildingArea,
   setUnprogrammedArea, 
   setHoldArea,
-  setEnclosedData
+  setEnclosedData,
+  setEnclosedTotalArea
 } = programSlice.actions;
 
 export function dehydrateSpaceData<T extends Space>(elements: T[]) {
