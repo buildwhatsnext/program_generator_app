@@ -32,13 +32,22 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
     setRowData(newRowData);
   }
 
+  const addDataToElement = (idRow, idColumn, data) => {
+    console.log('Data received from :', idRow, idColumn, data);
+
+  }
+
   return (
     <>
       <Button variant='text' onClick={() => addRow()}>Add New</Button>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader />
-            <SpaceTableBody rows={rowData} handler={removeRow} />
+            <SpaceTableBody 
+              rows={rowData} 
+              deleteHandler={removeRow} 
+              dataHandler={addDataToElement}
+            />
           </Table>
         </TableContainer>
     </>

@@ -15,10 +15,11 @@ import { SpaceCell } from './table.cell';
 export interface ISpaceTableData {
   // columns: ISpaceColumn[];
   rows?: ISpace[];
-  handler?: (x?: unknown) => void;
+  deleteHandler?: (x?: unknown) => void;
+  dataHandler?: (idCol, idRow, data) => void;
 }
 
-export function SpaceTableBody({ rows, handler } : ISpaceTableData) {
+export function SpaceTableBody({ rows, dataHandler, deleteHandler } : ISpaceTableData) {
   const columns = SpaceColumns;
 
   useEffect(() => {
@@ -28,19 +29,21 @@ export function SpaceTableBody({ rows, handler } : ISpaceTableData) {
   return (
     <TableBody>
       {
-        rows.map((row,i) => {
+        rows.map((row, rowIndex) => {
           return (
-            <TableRow hover role="checkbox" tabIndex={-1} key={rows[i].id}>
+            <TableRow hover role="checkbox" tabIndex={-1} key={rows[rowIndex].id}>
               {
-                columns.map((column) => {
+                columns.map((column ,columnIndex) => {
                   return (
                     column.id === 'delete' 
-                    ? <DeleteKey elementIndex={i} handler={handler}  />
+                    ? <DeleteKey elementIndex={rowIndex} handler={deleteHandler}  />
                     : <SpaceCell 
-                        id={column.id} 
+                        id={`${column.id}-${rowIndex}`} 
                         align={column.align} 
-                        minWidth={column.minWidth} 
-                        // handler={}
+                        minWidth={column.minWidth}
+                        rowId={rowIndex.toString()} 
+                        columnId={columnIndex.toString()}
+                        dataHandler={dataHandler}
                       />
                   );
                 }
