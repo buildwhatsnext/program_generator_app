@@ -1,7 +1,7 @@
 import { configureStore, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 import clockReducer from './lib/slices/clockSlice'
 import counterReducer from './lib/slices/counterSlice'
@@ -11,7 +11,7 @@ import projectReducer from './features/project/project.slice';
 import programReducer from './features/space/space.slice';
 import settingsReducer from './features/settings/settings.slice';
 
-// import { logger } from './lib/middleware/middleware.logging';
+import logger from './lib/middleware/middleware.logging';
 
 
 const rootReducer = combineReducers({

@@ -2,22 +2,18 @@
 import { Middleware, MiddlewareAPI, Dispatch, Action } from "redux";
 import { RootState } from '../../store';
 
-// export interface ExtendedMiddleware<StateType> extends Middleware {
-//   <S extends StateType>(api: MiddlewareAPI<S>): (next: Dispatch<S>) => Dispatch<S>;
-// }
- 
-// export const loggerMiddleware: ExtendedMiddleware<RootState> = <S extends RootState>(api: MiddlewareAPI<S>) =>
-//     (next: Dispatch<S>) =>
-//         <A extends Action>(action: A): A => {
-//             console.log("Before");
-//             const result = next(action);
-//             console.log("After"); // Can use: api.getState()
-//             return result;
-//         };
+// const logger = (api: Middleware<RootState>) => {
+//   return (next: Dispatch) => (action: Action) => {
 
-// export const logger: Middleware = (store: RootState) => (next: Dispatch) => (action: Action) => {
-//   console.log('dispatching', action)
-//   const result = next(action)
-//   console.log('next state', store)
-//   return result
-// }
+//     console.log(action);
+
+//     return next(action);
+//   };
+// };
+
+const logger = (api) => (next) => (action) => {
+  console.log(action);
+  return next(action);
+};
+
+export default logger;
