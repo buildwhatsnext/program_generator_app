@@ -18,7 +18,7 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
   const [rowData, setRowData] = React.useState(initialData);
 
   const addRow = () => {
-    const newRowData = Array.from(Object.values(rowData));
+    const newRowData = Array.from(rowData);
     const newSpace = SpaceFactory.create(type);
     newRowData.push(newSpace);
     setRowData(newRowData);
@@ -32,9 +32,11 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
     setRowData(newRowData);
   }
 
-  const addDataToElement = (idRow, idColumn, data) => {
+  const addDataToElement = (idRow: number, idColumn: number, data: string) => {
     console.log('Data received from :', idRow, idColumn, data);
-
+    const newRowData = Array.from(rowData);
+    newRowData[idRow][idColumn - 1] = data;
+    setRowData(newRowData);
   }
 
   return (
