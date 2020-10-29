@@ -19,6 +19,8 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
 
   const addRow = () => {
     const newRowData = Array.from(Object.values(rowData));
+    const newSpace = SpaceFactory.create(type);
+    newRowData.push(newSpace);
     setRowData(newRowData);
   }
 
