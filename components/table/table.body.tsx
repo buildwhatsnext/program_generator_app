@@ -8,6 +8,8 @@ import TableCell from '@material-ui/core/TableCell';
 import styles from './table.module.scss';
 import { ISpaceColumn, SpaceColumns } from './table.column';
 import { ISpace, Space, SpaceType } from '../spaces/Space';
+import { DeleteKey } from './table.keys';
+import { SpaceCell } from './table.cell';
 
 
 export interface ISpaceTableData {
@@ -33,26 +35,13 @@ export function SpaceTableBody({ rows, handler } : ISpaceTableData) {
                 columns.map((column) => {
                   return (
                     column.id === 'delete' 
-                    ? (
-                      <p 
-                        className={styles.deleteKey}
-                        onClick={() => handler(i)}
-                      >
-                        x
-                      </p>
-                    )
-                    : (
-                      <TableCell 
-                        key={column.id} 
+                    ? <DeleteKey elementIndex={i} handler={handler}  />
+                    : <SpaceCell 
+                        id={column.id} 
                         align={column.align} 
-                        style={{ 
-                          minWidth: `${column.minWidth}rem`,
-                        }}
-                        className={styles.tableCell__override}
-                      >
-                        <TextField />
-                      </TableCell>
-                    )
+                        minWidth={column.minWidth} 
+                        // handler={}
+                      />
                   );
                 }
               )}
@@ -63,3 +52,5 @@ export function SpaceTableBody({ rows, handler } : ISpaceTableData) {
   </TableBody>
   )
 }
+
+

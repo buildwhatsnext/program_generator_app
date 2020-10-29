@@ -3,7 +3,7 @@ import { ToggleButton } from '../buttons/toggle';
 import TextInput from './input';
 
 export interface IAnswer {
-  label: string;
+  label?: string;
   answerHandler?: () => void;
   passedRef?: Ref<HTMLInputElement>;
 }
@@ -16,8 +16,8 @@ export function TextualAnswer({ answerHandler, label, passedRef }: IAnswer): JSX
   }
 
   return passedRef 
-    ? <TextualAnswerWithRef label={label} answerHandler={answerHandler ?? reporter} ref={passedRef} />
-    : <TextInput content={label} ref={inputRef} handler={answerHandler ?? reporter}/>;
+    ? <TextualAnswerWithRef label={label ?? ''} answerHandler={answerHandler ?? reporter} ref={passedRef} />
+    : <TextInput content={label ?? ''} ref={inputRef} handler={answerHandler ?? reporter}/>;
 }
 
 export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
