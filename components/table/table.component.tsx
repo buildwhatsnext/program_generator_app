@@ -33,10 +33,16 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
   }
 
   const addDataToElement = (idRow: number, idColumn: number, data: string) => {
-    console.log('Data received from :', idRow, idColumn, data);
-    const newRowData = Array.from(rowData);
-    newRowData[idRow][idColumn - 1] = data;
-    setRowData(newRowData);
+    // console.log('Data received from :', idRow, idColumn, data);
+    // const newRowData = Array.from(rowData);
+    // const columns = Object.keys(newRowData[idRow]);
+    const cell = getColumnByIndex(idColumn);
+    console.log(cell);
+    // setRowData(newRowData);
+  }
+
+  const getColumnByIndex = (index: any) => {
+    return Object.keys(rowData[0])[index];
   }
 
   return (

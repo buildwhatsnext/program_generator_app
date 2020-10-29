@@ -23,7 +23,7 @@ export function SpaceTableBody({ rows, dataHandler, deleteHandler } : ISpaceTabl
   const columns = SpaceColumns;
 
   useEffect(() => {
-    console.log(`There are now ${rows.length} rows of data`);
+    // console.log(`There are now ${rows.length} rows of data`);
   })
 
   return (
