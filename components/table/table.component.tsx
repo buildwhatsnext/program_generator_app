@@ -52,9 +52,6 @@ export default function SpaceTable<T extends Space>({type}: IGenericTable<T> ) {
     setRowData(newRowData);
   }
 
-
-
-
   return (
     <>
       <Button variant='text' onClick={() => addRow()}>Add New</Button>
