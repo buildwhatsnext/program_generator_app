@@ -66,6 +66,9 @@ module.exports = {
     'import/extensions': 0,
     'react/destructuring-assignment': 1,
     'no-return-assign': 1,
+    
+    "react/require-default-props": 0,
+    "react/no-unused-prop-types": RULESTATE.OFF,
     "react/react-in-jsx-scope": 0,
     'react/jsx-props-no-spreading': 1,
     'react/no-access-state-in-setstate': 1,
