@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
-import TextField from '@material-ui/core/TextField';
-import TableCell from '@material-ui/core/TableCell';
-import styles from './table.module.scss';
-import { ISpaceColumn, SpaceColumns } from './table.column';
-import { ISpace, Space, SpaceType } from '../spaces/Space';
+import { SpaceColumns } from './table.column';
+import { ISpace } from '../spaces/Space';
 import { DeleteKey } from './table.keys';
 import { SpaceCell } from './table.cell';
 
