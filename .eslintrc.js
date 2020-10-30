@@ -55,7 +55,9 @@ module.exports = {
     'lines-between-class-members': RULESTATE.OFF,
     'no-array-constructor': RULESTATE.OFF,
 
-    'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
+    'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.OFF,
+    'jsx-a11y/click-events-have-key-events': RULESTATE.OFF,
+
 
     'import/no-dynamic-require': 0,
     // A temporary hack related to IDE not resolving correct package.json
