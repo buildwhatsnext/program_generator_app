@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import { Guid } from 'guid-typescript';
 import { Button } from '@material-ui/core';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
-import { SpaceTableHeader, IHeaderData } from './table.header';
-import { ISpaceTableData, SpaceTableBody } from './table.body';
-import { ISpace, Space, SpaceFactory } from '../spaces/Space';
-import { ISpaceColumn } from './table.column';
+import { SpaceTableHeader} from './table.header';
+import { SpaceTableBody } from './table.body';
+import { Space, SpaceFactory } from '../spaces/Space';
 
 interface IGenericTable<T extends Space> {
   type: new () => T;
