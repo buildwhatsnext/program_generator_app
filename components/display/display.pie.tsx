@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -69,7 +70,16 @@ function composeAreaData(state: ProgramState): {
   return final;
 }
 
-export const ProgrammedSpaceDisplay: React.FC = () => {
+export interface PieProps {
+
+  backgroundColor?: string;
+}
+
+export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  backgroundColor,
+  ...props
+}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const overview = useSelector(selectOverview);
@@ -79,7 +89,7 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
   if(!hasLab)
     delete standards.LAB;
 
-  if(!hasBroadcast)
+  if (!hasBroadcast)
     delete standards.BROADCAST;
 
   const areaData = composeAreaData(program);
@@ -109,7 +119,7 @@ export const ProgrammedSpaceDisplay: React.FC = () => {
     const element = pie[0];
     if(!element)
       return;
-    
+
     const { _model } = element;
     const standard = SPACE_STANDARDS;
     const programType = _model.label;
