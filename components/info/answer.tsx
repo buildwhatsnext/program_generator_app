@@ -7,24 +7,26 @@ export interface IAnswer {
   answerHandler?: () => void;
   passedRef?: Ref<HTMLInputElement>;
   storedValue?: string;
+  currentValue?:string;
 }
 
 export function TextualAnswer({ answerHandler, label, passedRef, storedValue }: IAnswer): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { value } = inputRef.current ?? { value: null };
 
   const reporter = () => {
-    console.log(inputRef.current.value);
+    console.log(value);
   }
 
   return passedRef 
-    ? <TextualAnswerWithRef label={label ?? ''} answerHandler={answerHandler ?? reporter} ref={passedRef} storedValue={storedValue}/>
-    : <TextInput content={label ?? ''} ref={inputRef} handler={answerHandler ?? reporter} storedValue={storedValue} />;
+    ? <TextualAnswerWithRef currentValue={value} label={label ?? ''} answerHandler={answerHandler ?? reporter} ref={passedRef} storedValue={storedValue}/>
+    : <TextInput currentValue={value} content={label ?? ''} ref={inputRef} handler={answerHandler ?? reporter} storedValue={storedValue} />;
 }
 
 export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
-  const { answerHandler, label, storedValue } = props;
+  const { answerHandler, label, storedValue, currentValue } = props;
 
-  return <TextInput content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
+  return <TextInput currentValue={currentValue} content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
 });
 
 export interface IToggleAnswer extends IAnswer {
