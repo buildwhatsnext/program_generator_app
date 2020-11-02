@@ -6,6 +6,7 @@ import { ISpaceColumn } from './table.column';
 import renderCellByColumnType from './table.function';
 
 import styles from './table.module.scss';
+import { ReadonlyTextBox } from '../info/input';
 
 export interface CellProps {
   id: string;
@@ -50,6 +51,28 @@ export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId
       className={styles.tableCell__override}
     >
       <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/>
+    </TableCell>
+  )
+}
+
+export const ReadonlyCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
+  const valueRef = useRef<HTMLInputElement>(null);
+
+  const handleData = () => {
+    // dataHandler(rowId, columnId, valueRef.current.value);
+  }
+
+  return (
+    <TableCell 
+      key={id}
+      align={align} 
+      style={{ 
+        minWidth: `${minWidth}rem`,
+      }}
+      className={styles.tableCell__override}
+    >
+      <ReadonlyTextBox storedValue={cellState} handler={handleData} />
+      {/* <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/> */}
     </TableCell>
   )
 }

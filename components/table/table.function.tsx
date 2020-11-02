@@ -1,7 +1,7 @@
 import { ISpace } from '../spaces/Space';
 import { ISpaceColumn } from './table.column';
 import { DeleteKey } from './table.keys';
-import { ISpaceCell, DataEntryCell } from './table.cell';
+import { ISpaceCell, DataEntryCell, ReadonlyCell } from './table.cell';
 
 export default function renderCellByColumnType(props: ISpaceCell) {
   const {
@@ -28,7 +28,7 @@ export default function renderCellByColumnType(props: ISpaceCell) {
   )
 
   const readonly = (
-    <DataEntryCell 
+    <ReadonlyCell 
       id={`readonly-${row.id}-${column.id}`}
       align={column.align}
       minWidth={column.minWidth}
@@ -45,8 +45,8 @@ export default function renderCellByColumnType(props: ISpaceCell) {
     case 'delete':
       cell = deleteKey;
       break;
-    case 'seats_total':
-    case 'area_total':
+    case 'seatTotal':
+    case 'areaTotal':
       cell = readonly;
       break;
     default:

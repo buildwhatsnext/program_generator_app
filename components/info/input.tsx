@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface ITextInput {
-  content: string;
+  content?: string;
   // ref: Ref<HTMLInputElement>;
   handler: () => void;
   storedValue?: string;
-  currentValue:string;
+  currentValue?:string;
 }
 
 const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
@@ -45,10 +45,9 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
 /**
  * @summary a TextBox which only displays values instead of allowing user input
  * @param {ITextInput} props - same as typical TextInput, @see TextInputBox for more details
- * 
  */
 export const ReadonlyTextBox = (props: ITextInput) => {
-  const { content, storedValue } = props;
+  const { storedValue } = props;
 
   return (
     <div className={styles.input}>
@@ -56,7 +55,7 @@ export const ReadonlyTextBox = (props: ITextInput) => {
         <TextField 
           className={styles.input__text} 
           id="standard-basic" 
-          label={content} 
+          // label={content} 
           // inputRef={ref} 
           // onChange={handler} 
           value={storedValue}
