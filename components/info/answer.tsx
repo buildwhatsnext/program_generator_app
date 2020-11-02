@@ -6,9 +6,10 @@ export interface IAnswer {
   label?: string;
   answerHandler?: () => void;
   passedRef?: Ref<HTMLInputElement>;
+  storedValue?: string;
 }
 
-export function TextualAnswer({ answerHandler, label, passedRef }: IAnswer): JSX.Element {
+export function TextualAnswer({ answerHandler, label, passedRef, storedValue }: IAnswer): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const reporter = () => {
@@ -16,14 +17,14 @@ export function TextualAnswer({ answerHandler, label, passedRef }: IAnswer): JSX
   }
 
   return passedRef 
-    ? <TextualAnswerWithRef label={label ?? ''} answerHandler={answerHandler ?? reporter} ref={passedRef} />
-    : <TextInput content={label ?? ''} ref={inputRef} handler={answerHandler ?? reporter}/>;
+    ? <TextualAnswerWithRef label={label ?? ''} answerHandler={answerHandler ?? reporter} ref={passedRef} storedValue={storedValue}/>
+    : <TextInput content={label ?? ''} ref={inputRef} handler={answerHandler ?? reporter} storedValue={storedValue} />;
 }
 
 export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
-  const { answerHandler, label } = props;
+  const { answerHandler, label, storedValue } = props;
 
-  return <TextInput content={label} ref={ref} handler={answerHandler}/>;
+  return <TextInput content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
 });
 
 export interface IToggleAnswer extends IAnswer {

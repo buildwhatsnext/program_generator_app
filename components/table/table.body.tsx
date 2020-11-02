@@ -29,6 +29,8 @@ export function SpaceTableBody({ rows, dataHandler, deleteHandler } : ISpaceTabl
             <TableRow hover role="checkbox" tabIndex={-1} key={rows[rowIndex].id}>
               {
                 columns.map((column ,columnIndex) => {
+                  const stored = row[column.id];
+
                   return (
                     column.id === 'delete' 
                     ? <DeleteKey elementIndex={rowIndex} handler={deleteHandler}  />
@@ -39,6 +41,7 @@ export function SpaceTableBody({ rows, dataHandler, deleteHandler } : ISpaceTabl
                         rowId={rowIndex.toString()} 
                         columnId={columnIndex.toString()}
                         dataHandler={dataHandler}
+                        cellState={stored}
                       />
                   );
                 }

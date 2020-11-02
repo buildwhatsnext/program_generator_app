@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React, { useRef } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import { TextualAnswer } from '../info/answer';
@@ -12,9 +11,10 @@ interface CellProps {
   dataHandler?: (rowId, colId, data) => void;
   rowId: string;
   columnId: string;
+  cellState: string;
 }
 
-export const SpaceCell = ({id, align, minWidth, dataHandler, rowId, columnId}: CellProps) => {
+export const SpaceCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
   const valueRef = useRef<HTMLInputElement>(null);
 
   const handleData = () => {
@@ -30,7 +30,7 @@ export const SpaceCell = ({id, align, minWidth, dataHandler, rowId, columnId}: C
       }}
       className={styles.tableCell__override}
     >
-      <TextualAnswer answerHandler={handleData} passedRef={valueRef} />
+      <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/>
     </TableCell>
   )
   

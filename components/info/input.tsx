@@ -19,11 +19,11 @@ interface ITextInput {
   content: string;
   // ref: Ref<HTMLInputElement>;
   handler: () => void;
+  storedValue?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
-  const { content, handler } = props;
+  const { content, handler, storedValue } = props;
 
   return (
     <div className={styles.input}>
@@ -34,6 +34,7 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
           label={content} 
           inputRef={ref} 
           onChange={handler} 
+          value={storedValue ?? ''}
         />
       </form>
     </div>
