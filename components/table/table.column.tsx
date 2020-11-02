@@ -43,18 +43,18 @@ export const SpaceColumns: ISpaceColumn[] = [
     format: (value: number) => value.toLocaleString('en-US'),
   },
   {
-    id: 'qty_selected',
+    id: 'quantitySelected',
     label: 'Quantity Selected',
     minWidth: 2,
     format: (value: number) => value.toFixed(2),
   },
   { 
-    id: 'seats_total', 
+    id: 'seatTotal', 
     label: 'Total Seats', 
     minWidth: 2 
   },
   { 
-    id: 'area_total', 
+    id: 'areaTotal', 
     label: 'Total Area', 
     minWidth: 2 
   },
