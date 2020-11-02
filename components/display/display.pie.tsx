@@ -101,7 +101,8 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   const datasets = [{
     data,
     backgroundColor: colors,
-    borderColor: borders
+    borderColor: borders,
+    extraData: ['someData', 'someData', 'someData', 'someData']
   }];
 
   const options = {
@@ -123,7 +124,13 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
     const { _model } = element;
     const standard = SPACE_STANDARDS;
     const programType = _model.label;
-    router.push(standard[programType.toUpperCase()].route);
+    const programKeys = Object.keys(PROGRAMS)
+    const programVals = Object.values(PROGRAMS);
+    const routeName = programKeys[programVals.indexOf(programType)]
+    const { route } = standard[routeName];
+    // console.log(route);
+    router.push(route);
+    // router.push(standard[programType.toUpperCase()].route);
   }
 
   return (
