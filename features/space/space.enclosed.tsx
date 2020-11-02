@@ -5,7 +5,8 @@ import { ROUTES } from '../../constants/routes';
 import SpaceData from '../../components/table/table.component';
 import { WorkspaceDataEntrySection } from './space.entry';
 import { EnclosedOfficeSpace } from '../../components/spaces/Space';
-import { dehydrateSpaceData, setEnclosedData } from './space.slice';
+import { dehydrateSpaceData, setEnclosedData, setEnclosedTotalArea } from './space.slice';
+import { calculateTotalSpatialArea } from '../../lib/middleware/middleware.space';
 
 export function EnclosedWorkspaces() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export function EnclosedWorkspaces() {
     const serialized = dehydrateSpaceData(tableData);
 
     dispatch(setEnclosedData(serialized));
+    dispatch(calculateTotalSpatialArea(serialized))
   }
 
   const updateTableData = (data: EnclosedOfficeSpace[]) => {

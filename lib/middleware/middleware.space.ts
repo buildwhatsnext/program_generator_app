@@ -1,10 +1,10 @@
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
-import { EnclosedOfficeSpace } from "../../components/spaces/Space";
+import { EnclosedOfficeSpace, Space } from "../../components/spaces/Space";
 import { setEnclosedData, setEnclosedTotalArea } from "../../features/space/space.slice";
 
 import { RootState } from '../../store';
 
-function handleAreaUpdates(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
+export function handleAreaUpdates(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   const { dispatch, getState } = api;
   const { program } = getState();
 
@@ -20,11 +20,19 @@ function handleAreaUpdates(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   dispatch(setEnclosedTotalArea(500));
 }
 
+export const calculateTotalSpatialArea = (data: string[]) => (dispatch) => {
+  const spaces = data.map(space => JSON.parse(space));
+  let finalArea = 0;
+  spaces.forEach((space) => finalArea += Number(space.areaTotal));
+  console.log(finalArea);
+  dispatch(setEnclosedTotalArea(finalArea))
+}
+
 
 const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: Action) => {
   switch(action.type) {
-    case setEnclosedData.type:
-      handleAreaUpdates(api);
+    case setEnclosedTotalArea.type:
+      console.log(`Enclosed space area total is: `, api.getState().program.totalAreaEnclosed)
       break;
     default:
       break;
