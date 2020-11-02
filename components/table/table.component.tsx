@@ -5,6 +5,7 @@ import Table from '@material-ui/core/Table';
 import { SpaceTableHeader} from './table.header';
 import { SpaceTableBody } from './table.body';
 import { Space, SpaceFactory } from '../spaces/Space';
+import { tryConvertToNumber } from '../../lib/conversion';
 
 interface IGenericTable<T extends Space> {
   type: new () => T;
@@ -51,8 +52,10 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler}: IG
     setRowData(newRowData);
   }
 
+  // useEffect(() => {console.log('Area changed')}, [rowData])
+
   useEffect(() => {
-    console.log('The table data updated');
+    // handleCalculations();
     tableDataHandler(rowData);
   })
 

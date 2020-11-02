@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { SpaceCell } from './table.cell';
-import { ISpace } from '../spaces/Space';
+import { ISpace, Space } from '../spaces/Space';
 import { ISpaceColumn } from './table.column';
 
 interface IDataEntryRow {
@@ -12,7 +12,32 @@ interface IDataEntryRow {
   dataHandler?: (idCol, idRow, data) => void;
 }
 
-export function DataEntryRow({data, columns, index, deleteHandler, dataHandler}: IDataEntryRow) {
+export function DataEntryRow(props: IDataEntryRow) {
+  const {data, columns, index, deleteHandler, dataHandler} = props;
+  
+  const calculateTotalArea = (row: ISpace) => {
+    const { area, quantitySelected } = row;
+    const totalArea = area * quantitySelected;
+    return totalArea;
+  }
+
+  const calculateTotalSeats = (row: ISpace) => {
+    const { seats, quantitySelected } = row;
+    const totalArea = seats * quantitySelected;
+    return totalArea;
+  }
+
+  const handleCalculations = () => {
+    const totalArea = calculateTotalArea(data);
+    const totalSeats = calculateTotalSeats(data);
+    data.areaTotal = totalArea;
+    data.seatTotal = totalSeats;
+  }
+
+  useEffect(() => {
+    handleCalculations()
+  }, [props])
+  
   return (
     <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
       {
