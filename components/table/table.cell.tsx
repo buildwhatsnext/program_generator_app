@@ -14,7 +14,7 @@ interface CellProps {
   cellState: string;
 }
 
-export const SpaceCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
+export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
   const valueRef = useRef<HTMLInputElement>(null);
 
   const handleData = () => {
