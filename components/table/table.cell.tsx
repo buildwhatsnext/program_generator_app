@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import { TextualAnswer } from '../info/answer';
+import { ISpace } from '../spaces/Space';
+import { ISpaceColumn } from './table.column';
+import renderCellByColumnType from './table.function';
 
 import styles from './table.module.scss';
 
-interface CellProps {
+export interface CellProps {
   id: string;
   align: "left" | "center" | "right" | "justify" | "inherit";
   minWidth: number;
@@ -12,6 +15,22 @@ interface CellProps {
   rowId: string;
   columnId: string;
   cellState: string;
+}
+
+export interface ISpaceCell {
+  row: ISpace;
+  rowIndex: number;
+  column: ISpaceColumn;
+  columnIndex: number;
+  storedData: string;
+  deleteHandler?: (x?: unknown) => void;
+  dataHandler?: (idCol, idRow, data) => void;
+}
+
+export const SpaceCell = (props: ISpaceCell) => {
+  const cell = renderCellByColumnType(props);
+
+  return cell;
 }
 
 export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
@@ -33,5 +52,4 @@ export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId
       <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/>
     </TableCell>
   )
-  
 }

@@ -4,8 +4,6 @@ import { DataEntryRow } from './table.row';
 import { SpaceColumns } from './table.column';
 import { ISpace } from '../spaces/Space';
 
-
-
 export interface ISpaceTableData {
   // columns: ISpaceColumn[];
   rows?: ISpace[];
