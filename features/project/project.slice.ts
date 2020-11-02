@@ -5,12 +5,13 @@ import data from './project.data';
 import { IProject } from './project.type';
 
 const projectSlice = createSlice({
-  name: 'project',
+  name: 'app',
   initialState: data,
   reducers: {
     createNewProject: {
       reducer(state, action: PayloadAction<IProject>) {
-        console.log(state);
+        // console.log(state);
+        state.dateModified = Date.now().toString();
       },
       prepare(): PayloadAction<IProject> {
         const now = new Date();

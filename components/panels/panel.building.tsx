@@ -1,18 +1,15 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/program/program.slice';
-import { 
-  GeneralInfoPanelSection, 
-  BasicInfoPanelSection as BasicSection, 
-  ProgramInfoPanelSection as ProgramSection
-} from './panel.section';
+import { selectOverview } from '../../features/info/info.slice';
+import { GeneralInfoPanelSection as GenSection } from '../panelsections/section.general';
+import { BasicInfoPanelSection as BasicSection, } from '../panelsections/section.basic';
+import { ProgramInfoPanelSection as ProgramSection } from '../panelsections/section.program';
 import { Panel } from './panel';
 
 export function BuildingInformationPanel() {
   const title = 'Building Information';
-  const { overview } = useSelector(selectProgram);
+  const overview = useSelector(selectOverview);
   const [generalOpen, setGeneralOpenStatus] = useState(false);
   const [basicOpen, setBasicOpenStatus] = useState(false);
   const [totalsOpen, setTotalsOpenStatus] = useState(false);
@@ -30,20 +27,20 @@ export function BuildingInformationPanel() {
   return (
     <Panel title={title}>
       <List>
-        <GeneralInfoPanelSection
+        <GenSection
           handleClick={handleGeneral}
           isActive={generalOpen}
-          rawData={overview.general}
+          rawData={overview}
         />
         <BasicSection
           handleClick={handleBasic}
           isActive={basicOpen}
-          rawData={overview.basic}
+          rawData={overview}
         />
         <ProgramSection
           handleClick={handleTotals}
           isActive={totalsOpen}
-          rawData={overview.totals}
+          rawData={overview}
         />
       </List>
     </Panel>

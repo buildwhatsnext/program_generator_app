@@ -52,8 +52,12 @@ module.exports = {
     'no-use-before-define': RULESTATE.WARN,
     'no-unused-vars': RULESTATE.OFF,
     'no-param-reassign': RULESTATE.OFF,
+    'lines-between-class-members': RULESTATE.OFF,
+    'no-array-constructor': RULESTATE.OFF,
 
-    'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.WARN,
+    'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.OFF,
+    'jsx-a11y/click-events-have-key-events': RULESTATE.OFF,
+
 
     'import/no-dynamic-require': 0,
     // A temporary hack related to IDE not resolving correct package.json
@@ -62,6 +66,9 @@ module.exports = {
     'import/extensions': 0,
     'react/destructuring-assignment': 1,
     'no-return-assign': 1,
+    
+    "react/require-default-props": 0,
+    "react/no-unused-prop-types": RULESTATE.OFF,
     "react/react-in-jsx-scope": 0,
     'react/jsx-props-no-spreading': 1,
     'react/no-access-state-in-setstate': 1,
