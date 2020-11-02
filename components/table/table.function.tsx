@@ -45,7 +45,6 @@ export default function renderCellByColumnType(props: ISpaceCell) {
     case 'delete':
       cell = deleteKey;
       break;
-    case 'qty_selected':
     case 'seats_total':
     case 'area_total':
       cell = readonly;

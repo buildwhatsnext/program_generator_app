@@ -1,7 +1,6 @@
 import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
-import { DeleteKey } from './table.keys';
-import { DataEntryCell, SpaceCell } from './table.cell';
+import { SpaceCell } from './table.cell';
 import { ISpace } from '../spaces/Space';
 import { ISpaceColumn } from './table.column';
 
