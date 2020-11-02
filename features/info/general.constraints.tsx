@@ -29,7 +29,7 @@ function BuildingConstraint() {
   const title = 'General Building Constraints'
   const Q1 = <p>What&apos;s the <b> total area of the space?</b></p>;
   const Q1Label = `Enter the total area of the space`;
-  const Q2 = <p>What&apos;s the <b> net, or usable, area</b> of the space?</p>;
+  const Q2 = <p>What&apos;s the <b> net/usable area</b> of the space?</p>;
   const Q2Label = `Enter the net area of the space`;
   const Q3 = <p>How many <b>floors</b> are there in this space</p>;
   const Q3Label = `Enter the amount of floors`;
