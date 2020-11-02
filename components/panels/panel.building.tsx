@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';

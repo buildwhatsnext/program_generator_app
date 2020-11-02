@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ROUTES } from '../../constants/routes';
 import { Page } from '../../components/pages/page';
 import { 
@@ -7,7 +7,8 @@ import {
 } from '../../components/info/question';
 import { 
   setRsf,
-  setFloorCount
+  setFloorCount,
+  selectOverview
 } from './info.slice';
 import { updateBuildingArea } from '../../lib/updaters';
 import styles from '../../components/transition/section.module.scss';
@@ -15,6 +16,7 @@ import styles from '../../components/transition/section.module.scss';
 
 function BuildingConstraint() {
   const dispatch = useDispatch();
+  const overview = useSelector(selectOverview);
 
   const [answerOne, setAnswerOne] = React.useState(null);
   const [answerTwo, setAnswerTwo] = React.useState(null);
@@ -29,7 +31,8 @@ function BuildingConstraint() {
   const title = 'General Building Constraints'
   const Q1 = <p>What&apos;s the <b> total area of the space?</b></p>;
   const Q1Label = `Enter the total area of the space`;
-  const Q2 = <p>What&apos;s the <b> net/usable area</b> of the space?</p>;
+  const Q2AreaType = overview.units.toLowerCase() === 'metric' ? 'usable' : 'net';
+  const Q2 = <p>What&apos;s the <b> {Q2AreaType} area</b> of the space?</p>;
   const Q2Label = `Enter the net area of the space`;
   const Q3 = <p>How many <b>floors</b> are there in this space</p>;
   const Q3Label = `Enter the amount of floors`;
