@@ -4,17 +4,6 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './input.module.scss';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-  }),
-);
-
 interface ITextInput {
   content?: string;
   // ref: Ref<HTMLInputElement>;
