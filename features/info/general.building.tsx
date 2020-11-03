@@ -32,30 +32,28 @@ function BuildingInformation(props: IHasStatePage) {
   const [answerFive, setAnswerFive] = React.useState(null);
 
   const restoreState = () => {
-    // const overview = useSelector(selectOverview);
+    const msg = (props.hasPrevState)
+        ? 'This page has previous state'
+        : 'No previous state for this page';
 
+    console.log(msg);
     const { client, units, tenancy, hasBroadcast, hasLab } = overview;
   
     const clientData = client.toLowerCase() === 'unknown' ? '' : client;
     const unitData = units.toLowerCase() === 'unknown' ? '' : units;
     const tenancyData = tenancy.toLowerCase() === 'unknown' ? '' : tenancy;
-    const broadcastData = hasBroadcast ? 'yes' : 'no';
-    const labData = hasLab ? 'yes' : 'no';
+    const broadcastData = hasBroadcast ? 'Yes' : 'No';
+    const labData = hasLab ? 'Yes' : 'No';
+    setAnswerOne(clientData);
+    setAnswerTwo(unitData);
+    setAnswerThree(tenancyData);
+    setAnswerFour(broadcastData);
+    setAnswerFive(labData);
   }
 
   useEffect(() => {
     if(props.hasPrevState) {
-      const msg = (props.hasPrevState)
-        ? 'This page has previous state'
-        : 'No previous state for this page';
-
-      console.log(msg);
-      const { client, units, tenancy, hasBroadcast, hasLab } = overview;
-    
-      const clientData = client.toLowerCase() === 'unknown' ? '' : client;
-      const unitData = units.toLowerCase() === 'unknown' ? '' : units;
-      setAnswerOne(clientData);
-      setAnswerTwo(unitData);
+      restoreState();
     }
 
     return () => {
@@ -104,18 +102,21 @@ function BuildingInformation(props: IHasStatePage) {
             question={Q3}
             answers={[ 'Single', 'Multi']}
             answerHandler={(x) => setAnswerThree(x)}
+            storedValue={answerThree}
           />
 
           <TogQuest 
             question={Q4}
             answers={[ 'Yes', 'No']}
             answerHandler={(x) => setAnswerFour(x)}
+            storedValue={answerFour}
           />
 
           <TogQuest 
             question={Q5}
             answers={[ 'Yes', 'No']}
             answerHandler={(x) => setAnswerFive(x)}
+            storedValue={answerFive}
           />
         </div>  
       </div>
