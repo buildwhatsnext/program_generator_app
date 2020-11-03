@@ -1,5 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable class-methods-use-this */
 export interface IProgramOverview {
   client: string;
   units: 'unknown' | 'metric' | 'imperial' ;
@@ -21,6 +19,7 @@ export interface IProgramOverview {
 }
 
 export class ProgramOverview implements IProgramOverview{
+  hasPrevState: boolean;
   client: string;
   units: "unknown" | "metric" | "imperial";
   tenancy: "unknown" | "single" | "multiple";
@@ -44,6 +43,7 @@ export class ProgramOverview implements IProgramOverview{
   }
 
   initialize(){
+    this.hasPrevState = false;
     this.client = '';
     this.units = 'unknown';
     this.tenancy = 'unknown';
