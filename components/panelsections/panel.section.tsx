@@ -1,4 +1,3 @@
-/* eslint-disable lines-between-class-members */
 import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -27,7 +26,7 @@ export interface INamedPanelSection {
 }
 
 export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
-  const mapped = data.map((d: INamedValue) => {
+  const mapped = data?.map((d: INamedValue) => {
     return (
       <PanelSectionItem 
         key={d.name} 
