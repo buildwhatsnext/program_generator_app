@@ -1,4 +1,3 @@
-/* eslint-disable lines-between-class-members */
 import { ISpace } from './Space';
 
 export interface IFloor {

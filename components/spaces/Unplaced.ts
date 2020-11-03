@@ -1,4 +1,3 @@
-/* eslint-disable no-array-constructor */
 import {
   EnclosedOfficeSpace,
   OpenOfficeSpace,
