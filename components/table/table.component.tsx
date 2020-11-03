@@ -10,11 +10,13 @@ import { tryConvertToNumber } from '../../lib/conversion';
 interface IGenericTable<T extends Space> {
   type: new () => T;
   tableDataHandler: (data: T[]) => void;
+  prevData?: T[];
 }
 
-export default function SpaceTable<T extends Space>({type, tableDataHandler}: IGenericTable<T> ) {
+export default function SpaceTable<T extends Space>({type, tableDataHandler, prevData}: IGenericTable<T> ) {
   const initialSpace = SpaceFactory.create(type);
-  const initialData = [initialSpace];
+  // const initialData = prevData ?? [initialSpace];
+  const initialData = prevData ?? [];
   const [rowData, setRowData] = React.useState(initialData);
 
   const addRow = () => {

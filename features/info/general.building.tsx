@@ -19,6 +19,7 @@ import styles from '../../components/transition/section.module.scss';
 
 export interface IHasStatePage {
   hasPrevState: boolean;
+  prevState?: unknown;
 }
 
 function BuildingInformation(props: IHasStatePage) {
