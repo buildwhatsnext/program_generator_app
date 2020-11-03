@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { Ref, useRef, useState } from 'react';
 import { TextualAnswer, ToggleAnswer } from './answer';
 import styles from './question.module.scss';
