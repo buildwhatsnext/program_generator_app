@@ -1,4 +1,4 @@
-import React, { Ref, useRef, useState } from 'react';
+import React, { Ref, useEffect, useRef, useState } from 'react';
 import { TextualAnswer, ToggleAnswer } from './answer';
 import styles from './question.module.scss';
 
@@ -37,10 +37,11 @@ export interface IToggleQuestion {
   question: JSX.Element;
   answerHandler: (data) => void;
   answers: string[];
+  storedValue?:string;
 }
 
-export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: IToggleQuestion) {
-  const [ currentAnswer, setAnswer ] = useState('');
+export function ToggleQuestionAnswerCombo({ question, answerHandler, answers, storedValue }: IToggleQuestion) {
+  const [ currentAnswer, setAnswer ] = useState(storedValue);
 
   const handler = (answer: string) => {
     if(currentAnswer === answer )
@@ -49,6 +50,11 @@ export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: 
     setAnswer(answer);
     answerHandler(answer);
   }
+
+  useEffect(() => {
+    console.log(`There is a stored value of: ${storedValue}`)
+    setAnswer(storedValue);
+  }, [storedValue])
 
   const answerCollection = answers.map((answer) => (
     <ToggleAnswer 

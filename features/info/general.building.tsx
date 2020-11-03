@@ -53,7 +53,9 @@ function BuildingInformation(props: IHasStatePage) {
       const { client, units, tenancy, hasBroadcast, hasLab } = overview;
     
       const clientData = client.toLowerCase() === 'unknown' ? '' : client;
+      const unitData = units.toLowerCase() === 'unknown' ? '' : units;
       setAnswerOne(clientData);
+      setAnswerTwo(unitData);
     }
 
     return () => {
@@ -95,6 +97,7 @@ function BuildingInformation(props: IHasStatePage) {
             question={Q2}
             answers={[ 'Metric', 'Imperial']}
             answerHandler={(x) => setAnswerTwo(x)}
+            storedValue={answerTwo}
           />
 
           <TogQuest 
