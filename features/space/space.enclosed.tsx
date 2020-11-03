@@ -11,7 +11,6 @@ import { IHasStatePage } from '../info/general.building';
 
 export function EnclosedWorkspaces(props: IHasStatePage) {
   const dispatch = useDispatch();
-  const program = useSelector(selectProgram);
   const [tableData, setTableData] = React.useState<EnclosedOfficeSpace[]>(null);
 
   const passToStore = () => {
@@ -25,19 +24,6 @@ export function EnclosedWorkspaces(props: IHasStatePage) {
     setTableData(data);
   }
 
-  function hydrateState<T extends Space>(dehydratedState: string[]) {
-    const enclosed: T[] = dehydratedState.map(space => {
-      const hydrated: T = JSON.parse(space);
-      return hydrated;
-    });
-
-    console.log('Setting the retrieved Enclosed data');
-    console.log(enclosed);
-    return enclosed;
-  }
-
-  const hydratedState = hydrateState<EnclosedOfficeSpace>(program.EnclosedState);
-
   return (
     <Page nextRoute={ ROUTES.SPACE.ENCLOSED_UPDATE } navFx={passToStore}>
       <WorkspaceDataEntrySection 
@@ -46,7 +32,7 @@ export function EnclosedWorkspaces(props: IHasStatePage) {
           <SpaceData 
             type={EnclosedOfficeSpace} 
             tableDataHandler={updateTableData}
-            prevData={hydratedState}
+            prevData={props.prevState}
           />
         } 
       />
