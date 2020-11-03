@@ -6,7 +6,7 @@ export interface ITextualQuestion {
   question: JSX.Element;
   label: string;
   answerHandler?: (value) => void;
-  storedValue: string;
+  storedValue?: string;
 };
 
 export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
