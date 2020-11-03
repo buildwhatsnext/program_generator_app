@@ -47,7 +47,7 @@ export abstract class Space implements ISpace{
     this.seats = 0;
     this.ratio = '1:1';
     this.area = 0;
-    this.quantitySelected = 0;
+    this.quantitySelected = 1;
     this.seatTotal = 0;
     this.areaTotal = 0;
     // this.type = SpaceType.Unknown; // set in the method below
