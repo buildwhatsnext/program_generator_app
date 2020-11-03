@@ -4,7 +4,11 @@ import { selectOverview } from '../../features/info/info.slice';
 import GeneralBldgInfo from '../../features/info/general.building';
 
 export default function GeneralBuildingInfoPage() {
-  const { hasPrevState } = useSelector(selectOverview);
+  const { client, units, tenancy, hasBroadcast, hasLab } = useSelector(selectOverview);
+
+  const state = [client, units, tenancy, hasBroadcast, hasLab];
+
+  const hasPrevState = state.some(val => val !== null);
 
   return <GeneralBldgInfo hasPrevState={hasPrevState} />;
 }

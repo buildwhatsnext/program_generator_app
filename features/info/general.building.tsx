@@ -17,7 +17,7 @@ import {
 } from './info.slice';
 import styles from '../../components/transition/section.module.scss';
 
-interface IHasStatePage {
+export interface IHasStatePage {
   hasPrevState: boolean;
 }
 
@@ -67,7 +67,6 @@ function BuildingInformation(props: IHasStatePage) {
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
-    dispatch(setPrevState(true));
   }
 
   const title = 'General Building Information';

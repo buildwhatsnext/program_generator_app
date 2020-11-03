@@ -1,6 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectOverview } from '../../features/info/info.slice';
 import GeneralConstraints from '../../features/info/general.constraints';
 
 export default function GeneralConstraintsPage() {
-  return <GeneralConstraints />;
+  const { areaGross, areaNet, floors } = useSelector(selectOverview);
+  const state = [areaGross, areaNet, floors];
+  const hasPrevState = state.some(val => val !== null);
+
+  return <GeneralConstraints hasPrevState={hasPrevState} />;
 }
