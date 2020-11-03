@@ -4,7 +4,7 @@ import { Page } from '../../components/pages/page';
 import { ROUTES } from '../../constants/routes';
 import SpaceData from '../../components/table/table.component';
 import { WorkspaceDataEntrySection } from './space.entry';
-import { EnclosedOfficeSpace } from '../../components/spaces/Space';
+import { EnclosedOfficeSpace, Space } from '../../components/spaces/Space';
 import { dehydrateSpaceData, selectProgram, setEnclosedData, setEnclosedTotalArea } from './space.slice';
 import { calculateTotalSpatialArea } from '../../lib/middleware/middleware.space';
 import { IHasStatePage } from '../info/general.building';
@@ -25,9 +25,9 @@ export function EnclosedWorkspaces(props: IHasStatePage) {
     setTableData(data);
   }
 
-  function hydrateState() {
-    const enclosed: EnclosedOfficeSpace[] = program.EnclosedState.map(space => {
-      const hydrated: EnclosedOfficeSpace = JSON.parse(space);
+  function hydrateState<T extends Space>(dehydratedState: string[]) {
+    const enclosed: T[] = dehydratedState.map(space => {
+      const hydrated: T = JSON.parse(space);
       return hydrated;
     });
 
@@ -36,7 +36,7 @@ export function EnclosedWorkspaces(props: IHasStatePage) {
     return enclosed;
   }
 
-  const hydratedState = hydrateState();
+  const hydratedState = hydrateState<EnclosedOfficeSpace>(program.EnclosedState);
 
   return (
     <Page nextRoute={ ROUTES.SPACE.ENCLOSED_UPDATE } navFx={passToStore}>
