@@ -15,11 +15,18 @@ const areaFeet = (
   </span>
 )
 
+/*
+ TODO: write tests for this function to prove that it can actually produce values
+ for a given set of named values
+/**
+ * @param data takes an array of INamedValue objects and 
+ * breaks them up into area data for the panel section
+ */
 export function formatAreaData(data: INamedValue[]) {
   const overview = useSelector(selectOverview);
   const { units } = overview;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
-  const areaUnitType = units.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
+  const areaUnitType = units?.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
       const { value } = data[i];
