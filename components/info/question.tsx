@@ -6,9 +6,10 @@ export interface ITextualQuestion {
   question: JSX.Element;
   label: string;
   answerHandler?: (value) => void;
+  storedValue: string;
 };
 
-export function TextualQuestionAnswerCombo({ question, label, answerHandler }: ITextualQuestion) {
+export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
   // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
@@ -25,6 +26,7 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler }: I
           answerHandler={handleAnswer}
           label={label}
           passedRef={answerRef}
+          storedValue={storedValue}
         />
       </div>
     </div>

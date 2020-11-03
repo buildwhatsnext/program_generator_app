@@ -25,6 +25,9 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
           inputRef={ref} 
           onChange={handler} 
           value={currentValue ?? storedValue}
+          InputLabelProps={{
+            shrink: (storedValue !== null && storedValue !== '')
+          }}
         />
       </form>
     </div>

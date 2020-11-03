@@ -44,12 +44,12 @@ function BuildingInformation(props: IHasStatePage) {
   }
 
   useEffect(() => {
-    // const msg = (props.hasPrevState)
-    //   ? 'This page has previous state'
-    //   : 'No previous state for this page';
-
-    // console.log(msg);
     if(props.hasPrevState) {
+      const msg = (props.hasPrevState)
+        ? 'This page has previous state'
+        : 'No previous state for this page';
+
+      console.log(msg);
       const { client, units, tenancy, hasBroadcast, hasLab } = overview;
     
       const clientData = client.toLowerCase() === 'unknown' ? '' : client;
@@ -89,7 +89,7 @@ function BuildingInformation(props: IHasStatePage) {
             question={Q1}
             label='Please enter the name of your client'
             answerHandler={(x) => setAnswerOne(x)}
-            storedAnswerValue={answerOne}
+            storedValue={answerOne}
           />
           <TogQuest 
             question={Q2}
