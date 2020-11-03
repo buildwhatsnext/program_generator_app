@@ -17,7 +17,7 @@ export function EnclosedWorkspaces(props: IHasStatePage) {
     const serialized = dehydrateSpaceData(tableData);
 
     dispatch(setEnclosedData(serialized));
-    dispatch(calculateTotalSpatialArea(serialized))
+    dispatch(calculateTotalSpatialArea(serialized, setEnclosedTotalArea))
   }
 
   const updateTableData = (data: EnclosedOfficeSpace[]) => {

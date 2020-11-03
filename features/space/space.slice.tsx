@@ -32,6 +32,14 @@ const programSlice = createSlice({
       const input = action.payload;
       state.totalAreaEnclosed = input;
     },
+    setOpenOfficeData: (state, action: PayloadAction<string[]>) => {
+      const input = action.payload;
+      state.OpenPlanState = input;
+    },
+    setOpenOfficeTotalArea: (state, action) => {
+      const input = action.payload;
+      state.totalAreaOpen = input;
+    },
   },
 });
 
@@ -45,7 +53,9 @@ export const {
   setUnprogrammedArea, 
   setHoldArea,
   setEnclosedData,
-  setEnclosedTotalArea
+  setEnclosedTotalArea,
+  setOpenOfficeData,
+  setOpenOfficeTotalArea
 } = programSlice.actions;
 
 export function dehydrateSpaceData<T extends Space>(elements: T[]) {
