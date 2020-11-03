@@ -15,8 +15,11 @@ interface IGenericTable<T extends Space> {
 
 export default function SpaceTable<T extends Space>({type, tableDataHandler, prevData}: IGenericTable<T> ) {
   const initialSpace = SpaceFactory.create(type);
-  // const initialData = prevData ?? [initialSpace];
-  const initialData = prevData ?? [];
+  const initialData = 
+    (prevData === null || prevData.length < 1) 
+      ? [initialSpace] 
+      : prevData;
+  // const initialData = prevData ?? [];
   const [rowData, setRowData] = React.useState(initialData);
 
   const addRow = () => {
