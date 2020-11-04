@@ -11,9 +11,6 @@ const overviewSlice = createSlice({
   name: 'overview',
   initialState: overview,
   reducers: {
-    setPrevState: (state, action) => {
-      state.hasPrevState = action.payload;
-    },
     setClient: (state, action) => {
       const value = action?.payload ?? 'unknown'
 
