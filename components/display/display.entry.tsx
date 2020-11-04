@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './display.entry.module.scss';
 
-export function DataEntrySection({title, data = null}) {
+interface props {
+  title: string;
+  data: any;
+}
+
+export function DataEntrySection({title, data = null}: props) {
   return (
     <div className={styles.section}>
       <div className="section__title">

@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import { Button } from '@material-ui/core';
 import styles from './buttons.module.scss';
