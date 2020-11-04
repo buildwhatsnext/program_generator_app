@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { OpenOfficeSpace } from '../../components/spaces/Space';
+import { AmenitySpace } from '../../components/spaces/Space';
 import { hydrateSpaceState } from '../../features/space/space.functions';
 import { selectProgram, setAmenityData, setAmenityTotalArea } from '../../features/space/space.slice';
 import { ROUTES } from '../../constants/routes';
@@ -8,15 +8,15 @@ import { GenericSpacePage } from '../../features/space/space.generic';
 
 export default function AmenitySpacePage() {
   const program = useSelector(selectProgram);
-  const hasPrevState = program.OpenPlanState.length > 0;
+  const hasPrevState = program.AmenityState.length > 0;
 
-  const hydratedState = hydrateSpaceState<OpenOfficeSpace>(program.OpenPlanState);
+  const hydratedState = hydrateSpaceState<AmenitySpace>(program.AmenityState);
 
   return (
     <GenericSpacePage 
-      pageTitle='Open Offices'
-      nextRoute={ROUTES.SPACE.OPEN_PLAN_UPDATE}
-      type={OpenOfficeSpace}
+      pageTitle='Amenity Spaces'
+      nextRoute={ROUTES.SPACE.AMENITY_UPDATE}
+      type={AmenitySpace}
       storeHandler={setAmenityData}
       areaHandler={setAmenityTotalArea}
       hasPrevState={hasPrevState}
