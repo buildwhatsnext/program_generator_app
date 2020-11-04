@@ -79,6 +79,4 @@ export const {
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget,
-  setPrevState
-  // calculateUnplanned 
 } = overviewSlice.actions;
