@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/space/space.slice';
-import { EnclosedWorkspaces } from '../../features/space/space.enclosed';
+import { ROUTES } from '../../constants/routes';
 import { EnclosedOfficeSpace } from '../../components/spaces/Space';
 import { hydrateSpaceState } from '../../features/space/space.functions';
+import { GenericSpacePage } from '../../features/space/space.generic';
+import { selectProgram, setEnclosedData, setEnclosedTotalArea } from '../../features/space/space.slice';
 
 export default function EnclosedWorkspacePage() {
   const program = useSelector(selectProgram);
@@ -11,5 +12,15 @@ export default function EnclosedWorkspacePage() {
 
   const hydratedState = hydrateSpaceState<EnclosedOfficeSpace>(program.EnclosedState);
 
-  return <EnclosedWorkspaces hasPrevState={hasPrevState} prevState={hydratedState} />
+  return (
+    <GenericSpacePage 
+      pageTitle='Enclosed Offices'
+      nextRoute={ROUTES.SPACE.ENCLOSED_UPDATE}
+      type={EnclosedOfficeSpace}
+      storeHandler={setEnclosedData}
+      areaHandler={setEnclosedTotalArea}
+      hasPrevState={hasPrevState}
+      prevState={hydratedState}
+    />
+  )
 }

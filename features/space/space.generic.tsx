@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import { Page } from '../../components/pages/page';
 import SpaceData from '../../components/table/table.component';
-import { WorkspaceDataEntrySection } from './space.entry';
+import { DataEntrySection } from '../../components/display/display.entry';
 import { Space } from '../../components/spaces/Space';
 import { dehydrateSpaceData } from './space.slice';
 import { calculateTotalSpatialArea } from '../../lib/middleware/middleware.space';
@@ -34,7 +34,7 @@ export function GenericSpacePage<T extends Space>(props: IGenericSpacePage<T>) {
 
   return (
     <Page nextRoute={ props.nextRoute } navFx={passToStore}>
-      <WorkspaceDataEntrySection 
+      <DataEntrySection 
         title={props.pageTitle}
         data={
           <SpaceData 
