@@ -13,7 +13,6 @@ import {
   setBroadcast,
   setLab,
   selectOverview, 
-  setPrevState
 } from './info.slice';
 import styles from '../../components/transition/section.module.scss';
 
