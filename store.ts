@@ -2,10 +2,6 @@ import { configureStore, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 // import logger from 'redux-logger';
-
-import clockReducer from './lib/slices/clockSlice'
-import counterReducer from './lib/slices/counterSlice'
-import notesReducer from './lib/slices/notesSlice'
 import overviewReducer from './features/info/info.slice';
 import projectReducer from './features/project/project.slice';
 import programReducer from './features/space/space.slice';
@@ -16,9 +12,6 @@ import calc from './lib/middleware/middleware.space';
 
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
-  clock: clockReducer,
-  notes: notesReducer,
   overview: overviewReducer,
   project: projectReducer,
   program: programReducer,

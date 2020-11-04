@@ -1,6 +1,26 @@
 import React from 'react';
-import { SupportSpaces } from '../../features/space/space.support';
+import { useSelector } from 'react-redux';
+import { SupportSpace } from '../../components/spaces/Space';
+import { hydrateSpaceState } from '../../features/space/space.functions';
+import { selectProgram, setSupportData, setSupportTotalArea } from '../../features/space/space.slice';
+import { ROUTES } from '../../constants/routes';
+import { GenericSpacePage } from '../../features/space/space.generic';
 
 export default function SupportSpacePage() {
-  return <SupportSpaces />
+  const program = useSelector(selectProgram);
+  const hasPrevState = program.SupportState.length > 0;
+
+  const hydratedState = hydrateSpaceState<SupportSpace>(program.SupportState);
+
+  return (
+    <GenericSpacePage 
+      pageTitle='Support Spaces'
+      nextRoute={ROUTES.SPACE.SUPPORT_UPDATE}
+      type={SupportSpace}
+      storeHandler={setSupportData}
+      areaHandler={setSupportTotalArea}
+      hasPrevState={hasPrevState}
+      prevState={hydratedState}
+    />
+  )
 }

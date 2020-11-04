@@ -1,9 +1,7 @@
-import { Guid } from 'guid-typescript';
 import { createSlice } from '@reduxjs/toolkit';
-import { AppThunk, RootState } from '../../store';
+import { RootState } from '../../store';
 import { ProgramOverview } from './OverviewGeneral';
 import { tryConvertToNumber } from '../../lib/conversion';
-import { setTotalBuildingArea } from '../space/space.slice';
 
 const overview = {...new ProgramOverview()};
 
@@ -79,5 +77,4 @@ export const {
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget,
-  // calculateUnplanned 
 } = overviewSlice.actions;

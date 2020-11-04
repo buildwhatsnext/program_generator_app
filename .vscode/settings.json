@@ -1,4 +1,6 @@
 {
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "modifications"
+    "editor.formatOnSaveMode": "modifications",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true
 }

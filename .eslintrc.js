@@ -47,6 +47,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': RULESTATE.WARN,
     '@typescript-eslint/explicit-module-boundary-types': RULESTATE.OFF,
 
+    'camelcase': RULESTATE.WARN,
     'no-console': RULESTATE.OFF,
     'global-require': 0,
     'no-use-before-define': RULESTATE.WARN,

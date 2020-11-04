@@ -1,8 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { Ref, useRef, useState } from 'react';
+import React, { Ref, useEffect, useRef, useState } from 'react';
 import { TextualAnswer, ToggleAnswer } from './answer';
 import styles from './question.module.scss';
 
@@ -10,9 +6,10 @@ export interface ITextualQuestion {
   question: JSX.Element;
   label: string;
   answerHandler?: (value) => void;
+  storedValue?: string;
 };
 
-export function TextualQuestionAnswerCombo({ question, label, answerHandler }: ITextualQuestion) {
+export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
   // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
@@ -29,6 +26,7 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler }: I
           answerHandler={handleAnswer}
           label={label}
           passedRef={answerRef}
+          storedValue={storedValue}
         />
       </div>
     </div>
@@ -39,10 +37,11 @@ export interface IToggleQuestion {
   question: JSX.Element;
   answerHandler: (data) => void;
   answers: string[];
+  storedValue?:string;
 }
 
-export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: IToggleQuestion) {
-  const [ currentAnswer, setAnswer ] = useState('');
+export function ToggleQuestionAnswerCombo({ question, answerHandler, answers, storedValue }: IToggleQuestion) {
+  const [ currentAnswer, setAnswer ] = useState(storedValue);
 
   const handler = (answer: string) => {
     if(currentAnswer === answer )
@@ -51,6 +50,11 @@ export function ToggleQuestionAnswerCombo({ question, answerHandler, answers }: 
     setAnswer(answer);
     answerHandler(answer);
   }
+
+  useEffect(() => {
+    console.log(`There is a stored value of: ${storedValue}`)
+    setAnswer(storedValue);
+  }, [storedValue])
 
   const answerCollection = answers.map((answer) => (
     <ToggleAnswer 

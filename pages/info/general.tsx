@@ -1,6 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectOverview } from '../../features/info/info.slice';
 import GeneralBldgInfo from '../../features/info/general.building';
 
 export default function GeneralBuildingInfoPage() {
-  return <GeneralBldgInfo />;
+  const { client, units, tenancy, hasBroadcast, hasLab } = useSelector(selectOverview);
+
+  const state = [client, units, tenancy, hasBroadcast, hasLab];
+
+  const hasPrevState = state.some(val => val !== null);
+
+  return <GeneralBldgInfo hasPrevState={hasPrevState} />;
 }
