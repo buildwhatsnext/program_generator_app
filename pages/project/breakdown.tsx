@@ -5,8 +5,9 @@ import { SPACE_STANDARDS } from '../../constants/ark.standards';
 import { selectOverview } from '../../features/info/info.slice';
 import { SpaceDataSection } from '../../features/space/space.section';
 import { Page } from '../../components/pages/page';
+import { BuildingInformationPanel } from '../../components/panels/panel.building';
 
-export default function SpaceConfirmationPage() {
+export default function ProjectBreakdown() {
   const { hasLab, hasBroadcast } = useSelector(selectOverview);
   const standards = { ...SPACE_STANDARDS };
   if(!hasLab)
@@ -34,8 +35,14 @@ export default function SpaceConfirmationPage() {
   })
 
   return (
-    <Page nextRoute={ROUTES.PROJECT.BREAKDOWN} >
-      { sections }
-    </Page>
+    <Page 
+      panel={
+        <BuildingInformationPanel 
+          openBasicSection
+          openGeneralSection
+          openTotalsSection
+        />
+      }
+    />
   )
 }

@@ -26,7 +26,7 @@ export const ROUTES = {
     BROADCAST_UPDATE: '/space/broadcast_update',
     LAB_UPDATE: '/space/lab_update',
     END: '/space/finalize',
-    WRAP: '/space/wrapup',
+    // WRAP: '/space/wrapup',
   },
   TRANSITION: {
     INFO: '/transition/info',
