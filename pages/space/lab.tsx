@@ -7,20 +7,21 @@ import { ROUTES } from '../../constants/routes';
 import { GenericSpacePage } from '../../features/space/space.generic';
 
 export default function LabSpacePage() {
-  const program = useSelector(selectProgram);
-  const hasPrevState = program.LabState.length > 0;
+  // const program = useSelector(selectProgram);
+  // const hasPrevState = program.LabState.length > 0;
 
-  const hydratedState = hydrateSpaceState<LabSpace>(program.LabState);
+  // const hydratedState = hydrateSpaceState<LabSpace>(program.LabState);
 
   return (
     <GenericSpacePage 
-      pageTitle='Lab Spaces'
+      title='Lab Spaces'
       nextRoute={ROUTES.SPACE.LAB_UPDATE}
       type={LabSpace}
+      stateName='LabState'
       storeHandler={setLabData}
       areaHandler={setLabTotalArea}
-      hasPrevState={hasPrevState}
-      prevState={hydratedState}
+      // hasPrevState={hasPrevState}
+      // prevState={hydratedState}
     />
   )
 }
