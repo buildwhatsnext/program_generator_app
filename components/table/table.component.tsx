@@ -19,7 +19,7 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler, pre
     (prevData === null || prevData.length < 1) 
       ? [initialSpace] 
       : prevData;
-  // const initialData = prevData ?? [];
+  
   const [rowData, setRowData] = React.useState(initialData);
 
   const addRow = () => {
@@ -57,10 +57,7 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler, pre
     setRowData(newRowData);
   }
 
-  // useEffect(() => {console.log('Area changed')}, [rowData])
-
   useEffect(() => {
-    // handleCalculations();
     tableDataHandler(rowData);
   })
 
