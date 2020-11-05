@@ -55,6 +55,7 @@ module.exports = {
     'no-param-reassign': RULESTATE.OFF,
     'lines-between-class-members': RULESTATE.OFF,
     'no-array-constructor': RULESTATE.OFF,
+    'max-classes-per-file': RULESTATE.OFF,
 
     'jsx-a11y/no-noninteractive-element-interactions': RULESTATE.OFF,
     'jsx-a11y/click-events-have-key-events': RULESTATE.OFF,

@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import { Guid } from 'guid-typescript';
 import { ISpace } from './ISpace';
 import SpaceType from './SpaceType';
