@@ -24,9 +24,9 @@ import { RootState } from '../../store';
 export const calculateTotalSpatialArea = 
   (data: string[], areaHandler: ActionCreatorWithOptionalPayload<any, string>) => 
   (dispatch) => {
-    const spaces = data.map(space => JSON.parse(space));
+    const spaces = data?.map(space => JSON.parse(space));
     let finalArea = 0;
-    spaces.forEach((space) => finalArea += Number(space.areaTotal));
+    spaces?.forEach((space) => finalArea += Number(space.areaTotal));
     console.log(finalArea);
     // dispatch(setEnclosedTotalArea(finalArea))
     dispatch(areaHandler(finalArea))

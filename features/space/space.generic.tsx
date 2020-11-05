@@ -1,48 +1,28 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import { Page } from '../../components/pages/page';
-import SpaceData from '../../components/table/table.component';
-import { DataEntrySection } from '../../components/display/display.entry';
+import { ISpaceDataSection, SpaceDataSection } from './space.section';
 import { Space } from '../../components/spaces/Space';
-import { dehydrateSpaceData } from './space.slice';
-import { calculateTotalSpatialArea } from '../../lib/middleware/middleware.space';
-import { IRestorableState } from '../info/general.building';
 
-
-export interface IGenericSpacePage<T extends Space> extends IRestorableState {
-  pageTitle: string;
+export interface IGenericSpacePage<T extends Space> extends ISpaceDataSection<T> {
   nextRoute: string;
-  type: new () => T;
-  storeHandler: ActionCreatorWithOptionalPayload<string[], string>
-  areaHandler: ActionCreatorWithOptionalPayload<any, string>
 }
 
+/**
+ * @summary Renders a page that can autosave & restore data from state
+ * @param props accepts IGenericSpacePage shaped data that specifies a particular
+ * kind of "Space"
+ */
 export function GenericSpacePage<T extends Space>(props: IGenericSpacePage<T>) {
-  const dispatch = useDispatch();
-  const [tableData, setTableData] = React.useState<T[]>(null);
-
-  const passToStore = () => {
-    const serialized = dehydrateSpaceData(tableData);
-    dispatch(props.storeHandler(serialized));
-    dispatch(calculateTotalSpatialArea(serialized, props.areaHandler))
-  }
-
-  const updateTableData = (data: T[]) => {
-    setTableData(data);
-  }
+  const { title, nextRoute, type, stateName, storeHandler, areaHandler } = props;
 
   return (
-    <Page nextRoute={ props.nextRoute } navFx={passToStore}>
-      <DataEntrySection 
-        title={props.pageTitle}
-        data={
-          <SpaceData 
-            type={props.type} 
-            tableDataHandler={updateTableData}
-            prevData={props.prevState}
-          />
-        } 
+    <Page nextRoute={nextRoute }>
+      <SpaceDataSection 
+        title={title}
+        type={type}
+        stateName={stateName}
+        storeHandler={storeHandler}
+        areaHandler={areaHandler}
       />
     </Page>
   )

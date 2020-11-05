@@ -109,7 +109,7 @@ export const {
 } = programSlice.actions;
 
 export function dehydrateSpaceData<T extends Space>(elements: T[]) {
-  const serialized = elements.map(space => {
+  const serialized = elements?.map(space => {
     const reduced = JSON.stringify(space);
     return reduced;
   })
