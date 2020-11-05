@@ -16,12 +16,12 @@ import {
 } from './info.slice';
 import styles from '../../components/transition/section.module.scss';
 
-export interface IHasStatePage {
+export interface IRestorableState {
   hasPrevState: boolean;
   prevState?: any;
 }
 
-function BuildingInformation(props: IHasStatePage) {
+function BuildingInformation(props: IRestorableState) {
   const dispatch = useDispatch();
   const overview = useSelector(selectOverview);
 

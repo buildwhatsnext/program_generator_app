@@ -7,10 +7,10 @@ import { DataEntrySection } from '../../components/display/display.entry';
 import { Space } from '../../components/spaces/Space';
 import { dehydrateSpaceData } from './space.slice';
 import { calculateTotalSpatialArea } from '../../lib/middleware/middleware.space';
-import { IHasStatePage } from '../info/general.building';
+import { IRestorableState } from '../info/general.building';
 
 
-export interface IGenericSpacePage<T extends Space> extends IHasStatePage {
+export interface IGenericSpacePage<T extends Space> extends IRestorableState {
   pageTitle: string;
   nextRoute: string;
   type: new () => T;
