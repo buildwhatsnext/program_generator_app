@@ -1,4 +1,4 @@
-import { ISpace } from './Space';
+import { ISpace } from './ISpace';
 
 export interface IFloor {
   name: string;

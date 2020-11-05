@@ -1,9 +1,12 @@
-import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import SpaceData from '../table/table.component';
 import { IRestorableState } from '../../features/info/general.building';
 import { Space } from '../spaces/Space';
 import styles from './display.entry.module.scss';
+import { selectProgram } from '../../features/space/space.slice';
+import { hydrateSpaceState } from '../../features/space/space.functions';
 
 interface props {
   title: string;
@@ -76,11 +79,35 @@ export function GenericDataEntrySection<T extends Space>(sectionProps: IGenericD
   )
 }
 
-export function SpaceDataSection<T extends Space>(props: any) {
+interface ISpaceDataSection<T extends Space> {
+  title: string;
+  type: new () => T;
+  stateName: string;
+}
+
+export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>) {
+  const { title, type, stateName } = sdsProps;
+  const [tableData, setTableData] = React.useState(null);
+  const program = useSelector(selectProgram);
+  const hasPrevState = program[stateName].length > 0;
+
+  const data = hasPrevState ? hydrateSpaceState<T>(program.AmenityState) : tableData;
+
+  const updateTableData = (updatedData: T[]) => {
+    setTableData(updatedData);
+  }
+
   return (
     <CollapsibleDataEntrySection 
-      title={props.title}
-      data={}
+      title={title}
+      data={
+        <SpaceData 
+          type={type} 
+          tableDataHandler={updateTableData}
+          prevData={data}
+        />
+
+      }
     />
   )
 }

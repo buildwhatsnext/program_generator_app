@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { SpaceCell } from './table.cell';
-import { ISpace, Space } from '../spaces/Space';
 import { ISpaceColumn } from './table.column';
+import { ISpace } from '../spaces/ISpace';
 
 interface IDataEntryRow {
   index: number;

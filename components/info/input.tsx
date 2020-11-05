@@ -47,9 +47,6 @@ export const ReadonlyTextBox = (props: ITextInput) => {
         <TextField 
           className={styles.input__text} 
           id="standard-basic" 
-          // label={content} 
-          // inputRef={ref} 
-          // onChange={handler} 
           value={storedValue}
         />
       </form>

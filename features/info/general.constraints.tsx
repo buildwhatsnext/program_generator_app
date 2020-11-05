@@ -12,10 +12,10 @@ import {
 } from './info.slice';
 import { updateBuildingArea } from '../../lib/updaters';
 import styles from '../../components/transition/section.module.scss';
-import { IHasStatePage } from './general.building';
+import { IRestorableState } from './general.building';
 
 
-function BuildingConstraint(props: IHasStatePage) {
+function BuildingConstraint(props: IRestorableState) {
   const dispatch = useDispatch();
   const overview = useSelector(selectOverview);
 
