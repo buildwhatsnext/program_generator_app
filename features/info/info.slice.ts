@@ -34,7 +34,7 @@ const overviewSlice = createSlice({
       state.areaGross = Number(action.payload);
     },
     setNetArea: (state, action) => {
-      console.log('Setting net area')
+      // console.log('Setting net area')
       const input = tryConvertToNumber(action.payload);
       state.areaNet = input;
     },

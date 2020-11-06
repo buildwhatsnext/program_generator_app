@@ -5,8 +5,6 @@ export function hydrateSpaceState<T extends Space>(dehydratedState: string[]) {
     const hydrated: T = JSON.parse(space);
     return hydrated;
   });
-
-  console.log('Setting the retrieved Enclosed data');
-  console.log(enclosed);
+  
   return enclosed;
 }

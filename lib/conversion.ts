@@ -10,6 +10,6 @@ export function tryConvertToNumber(data: any) {
     console.log(`Failed to convert ${data} to number`);
   }
 
-  console.log(value);
+  // console.log(value);
   return value;
 }

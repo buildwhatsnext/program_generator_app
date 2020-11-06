@@ -10,8 +10,6 @@ export const calculateTotalSpatialArea =
     const spaces = data?.map(space => JSON.parse(space));
     let finalArea = 0;
     spaces?.forEach((space) => finalArea += Number(space.areaTotal));
-    console.log(finalArea);
-    // dispatch(setEnclosedTotalArea(finalArea))
     dispatch(areaHandler(finalArea))
 }
 
