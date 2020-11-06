@@ -7,10 +7,10 @@ import { ROUTES } from '../../constants/routes';
 import { GenericSpacePage } from '../../features/space/space.generic';
 
 export default function SupportSpacePage() {
-  const program = useSelector(selectProgram);
-  const hasPrevState = program.SupportState.length > 0;
+  // const program = useSelector(selectProgram);
+  // const hasPrevState = program.SupportState.length > 0;
 
-  const hydratedState = hydrateSpaceState<SupportSpace>(program.SupportState);
+  // const hydratedState = hydrateSpaceState<SupportSpace>(program.SupportState);
 
   return (
     <GenericSpacePage 
