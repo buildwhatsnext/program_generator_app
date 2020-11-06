@@ -7,6 +7,7 @@ import { EnclosedOfficeSpace, Space } from '../../components/spaces/Space';
 
 const program = {...new Program()}
 
+// TODO: document these functions
 const programSlice = createSlice({
   name: 'program',
   initialState: program,

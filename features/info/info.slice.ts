@@ -5,6 +5,7 @@ import { tryConvertToNumber } from '../../lib/conversion';
 
 const overview = {...new ProgramOverview()};
 
+// TODO: document each of these functions
 const overviewSlice = createSlice({
   name: 'overview',
   initialState: overview,
@@ -14,6 +15,10 @@ const overviewSlice = createSlice({
 
       state.client = value;
     },
+    /**
+     * @description sets the units that the project based on
+     * only accepts 3 values: 'Metric', 'Imperial' or 'Unknown'
+     */
     setUnits: (state, action) => {
       const value = action?.payload ?? 'unknown'
 

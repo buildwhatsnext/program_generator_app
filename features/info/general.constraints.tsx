@@ -14,7 +14,11 @@ import { updateBuildingArea } from '../../lib/updaters';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from './general.building';
 
-
+/**
+ TODO: make sure questions 2 & 3 can only accept number values and write tests to confirm it
+ TODO: document this function
+ * @param props 
+ */
 function BuildingConstraint(props: IRestorableState) {
   const dispatch = useDispatch();
   const overview = useSelector(selectOverview);
