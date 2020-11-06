@@ -7,20 +7,21 @@ import { ROUTES } from '../../constants/routes';
 import { GenericSpacePage } from '../../features/space/space.generic';
 
 export default function BroadcastSpacePage() {
-  const program = useSelector(selectProgram);
-  const hasPrevState = program.BroadcastState.length > 0;
+  // const program = useSelector(selectProgram);
+  // const hasPrevState = program.BroadcastState.length > 0;
 
-  const hydratedState = hydrateSpaceState<BroadcastSpace>(program.BroadcastState);
+  // const hydratedState = hydrateSpaceState<BroadcastSpace>(program.BroadcastState);
 
   return (
     <GenericSpacePage 
-      pageTitle='Broadcast Spaces'
+      title='Broadcast Spaces'
+      stateName='BroadcastState'
       nextRoute={ROUTES.SPACE.BROADCAST_UPDATE}
       type={BroadcastSpace}
       storeHandler={setBroadcastData}
       areaHandler={setBroadcastTotalArea}
-      hasPrevState={hasPrevState}
-      prevState={hydratedState}
+      // hasPrevState={hasPrevState}
+      // prevState={hydratedState}
     />
   )
 }

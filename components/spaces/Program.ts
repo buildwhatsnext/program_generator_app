@@ -8,8 +8,6 @@ import {
   SupportSpace,
   BroadcastSpace,
   LabSpace,
-  ISpace,
-  Space
 } from './Space';
 
 export interface IProgram {

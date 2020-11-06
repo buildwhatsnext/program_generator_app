@@ -13,9 +13,9 @@ import {
   setWorkseatTarget
 } from './info.slice';
 import styles from '../../components/transition/section.module.scss';
-import { IHasStatePage } from './general.building';
+import { IRestorableState } from './general.building';
 
-function TargetMetric (props: IHasStatePage) {
+function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
   const overview = useSelector(selectOverview);
 

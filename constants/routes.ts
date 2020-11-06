@@ -2,6 +2,7 @@ export const ROUTES = {
   HOME: "/",
   PROJECT: {
     SELECT: "/project/select",
+    BREAKDOWN: "/project/breakdown",
   },
   INFO : {
     GENERAL : "/info/general",
@@ -25,6 +26,7 @@ export const ROUTES = {
     BROADCAST_UPDATE: '/space/broadcast_update',
     LAB_UPDATE: '/space/lab_update',
     END: '/space/finalize',
+    WRAP: '/space/wrapup',
   },
   TRANSITION: {
     INFO: '/transition/info',

@@ -1,5 +1,3 @@
-import { ISpace } from '../spaces/Space';
-import { ISpaceColumn } from './table.column';
 import { DeleteKey } from './table.keys';
 import { ISpaceCell, DataEntryCell, ReadonlyCell } from './table.cell';
 

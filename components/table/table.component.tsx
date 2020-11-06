@@ -4,8 +4,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import { SpaceTableHeader} from './table.header';
 import { SpaceTableBody } from './table.body';
-import { Space, SpaceFactory } from '../spaces/Space';
+import { Space } from '../spaces/Space';
 import { tryConvertToNumber } from '../../lib/conversion';
+import SpaceFactory from '../spaces/SpaceFactory';
 
 interface IGenericTable<T extends Space> {
   type: new () => T;
@@ -19,7 +20,7 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler, pre
     (prevData === null || prevData.length < 1) 
       ? [initialSpace] 
       : prevData;
-  // const initialData = prevData ?? [];
+  
   const [rowData, setRowData] = React.useState(initialData);
 
   const addRow = () => {
@@ -57,10 +58,7 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler, pre
     setRowData(newRowData);
   }
 
-  // useEffect(() => {console.log('Area changed')}, [rowData])
-
   useEffect(() => {
-    // handleCalculations();
     tableDataHandler(rowData);
   })
 

@@ -14,13 +14,14 @@ export default function SupportSpacePage() {
 
   return (
     <GenericSpacePage 
-      pageTitle='Support Spaces'
+      title='Support Spaces'
       nextRoute={ROUTES.SPACE.SUPPORT_UPDATE}
       type={SupportSpace}
+      stateName='SupportState'
       storeHandler={setSupportData}
       areaHandler={setSupportTotalArea}
-      hasPrevState={hasPrevState}
-      prevState={hydratedState}
+      // hasPrevState={hasPrevState}
+      // prevState={hydratedState}
     />
   )
 }

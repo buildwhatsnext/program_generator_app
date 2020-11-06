@@ -1,4 +1,5 @@
-import { ISpace, SpaceType } from '../spaces/Space';
+import SpaceType from "../spaces/SpaceType";
+
 
 export interface ISpaceColumn {
   id: string,

@@ -7,20 +7,21 @@ import { ROUTES } from '../../constants/routes';
 import { GenericSpacePage } from '../../features/space/space.generic';
 
 export default function AmenitySpacePage() {
-  const program = useSelector(selectProgram);
-  const hasPrevState = program.AmenityState.length > 0;
+  // const program = useSelector(selectProgram);
+  // const hasPrevState = program.AmenityState.length > 0;
 
-  const hydratedState = hydrateSpaceState<AmenitySpace>(program.AmenityState);
+  // const hydratedState = hydrateSpaceState<AmenitySpace>(program.AmenityState);
 
   return (
     <GenericSpacePage 
-      pageTitle='Amenity Spaces'
+      title='Amenity Spaces'
       nextRoute={ROUTES.SPACE.AMENITY_UPDATE}
+      stateName='AmenityState'
       type={AmenitySpace}
       storeHandler={setAmenityData}
       areaHandler={setAmenityTotalArea}
-      hasPrevState={hasPrevState}
-      prevState={hydratedState}
+      // hasPrevState={hasPrevState}
+      // prevState={hydratedState}
     />
   )
 }
