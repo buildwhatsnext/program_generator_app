@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { Provider } from 'react-redux'
 
-import store from '../store'
+import store from '../client/store'
 import '../styles/styles.global.scss';
 
 const MyApp = ({ Component, pageProps }) => {

@@ -1,6 +1,6 @@
-import { Page } from '../../components/pages/page';
-import { ProjectOpenPanel } from '../../components/panels/panel.projects';
-import { ProjectSelection } from '../../features/project/project.recents';
+import { Page } from '../../client/components/pages/page';
+import { ProjectOpenPanel } from '../../client/components/panels/panel.projects';
+import { ProjectSelection } from '../../client/features/project/project.recents';
 
 export default function ProjectSelectionPage() {
   return (

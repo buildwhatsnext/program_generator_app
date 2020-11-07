@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { SupportSpace } from '../../components/spaces/Space';
-import { hydrateSpaceState } from '../../features/space/space.functions';
-import { selectProgram, setSupportData, setSupportTotalArea } from '../../features/space/space.slice';
-import { ROUTES } from '../../constants/routes';
-import { GenericSpacePage } from '../../features/space/space.generic';
+import { SupportSpace } from '../../client/components/spaces/Space';
+import { hydrateSpaceState } from '../../client/features/space/space.functions';
+import { selectProgram, setSupportData, setSupportTotalArea } from '../../client/features/space/space.slice';
+import { ROUTES } from '../../shared/constants/routes';
+import { GenericSpacePage } from '../../client/features/space/space.generic';
 
 export default function SupportSpacePage() {
   const program = useSelector(selectProgram);

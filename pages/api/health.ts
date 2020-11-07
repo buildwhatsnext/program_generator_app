@@ -1,3 +1,5 @@
+/* eslint-disable no-return-await */
+/* eslint-disable consistent-return */
 export default async function handler(req, res) {
   const { method } = req
 
