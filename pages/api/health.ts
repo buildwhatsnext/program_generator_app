@@ -7,10 +7,10 @@ export default async function handler(req, res) {
     case 'GET':
       try {
         // const pets = await Pet.find({}) /* find all the data in our database */
-        const pets = {
-          name: 'Poppy the Pet'
+        const api = {
+          status: 'Up'
         }
-        res.status(200).json({ success: true, data: pets })
+        res.status(200).json({ success: true, payload: api })
       } catch (error) {
         res.status(400).json({ success: false })
       }
@@ -25,8 +25,8 @@ const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
   res.setHeader('Access-Control-Allow-Origin', '*')
   // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  // res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
   res.setHeader(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
