@@ -1,11 +1,23 @@
 import * as CorsServices from '../../server/services/services.cors';
+import connectDB from '../../server/config/config.database';
+import Project from '../../server/models/model.project';
 
 export default async function handler(req, res) {
   const { method } = req
 
-  // await dbConnect()
+  const connection = await connectDB();
 
   switch (method) {
+    case 'POST':
+      try {
+        const repo = connection.getRepository<Project>(Project);
+        const newProject = repo.create();
+        const data = newProject;
+        res.status(200).json({ success: true, payload: data })
+      } catch (error) {
+        res.status(400).json({ success: false })
+      }
+      break;
     case 'GET':
       try {
         const api = {
@@ -15,7 +27,7 @@ export default async function handler(req, res) {
       } catch (error) {
         res.status(400).json({ success: false })
       }
-      break
+      break;
     default:
       res.status(400).json({ success: false })
       break
