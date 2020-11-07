@@ -1,14 +1,6 @@
 {
-   "type": "mysql",
-   "host": "localhost",
-   "port": 3306,
-   "username": "test",
-   "password": "test",
-   "database": "test",
-   "synchronize": true,
-   "logging": false,
    "entities": [
-      "server/types/**/*.ts"
+      "shared/types/**/*.ts"
    ],
    "migrations": [
       "server/migration/**/*.ts"
@@ -17,7 +9,7 @@
       "server/subscriber/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "server/types",
+      "entitiesDir": "shared/types",
       "migrationsDir": "server/migration",
       "subscribersDir": "server/subscriber"
    }

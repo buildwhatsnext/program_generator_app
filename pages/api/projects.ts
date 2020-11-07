@@ -8,9 +8,8 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        // const pets = await Pet.find({}) /* find all the data in our database */
         const api = {
-          status: 'Up'
+          projects: ['Google', `Bobby's World`, 'Other Great Project']
         }
         res.status(200).json({ success: true, payload: api })
       } catch (error) {
