@@ -1,6 +1,6 @@
 import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
-import { ISpace } from '../../client/components/spaces/ISpace';
-import { AmenitySpace, BroadcastSpace, EnclosedOfficeSpace, LabSpace, MeetingSpace, OpenOfficeSpace, Space, SupportSpace } from '../../client/components/spaces/Space';
+import { ISpace } from '../types/ISpace';
+import { AmenitySpace, BroadcastSpace, EnclosedOfficeSpace, LabSpace, MeetingSpace, OpenOfficeSpace, Space, SupportSpace } from '../types/Space';
 import PROGRAMS from './ark.programs';
 import { ROUTES } from './routes';
 import * as spaceSlice from '../../client/features/space/space.slice';

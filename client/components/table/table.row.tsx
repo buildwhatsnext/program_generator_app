@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { SpaceCell } from './table.cell';
 import { ISpaceColumn } from './table.column';
-import { ISpace } from '../spaces/ISpace';
+import { ISpace } from '../../../shared/types/ISpace';
 
 interface IDataEntryRow {
   index: number;

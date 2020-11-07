@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { MeetingSpace } from '../../client/components/spaces/Space';
+import { MeetingSpace } from '../../shared/types/Space';
 import { hydrateSpaceState } from '../../client/features/space/space.functions';
 import { selectProgram, setMeetingData, setMeetingTotalArea } from '../../client/features/space/space.slice';
 import { ROUTES } from '../../shared/constants/routes';

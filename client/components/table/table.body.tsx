@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import TableBody from '@material-ui/core/TableBody';
 import { DataEntryRow } from './table.row';
 import { SpaceColumns } from './table.column';
-import { ISpace } from '../spaces/ISpace';
+import { ISpace } from '../../../shared/types/ISpace';
 
 export interface ISpaceTableData {
   // columns: ISpaceColumn[];

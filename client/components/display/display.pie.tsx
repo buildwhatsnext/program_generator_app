@@ -9,7 +9,7 @@ import PROGRAMS from '../../../shared/constants/ark.programs';
 import { selectOverview } from '../../features/info/info.slice';
 import { updateAreaOnHold } from '../../../shared/lib/updaters';
 import { selectProgram } from '../../features/space/space.slice';
-import { ProgramState } from '../spaces/Program';
+import { ProgramState } from '../../../shared/types/Program';
 
 function composeAreaData(state: ProgramState): {
   area: number,  

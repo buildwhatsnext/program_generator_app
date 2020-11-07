@@ -1,4 +1,4 @@
-import SpaceType from "../spaces/SpaceType";
+import SpaceType from "../../../shared/types/SpaceType";
 
 
 export interface ISpaceColumn {

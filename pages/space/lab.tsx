@@ -1,5 +1,5 @@
 import React from 'react';
-import { LabSpace } from '../../client/components/spaces/Space';
+import { LabSpace } from '../../shared/types/Space';
 import { setLabData, setLabTotalArea } from '../../client/features/space/space.slice';
 import { ROUTES } from '../../shared/constants/routes';
 import { GenericSpacePage } from '../../client/features/space/space.generic';

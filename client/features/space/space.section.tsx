@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import SpaceData from '../../components/table/table.component';
 // import { IRestorableState } from '../../features/info/general.building';
-import { Space } from '../../components/spaces/Space';
+import { Space } from '../../../shared/types/Space';
 import { dehydrateSpaceData, selectProgram } from './space.slice';
 import { hydrateSpaceState } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';

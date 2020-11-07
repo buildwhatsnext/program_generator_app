@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page } from '../../components/pages/page';
 import { ISpaceDataSection, SpaceDataSection } from './space.section';
-import { Space } from '../../components/spaces/Space';
+import { Space } from '../../../shared/types/Space';
 
 export interface IGenericSpacePage<T extends Space> extends ISpaceDataSection<T> {
   nextRoute: string;

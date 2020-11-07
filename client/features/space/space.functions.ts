@@ -1,4 +1,4 @@
-import { Space } from "../../components/spaces/Space";
+import { Space } from "../../../shared/types/Space";
 
 export function hydrateSpaceState<T extends Space>(dehydratedState: string[]) {
   const enclosed: T[] = dehydratedState.map(space => {

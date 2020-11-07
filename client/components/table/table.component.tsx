@@ -4,9 +4,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import { SpaceTableHeader} from './table.header';
 import { SpaceTableBody } from './table.body';
-import { Space } from '../spaces/Space';
+import { Space } from '../../../shared/types/Space';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
-import SpaceFactory from '../spaces/SpaceFactory';
+import SpaceFactory from '../../../shared/types/SpaceFactory';
 
 interface IGenericTable<T extends Space> {
   type: new () => T;

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import { TextualAnswer } from '../info/answer';
-import { ISpace } from '../spaces/ISpace';
+import { ISpace } from '../../../shared/types/ISpace';
 import { ISpaceColumn } from './table.column';
 import renderCellByColumnType from './table.function';
 

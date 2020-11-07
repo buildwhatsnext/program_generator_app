@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { OpenOfficeSpace } from '../../client/components/spaces/Space';
+import { OpenOfficeSpace } from '../../shared/types/Space';
 import { hydrateSpaceState } from '../../client/features/space/space.functions';
 import { selectProgram, setOpenOfficeData, setOpenOfficeTotalArea } from '../../client/features/space/space.slice';
 import { ROUTES } from '../../shared/constants/routes';

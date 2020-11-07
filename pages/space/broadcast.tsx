@@ -1,5 +1,5 @@
 import React from 'react';
-import { BroadcastSpace } from '../../client/components/spaces/Space';
+import { BroadcastSpace } from '../../shared/types/Space';
 import { setBroadcastData, setBroadcastTotalArea } from '../../client/features/space/space.slice';
 import { ROUTES } from '../../shared/constants/routes';
 import { GenericSpacePage } from '../../client/features/space/space.generic';

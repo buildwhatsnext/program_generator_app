@@ -1,9 +1,9 @@
 import { Guid } from 'guid-typescript';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { Program } from '../../components/spaces/Program';
+import { Program } from '../../../shared/types/Program';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
-import { EnclosedOfficeSpace, Space } from '../../components/spaces/Space';
+import { EnclosedOfficeSpace, Space } from '../../../shared/types/Space';
 
 const program = {...new Program()}
 

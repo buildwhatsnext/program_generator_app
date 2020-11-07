@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { AmenitySpace, EnclosedOfficeSpace } from '../../client/components/spaces/Space';
+import { AmenitySpace, EnclosedOfficeSpace } from '../../shared/types/Space';
 import { hydrateSpaceState } from '../../client/features/space/space.functions';
 import { selectProgram, setAmenityData, setAmenityTotalArea } from '../../client/features/space/space.slice';
 import { ROUTES } from '../../shared/constants/routes';
