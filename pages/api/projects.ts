@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import * as CorsServices from '../../server/services/services.cors';
 import connectDB from '../../server/config/config.database';
 import Project from '../../server/models/model.project';
@@ -10,12 +11,15 @@ export default async function handler(req, res) {
   switch (method) {
     case 'POST':
       try {
-        const repo = connection.getRepository<Project>(Project);
-        const newProject = repo.create();
-        const data = newProject;
-        res.status(200).json({ success: true, payload: data })
+        // const project = await connection.manager.save<Project>(new Project());
+        const repo = connection.getRepository(Project);
+        const newProject = new Project();
+        newProject.name = 'Popper & Popette';
+        // const project = repo.create()
+        const project = await repo.save(newProject);
+        res.status(200).json({ success: true, payload: project })
       } catch (error) {
-        res.status(400).json({ success: false })
+        res.status(400).json({ success: false, payload: error })
       }
       break;
     case 'GET':

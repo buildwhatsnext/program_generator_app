@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
     "@storybook/addon-actions": "^6.0.26",
     "@storybook/addon-essentials": "^6.0.26",
     "@storybook/addon-links": "^6.0.26",
