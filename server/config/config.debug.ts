@@ -2,9 +2,8 @@ import { ConnectionOptions } from 'typeorm';
 import path from 'path';
 import Project from '../models/model.project';
 
-// const root = path.resolve(__dirname, '../../');
 const root = process.cwd();
-// const entities = `${root}/server/models/*.ts`;
+const entities = `${root}/server/models/*.ts`;
 
 const options: ConnectionOptions = {
   type: "sqlite",
