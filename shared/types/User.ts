@@ -1,18 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { INamedPerson } from './NamedPerson';
 
-@Entity()
-export class User {
-
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column()
-    firstName: string;
-
-    @Column()
-    lastName: string;
-
-    @Column()
-    age: number;
-
+export interface IUser extends INamedPerson {
+  email?: string;
+  department?: string;
 }

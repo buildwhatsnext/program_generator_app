@@ -2,7 +2,7 @@ import { Guid } from 'guid-typescript';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import data from './project.data';
-import { IProject } from './project.type';
+import { IProject } from '../../../shared/types/Project';
 
 const projectSlice = createSlice({
   name: 'app',

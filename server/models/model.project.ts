@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import { IProject } from '../../client/features/project/project.type';
+import { IProject } from '../../shared/types/Project';
 
 @Entity({name: 'Projects'})
 export default class ProjectModel implements IProject {

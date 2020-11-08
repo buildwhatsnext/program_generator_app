@@ -5,7 +5,7 @@ import styles from './project.module.scss';
 import { openProject } from './project.slice';
 import { NamedValue } from '../../components/NamedValue';
 import { selectSetting } from '../settings/settings.slice';
-import { IProject } from './project.type';
+import { IProject } from '../../../shared/types/Project';
 
 const RecentProjects = (projects?: IProject[]) => {
 

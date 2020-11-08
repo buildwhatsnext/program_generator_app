@@ -1,4 +1,5 @@
-import { IProject, IUser } from '../project/project.type';
+import { IProject } from '../../../shared/types/Project';
+import { IUser } from '../../../shared/types/User';
 
 export interface ISettings {
   application: string;
