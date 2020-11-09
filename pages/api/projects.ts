@@ -6,7 +6,7 @@ import Project from '../../server/models/model.project';
 export default async function handler(req, res) {
   const { method } = req
 
-  const connection = await connectDB();
+  const connection = await connectDB.connectToDatabase();
 
   switch (method) {
     case 'POST':
@@ -38,4 +38,5 @@ export default async function handler(req, res) {
   }
 }
 
-module.exports = CorsServices.allowCors(handler)
+// module.exports = CorsServices.allowCors(handler)
+module.exports = handler;

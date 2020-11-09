@@ -9,11 +9,12 @@ export const loadProjects = createAsyncThunk(
     try {
       const response = await fetch('/api/projects', {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        // headers: {
+        //   'Access-Control-Allow-Origin': 'localhost',
+        //   'Content-Type': 'application/json'
+        // }
       });
-
+      console.log(response);
       return response.json();
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message })
@@ -37,13 +38,17 @@ const sessionSlice = createSlice({
   },
   extraReducers: {
     [loadProjects.pending.name]: (state) => {
+      console.log('Loading projects...')
+      console.log(state)
       state.loading = LoadingState.Loading;
     },
     [loadProjects.rejected.name]: (state) => {
-      state.loading = LoadingState.Loading;
+      console.log('Error while trying to load projects...')
+      state.loading = LoadingState.Error;
     },
     [loadProjects.fulfilled.name]: (state, action) => {
-      state.recentProjects = action.payload;
+      console.log('Projects loaded!')
+      // state.recentProjects = action.payload;
       state.loading = LoadingState.Loaded;
     },
   },
