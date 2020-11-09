@@ -26,7 +26,8 @@ const data = new Session();
 
 const sessionSlice = createSlice({
   name: 'session',
-  initialState: data,
+  initialState: {},
+  // initialState: data,
   reducers: {
     // setCurrentProject: (state, action: PayloadAction<ISession>) => {
     // setCurrentProject: (state, action) => {

@@ -11,7 +11,7 @@ interface props {
 
 export function DataEntrySection({title, collapsible, startHidden, data = null}: props) {
   const collapsed = startHidden && startHidden !== undefined;
-  console.log(collapsed);
+  // console.log(collapsed);
   const [isHidden, setHidden] = React.useState(collapsed);
 
   const toggleHidden = () => {
