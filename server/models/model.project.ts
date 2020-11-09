@@ -3,34 +3,34 @@ import { IProject } from '../../shared/types/Project';
 
 @Entity({name: 'Projects'})
 export default class ProjectModel implements IProject {
-  @PrimaryGeneratedColumn({name: 'Z_PK'})
+  @PrimaryGeneratedColumn({type: 'number'})
   id: string;
 
-  @Column({name: 'NAME', type: 'varchar', default: ''})
+  @Column({type: 'varchar', default: ''})
   name: string;
 
-  @Column({name: 'Z_TENANCY', type: 'numeric', default: -1})
+  @Column({type: 'numeric', default: -1})
   tenancy: number;
 
-  @Column({name: 'Z_IS_BROADCAST', type: "boolean", default: false})
+  @Column({type: "boolean", default: false})
   isBroadcast: boolean;
 
-  @Column({name: 'Z_IS_LAB', type: "boolean", default: false })
+  @Column({type: "boolean", default: false })
   isLab: boolean;
 
-  @Column({name: 'Z_CLIENT',type: 'varchar',  default: ''})
+  @Column({type: 'varchar',  default: ''})
   client: string;
 
-  @Column({name: 'Z_CREATED_BY', type: 'varchar', default: ''})
+  @Column({type: 'varchar', default: ''})
   createdBy: string;
 
-  @Column({name: 'Z_MODIFIED_BY', type: 'varchar', default: ''})
+  @Column({type: 'varchar', default: ''})
   modifiedBy: string;
 
-  @Column({name: 'Z_DATE_CREATED', type: 'datetime', default: Date.now()})
+  @Column({type: 'datetime', default: Date.now()})
   dateCreated: string;
 
-  @Column({name: 'Z_DATE_MODIFIED', type: 'datetime',default: Date.now()})
+  @Column({type: 'datetime',default: Date.now()})
   dateModified: string;
 
 }
