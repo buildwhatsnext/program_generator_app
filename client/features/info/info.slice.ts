@@ -57,6 +57,22 @@ const overviewSlice = createSlice({
       const input = Number(action.payload);
       state.targetNumOfWorkseats = input;
     },
+    setTotalProgrammedArea: (state, action) => {
+      const input = Number(action.payload);
+      state.totalProgrammedArea = input;
+    },
+    setWorkseatRatio: (state, action) => {
+      const input = Number(action.payload);
+      state.totalWorkseatRatio = action.payload;
+    },
+    setTotalNumberOfWorkseats: (state, action) => {
+      const input = Number(action.payload);
+      state.totalNumOfWorkseats = input;
+    },
+    setCollaborationRatio: (state, action) => {
+      const input = Number(action.payload);
+      state.totalCollaborationRatio = action.payload;
+    },
   },
 });
 
@@ -77,4 +93,8 @@ export const {
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget,
+  setTotalProgrammedArea,
+  setWorkseatRatio,
+  setTotalNumberOfWorkseats,
+  setCollaborationRatio
 } = overviewSlice.actions;
