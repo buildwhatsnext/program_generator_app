@@ -6,6 +6,7 @@ const root = process.cwd();
 const entities = `${root}/server/models/*.ts`;
 
 const options: ConnectionOptions = {
+  name: 'debug',
   type: "sqlite",
   database: `${root}/data/debug.sqlite`,
   // entities: [ entities ],

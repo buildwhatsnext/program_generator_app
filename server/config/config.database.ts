@@ -1,15 +1,27 @@
-import { createConnection } from "typeorm";
+import { Connection, createConnection, getConnection } from "typeorm";
 import OptionsDebug from './config.debug';
 import OptionsTesting from './config.testing';
 
-async function connectToDatabase() {
-  const connection = await createConnection(OptionsDebug);
-  await connection.synchronize();
-      // .catch((err) => {
-      //   console.log(`Failed to connect because of an error: ${err}`)
-      // });
+class DatabaseConnector {
+  static connection: Connection;
 
-  return connection;
+  static connectToDatabase = async () => {
+    const opts = OptionsDebug;
+    
+    try {
+      DatabaseConnector.connection = getConnection(opts.name)
+    } catch (error) {
+      console.log(`Failed to connect because of an error: ${error}`)
+    }
+  
+    if(!DatabaseConnector.connection) {
+      DatabaseConnector.connection = await createConnection(opts);
+    }
+  
+    await DatabaseConnector.connection.synchronize();
+  
+    return DatabaseConnector.connection;
+  }
 }
 
-export default connectToDatabase;
+export default DatabaseConnector;
