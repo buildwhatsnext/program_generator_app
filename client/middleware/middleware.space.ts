@@ -1,9 +1,10 @@
 import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { setEnclosedTotalArea } from "../features/space/space.slice";
-import { setTotalProgrammedArea } from '../features/info/info.slice';
+import { setTotalNumberOfWorkseats, setTotalProgrammedArea } from '../features/info/info.slice';
 
 import { AppThunk, RootState } from '../store';
+import { hydrateSpaceState } from "../features/space/space.functions";
 
 export const calculateTotalSpatialArea = (
     data: string[], 
@@ -40,7 +41,6 @@ export const calculateTotalProgrammedArea = (): AppThunk =>
       totalAreaBroadcast,
       totalAreaLab,
     ];
-    console.log(allPrograms)
 
     let total = 0;
     allPrograms?.forEach((area) => {
@@ -48,10 +48,42 @@ export const calculateTotalProgrammedArea = (): AppThunk =>
       total += area
     });
 
-    // sets the area in the store/state
     dispatch(setTotalProgrammedArea(total))
 }
 
+export const calculateTotalWorkseats = (): AppThunk => 
+  (dispatch, getState) => {
+  const {
+    AmenityState,
+    BroadcastState,
+    EnclosedState,
+    MeetingState,
+    LabState,
+    OpenPlanState,
+    SupportState
+  } = getState().program;
+
+  const all = [
+    AmenityState,
+    BroadcastState,
+    EnclosedState,
+    MeetingState,
+    LabState,
+    OpenPlanState,
+    SupportState
+  ];
+
+  let seats = 0;
+
+  all?.forEach((state) => {
+    const spaceState = hydrateSpaceState(state);
+    spaceState.forEach((space) => {
+      seats += space.seatTotal
+    })
+  });
+
+  dispatch(setTotalNumberOfWorkseats(seats));
+}
 
 const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: Action) => {
   switch(action.type) {

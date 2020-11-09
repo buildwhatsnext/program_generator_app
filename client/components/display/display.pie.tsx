@@ -10,7 +10,7 @@ import { selectOverview } from '../../features/info/info.slice';
 import { updateAreaOnHold } from '../../../shared/lib/updaters';
 import { selectProgram } from '../../features/space/space.slice';
 import { ProgramState } from '../../../shared/types/Program';
-import { calculateTotalProgrammedArea } from '../../middleware/middleware.space';
+import { calculateTotalProgrammedArea, calculateTotalWorkseats } from '../../middleware/middleware.space';
 
 function composeAreaData(state: ProgramState): {
   area: number,  
@@ -114,7 +114,8 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   useEffect(() => {
     console.log('Calculating...');
     dispatch(updateAreaOnHold());
-    dispatch(calculateTotalProgrammedArea())
+    dispatch(calculateTotalProgrammedArea());
+    dispatch(calculateTotalWorkseats());
     console.log('Done!');
   });
 
