@@ -1,12 +1,14 @@
 import { Connection, createConnection, getConnection } from "typeorm";
 import OptionsDebug from './config.debug';
 import OptionsTesting from './config.testing';
+import OptionsProduction from './config.production';
 
 class DatabaseConnector {
   static connection: Connection;
 
   static connectToDatabase = async () => {
-    const opts = OptionsDebug;
+    const opts = OptionsProduction;
+    // const opts = OptionsDebug;
     
     try {
       DatabaseConnector.connection = getConnection(opts.name)
