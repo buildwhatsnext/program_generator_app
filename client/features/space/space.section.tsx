@@ -4,8 +4,8 @@ import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import SpaceData from '../../components/table/table.component';
 // import { IRestorableState } from '../../features/info/general.building';
 import { Space } from '../../../shared/types/Space';
-import { dehydrateSpaceData, selectProgram } from './space.slice';
-import { hydrateSpaceState } from './space.functions';
+import { selectProgram } from './space.slice';
+import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { DataEntrySection } from '../../components/display/display.entry';
 

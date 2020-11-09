@@ -1,11 +1,11 @@
 import { Guid } from 'guid-typescript';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { Program } from '../../../shared/types/Program';
+import { ProgramState } from '../../../shared/types/Program';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
-import { EnclosedOfficeSpace, Space } from '../../../shared/types/Space';
+import { Space } from '../../../shared/types/Space';
 
-const program = {...new Program()}
+const program = {...new ProgramState()}
 
 const programSlice = createSlice({
   name: 'program',
@@ -107,12 +107,3 @@ export const {
   setSupportData,
   setSupportTotalArea,
 } = programSlice.actions;
-
-export function dehydrateSpaceData<T extends Space>(elements: T[]) {
-  const serialized = elements?.map(space => {
-    const reduced = JSON.stringify(space);
-    return reduced;
-  })
-
-  return serialized;
-}

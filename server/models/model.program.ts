@@ -1,7 +1,7 @@
-import { IProgram } from "../../shared/types/Program";
+import { IProgramSpaceContainer } from "../../shared/types/Program";
 import { EnclosedOfficeSpace, OpenOfficeSpace, MeetingSpace, AmenitySpace, SupportSpace, BroadcastSpace, LabSpace } from "../../shared/types/Space";
 
-export class ProgramModel implements IProgram {
+export class ProgramModel implements IProgramSpaceContainer {
   name: string;
   Enclosed: EnclosedOfficeSpace[];
   OpenPlan: OpenOfficeSpace[];
@@ -10,13 +10,6 @@ export class ProgramModel implements IProgram {
   Support: SupportSpace[];
   Broadcast: BroadcastSpace[];
   Lab: LabSpace[];
-  EnclosedState: string[];
-  OpenPlanState: string[];
-  MeetingState: string[];
-  AmenityState: string[];
-  SupportState: string[];
-  BroadcastState: string[];
-  LabState: string[];
   totalAreaBuilding: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
@@ -27,5 +20,4 @@ export class ProgramModel implements IProgram {
   totalAreaSupport: number;
   totalAreaBroadcast: number;
   totalAreaLab: number;
-  
 }

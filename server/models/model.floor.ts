@@ -1,3 +1,3 @@
-// export FloorModel implements IFloor{
+export class FloorModel {
 
-// }
+}

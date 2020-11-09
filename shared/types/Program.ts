@@ -10,22 +10,8 @@ import {
   LabSpace,
 } from './Space';
 
-export interface IProgram {
+export interface ISpaceTotalContainer {
   name: string;
-  Enclosed: EnclosedOfficeSpace[]
-  OpenPlan: OpenOfficeSpace[]
-  Meeting: MeetingSpace[]
-  Amenity: AmenitySpace[]
-  Support: SupportSpace[]
-  Broadcast: BroadcastSpace[]
-  Lab: LabSpace[]
-  EnclosedState: string[]
-  OpenPlanState: string[]
-  MeetingState: string[]
-  AmenityState: string[]
-  SupportState: string[]
-  BroadcastState: string[]
-  LabState: string[]
   totalAreaBuilding: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
@@ -38,8 +24,7 @@ export interface IProgram {
   totalAreaLab: number;
 }
 
-export class Program implements IProgram{
-  name: string;
+export interface IProgramSpaceContainer extends ISpaceTotalContainer{
   Enclosed: EnclosedOfficeSpace[]
   OpenPlan: OpenOfficeSpace[]
   Meeting: MeetingSpace[]
@@ -47,12 +32,26 @@ export class Program implements IProgram{
   Support: SupportSpace[]
   Broadcast: BroadcastSpace[]
   Lab: LabSpace[]
+}
+
+export interface IProgramStateContainer extends ISpaceTotalContainer {
   EnclosedState: string[]
-OpenPlanState: string[]
+  OpenPlanState: string[]
   MeetingState: string[]
-AmenityState: string[]
-SupportState: string[]
-BroadcastState: string[]
+  AmenityState: string[]
+  SupportState: string[]
+  BroadcastState: string[]
+  LabState: string[]
+}
+
+export class ProgramState implements IProgramStateContainer{
+  name: string;
+  EnclosedState: string[]
+  OpenPlanState: string[]
+  MeetingState: string[]
+  AmenityState: string[]
+  SupportState: string[]
+  BroadcastState: string[]
   LabState: string[]
   totalAreaBuilding: number;
   totalAreaHold: number;
@@ -88,14 +87,7 @@ BroadcastState: string[]
     this.SupportState = []
     this.BroadcastState = []
     this.LabState = []
-    this.Enclosed = new Array<EnclosedOfficeSpace>();
-    this.OpenPlan = new Array<OpenOfficeSpace>();
-    this.Meeting = new Array<MeetingSpace>();
-    this.Amenity = new Array<AmenitySpace>();
-    this.Support = new Array<SupportSpace>();
-    this.Broadcast = new Array<BroadcastSpace>();
-    this.Lab = new Array<LabSpace>();
   }
 }
 
-export type ProgramState = IProgram;
+export type ProgramStateType = IProgramStateContainer;
