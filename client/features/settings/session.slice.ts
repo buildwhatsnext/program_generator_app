@@ -7,9 +7,14 @@ export const loadProjects = createAsyncThunk(
   'session/loadProjects',
   async (_, thunkAPI) => {
     try {
-      const response = await fetch('/api/projects')
+      const response = await fetch('/api/projects', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
-      return response.json()
+      return response.json();
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message })
     }

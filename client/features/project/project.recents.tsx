@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './project.module.scss';
 import { openProject } from './project.slice';
 import { NamedValue } from '../../components/NamedValue';
-import { selectSetting } from '../settings/session.slice';
+import { selectSession } from '../settings/session.slice';
 import { IProject } from '../../../shared/types/Project';
 
 const RecentProjects = (projects?: IProject[]) => {
@@ -43,9 +43,9 @@ function displayRecentProjects(projects?: Array<IProject>) {
 }
 
 export function ProjectSelection() {
-  const { projects } = useSelector(selectSetting);
+  const { recentProjects } = useSelector(selectSession);
 
-  const recent = displayRecentProjects(projects.recent);
+  const recent = displayRecentProjects(recentProjects);
   // const recent = displayRecentProjects();
 
   return (
