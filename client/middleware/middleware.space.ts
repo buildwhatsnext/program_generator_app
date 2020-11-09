@@ -1,7 +1,7 @@
 import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { setEnclosedTotalArea } from "../features/space/space.slice";
-import { setTotalNumberOfWorkseats, setTotalProgrammedArea, setWorkseatRatio } from '../features/info/info.slice';
+import { setCollaborationRatio, setTotalNumberOfWorkseats, setTotalProgrammedArea, setWorkseatRatio } from '../features/info/info.slice';
 
 import { AppThunk, RootState } from '../store';
 import { hydrateSpaceState } from "../features/space/space.functions";
@@ -51,6 +51,19 @@ export const calculateTotalProgrammedArea = (): AppThunk =>
     dispatch(setTotalProgrammedArea(total))
 }
 
+const calculateTotalSeats = (all: string[][]) => {
+  let seats = 0;
+
+  all?.forEach((state) => {
+    const spaceState = hydrateSpaceState(state);
+    spaceState.forEach((space) => {
+      seats += space.seatTotal
+    })
+  });
+
+  return seats;
+}
+
 export const calculateTotalWorkseats = (): AppThunk => 
   (dispatch, getState) => {
   const {
@@ -64,6 +77,23 @@ export const calculateTotalWorkseats = (): AppThunk =>
   } = getState().program;
 
   const all = [
+    // AmenityState,
+    // BroadcastState,
+    EnclosedState,
+    // MeetingState,
+    // LabState,
+    OpenPlanState,
+    // SupportState
+  ];
+
+  const seats = calculateTotalSeats(all);
+
+  dispatch(setTotalNumberOfWorkseats(seats));
+}
+
+export const calculateCollaborationRatio = (): AppThunk => 
+  (dispatch, getState) => {
+  const {
     AmenityState,
     BroadcastState,
     EnclosedState,
@@ -71,18 +101,23 @@ export const calculateTotalWorkseats = (): AppThunk =>
     LabState,
     OpenPlanState,
     SupportState
+  } = getState().program;
+  const { totalNumOfWorkseats, totalProgrammedArea } = getState().overview;
+
+  const all = [
+    // AmenityState,
+    // BroadcastState,
+    // EnclosedState,
+    MeetingState,
+    // LabState,
+    // OpenPlanState,
+    // SupportState
   ];
 
-  let seats = 0;
+  const meetingSeats = calculateTotalSeats(all);
+  const ratio = (meetingSeats / totalNumOfWorkseats).toFixed(2);
 
-  all?.forEach((state) => {
-    const spaceState = hydrateSpaceState(state);
-    spaceState.forEach((space) => {
-      seats += space.seatTotal
-    })
-  });
-
-  dispatch(setTotalNumberOfWorkseats(seats));
+  dispatch(setCollaborationRatio(ratio));
 }
 
 export const calculateWorkseatRatio = (): AppThunk => 
