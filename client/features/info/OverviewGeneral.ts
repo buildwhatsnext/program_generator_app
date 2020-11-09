@@ -1,21 +1,12 @@
-export interface IProgramOverview {
+import { IBuilding } from "../../../shared/types/Project";
+
+export interface IProgramOverview extends IProject, IBuilding {
   client: string;
   units: 'unknown' | 'metric' | 'imperial' ;
   tenancy: 'unknown' | 'single' | 'multiple';
   hasBroadcast: boolean;
   hasLab: boolean;
-  areaGross: number;
-  areaNet: number;
-  floors: number;
-  targetFactorCirculation: number,
-  targetFactorLoss: number,
-  targetAreaPerWorkseat: number,
-  targetNumOfWorkseats: number,
-  totalProgrammedArea: number,
-  totalWorkseatRatio: number,
-  totalNumOfWorkseats: number,
-  totalNumOfCollabseats: number,
-  totalCollaborationRatio: number
+  
 }
 
 export class ProgramOverview implements IProgramOverview{

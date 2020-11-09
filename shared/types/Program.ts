@@ -1,5 +1,3 @@
-import { IUnplacedSpaceCollection, UnplacedSpaceCollection } from './Unplaced';
-import { IFloor, Floor } from './Floor';
 import {
   EnclosedOfficeSpace,
   OpenOfficeSpace,

@@ -10,4 +10,5 @@ export interface ISpace {
   seatTotal: number;
   areaTotal: number;
   type: SpaceType;
+  // building: 
 }
