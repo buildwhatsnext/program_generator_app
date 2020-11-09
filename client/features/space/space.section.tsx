@@ -9,6 +9,11 @@ import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { DataEntrySection } from '../../components/display/display.entry';
 
+/**
+ * @summary A data section that takes any Space type and can load it's data to/from the store
+ * adding @param collapsible will make it able to be collapsed and @param startHidden handles 
+ * whether this starts off in a collapsed manner or not
+ */
 export interface ISpaceDataSection<T extends Space> {
   title: string;
   type: new () => T;
