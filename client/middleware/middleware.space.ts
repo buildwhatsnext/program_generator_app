@@ -1,7 +1,7 @@
 import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { setEnclosedTotalArea } from "../features/space/space.slice";
-import { setTotalNumberOfWorkseats, setTotalProgrammedArea } from '../features/info/info.slice';
+import { setTotalNumberOfWorkseats, setTotalProgrammedArea, setWorkseatRatio } from '../features/info/info.slice';
 
 import { AppThunk, RootState } from '../store';
 import { hydrateSpaceState } from "../features/space/space.functions";
@@ -83,6 +83,17 @@ export const calculateTotalWorkseats = (): AppThunk =>
   });
 
   dispatch(setTotalNumberOfWorkseats(seats));
+}
+
+export const calculateWorkseatRatio = (): AppThunk => 
+(dispatch, getState) => {
+  const { totalNumOfWorkseats, totalProgrammedArea } = getState().overview;
+
+  const ratio = (totalNumOfWorkseats / totalProgrammedArea).toFixed(2);
+  console.log(ratio);
+
+  dispatch(setWorkseatRatio(ratio.toString()));
+
 }
 
 const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: Action) => {
