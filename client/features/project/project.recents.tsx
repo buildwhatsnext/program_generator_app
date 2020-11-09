@@ -53,7 +53,8 @@ export function ProjectSelection() {
     loadRecentProjects()
   },[])
 
-  const recent = displayRecentProjects(recentProjects);
+  // const recent = displayRecentProjects(recentProjects);
+  const recent = displayRecentProjects();
 
   return (
     loading === LoadingState.Loading

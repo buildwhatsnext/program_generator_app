@@ -22,36 +22,31 @@ export const loadProjects = createAsyncThunk(
   }
 )
 
-const data = new Session();
+const data = {...new Session()};
 
 const sessionSlice = createSlice({
   name: 'session',
-  initialState: {},
-  // initialState: data,
+  initialState: data,
   reducers: {
-    // setCurrentProject: (state, action: PayloadAction<ISession>) => {
-    // setCurrentProject: (state, action) => {
-    //   state.currentProject = action.payload;
-    // },
-    // getRecentProjects: (state, action) => {
-    //   // state.recentProjects = actio
-    // },
   },
   extraReducers: {
-    [loadProjects.pending.name]: (state) => {
-      console.log('Loading projects...')
-      console.log(state)
-      state.loading = LoadingState.Loading;
-    },
-    [loadProjects.rejected.name]: (state) => {
-      console.log('Error while trying to load projects...')
-      state.loading = LoadingState.Error;
-    },
-    [loadProjects.fulfilled.name]: (state, action) => {
-      console.log('Projects loaded!')
-      // state.recentProjects = action.payload;
-      state.loading = LoadingState.Loaded;
-    },
+    // [loadProjects.pending.name]: (state) => {
+    //   console.log('Loading projects...')
+    //   console.log(state)
+    //   state.loading = 'loading';
+    //   // state.loading = LoadingState.Loading.toString();
+    // },
+    // [loadProjects.rejected.name]: (state) => {
+    //   console.log('Error while trying to load projects...')
+    //   state.loading = 'error';
+    //   // state.loading = LoadingState.Error.toString();
+    // },
+    // [loadProjects.fulfilled.name]: (state, action) => {
+    //   console.log('Projects loaded!')
+    //   state.loading = 'loaded';
+    //   // state.recentProjects = action.payload;
+    //   // state.loading = LoadingState.Loaded.toString();
+    // },
   },
 });
 
@@ -62,4 +57,3 @@ const sessionSlice = createSlice({
 export default sessionSlice.reducer;
 
 export const selectSession = (state: RootState) => state.session;
-// export const selectSession = createSelector()

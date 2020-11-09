@@ -3,8 +3,8 @@ import { IProject } from '../../shared/types/Project';
 
 @Entity({name: 'Projects'})
 export default class ProjectModel implements IProject {
-  @PrimaryGeneratedColumn({type: 'number'})
-  id: string;
+  @PrimaryGeneratedColumn({type: 'integer'})
+  id: number;
 
   @Column({type: 'varchar', default: ''})
   name: string;

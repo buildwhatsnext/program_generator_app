@@ -4,10 +4,16 @@ import { IUser } from "../../../shared/types/User";
 import { LoadingState } from '../../../shared/types/LoadingStates';
 
 export class Session implements ISession {
-  application: 'program generator';
-  company: 'hlw';
+  application: string;
+  company: string;
   loading: string;
   currentProject: IProject;
   recentProjects: IProject[];
   user: IUser;
+
+  constructor() {
+    this.application = 'program generator';
+    this.company = 'hlw';
+    this.loading = 'idle';
+  }
 }

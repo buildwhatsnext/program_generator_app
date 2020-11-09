@@ -1,18 +1,24 @@
-import { IBuilding } from "../../../shared/types/Project";
+import { IBuilding, IProject } from "../../../shared/types/Project";
 
 export interface IProgramOverview extends IProject, IBuilding {
   client: string;
   units: 'unknown' | 'metric' | 'imperial' ;
-  tenancy: 'unknown' | 'single' | 'multiple';
+  tenancy: number;
   hasBroadcast: boolean;
   hasLab: boolean;
   
 }
 
 export class ProgramOverview implements IProgramOverview{
+  id: number;
+  name?: string;
+  createdBy?: string;
+  modifiedBy?: string;
+  dateCreated: string;
+  dateModified: string;
   client: string;
   units: "unknown" | "metric" | "imperial";
-  tenancy: "unknown" | "single" | "multiple";
+  tenancy: number;
   hasBroadcast: boolean;
   hasLab: boolean;
   areaGross: number;
@@ -31,6 +37,7 @@ export class ProgramOverview implements IProgramOverview{
   constructor() {
     this.initialize();
   }
+  
 
   initialize(){
     this.client = null;
