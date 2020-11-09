@@ -12,9 +12,6 @@ export class User implements IUser {
   @Column()
   lastName: string;
 
-  @Column()
-  age: number;
-
   @Column({name: 'email', nullable: true })
   email: string;
 
