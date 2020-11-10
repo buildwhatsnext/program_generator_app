@@ -9,7 +9,8 @@ const root = path.resolve(__dirname, '../../');
 
 const options: ConnectionOptions = {
   type: 'mysql',
-  host: process.env.HOST,
+  host: '209.249.187.250',
+  // host: process.env.HOST,
   port: Number(process.env.PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
