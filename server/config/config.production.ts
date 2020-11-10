@@ -8,13 +8,8 @@ dotenv.config();
 const root = path.resolve(__dirname, '../../');
 
 const options: ConnectionOptions = {
-  type: 'mysql',
-  host: '209.249.187.250',
-  // host: process.env.HOST,
-  port: Number(process.env.PORT),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+  type: 'postgres',
+  url: 'postgres://tuqnnskh:qPK6lpMbUM5ovg6vPDnmEvzqVJJwKtdj@lallah.db.elephantsql.com:5432/tuqnnskh',
   entities: [ Project ],
   logging: true
   // type: "mysql",

@@ -27,10 +27,10 @@ export default class ProjectModel implements IProject {
   @Column({type: 'varchar', default: ''})
   modifiedBy: string;
 
-  @Column({type: 'datetime', default: Date.now()})
+  @Column({type: 'varchar', default: Date.now().toString()})
   dateCreated: string;
 
-  @Column({type: 'datetime',default: Date.now()})
+  @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
 }
