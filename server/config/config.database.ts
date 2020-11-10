@@ -7,8 +7,7 @@ class DatabaseConnector {
   static connection: Connection;
 
   static connectToDatabase = async () => {
-    const opts = OptionsProduction;
-    // const opts = OptionsDebug;
+    const opts = process.env.IS_PROD ? OptionsProduction : OptionsDebug;
     
     try {
       DatabaseConnector.connection = getConnection(opts.name)
