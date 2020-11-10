@@ -12,14 +12,6 @@ const options: ConnectionOptions = {
   url: 'postgres://tuqnnskh:qPK6lpMbUM5ovg6vPDnmEvzqVJJwKtdj@lallah.db.elephantsql.com:5432/tuqnnskh',
   entities: [ Project ],
   logging: true
-  // type: "mysql",
-  // host: "",
-  // port: 3306,
-  // username: 'psmith',
-  // password: 'Welcome2HLW',
-  // database: 'testwilson',
-  // entities: [ Project ],
-  // logging: true
 }
 
 export default options;
