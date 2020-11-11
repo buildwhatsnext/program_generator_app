@@ -34,4 +34,11 @@ export default class ProjectModel implements IProject {
   @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
+  initialize() {
+    this.name = 'Untitled Project';
+  }
+
+  constructor() {
+    this.initialize()
+  }
 }

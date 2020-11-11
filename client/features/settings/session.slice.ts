@@ -10,7 +10,23 @@ export const loadProjects = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await fetch('/api/projects');
-      // console.log(response);
+      return response.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message })
+    }
+  }
+)
+
+export const createProject = createAsyncThunk(
+  'session/createProject',
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetch('/api/projects', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       return response.json();
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message })
@@ -25,7 +41,7 @@ const sessionSlice = createSlice({
   },
   extraReducers: {
     [loadProjects.pending.type]: (state) => {
-      state.loading = 'loading';
+      state.loading = LoadingState.Loading;
       delete state['error'];
     },
     [loadProjects.rejected.type]: (state, action) => {

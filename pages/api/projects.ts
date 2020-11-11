@@ -15,9 +15,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse 
     case 'POST':
       try {
         const newProject = new Project();
-        newProject.name = 'Popper & Popette';
-        const project = await connection.manager.save(newProject);
-        res.status(200).json({ success: true, data: project })
+        const data = await connection.manager.save(newProject);
+        res.status(200).json({ success: true, data })
       } catch (error) {
         res.status(400).json({ success: false, error })
       }
