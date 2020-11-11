@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styles from './project.module.scss';
-import { openProject } from './project.slice';
-import { NamedValue } from '../../components/NamedValue';
-import { loadProjects, selectSession } from '../session/session.slice';
+import styles from './display.project.module.scss';
+import { NamedValue } from '../NamedValue';
+import { loadProjects, selectSession } from '../../features/session/session.slice';
 import { IProject } from '../../../shared/types/Project';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 
