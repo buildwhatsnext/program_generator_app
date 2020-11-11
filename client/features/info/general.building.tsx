@@ -39,9 +39,9 @@ function BuildingInformation(props: IRestorableState) {
     console.log(msg);
     const { client, units, tenancy, hasBroadcast, hasLab } = overview;
   
-    const clientData = client.toLowerCase() === 'unknown' ? '' : client;
-    const unitData = units.toLowerCase() === 'unknown' ? '' : units;
-    const tenancyData = tenancy.toLowerCase() === 'unknown' ? '' : tenancy;
+    const clientData = client?.toLowerCase() === 'unknown' ? '' : client;
+    const unitData = units?.toLowerCase() === 'unknown' ? '' : units;
+    const tenancyData = tenancy?.toLowerCase() === 'unknown' ? '' : tenancy;
     const broadcastData = hasBroadcast ? 'Yes' : 'No';
     const labData = hasLab ? 'Yes' : 'No';
     setAnswerOne(clientData);

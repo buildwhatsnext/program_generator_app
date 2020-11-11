@@ -14,10 +14,10 @@ export default class ProjectModel implements IProject {
   tenancy: number;
 
   @Column({type: "boolean", default: false})
-  isBroadcast: boolean;
+  hasBroadcast: boolean;
 
   @Column({type: "boolean", default: false })
-  isLab: boolean;
+  hasLab: boolean;
 
   @Column({type: 'varchar',  default: ''})
   client: string;

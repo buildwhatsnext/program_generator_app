@@ -8,23 +8,23 @@ const projectSlice = createSlice({
   name: 'app',
   initialState: data,
   reducers: {
-    createNewProject: {
-      reducer(state, action: PayloadAction<IProject>) {
-        // console.log(state);
-        state.dateModified = Date.now().toString();
-      },
-      prepare(): PayloadAction<IProject> {
-        const now = new Date();
-        return {
-          type: 'project/createNewProject',
-          payload: {
-            id: Guid.create().toString(),
-            dateCreated: now.toTimeString(),
-            dateModified: now.toTimeString(),
-          },
-        };
-      },
-    },
+    // createNewProject: {
+    //   reducer(state, action: PayloadAction<IProject>) {
+    //     // console.log(state);
+    //     state.dateModified = Date.now().toString();
+    //   },
+    //   prepare(): PayloadAction<IProject> {
+    //     const now = new Date();
+    //     return {
+    //       type: 'project/createNewProject',
+    //       payload: {
+    //         // id: Guid.create().toString(),
+    //         dateCreated: now.toTimeString(),
+    //         dateModified: now.toTimeString(),
+    //       },
+    //     };
+    //   },
+    // },
     openProject: (state, action: PayloadAction<IProject>) => {
       console.log(state);
       console.log(action);
@@ -32,7 +32,10 @@ const projectSlice = createSlice({
   },
 });
 
-export const { createNewProject, openProject } = projectSlice.actions;
+export const { 
+  // createNewProject, 
+  openProject 
+} = projectSlice.actions;
 
 export default projectSlice.reducer;
 

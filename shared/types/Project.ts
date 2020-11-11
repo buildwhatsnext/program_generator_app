@@ -1,12 +1,12 @@
 export interface IProject {
   id: number;
-  name?: string;
-  tenancy?: number;
-  hasBroadcast?: boolean;
-  hasLab?: boolean;
-  client?: string;
-  createdBy?: string;
-  modifiedBy?: string;
+  name: string;
+  tenancy: number;
+  hasBroadcast: boolean;
+  hasLab: boolean;
+  client: string;
+  createdBy: string;
+  modifiedBy: string;
   dateCreated: string;
   dateModified: string;
 }

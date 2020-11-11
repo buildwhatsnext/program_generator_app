@@ -11,9 +11,9 @@ export interface IProgramOverview extends IProject, IBuilding {
 
 export class ProgramOverview implements IProgramOverview{
   id: number;
-  name?: string;
-  createdBy?: string;
-  modifiedBy?: string;
+  name: string;
+  createdBy: string;
+  modifiedBy: string;
   dateCreated: string;
   dateModified: string;
   client: string;
