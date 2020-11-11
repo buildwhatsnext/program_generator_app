@@ -3,6 +3,8 @@ import { RootState } from '../../store';
 import { Session } from './Session';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 
+const data = {...new Session()};
+
 export const loadProjects = createAsyncThunk(
   'session/loadProjects',
   async (_, thunkAPI) => {
@@ -16,32 +18,24 @@ export const loadProjects = createAsyncThunk(
   }
 )
 
-const data = {...new Session()};
-
 const sessionSlice = createSlice({
   name: 'session',
   initialState: data,
   reducers: {
   },
   extraReducers: {
-    [loadProjects.pending.name]: (state) => {
-      console.log('Loading projects...')
-      console.log(state)
+    [loadProjects.pending.type]: (state) => {
       state.loading = 'loading';
-      // state.loading = LoadingState.Loading.toString();
+      delete state['error'];
     },
-    [loadProjects.rejected.name]: (state) => {
+    [loadProjects.rejected.type]: (state, action) => {
       console.log('Error while trying to load projects...')
-      state.loading = 'error';
-      // state.loading = LoadingState.Error.toString();
+      state.loading = LoadingState.Error.toString();
+      state['error']  = action.payload.error;
     },
-    'session/loadProjects/fulfilled': (state, action) => {
-      console.log('Projects loaded!')
-      state.loading = 'loaded';
-      console.log(action.payload);
+    [loadProjects.fulfilled.type]: (state, action) => {
       state.recentProjects = action.payload.data;
-      // state.recentProjects = action.payload;
-      // state.loading = LoadingState.Loaded.toString();
+      state.loading = LoadingState.Loaded.toString();
     },
   },
 });
