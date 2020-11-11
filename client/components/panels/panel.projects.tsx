@@ -13,12 +13,6 @@ export const ProjectOpenPanel = (): JSX.Element => (
 );
 
 function OpenOptions() {
-  // const projectDetails = {
-  //   id: 94615,
-  //   name: 'The Project name',
-  //   dateModified: Date.now(),
-  // };
-
   return (
     <div className={styles.open__options}>
       <DFxRoutingButton
