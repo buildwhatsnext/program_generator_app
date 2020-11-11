@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './project.module.scss';
 import { openProject } from './project.slice';
 import { NamedValue } from '../../components/NamedValue';
-import { loadProjects, selectSession } from '../settings/session.slice';
+import { loadProjects, selectSession } from '../session/session.slice';
 import { IProject } from '../../../shared/types/Project';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 

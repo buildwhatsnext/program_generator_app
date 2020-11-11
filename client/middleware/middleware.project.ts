@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
-import { createProject } from "../features/settings/session.slice";
+import { createProject } from "../features/session/session.slice";
 import { AppThunk, RootState } from '../store';
 import { setBroadcast, setClient, setLab, setTenancy } from "../features/info/info.slice";
 import { IProject } from "../../shared/types/Project";

@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 import overviewReducer from './features/info/info.slice';
 import projectReducer from './features/project/project.slice';
 import programReducer from './features/space/space.slice';
-import settingsReducer from './features/settings/session.slice';
+import settingsReducer from './features/session/session.slice';
 
 import logger from './middleware/middleware.logging';
 import calc from './middleware/middleware.space';
