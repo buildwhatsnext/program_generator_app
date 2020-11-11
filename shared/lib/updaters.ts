@@ -1,4 +1,4 @@
-import { setNetArea } from "../../client/features/info/info.slice";
+import { setNetArea } from "../../client/features/project/info.slice";
 import { setHoldArea, setTotalBuildingArea, setUnprogrammedArea } from '../../client/features/space/space.slice';
 import { AppThunk } from "../../client/store"
 

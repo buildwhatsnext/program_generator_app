@@ -1,7 +1,7 @@
 import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { setEnclosedTotalArea } from "../features/space/space.slice";
-import { setCollaborationRatio, setTotalNumberOfWorkseats, setTotalProgrammedArea, setWorkseatRatio } from '../features/info/info.slice';
+import { setCollaborationRatio, setTotalNumberOfWorkseats, setTotalProgrammedArea, setWorkseatRatio } from '../features/project/info.slice';
 
 import { AppThunk, RootState } from '../store';
 import { hydrateSpaceState } from "../features/space/space.functions";

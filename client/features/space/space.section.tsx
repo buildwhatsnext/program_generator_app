@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from '../project/node_modules/react-redux';
 import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import SpaceData from '../../components/table/table.component';
 // import { IRestorableState } from '../../features/info/general.building';

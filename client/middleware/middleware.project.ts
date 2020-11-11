@@ -1,9 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../features/project/node_modules/react-redux';
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createProject } from "../features/session/session.slice";
 import { AppThunk, RootState } from '../store';
-import { setBroadcast, setClient, setLab, setTenancy } from "../features/info/info.slice";
+import { setBroadcast, setClient, setLab, setTenancy } from "../features/project/info.slice";
 import { IProject } from "../../shared/types/Project";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {

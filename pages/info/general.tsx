@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectOverview } from '../../client/features/info/info.slice';
-import GeneralBldgInfo from '../../client/features/info/general.building';
+import { useSelector } from '../../client/features/project/node_modules/react-redux';
+import { selectOverview } from '../../client/features/project/info.slice';
+import GeneralBldgInfo from '../../client/features/project/general.building';
 
 export default function GeneralBuildingInfoPage() {
   const { client, units, tenancy, hasBroadcast, hasLab } = useSelector(selectOverview);

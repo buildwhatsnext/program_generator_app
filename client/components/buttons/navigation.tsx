@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../features/project/node_modules/react-redux';
 import FxButton, {IFxButton} from './button.component';
 
 export interface IFxRoutingButton extends IFxButton {

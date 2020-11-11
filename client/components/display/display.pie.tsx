@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../features/project/node_modules/react-redux';
 import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../../shared/constants/ark.standards';
 import PROGRAMS from '../../../shared/constants/ark.programs';
-import { selectOverview } from '../../features/info/info.slice';
+import { selectOverview } from '../../features/project/info.slice';
 import { updateAreaOnHold } from '../../../shared/lib/updaters';
 import { selectProgram } from '../../features/space/space.slice';
 import { ProgramState } from '../../../shared/types/Program';

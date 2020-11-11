@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../client/features/project/node_modules/react-redux';
 import { SupportSpace } from '../../shared/types/Space';
 import { hydrateSpaceState } from '../../client/features/space/space.functions';
 import { selectProgram, setSupportData, setSupportTotalArea } from '../../client/features/space/space.slice';

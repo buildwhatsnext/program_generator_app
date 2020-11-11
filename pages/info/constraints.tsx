@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectOverview } from '../../client/features/info/info.slice';
-import GeneralConstraints from '../../client/features/info/general.constraints';
+import { useSelector } from '../../client/features/project/node_modules/react-redux';
+import { selectOverview } from '../../client/features/project/info.slice';
+import GeneralConstraints from '../../client/features/project/general.constraints';
 
 export default function GeneralConstraintsPage() {
   const { areaGross, areaNet, floors } = useSelector(selectOverview);

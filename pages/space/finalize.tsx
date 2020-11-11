@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../client/features/project/node_modules/react-redux';
 import { AmenitySpace, EnclosedOfficeSpace } from '../../shared/types/Space';
 import { hydrateSpaceState } from '../../client/features/space/space.functions';
 import { selectProgram, setAmenityData, setAmenityTotalArea } from '../../client/features/space/space.slice';
@@ -7,7 +7,7 @@ import { ROUTES } from '../../shared/constants/routes';
 import { GenericSpacePage } from '../../client/features/space/space.generic';
 import SpaceTable from '../../client/components/table/table.component';
 import { SPACE_STANDARDS, SPACE_STATE_NAMES } from '../../shared/constants/ark.standards';
-import { selectOverview } from '../../client/features/info/info.slice';
+import { selectOverview } from '../../client/features/project/info.slice';
 import { SpaceDataSection } from '../../client/features/space/space.section';
 import { Page } from '../../client/components/pages/page';
 

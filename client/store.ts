@@ -2,7 +2,7 @@ import { configureStore, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 // import logger from 'redux-logger';
-import overviewReducer from './features/info/info.slice';
+import overviewReducer from './features/project/info.slice';
 import projectReducer from './features/project/project.slice';
 import programReducer from './features/space/space.slice';
 import settingsReducer from './features/session/session.slice';
