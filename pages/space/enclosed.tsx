@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ROUTES } from '../../constants/routes';
-import { EnclosedOfficeSpace } from '../../components/spaces/Space';
-import { hydrateSpaceState } from '../../features/space/space.functions';
-import { GenericSpacePage } from '../../features/space/space.generic';
-import { selectProgram, setEnclosedData, setEnclosedTotalArea } from '../../features/space/space.slice';
+import { ROUTES } from '../../shared/constants/routes';
+import { EnclosedOfficeSpace } from '../../shared/types/Space';
+import { hydrateSpaceState } from '../../client/features/space/space.functions';
+import { GenericSpacePage } from '../../client/features/space/space.generic';
+import { selectProgram, setEnclosedData, setEnclosedTotalArea } from '../../client/features/space/space.slice';
 
 export default function EnclosedWorkspacePage() {
   // const program = useSelector(selectProgram);
