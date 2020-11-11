@@ -23,7 +23,7 @@ const projectHandler =
   (next: Dispatch) => (action: PayloadAction<IProject>) => {
     switch(action.type) {
       case createProject.fulfilled.type: 
-        handleProjectCreation(action, api)
+        // handleProjectCreation(action, api)
         break;
       default:
         break;
