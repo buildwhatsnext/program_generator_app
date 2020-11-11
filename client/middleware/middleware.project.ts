@@ -1,4 +1,4 @@
-import { useDispatch } from '../features/project/node_modules/react-redux';
+import { useDispatch } from 'react-redux';
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createProject } from "../features/session/session.slice";

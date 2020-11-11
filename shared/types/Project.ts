@@ -2,6 +2,7 @@ export interface IProject {
   id: number;
   name: string;
   tenancy: number;
+  units: string;
   hasBroadcast: boolean;
   hasLab: boolean;
   client: string;

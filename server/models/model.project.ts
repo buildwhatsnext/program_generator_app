@@ -22,6 +22,9 @@ export default class ProjectModel implements IProject {
   @Column({type: 'varchar',  default: ''})
   client: string;
 
+  @Column({type: 'varchar',  default: ''})
+  units: string;
+
   @Column({type: 'varchar', default: ''})
   createdBy: string;
 

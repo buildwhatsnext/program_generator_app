@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from '../../features/project/node_modules/react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';

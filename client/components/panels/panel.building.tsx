@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
-import { useSelector } from '../../features/project/node_modules/react-redux';
+import { useSelector } from 'react-redux';
 import { selectOverview } from '../../features/project/info.slice';
 import { GeneralInfoPanelSection as GenSection } from '../panelsections/section.general';
 import { BasicInfoPanelSection as BasicSection, } from '../panelsections/section.basic';

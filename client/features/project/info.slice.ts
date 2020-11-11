@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { ProgramOverview } from './OverviewGeneral';
+import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 
-const overview = {...new ProgramOverview()};
+const overview = {...new ProjectOverview()};
 
 const overviewSlice = createSlice({
   name: 'overview',

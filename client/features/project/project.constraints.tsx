@@ -12,7 +12,7 @@ import {
 } from './info.slice';
 import { updateBuildingArea } from '../../../shared/lib/updaters';
 import styles from '../../components/transition/section.module.scss';
-import { IRestorableState } from './general.building';
+import { IRestorableState } from './project.basics';
 
 
 function BuildingConstraint(props: IRestorableState) {

@@ -1,15 +1,10 @@
 import { IBuilding, IProject } from "../../../shared/types/Project";
 
-export interface IProgramOverview extends IProject, IBuilding {
-  client: string;
-  units: 'unknown' | 'metric' | 'imperial' ;
-  tenancy: number;
-  hasBroadcast: boolean;
-  hasLab: boolean;
+export interface IProjectOverview extends IProject, IBuilding {
   
 }
 
-export class ProgramOverview implements IProgramOverview{
+export class ProjectOverview implements IProjectOverview{
   id: number;
   name: string;
   createdBy: string;

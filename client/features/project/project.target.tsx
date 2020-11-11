@@ -13,7 +13,7 @@ import {
   setWorkseatTarget
 } from './info.slice';
 import styles from '../../components/transition/section.module.scss';
-import { IRestorableState } from './general.building';
+import { IRestorableState } from './project.basics';
 
 function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
