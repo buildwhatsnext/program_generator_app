@@ -2,8 +2,7 @@ import { configureStore, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 // import logger from 'redux-logger';
-import overviewReducer from './features/project/info.slice';
-// import projectReducer from './features/project/project.slice';
+import projectReducer from './features/project/project.slice';
 import programReducer from './features/space/space.slice';
 import settingsReducer from './features/session/session.slice';
 
@@ -13,8 +12,7 @@ import projHandler from './middleware/middleware.project';
 
 
 const rootReducer = combineReducers({
-  overview: overviewReducer,
-  // project: projectReducer,
+  project: projectReducer,
   program: programReducer,
   session: settingsReducer,
 });

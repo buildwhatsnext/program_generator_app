@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectOverview } from '../../client/features/project/info.slice';
+import { selectOverview } from '../../client/features/project/project.slice';
 import TargetMetric from '../../client/features/project/project.target';
 
 export default function TargetMetricPage() {

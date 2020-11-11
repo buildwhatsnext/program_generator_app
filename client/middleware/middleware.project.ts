@@ -3,7 +3,7 @@ import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createProject } from "../features/session/session.slice";
 import { AppThunk, RootState } from '../store';
-import { setBroadcast, setClient, setLab, setTenancy } from "../features/project/info.slice";
+import { setBroadcast, setClient, setLab, setTenancy } from "../features/project/project.slice";
 import { IProject } from "../../shared/types/Project";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {

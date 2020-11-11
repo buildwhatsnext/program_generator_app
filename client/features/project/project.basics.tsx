@@ -13,7 +13,7 @@ import {
   setBroadcast,
   setLab,
   selectOverview, 
-} from './info.slice';
+} from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 
 export interface IRestorableState {

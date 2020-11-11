@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectOverview } from '../../client/features/project/info.slice';
+import { selectOverview } from '../../client/features/project/project.slice';
 import GeneralBldgInfo from '../../client/features/project/project.basics';
 
 export default function GeneralBuildingInfoPage() {

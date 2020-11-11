@@ -9,7 +9,7 @@ import {
   setRsf,
   setFloorCount,
   selectOverview
-} from './info.slice';
+} from './project.slice';
 import { updateBuildingArea } from '../../../shared/lib/updaters';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from './project.basics';

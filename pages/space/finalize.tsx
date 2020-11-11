@@ -7,7 +7,7 @@ import { ROUTES } from '../../shared/constants/routes';
 import { GenericSpacePage } from '../../client/features/space/space.generic';
 import SpaceTable from '../../client/components/table/table.component';
 import { SPACE_STANDARDS, SPACE_STATE_NAMES } from '../../shared/constants/ark.standards';
-import { selectOverview } from '../../client/features/project/info.slice';
+import { selectOverview } from '../../client/features/project/project.slice';
 import { SpaceDataSection } from '../../client/features/space/space.section';
 import { Page } from '../../client/components/pages/page';
 

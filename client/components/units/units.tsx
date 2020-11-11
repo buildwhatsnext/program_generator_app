@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { INamedValue } from '../NamedValue';
-import { selectOverview } from '../../features/project/info.slice';
+import { selectOverview } from '../../features/project/project.slice';
 import styles from './units.module.scss';
 
 const areaMeters = (

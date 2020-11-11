@@ -6,7 +6,7 @@ import { Doughnut } from 'react-chartjs-2';
 import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../../shared/constants/ark.standards';
 import PROGRAMS from '../../../shared/constants/ark.programs';
-import { selectOverview } from '../../features/project/info.slice';
+import { selectOverview } from '../../features/project/project.slice';
 import { updateAreaOnHold } from '../../../shared/lib/updaters';
 import { selectProgram } from '../../features/space/space.slice';
 import { ProgramState } from '../../../shared/types/Program';

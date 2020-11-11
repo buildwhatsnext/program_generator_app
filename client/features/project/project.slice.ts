@@ -3,11 +3,11 @@ import { RootState } from '../../store';
 import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 
-const overview = {...new ProjectOverview()};
+const project = {...new ProjectOverview()};
 
-const overviewSlice = createSlice({
-  name: 'overview',
-  initialState: overview,
+const projectSlice = createSlice({
+  name: 'project',
+  initialState: project,
   reducers: {
     setClient: (state, action) => {
       const value = action?.payload ?? 'unknown'
@@ -76,9 +76,9 @@ const overviewSlice = createSlice({
   },
 });
 
-export default overviewSlice.reducer;
+export default projectSlice.reducer;
 
-export const selectOverview = (state: RootState) => state.overview;
+export const selectOverview = (state: RootState) => state.project;
 
 export const { 
   setClient, 
@@ -97,4 +97,4 @@ export const {
   setWorkseatRatio,
   setTotalNumberOfWorkseats,
   setCollaborationRatio
-} = overviewSlice.actions;
+} = projectSlice.actions;

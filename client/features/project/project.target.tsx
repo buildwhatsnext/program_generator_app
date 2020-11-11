@@ -11,7 +11,7 @@ import {
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget
-} from './info.slice';
+} from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from './project.basics';
 

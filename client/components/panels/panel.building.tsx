@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { List } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { selectOverview } from '../../features/project/info.slice';
+import { selectOverview } from '../../features/project/project.slice';
 import { GeneralInfoPanelSection as GenSection } from '../panelsections/section.general';
 import { BasicInfoPanelSection as BasicSection, } from '../panelsections/section.basic';
 import { ProgramInfoPanelSection as ProgramSection } from '../panelsections/section.program';
