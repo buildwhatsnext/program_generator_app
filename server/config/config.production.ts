@@ -8,6 +8,7 @@ dotenv.config();
 const root = path.resolve(__dirname, '../../');
 
 const options: ConnectionOptions = {
+  name: 'pg_production',
   type: 'postgres',
   url: 'postgres://tuqnnskh:qPK6lpMbUM5ovg6vPDnmEvzqVJJwKtdj@lallah.db.elephantsql.com:5432/tuqnnskh',
   entities: [ Project ],

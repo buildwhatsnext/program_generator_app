@@ -13,28 +13,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse 
   switch (method) {
     case 'POST':
       try {
-        // const repo = connection.getRepository(Project);
         const newProject = new Project();
         newProject.name = 'Popper & Popette';
         const project = await connection.manager.save(newProject);
-        // const project = repo.create()
-        // const project = await repo.save(newProject);
         res.status(200).json({ success: true, payload: project })
       } catch (error) {
         res.status(400).json({ success: false, payload: error })
       }
       break;
     case 'GET':
+    default:
       try {
         const projects = await connection.manager.find(Project);
         res.status(200).json({ success: true, payload: projects })
       } catch (error) {
-        res.status(400).json({ success: false })
+        res.status(400).json({ success: false, payload: error })
       }
       break;
-    default:
-      res.status(400).json({ success: false })
-      break
   }
 }
 

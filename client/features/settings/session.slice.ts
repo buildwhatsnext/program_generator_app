@@ -7,14 +7,8 @@ export const loadProjects = createAsyncThunk(
   'session/loadProjects',
   async (_, thunkAPI) => {
     try {
-      const response = await fetch('/api/projects', {
-        method: 'GET',
-        // headers: {
-        //   'Access-Control-Allow-Origin': 'localhost',
-        //   'Content-Type': 'application/json'
-        // }
-      });
-      console.log(response);
+      const response = await fetch('/api/projects');
+      // console.log(response);
       return response.json();
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message })
@@ -30,23 +24,25 @@ const sessionSlice = createSlice({
   reducers: {
   },
   extraReducers: {
-    // [loadProjects.pending.name]: (state) => {
-    //   console.log('Loading projects...')
-    //   console.log(state)
-    //   state.loading = 'loading';
-    //   // state.loading = LoadingState.Loading.toString();
-    // },
-    // [loadProjects.rejected.name]: (state) => {
-    //   console.log('Error while trying to load projects...')
-    //   state.loading = 'error';
-    //   // state.loading = LoadingState.Error.toString();
-    // },
-    // [loadProjects.fulfilled.name]: (state, action) => {
-    //   console.log('Projects loaded!')
-    //   state.loading = 'loaded';
-    //   // state.recentProjects = action.payload;
-    //   // state.loading = LoadingState.Loaded.toString();
-    // },
+    [loadProjects.pending.name]: (state) => {
+      console.log('Loading projects...')
+      console.log(state)
+      state.loading = 'loading';
+      // state.loading = LoadingState.Loading.toString();
+    },
+    [loadProjects.rejected.name]: (state) => {
+      console.log('Error while trying to load projects...')
+      state.loading = 'error';
+      // state.loading = LoadingState.Error.toString();
+    },
+    'session/loadProjects/fulfilled': (state, action) => {
+      console.log('Projects loaded!')
+      state.loading = 'loaded';
+      console.log(action.payload);
+      state.recentProjects = action.payload.payload;
+      // state.recentProjects = action.payload;
+      // state.loading = LoadingState.Loaded.toString();
+    },
   },
 });
 

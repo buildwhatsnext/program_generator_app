@@ -42,19 +42,24 @@ function displayRecentProjects(projects?: Array<IProject>) {
 }
 
 export function ProjectSelection() {
+  // const [recents, setRecents] = React.useState(null);
   const dispatch = useDispatch();
   const { recentProjects, loading } = useSelector(selectSession);
 
   useEffect(() => {
-    console.log('Checking for recent projects');
     async function loadRecentProjects() {
       await dispatch(loadProjects())
     }
     loadRecentProjects()
-  },[])
+  },[]);
+  
+  useEffect(() => {
+    console.log('recentProjects', recentProjects);
+  }, [recentProjects]);
 
-  // const recent = displayRecentProjects(recentProjects);
-  const recent = displayRecentProjects();
+
+  const recent = displayRecentProjects(recentProjects);
+  // const recent = displayRecentProjects();
 
   return (
     loading === LoadingState.Loading

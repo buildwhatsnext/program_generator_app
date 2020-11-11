@@ -10,11 +10,12 @@ class DatabaseConnector {
     const opts = process.env.IS_PROD ? OptionsProduction : OptionsDebug;
     
     try {
-      DatabaseConnector.connection = getConnection(opts.name)
+      DatabaseConnector.connection = getConnection();
     } catch (error) {
-      console.log(`Failed to connect because of an error: ${error}`)
+      console.log(`Failed to connect because of an error:`)
+      console.log(error);
     }
-  
+
     if(!DatabaseConnector.connection) {
       DatabaseConnector.connection = await createConnection(opts);
     }

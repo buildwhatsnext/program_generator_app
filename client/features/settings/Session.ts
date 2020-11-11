@@ -15,5 +15,8 @@ export class Session implements ISession {
     this.application = 'program generator';
     this.company = 'hlw';
     this.loading = 'idle';
+    this.currentProject = null;
+    this.recentProjects = [];
+    this.user = null;
   }
 }
