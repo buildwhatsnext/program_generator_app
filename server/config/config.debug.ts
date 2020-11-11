@@ -16,8 +16,9 @@ const options: ConnectionOptions = {
   username: 'postgres',
   password: 'admin',
   entities: [ Project ],
+  synchronize: true,
   // entities: [ __dirname + '../models/**/*.ts' ],
-  logging: true
+  logging: ['error']
 }
 
 

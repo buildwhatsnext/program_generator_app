@@ -39,7 +39,7 @@ const sessionSlice = createSlice({
       console.log('Projects loaded!')
       state.loading = 'loaded';
       console.log(action.payload);
-      state.recentProjects = action.payload.payload;
+      state.recentProjects = action.payload.data;
       // state.recentProjects = action.payload;
       // state.loading = LoadingState.Loaded.toString();
     },

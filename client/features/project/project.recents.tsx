@@ -53,9 +53,9 @@ export function ProjectSelection() {
     loadRecentProjects()
   },[]);
   
-  useEffect(() => {
-    console.log('recentProjects', recentProjects);
-  }, [recentProjects]);
+  // useEffect(() => {
+  //   console.log('recentProjects', recentProjects);
+  // }, [recentProjects]);
 
 
   const recent = displayRecentProjects(recentProjects);

@@ -8,7 +8,8 @@ import Project from '../../server/models/model.project';
 export default async function handler(req: NextApiRequest, res: NextApiResponse ) {
   const { method } = req
 
-  const connection = await connectDB.connectToDatabase();
+  // const connection = await connectDB.connectToDatabase();
+  const connection = await connectDB();
 
   switch (method) {
     case 'POST':
@@ -16,18 +17,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse 
         const newProject = new Project();
         newProject.name = 'Popper & Popette';
         const project = await connection.manager.save(newProject);
-        res.status(200).json({ success: true, payload: project })
+        res.status(200).json({ success: true, data: project })
       } catch (error) {
-        res.status(400).json({ success: false, payload: error })
+        res.status(400).json({ success: false, error })
       }
       break;
     case 'GET':
     default:
       try {
-        const projects = await connection.manager.find(Project);
-        res.status(200).json({ success: true, payload: projects })
+        // const projects = await connection.manager.find(Project);
+        const projects = await connection.getRepository(Project).find();
+        res.status(200).json({ success: true, data: projects })
       } catch (error) {
-        res.status(400).json({ success: false, payload: error })
+        res.status(400).json({ success: false, error })
       }
       break;
   }
