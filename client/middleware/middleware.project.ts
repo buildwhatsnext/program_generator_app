@@ -1,9 +1,7 @@
-import { useDispatch } from 'react-redux';
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
-import { createProject } from "../features/session/session.slice";
 import { AppThunk, RootState } from '../store';
-import { setBroadcast, setClient, setLab, setTenancy } from "../features/project/project.slice";
+import { createProject, setBroadcast, setClient, setLab, setTenancy } from "../features/project/project.slice";
 import { IProject } from "../../shared/types/Project";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
@@ -14,7 +12,7 @@ function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, 
   api.dispatch(setTenancy(tenancy));
 }
 
-function handleProjectCreation(action: PayloadAction<IProject>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
+function handleProjectData(action: PayloadAction<IProject>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   setProjectData(action.payload, api);
 }
 
@@ -23,7 +21,7 @@ const projectHandler =
   (next: Dispatch) => (action: PayloadAction<IProject>) => {
     switch(action.type) {
       case createProject.fulfilled.type: 
-        // handleProjectCreation(action, api)
+        handleProjectData(action, api)
         break;
       default:
         break;

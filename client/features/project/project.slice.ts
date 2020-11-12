@@ -1,9 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 
 const project = {...new ProjectOverview()};
+
+export const createProject = createAsyncThunk(
+  'project/createProject',
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetch('/api/projects', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message })
+    }
+  }
+)
 
 const projectSlice = createSlice({
   name: 'project',

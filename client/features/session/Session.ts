@@ -7,7 +7,7 @@ export class Session implements ISession {
   application: string;
   company: string;
   loading: string;
-  currentProject: IProject;
+  // currentProject: IProject;
   recentProjects: IProject[];
   user: IUser;
 
@@ -15,7 +15,7 @@ export class Session implements ISession {
     this.application = 'program generator';
     this.company = 'hlw';
     this.loading = 'idle';
-    this.currentProject = null;
+    // this.currentProject = null;
     this.recentProjects = [];
     this.user = null;
   }

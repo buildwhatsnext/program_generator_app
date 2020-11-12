@@ -6,7 +6,7 @@ export interface ISession {
   application: string;
   company: string;
   user: IUser;
-  currentProject: IProject;
+  // currentProject: IProject;
   recentProjects: Array<IProject>;
   loading: string;
 }
