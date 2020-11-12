@@ -40,10 +40,6 @@ const sessionSlice = createSlice({
   },
 });
 
-// export const { 
-//   loadProjects
-// } = sessionSlice.actions;
-
 export default sessionSlice.reducer;
 
 export const selectSession = (state: RootState) => state.session;
