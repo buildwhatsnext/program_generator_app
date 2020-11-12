@@ -2,13 +2,15 @@ import { IFloor } from "../../shared/types/Floor";
 import { ISpace } from "../../shared/types/ISpace";
 import ISpaceContainer from "../../shared/types/ISpaceContainer";
 import ISpaceTotalContainer from "../../shared/types/ISpaceTotalContainer";
+import {IBuildingElement} from '../../shared/types/IElement';
 import { EnclosedOfficeSpace, OpenOfficeSpace, MeetingSpace, AmenitySpace, SupportSpace, BroadcastSpace, LabSpace } from "../../shared/types/Space";
 
-export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer {
+export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer, IBuildingElement {
   
 }
 
 export class FloorModel implements IFloorModel {
+  
   name: string;
   totalAreaContainer: number;
   totalAreaHold: number;
@@ -27,5 +29,6 @@ export class FloorModel implements IFloorModel {
   Support: SupportSpace[];
   Broadcast: BroadcastSpace[];
   Lab: LabSpace[];
-
+  buildingID: string;
+  
 }

@@ -2,7 +2,8 @@ import { Guid } from 'guid-typescript';
 import { ISpace } from './ISpace';
 import SpaceType from './SpaceType';
 
-export abstract class Space implements ISpace{
+
+export abstract class Space implements ISpace {
   id: string;
   name: string;
   seats: number;
@@ -12,6 +13,8 @@ export abstract class Space implements ISpace{
   seatTotal: number;
   areaTotal: number;
   type: SpaceType;
+  floorID: string;
+  buildingID: string;
 
   constructor() {
     this.initialize();

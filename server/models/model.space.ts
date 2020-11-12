@@ -1,9 +1,10 @@
 import { Check, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { ISpace } from "../../shared/types/ISpace";
 import SpaceType from "../../shared/types/SpaceType";
+import { IBuildingElement, IFloorElement } from '../../shared/types/IElement';
 
 @Entity({name: 'Projects'})
-export class SpaceModel implements ISpace{
+export class SpaceModel implements ISpace, IBuildingElement, IFloorElement {
   @PrimaryGeneratedColumn({type: 'number'})
   id: string;
 
@@ -30,4 +31,7 @@ export class SpaceModel implements ISpace{
 
   @Column({type: 'simple-enum', enum: SpaceType})
   type: SpaceType;
+
+  floorID: string;
+  buildingID: string;
 }
