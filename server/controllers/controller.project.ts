@@ -7,7 +7,7 @@ export default class ProjectCtrl {
     try {
       const connection = await connectDB();
       const projects = await connection.getRepository(Project).find({take: 5, order: {dateModified: 'DESC'}});
-      res.status(200).json({ success: true, data: projects })
+      res.status(200).json(projects)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
     }
@@ -19,7 +19,28 @@ export default class ProjectCtrl {
       const ID =  Array.isArray(id) ? id[0] : id;
       const connection = await connectDB();
       const data = await connection.getRepository(Project).findOne(ID);
-      res.status(200).json({ success: true, data })
+      res.status(200).json(data)
+    } catch(error) {
+      ProjectCtrl.handleError(error, req, res);
+    }
+  }
+
+  static async saveProject(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const { query: { id }, body } = req;
+      console.log(body);
+      const ID =  Array.isArray(id) ? id[0] : id;
+      const connection = await connectDB();
+      const project = await connection.getRepository(Project).findOne(ID);
+      // const updated = Object.assign(project, body);
+      project.client = body.client;
+      project.hasBroadcast = body.hasBroadcast;
+      project.hasLab = body.hasLab;
+      // project.tenancy = body.tenancy;
+      // project.units = body.units;
+      // console.log(project);
+      connection.getRepository(Project).update(ID, project);
+      res.status(200).json(project)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
     }
@@ -30,7 +51,8 @@ export default class ProjectCtrl {
       const connection = await connectDB();
       const newProject = new Project();
       const data = await connection.manager.save(newProject);
-      res.status(200).json({ success: true, data })
+      console.log(data);
+      res.status(200).json(data)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
     }

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
+import { AppThunkConfig, RootState } from '../../store';
 import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import { IProject } from '../../../shared/types/Project';
@@ -27,9 +27,31 @@ export const loadProject = createAsyncThunk<any, IProject>(
   'project/loadProject',
   async (projectData, thunkAPI) => {
     try {
+      console.log('Loading project...')
       const { id } = projectData;
       const response = await fetch(`/api/projects/${id}`, {
         method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message })
+    }
+  }
+)
+
+export const saveProject = 
+  createAsyncThunk<any, void, AppThunkConfig>(
+  'project/saveProject',
+  async (_, thunkAPI) => {
+    try {
+      console.log('Attempting to send save request');
+      const projectData = thunkAPI.getState().project;
+      const response = await fetch(`/api/projects/${projectData.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(projectData),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -45,6 +67,11 @@ const projectSlice = createSlice({
   name: 'project',
   initialState: project,
   reducers: {
+    setId: (state, action) => {
+      const input = Number(action.payload);
+
+      state.id = input;
+    },
     setClient: (state, action) => {
       const value = action?.payload ?? 'unknown'
 
@@ -61,10 +88,12 @@ const projectSlice = createSlice({
       state.tenancy = value;
     },
     setBroadcast: (state, action) => {
-      state.hasBroadcast = action?.payload && action.payload.toString().toLowerCase() === 'yes';
+      const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
+      state.hasBroadcast = value;
     },
     setLab: (state, action) => {
-      state.hasLab = action?.payload && action.payload.toString().toLowerCase() === 'yes';
+      const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
+      state.hasLab = value;
     },
     setRsf: (state, action) => {
       state.areaGross = Number(action.payload);
@@ -117,6 +146,7 @@ export default projectSlice.reducer;
 export const selectOverview = (state: RootState) => state.project;
 
 export const { 
+  setId,
   setClient, 
   setUnits, 
   setTenancy, 

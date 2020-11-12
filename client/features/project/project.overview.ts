@@ -35,6 +35,7 @@ export class ProjectOverview implements IProjectOverview{
   
 
   initialize(){
+    this.id = null;
     this.client = null;
     this.units = null;
     this.tenancy = null;

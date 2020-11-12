@@ -1,11 +1,16 @@
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../store';
-import { createProject, setBroadcast, setClient, setLab, setTenancy } from "../features/project/project.slice";
+import { createProject, loadProject, setBroadcast, setClient, setId, setLab, setTenancy } from "../features/project/project.slice";
 import { IProject } from "../../shared/types/Project";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
-  const { client, hasLab, hasBroadcast, name, tenancy } = data;
+  const { id, client, hasLab, hasBroadcast, name, tenancy } = data;
+  console.log(`Setting loaded project data: `);
+  console.log(data);
+  console.log(`Has Lab? `, hasLab);
+  console.log(`Has Broadcast? `, hasBroadcast);
+  api.dispatch(setId(id))
   api.dispatch(setClient(client));
   api.dispatch(setLab(hasLab));
   api.dispatch(setBroadcast(hasBroadcast));
@@ -20,6 +25,7 @@ const projectHandler =
   (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
   (next: Dispatch) => (action: PayloadAction<IProject>) => {
     switch(action.type) {
+      case loadProject.fulfilled.type:
       case createProject.fulfilled.type: 
         handleProjectData(action, api)
         break;

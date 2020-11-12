@@ -12,7 +12,8 @@ import {
   setTenancy,
   setBroadcast,
   setLab,
-  selectOverview, 
+  selectOverview,
+  saveProject, 
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 
@@ -67,6 +68,10 @@ function BuildingInformation(props: IRestorableState) {
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
+    console.log('saving project!')
+    console.log(`Project ID is: ${overview.id}`)
+    console.log(overview);
+    dispatch(saveProject())
   }
 
   const title = 'General Building Information';

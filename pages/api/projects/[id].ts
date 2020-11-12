@@ -14,7 +14,9 @@ export default async function projectHandler(req: NextApiRequest, res: NextApiRe
       break
     case 'PUT':
       // Update or create data in your database
-      res.status(200).json({ id, name: name || `User ${id}` })
+      // res.status(200).json({ id, name: name || `User ${id}` })
+      console.log('Save request received');
+      await ProjectCtrl.saveProject(req, res);
       break
     default:
       res.setHeader('Allow', ['GET', 'PUT'])
