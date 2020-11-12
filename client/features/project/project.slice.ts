@@ -2,6 +2,7 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
+import { IProject } from '../../../shared/types/Project';
 
 const project = {...new ProjectOverview()};
 
@@ -22,11 +23,12 @@ export const createProject = createAsyncThunk(
   }
 )
 
-export const loadProject = createAsyncThunk(
+export const loadProject = createAsyncThunk<any, IProject>(
   'project/loadProject',
-  async (_, thunkAPI) => {
+  async (projectData, thunkAPI) => {
     try {
-      const response = await fetch('/api/projects', {
+      const { id } = projectData;
+      const response = await fetch(`/api/projects/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
