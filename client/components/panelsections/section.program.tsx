@@ -1,6 +1,6 @@
 import React from 'react';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
-import { convertDataToINamedValues } from '../NamedValue';
+import { convertDataToINamedValues } from '../text/NamedValue';
 import { INamedPanelSection, PanelSection, reMapPanelData } from './panel.section';
 
 export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {

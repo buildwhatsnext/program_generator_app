@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { INamedValue } from '../NamedValue';
+import { INamedValue } from '../text/NamedValue';
 import { selectOverview } from '../../features/project/project.slice';
 import styles from './units.module.scss';
 

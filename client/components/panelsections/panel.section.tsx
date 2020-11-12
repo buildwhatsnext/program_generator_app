@@ -5,11 +5,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import { useSelector } from 'react-redux';
-import { selectProgram } from '../../features/space/space.slice';
-import { convertDataToINamedValues, INamedValue, NamedValue } from '../NamedValue';
+import { convertDataToINamedValues, INamedValue, NamedValue } from '../text/NamedValue';
 import styles from './panel.section.module.scss';
-import { formatAreaData } from '../units/units';
 
 export interface IPanelSection {
   title: string;

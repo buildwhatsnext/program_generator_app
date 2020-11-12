@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertDataToINamedValues } from '../NamedValue';
+import { convertDataToINamedValues } from '../text/NamedValue';
 import { INamedPanelSection, PanelSection } from './panel.section';
 
 export function GeneralInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
