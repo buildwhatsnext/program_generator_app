@@ -13,6 +13,18 @@ export default class ProjectCtrl {
     }
   }
 
+  static async deleteAllProjects(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const connection = await connectDB();
+      const projects = await connection.getRepository(Project).find();
+      const ids = projects.map(project => project.id);
+      await connection.getRepository(Project).delete(ids);
+      res.status(200).json({status: `deleted all projects!`})
+    } catch(error) {
+      ProjectCtrl.handleError(error, req, res);
+    }
+  }
+
   static async getProjectById(req: NextApiRequest, res: NextApiResponse) {
     try {
       const { query: { id } } = req;
@@ -20,6 +32,18 @@ export default class ProjectCtrl {
       const connection = await connectDB();
       const data = await connection.getRepository(Project).findOne(ID);
       res.status(200).json(data)
+    } catch(error) {
+      ProjectCtrl.handleError(error, req, res);
+    }
+  }
+
+  static async deleteProject(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const { query: { id } } = req;
+      const ID =  Array.isArray(id) ? id[0] : id;
+      const connection = await connectDB();
+      await connection.getRepository(Project).delete(ID);
+      res.status(200).json({status: `deleted project ${ID}`})
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
     }

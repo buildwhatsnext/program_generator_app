@@ -13,8 +13,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse 
       await ProjectCtrl.createNewProject(req, res);
       break;
     case 'GET':
-    default:
       await ProjectCtrl.getAllProjects(req, res);
+      break;
+    case 'DELETE':
+      await ProjectCtrl.deleteAllProjects(req, res);
+      break;
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'DELETE'])
+      res.status(405).end(`Method ${method} Not Allowed`)
       break;
   }
 }
