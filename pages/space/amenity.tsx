@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from '../../client/features/project/node_modules/react-redux';
+import { useSelector } from 'react-redux';
 import { AmenitySpace } from '../../shared/types/Space';
 import { hydrateSpaceState } from '../../client/features/space/space.functions';
 import { selectProgram, setAmenityData, setAmenityTotalArea } from '../../client/features/space/space.slice';
