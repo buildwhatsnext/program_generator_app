@@ -1,48 +1,11 @@
-import {
-  EnclosedOfficeSpace,
-  OpenOfficeSpace,
-  MeetingSpace,
-  AmenitySpace,
-  SupportSpace,
-  BroadcastSpace,
-  LabSpace,
-} from './Space';
+import ISpaceTotalContainer from './ISpaceTotalContainer';
+import ISpaceStateContainer from './ISpaceStateContainer';
 
-export interface ISpaceTotalContainer {
-  name: string;
-  totalAreaContainer: number;
-  totalAreaHold: number;
-  totalAreaUnprogrammed: number;
-  totalAreaEnclosed: number;
-  totalAreaOpen: number;
-  totalAreaMeeting: number;
-  totalAreaAmenity: number;
-  totalAreaSupport: number;
-  totalAreaBroadcast: number;
-  totalAreaLab: number;
+export interface IProgramState extends ISpaceStateContainer, ISpaceTotalContainer {
+
 }
 
-export interface IProgramSpaceContainer extends ISpaceTotalContainer{
-  Enclosed: EnclosedOfficeSpace[]
-  OpenPlan: OpenOfficeSpace[]
-  Meeting: MeetingSpace[]
-  Amenity: AmenitySpace[]
-  Support: SupportSpace[]
-  Broadcast: BroadcastSpace[]
-  Lab: LabSpace[]
-}
-
-export interface IProgramStateContainer extends ISpaceTotalContainer {
-  EnclosedState: string[]
-  OpenPlanState: string[]
-  MeetingState: string[]
-  AmenityState: string[]
-  SupportState: string[]
-  BroadcastState: string[]
-  LabState: string[]
-}
-
-export class ProgramState implements IProgramStateContainer{
+export class ProgramState implements IProgramState {
   name: string;
   EnclosedState: string[]
   OpenPlanState: string[]
@@ -88,4 +51,4 @@ export class ProgramState implements IProgramStateContainer{
   }
 }
 
-export type ProgramStateType = IProgramStateContainer;
+export type ProgramStateType = IProgramState;

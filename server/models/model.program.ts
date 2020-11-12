@@ -1,7 +1,12 @@
-import { IProgramSpaceContainer } from "../../shared/types/Program";
+import ISpaceContainer from "../../shared/types/ISpaceContainer";
+import ISpaceTotalContainer from "../../shared/types/ISpaceTotalContainer";
 import { EnclosedOfficeSpace, OpenOfficeSpace, MeetingSpace, AmenitySpace, SupportSpace, BroadcastSpace, LabSpace } from "../../shared/types/Space";
 
-export class ProgramModel implements IProgramSpaceContainer {
+export interface IProgramModel extends ISpaceTotalContainer, ISpaceContainer {
+  
+}
+
+export class ProgramModel implements IProgramModel {
   name: string;
   Enclosed: EnclosedOfficeSpace[];
   OpenPlan: OpenOfficeSpace[];
