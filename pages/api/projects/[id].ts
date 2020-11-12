@@ -10,7 +10,6 @@ export default async function projectHandler(req: NextApiRequest, res: NextApiRe
   switch (method) {
     case 'GET':
       // Get data from your database
-      // res.status(200).json({ id, name: `User ${id}` })
       await ProjectCtrl.getProjectById(req, res);
       break
     case 'PUT':

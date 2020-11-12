@@ -15,11 +15,10 @@ export default class ProjectCtrl {
 
   static async getProjectById(req: NextApiRequest, res: NextApiResponse) {
     try {
-      // console.log(req);
-      const { query } = req;
-      const id = query.id[0];
+      const { query: { id } } = req;
+      const ID =  Array.isArray(id) ? id[0] : id;
       const connection = await connectDB();
-      const data = await connection.getRepository(Project).findOne(id);
+      const data = await connection.getRepository(Project).findOne(ID);
       res.status(200).json({ success: true, data })
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
