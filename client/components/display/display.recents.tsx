@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './display.project.module.scss';
-import { NamedValue } from '../text/NamedValue';
 import { loadProjects, selectSession } from '../../features/session/session.slice';
 import { IProject } from '../../../shared/types/Project';
 import { LoadingState } from '../../../shared/types/LoadingStates';
