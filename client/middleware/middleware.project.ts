@@ -6,10 +6,6 @@ import { IProject } from "../../shared/types/Project";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   const { id, client, hasLab, hasBroadcast, name, tenancy } = data;
-  console.log(`Setting loaded project data: `);
-  console.log(data);
-  console.log(`Has Lab? `, hasLab);
-  console.log(`Has Broadcast? `, hasBroadcast);
   api.dispatch(setId(id))
   api.dispatch(setClient(client));
   api.dispatch(setLab(hasLab));
