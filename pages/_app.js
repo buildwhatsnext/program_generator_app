@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
+import "reflect-metadata";
 import { Provider } from 'react-redux'
-
-import store from '../store'
-import '../styles/styles.global.scss';
+import store from '../client/store'
+import '../client/styles/styles.global.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   return (

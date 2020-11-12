@@ -1,6 +1,6 @@
-import { TransitionPage } from '../../components/transition/page';
-import { TransitionSection } from '../../components/transition/section';
-import { ROUTES } from '../../constants/routes';
+import { TransitionPage } from '../../client/components/transition/page';
+import { TransitionSection } from '../../client/components/transition/section';
+import { ROUTES } from '../../shared/constants/routes';
 import styles from './project.module.scss';
 
 export default function TransitionProjectPage() {
