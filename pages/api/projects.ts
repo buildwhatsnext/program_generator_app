@@ -10,11 +10,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse 
 
   switch (method) {
     case 'POST':
-      ProjectCtrl.createNewProject(req, res);
+      await ProjectCtrl.createNewProject(req, res);
       break;
     case 'GET':
     default:
-      ProjectCtrl.getAllProjects(req, res);
+      await ProjectCtrl.getAllProjects(req, res);
       break;
   }
 }
