@@ -15,7 +15,9 @@ export default class ProjectCtrl {
 
   static async getProjectById(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const { id } = req.body;
+      // console.log(req);
+      const { query } = req;
+      const id = query.id[0];
       const connection = await connectDB();
       const data = await connection.getRepository(Project).findOne(id);
       res.status(200).json({ success: true, data })
