@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './display.project.module.scss';
-import { NamedValue } from '../NamedValue';
+import { NamedValue } from '../text/NamedValue';
 import { loadProjects, selectSession } from '../../features/session/session.slice';
 import { IProject } from '../../../shared/types/Project';
 import { LoadingState } from '../../../shared/types/LoadingStates';
+import { DispatchableText } from '../text/text.dispatchable';
+import { loadProject } from '../../features/project/project.slice';
+import { ROUTES } from '../../../shared/constants/routes';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -14,11 +17,14 @@ const RecentProjectList = (projects?: IProject[]) => {
     const name = p.name ?? '';
 
     return (
-      <NamedValue 
+      <DispatchableText 
         key={p.id} 
         name={name} 
         value={p.dateModified} 
         className={styles.recent__item}
+        executableData={p}
+        execute={loadProject}
+        location={ROUTES.TRANSITION.PROJECT}
       />
     );
   });
@@ -41,7 +47,7 @@ function displayRecentProjects(projects?: Array<IProject>) {
 }
 
 export function ProjectSelection() {
-  // const [recents, setRecents] = React.useState(null);
+  
   const dispatch = useDispatch();
   const { recentProjects, loading } = useSelector(selectSession);
 
@@ -51,14 +57,8 @@ export function ProjectSelection() {
     }
     loadRecentProjects()
   },[]);
-  
-  // useEffect(() => {
-  //   console.log('recentProjects', recentProjects);
-  // }, [recentProjects]);
-
 
   const recent = displayRecentProjects(recentProjects);
-  // const recent = displayRecentProjects();
 
   return (
     loading === LoadingState.Loading
