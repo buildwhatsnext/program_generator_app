@@ -10,7 +10,7 @@ import {
 
 export interface ISpaceTotalContainer {
   name: string;
-  totalAreaBuilding: number;
+  totalAreaContainer: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;
@@ -51,7 +51,7 @@ export class ProgramState implements IProgramStateContainer{
   SupportState: string[]
   BroadcastState: string[]
   LabState: string[]
-  totalAreaBuilding: number;
+  totalAreaContainer: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;
@@ -68,7 +68,7 @@ export class ProgramState implements IProgramStateContainer{
 
   private initialize() {
     this.name = '';
-    this.totalAreaBuilding = 0;
+    this.totalAreaContainer = 0;
     this.totalAreaHold = 0;
     this.totalAreaUnprogrammed = 0;
     this.totalAreaEnclosed = 0;

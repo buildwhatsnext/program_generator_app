@@ -4,7 +4,7 @@ import { ISpace } from "../../shared/types/ISpace";
 export class FloorModel implements IFloor{
   spaces: ISpace[];
   name: string;
-  totalAreaBuilding: number;
+  totalAreaContainer: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;

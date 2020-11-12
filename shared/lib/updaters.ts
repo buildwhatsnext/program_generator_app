@@ -12,12 +12,12 @@ export const updateBuildingArea = (
 export const updateAreaOnHold = ()
 : AppThunk => (dispatch, getState) => {
   const { targetFactorCirculation, targetFactorLoss } = getState().project;
-  const { totalAreaBuilding, } = getState().program;
+  const { totalAreaContainer, } = getState().program;
 
   const factorTotal = targetFactorCirculation + targetFactorLoss;
   const percentage = factorTotal / 100;
-  const areaHold = totalAreaBuilding * percentage;
-  const areaLeftover = totalAreaBuilding - areaHold;
+  const areaHold = totalAreaContainer * percentage;
+  const areaLeftover = totalAreaContainer - areaHold;
   dispatch(setHoldArea(areaHold));
   dispatch(setUnprogrammedArea(areaLeftover));
 }

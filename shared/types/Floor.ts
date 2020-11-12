@@ -8,7 +8,7 @@ export interface IFloor extends ISpaceTotalContainer {
 export class Floor implements IFloor {
   name: string;
   spaces: ISpace[];
-  totalAreaBuilding: number;
+  totalAreaContainer: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;

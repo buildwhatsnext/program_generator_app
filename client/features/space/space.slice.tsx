@@ -14,7 +14,7 @@ const programSlice = createSlice({
     setTotalBuildingArea: (state, action) => {
       console.log('Setting building area')
       const input = tryConvertToNumber(action.payload);
-      state.totalAreaBuilding = input;
+      state.totalAreaContainer = input;
     },
     setUnprogrammedArea: (state, action) => {
       const input = tryConvertToNumber(action.payload);

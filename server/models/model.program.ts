@@ -10,7 +10,7 @@ export class ProgramModel implements IProgramSpaceContainer {
   Support: SupportSpace[];
   Broadcast: BroadcastSpace[];
   Lab: LabSpace[];
-  totalAreaBuilding: number;
+  totalAreaContainer: number;
   totalAreaHold: number;
   totalAreaUnprogrammed: number;
   totalAreaEnclosed: number;
