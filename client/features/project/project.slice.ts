@@ -22,6 +22,23 @@ export const createProject = createAsyncThunk(
   }
 )
 
+export const loadProject = createAsyncThunk(
+  'project/loadProject',
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetch('/api/projects', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message })
+    }
+  }
+)
+
 const projectSlice = createSlice({
   name: 'project',
   initialState: project,
