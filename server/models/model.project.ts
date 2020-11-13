@@ -40,10 +40,10 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
-  // @OneToMany(() => BuildingModel, 
-  //   bldg => bldg.project
-  // )
-  // buildings: BuildingModel[];
+  @OneToMany(() => BuildingModel, 
+    bldg => bldg.project
+  )
+  buildings: BuildingModel[];
 
   initialize() {
     this.id = uuid.v4();

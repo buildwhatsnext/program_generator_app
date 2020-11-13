@@ -1,5 +1,5 @@
 import * as uuid from 'uuid';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, PrimaryColumn, ManyToOne } from "typeorm"
+import { Entity, Column, OneToMany, PrimaryColumn, ManyToOne } from "typeorm"
 import { IBuilding } from '../../shared/types/Project';
 import ProjectModel from './model.project';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
@@ -34,7 +34,7 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
   totalProgrammedArea: number;
 
   @Column({type: 'numeric'})
-totalWorkseatRatio: number;
+  totalWorkseatRatio: number;
 
   @Column({type: 'numeric'})
   totalNumOfWorkseats: number;
@@ -45,10 +45,10 @@ totalWorkseatRatio: number;
   @Column({type: 'numeric'})
   totalCollaborationRatio: number;
 
-  // @ManyToOne(() => ProjectModel, 
-  //   project => project.buildings
-  // )
-  // project: ProjectModel
+  @ManyToOne(() => ProjectModel, 
+    project => project.buildings
+  )
+  project: ProjectModel
 
   initialize() {
     this.id = uuid.v4();
