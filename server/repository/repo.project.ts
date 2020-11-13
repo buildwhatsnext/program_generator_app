@@ -1,4 +1,5 @@
 import { Repository } from "typeorm";
+import { IProject } from "../../shared/types/Project";
 import connectDB, { DatabaseConfigType } from "../config/config.database";
 import Project from '../models/model.project';
 
@@ -59,5 +60,15 @@ export default class ProjectRepository {
     const saved = this.repo.save(project);
 
     return saved;
+  }
+
+  static async updateProject(project: IProject) {
+    await this.getRepo();
+
+    const dbProject = await this.repo.findOne(project.id);
+    dbProject.updateProject(project);
+    const updated = await this.repo.update(dbProject.id, dbProject);
+
+    return updated;
   }
 }

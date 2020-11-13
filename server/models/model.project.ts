@@ -46,15 +46,18 @@ export default class ProjectModel implements IProject {
     this.dateModified = now;
   }
 
-  updateProject(project: ProjectModel) {
+  updateProject(project: IProject) {
     if(this.id !== project.id){
-      throw new Error(`This is not the same element - check IDS: ObjA: ${this.id} ObjB: ${project.id}`);
+      throw new Error(
+        `This is not the same element.
+        check IDS: ObjA: ${this.id} ObjB: ${project.id}`
+      );
     }
 
     this.setProjectData(project);
   }
 
-  setProjectData(project: ProjectModel) {
+  setProjectData(project: IProject) {
     const { id, name, tenancy, hasBroadcast, hasLab, client, units, modifiedBy } = project;
     this.id = id;
     this.name = name;
