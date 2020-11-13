@@ -6,10 +6,12 @@ import { GeneralInfoPanelSection as GenSection } from '../panelsections/section.
 import { BasicInfoPanelSection as BasicSection, } from '../panelsections/section.basic';
 import { ProgramInfoPanelSection as ProgramSection } from '../panelsections/section.program';
 import { Panel } from './panel';
+import { selectBuilding } from '../../features/building/building.slice';
 
 export function BuildingInformationPanel() {
   const title = 'Building Information';
   const overview = useSelector(selectOverview);
+  const building = useSelector(selectBuilding);
   const [generalOpen, setGeneralOpenStatus] = useState(false);
   const [basicOpen, setBasicOpenStatus] = useState(false);
   const [totalsOpen, setTotalsOpenStatus] = useState(false);
@@ -35,12 +37,12 @@ export function BuildingInformationPanel() {
         <BasicSection
           handleClick={handleBasic}
           isActive={basicOpen}
-          rawData={overview}
+          rawData={building}
         />
         <ProgramSection
           handleClick={handleTotals}
           isActive={totalsOpen}
-          rawData={overview}
+          rawData={building}
         />
       </List>
     </Panel>
