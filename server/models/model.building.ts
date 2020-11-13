@@ -1,6 +1,6 @@
 import * as uuid from 'uuid';
 import { Entity, Column, OneToMany, PrimaryColumn, ManyToOne } from "typeorm"
-import { IBuilding } from '../../shared/types/Project';
+import { IBuilding } from '../../shared/types/Building';
 import ProjectModel from './model.project';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
 

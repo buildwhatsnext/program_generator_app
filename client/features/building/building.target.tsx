@@ -6,18 +6,18 @@ import {
   TextualQuestionAnswerCombo as TextQuestion,
 } from '../../components/info/question';
 import { 
-  selectOverview,
+  selectBuilding,
   setCirculation,
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget
-} from './project.slice';
+} from './building.slice';
 import styles from '../../components/transition/section.module.scss';
-import { IRestorableState } from './project.basics';
+import { IRestorableState } from '../../components/IRestorableState';
 
 function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
-  const overview = useSelector(selectOverview);
+  const building = useSelector(selectBuilding);
 
   const [answerOne, setAnswerOne] = React.useState(null);
   const [answerTwo, setAnswerTwo] = React.useState(null);
@@ -37,7 +37,7 @@ function TargetMetric (props: IRestorableState) {
       targetFactorLoss, 
       targetAreaPerWorkseat, 
       targetNumOfWorkseats 
-    } = overview;
+    } = building;
 
     setAnswerOne(targetFactorCirculation);
     setAnswerTwo(targetFactorLoss);

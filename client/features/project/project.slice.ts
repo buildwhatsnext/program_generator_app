@@ -93,49 +93,6 @@ const projectSlice = createSlice({
       const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
       state.hasLab = value;
     },
-    setRsf: (state, action) => {
-      state.areaGross = Number(action.payload);
-    },
-    setNetArea: (state, action) => {
-      console.log('Setting net area')
-      const input = tryConvertToNumber(action.payload);
-      state.areaNet = input;
-    },
-    setFloorCount: (state, action) => {
-      state.floors = Number(action.payload);
-    },
-    setCirculation: (state, action) => {
-      const input = Number(action.payload);
-      state.targetFactorCirculation = input;
-    },
-    setPlanning: (state, action) => {
-      const input = Number(action.payload);
-      state.targetFactorLoss = input;
-    },
-    setWorkseatArea: (state, action) => {
-      const input = Number(action.payload);
-      state.targetAreaPerWorkseat = input;
-    },
-    setWorkseatTarget: (state, action) => {
-      const input = Number(action.payload);
-      state.targetNumOfWorkseats = input;
-    },
-    setTotalProgrammedArea: (state, action) => {
-      const input = Number(action.payload);
-      state.totalProgrammedArea = input;
-    },
-    setWorkseatRatio: (state, action) => {
-      const input = Number(action.payload);
-      state.totalWorkseatRatio = action.payload;
-    },
-    setTotalNumberOfWorkseats: (state, action) => {
-      const input = Number(action.payload);
-      state.totalNumOfWorkseats = input;
-    },
-    setCollaborationRatio: (state, action) => {
-      const input = Number(action.payload);
-      state.totalCollaborationRatio = action.payload;
-    },
   },
 });
 
@@ -150,15 +107,4 @@ export const {
   setTenancy, 
   setBroadcast, 
   setLab,
-  setRsf,
-  setNetArea,
-  setFloorCount,
-  setCirculation,
-  setPlanning,
-  setWorkseatArea,
-  setWorkseatTarget,
-  setTotalProgrammedArea,
-  setWorkseatRatio,
-  setTotalNumberOfWorkseats,
-  setCollaborationRatio
 } = projectSlice.actions;

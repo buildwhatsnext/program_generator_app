@@ -1,10 +1,6 @@
-import { IBuilding, IProject } from "../../../shared/types/Project";
+import { IProject } from "../../../shared/types/Project";
 
-export interface IProjectOverview extends IProject, IBuilding {
-  
-}
-
-export class ProjectOverview implements IProjectOverview{
+export class ProjectOverview implements IProject{
   id: string;
   name: string;
   createdBy: string;
@@ -16,18 +12,18 @@ export class ProjectOverview implements IProjectOverview{
   tenancy: string;
   hasBroadcast: boolean;
   hasLab: boolean;
-  areaGross: number;
-  areaNet: number;
-  floors: number;
-  targetFactorCirculation: number;
-  targetFactorLoss: number;
-  targetAreaPerWorkseat: number;
-  targetNumOfWorkseats: number;
-  totalProgrammedArea: number;
-  totalWorkseatRatio: number;
-  totalNumOfWorkseats: number;
-  totalNumOfCollabseats: number;
-  totalCollaborationRatio: number;
+  // areaGross: number;
+  // areaNet: number;
+  // floors: number;
+  // targetFactorCirculation: number;
+  // targetFactorLoss: number;
+  // targetAreaPerWorkseat: number;
+  // targetNumOfWorkseats: number;
+  // totalProgrammedArea: number;
+  // totalWorkseatRatio: number;
+  // totalNumOfWorkseats: number;
+  // totalNumOfCollabseats: number;
+  // totalCollaborationRatio: number;
 
   constructor() {
     this.initialize();
@@ -41,17 +37,17 @@ export class ProjectOverview implements IProjectOverview{
     this.tenancy = null;
     this.hasBroadcast = null;
     this.hasLab = null;
-    this.areaGross = null;
-    this.areaNet = null;
-    this.floors = null;
-    this.targetFactorCirculation = null;
-    this.targetFactorLoss = null;
-    this.targetAreaPerWorkseat = null;
-    this.targetNumOfWorkseats = null;
-    this.totalProgrammedArea = null;
-    this.totalWorkseatRatio = null;
-    this.totalNumOfWorkseats = null;
-    this.totalNumOfCollabseats = null;
-    this.totalCollaborationRatio = null;
+    // this.areaGross = null;
+    // this.areaNet = null;
+    // this.floors = null;
+    // this.targetFactorCirculation = null;
+    // this.targetFactorLoss = null;
+    // this.targetAreaPerWorkseat = null;
+    // this.targetNumOfWorkseats = null;
+    // this.totalProgrammedArea = null;
+    // this.totalWorkseatRatio = null;
+    // this.totalNumOfWorkseats = null;
+    // this.totalNumOfCollabseats = null;
+    // this.totalCollaborationRatio = null;
   }
 }

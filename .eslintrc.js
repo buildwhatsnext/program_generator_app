@@ -51,8 +51,10 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': RULESTATE.OFF,
 
     'camelcase': RULESTATE.WARN,
+    'class-methods-use-this': RULESTATE.WARN,
     'no-console': RULESTATE.OFF,
     'global-require': 0,
+    'no-empty-function': RULESTATE.WARN,
     'no-use-before-define': RULESTATE.WARN,
     'no-unused-vars': RULESTATE.OFF,
     'no-param-reassign': RULESTATE.OFF,

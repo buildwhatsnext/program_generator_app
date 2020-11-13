@@ -16,11 +16,8 @@ import {
   saveProject, 
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
+import { IRestorableState } from '../../components/IRestorableState';
 
-export interface IRestorableState {
-  hasPrevState: boolean;
-  prevState?: any;
-}
 
 function BuildingInformation(props: IRestorableState) {
   const dispatch = useDispatch();

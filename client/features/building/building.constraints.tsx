@@ -8,16 +8,15 @@ import {
 import { 
   setRsf,
   setFloorCount,
-  selectOverview
-} from './project.slice';
+  selectBuilding
+} from './building.slice';
 import { updateBuildingArea } from '../../../shared/lib/updaters';
 import styles from '../../components/transition/section.module.scss';
-import { IRestorableState } from './project.basics';
-
+import { IRestorableState } from '../../components/IRestorableState';
 
 function BuildingConstraint(props: IRestorableState) {
   const dispatch = useDispatch();
-  const overview = useSelector(selectOverview);
+  const building = useSelector(selectBuilding);
 
   const [answerOne, setAnswerOne] = React.useState(null);
   const [answerTwo, setAnswerTwo] = React.useState(null);
@@ -30,7 +29,7 @@ function BuildingConstraint(props: IRestorableState) {
   }
 
   const restoreState = () => {
-    const { areaGross, areaNet, floors } = overview;
+    const { areaGross, areaNet, floors } = building;
 
     setAnswerOne(areaGross)
     setAnswerTwo(areaNet);
@@ -50,7 +49,7 @@ function BuildingConstraint(props: IRestorableState) {
   const title = 'General Building Constraints'
   const Q1 = <p>What&apos;s the <b> total area of the space?</b></p>;
   const Q1Label = `Enter the total area of the space`;
-  const Q2AreaType = overview?.units?.toLowerCase() === 'metric' ? 'usable' : 'net';
+  const Q2AreaType = building?.units?.toLowerCase() === 'metric' ? 'usable' : 'net';
   const Q2 = <p>What&apos;s the <b> {Q2AreaType} area</b> of the space?</p>;
   const Q2Label = `Enter the net area of the space`;
   const Q3 = <p>How many <b>floors</b> are there in this space</p>;
