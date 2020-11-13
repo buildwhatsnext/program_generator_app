@@ -1,13 +1,17 @@
 import { ConnectionOptions } from 'typeorm';
-import path from 'path';
-
-const root = path.resolve(__dirname, '../../');
+import Project from '../models/model.project';
 
 const options: ConnectionOptions = {
-  type: "sqlite",
-  database: `${root}/data/testing.sqlite`,
-  // entities: [ User, Message ],
-  logging: true
+    database: 'generator_app',
+    type: 'postgres',
+    // url: 'postgres://xxcucpor:KpdDuca5BNUggj-hCdmbO1vrFfDQ_Cc6@lallah.db.elephantsql.com:5432/xxcucpor',
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
+    password: 'admin',
+    entities: [ Project ],
+    synchronize: true,
+    logging: true
 }
 
 export default options;

@@ -1,11 +1,12 @@
+import * as uuid from 'uuid';
 import 'reflect-metadata';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, PrimaryColumn } from "typeorm"
 import { IProject } from '../../shared/types/Project';
 
 @Entity('projects')
 export default class ProjectModel implements IProject {
-  @PrimaryGeneratedColumn({type: 'integer'})
-  id: number;
+  @PrimaryColumn({type: 'uuid' })
+  id: string;
 
   @Column({type: 'varchar', default: ''})
   name: string;
@@ -38,6 +39,7 @@ export default class ProjectModel implements IProject {
   dateModified: string;
 
   initialize() {
+    this.id = uuid.v4();
     this.name = 'Untitled Project';
   }
 

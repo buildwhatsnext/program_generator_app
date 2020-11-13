@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "../config/config.database";
 import Project from '../models/model.project';
+import ProjectRepository from "../repository/repo.project";
 
 export default class ProjectCtrl {
   static async getAllProjects(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const connection = await connectDB();
-      const projects = await connection.getRepository(Project).find({take: 5, order: {dateModified: 'DESC'}});
+      const projects = await ProjectRepository.getAllProjects();
       res.status(200).json(projects)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
@@ -29,8 +29,7 @@ export default class ProjectCtrl {
     try {
       const { query: { id } } = req;
       const ID =  Array.isArray(id) ? id[0] : id;
-      const connection = await connectDB();
-      const data = await connection.getRepository(Project).findOne(ID);
+      const data = ProjectRepository.getProjectById(ID);
       res.status(200).json(data)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
@@ -41,8 +40,7 @@ export default class ProjectCtrl {
     try {
       const { query: { id } } = req;
       const ID =  Array.isArray(id) ? id[0] : id;
-      const connection = await connectDB();
-      await connection.getRepository(Project).delete(ID);
+      ProjectRepository.deleteProjectById(ID);
       res.status(200).json({status: `deleted project ${ID}`})
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
@@ -72,10 +70,11 @@ export default class ProjectCtrl {
 
   static async createNewProject(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const connection = await connectDB();
-      const newProject = new Project();
-      const data = await connection.manager.save(newProject);
-      console.log(data);
+      // const connection = await connectDB();
+      // const newProject = new Project();
+      // const data = await connection.manager.save(newProject);
+      // console.log(data);
+      const data = await ProjectRepository.createNewProject();
       res.status(200).json(data)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);

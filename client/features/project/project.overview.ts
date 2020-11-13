@@ -5,7 +5,7 @@ export interface IProjectOverview extends IProject, IBuilding {
 }
 
 export class ProjectOverview implements IProjectOverview{
-  id: number;
+  id: string;
   name: string;
   createdBy: string;
   modifiedBy: string;

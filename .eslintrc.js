@@ -9,6 +9,7 @@ module.exports = {
     browser: true,
     es2020: true,
     node: true,
+    jest: true,
   },
   extends: [
     "eslint:recommended",
@@ -32,7 +33,9 @@ module.exports = {
     '@typescript-eslint',
   ],
   globals: {
-    'JSX': 'readonly'
+    JSX: 'readonly',
+    React: 'writable',
+    Jest: 'readonly'
   },
   settings: {
     'import/resolver': {
