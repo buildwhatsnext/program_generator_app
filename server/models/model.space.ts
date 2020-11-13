@@ -3,7 +3,7 @@ import { ISpace } from "../../shared/types/ISpace";
 import SpaceType from "../../shared/types/SpaceType";
 import { IBuildingElement, IFloorElement } from '../../shared/types/IElement';
 
-@Entity({name: 'Projects'})
+@Entity({name: 'spaces'})
 export class SpaceModel implements ISpace, IBuildingElement, IFloorElement {
   @PrimaryColumn({type: 'uuid'})
   id: string;

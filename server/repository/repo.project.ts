@@ -9,7 +9,7 @@ export default class ProjectRepository {
 
   private static async getRepo() {
     const connection = await connectDB(this.dbType);
-    const repository = connection.getRepository(Project);
+    const repository = connection.manager.getRepository(Project);
 
     this.repo = repository;
   }
