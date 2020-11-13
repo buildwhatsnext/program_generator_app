@@ -15,7 +15,10 @@
       "strict": false,
       "skipLibCheck": true,
    },
-   "include": ["./server/models/*.ts"],
+   "include": [
+     "./server/models/*.ts",
+     "./server/migrations/*.ts"
+    ],
    "exclude": [
     "node_modules",
     "./server/models/*.test.ts"

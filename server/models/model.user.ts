@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
 import { IUser } from '../../shared/types/User';
 
 @Entity({name: 'Users'})
 export class User implements IUser {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn({type:'uuid'})
   id: string;
 
   @Column()
@@ -18,9 +18,9 @@ export class User implements IUser {
   @Column({name: 'department', type:'varchar', nullable: true })
   department: string;
 
-  @Column({name: 'dateCreated', type: 'datetime', default: Date.now()})
+  @Column({name: 'dateCreated', type: 'varchar', default: Date.now().toString()})
   dateCreated: string;
 
-  @Column({name: 'dateModified', type: 'datetime', default: Date.now()})
+  @Column({name: 'dateModified', type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 }

@@ -1,11 +1,11 @@
-import { Check, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Check, Column, Entity, PrimaryColumn } from "typeorm";
 import { ISpace } from "../../shared/types/ISpace";
 import SpaceType from "../../shared/types/SpaceType";
 import { IBuildingElement, IFloorElement } from '../../shared/types/IElement';
 
 @Entity({name: 'Projects'})
 export class SpaceModel implements ISpace, IBuildingElement, IFloorElement {
-  @PrimaryGeneratedColumn({type: 'number'})
+  @PrimaryColumn({type: 'uuid'})
   id: string;
 
   @Column({type: 'varchar', default: ''})

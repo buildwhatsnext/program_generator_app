@@ -4,7 +4,7 @@ import Project from '../models/model.project';
 
 const root = process.cwd();
 const entities = `${root}/build/server/models/*.js`;
-const migrations = `${root}/server/migrations/*.ts`;
+const migrations = `${root}/build/server/migrations/*.js`;
 
 const options: ConnectionOptions = {
   type: 'postgres',
@@ -13,8 +13,8 @@ const options: ConnectionOptions = {
   port: 5432,
   username: 'postgres',
   password: 'admin',
-  // entities: [ entities ],
-  entities: [ Project ],
+  entities: [ entities ],
+  // entities: [ Project ],
   synchronize: true,
   logging: true,
   migrations: [ migrations ],
