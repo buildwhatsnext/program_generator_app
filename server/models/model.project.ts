@@ -2,9 +2,11 @@ import * as uuid from 'uuid';
 import 'reflect-metadata';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, PrimaryColumn } from "typeorm"
 import { IProject } from '../../shared/types/Project';
+import { BuildingModel } from './model.building';
+import { IUpdateable } from '../../shared/types/ICanUpdate';
 
 @Entity('projects')
-export default class ProjectModel implements IProject {
+export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 
@@ -14,7 +16,7 @@ export default class ProjectModel implements IProject {
   @Column({type: 'varchar',  default: ''})
   client: string;
 
-  @Column({type: 'numeric', default: -1})
+  @Column({type: 'numeric', default: ''})
   tenancy: string;
 
   @Column({type: 'varchar',  default: ''})
@@ -38,6 +40,11 @@ export default class ProjectModel implements IProject {
   @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
+  // @OneToMany(() => BuildingModel, 
+  //   bldg => bldg.project
+  // )
+  // buildings: BuildingModel[];
+
   initialize() {
     this.id = uuid.v4();
     this.name = 'Untitled Project';
@@ -54,10 +61,10 @@ export default class ProjectModel implements IProject {
       );
     }
 
-    this.setProjectData(project);
+    this.updateData(project);
   }
 
-  setProjectData(project: IProject) {
+  updateData(project: IProject) {
     const { id, name, tenancy, hasBroadcast, hasLab, client, units, modifiedBy } = project;
     this.id = id;
     this.name = name;
