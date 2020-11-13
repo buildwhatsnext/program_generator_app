@@ -7,6 +7,14 @@ describe("Database Connector", () => {
     dbType = null;
   })
 
+  it("should be able to create a connection to the LOCAL database", async () => {
+    dbType = 'TEST';
+    const connection = await connectDB();
+
+    expect(connection).not.toBeNull();
+    expect(connection).not.toBeUndefined()
+  });
+
   it("should be able to create a connection to the TEST database", async () => {
     dbType = 'TEST';
     const connection = await connectDB(dbType);
