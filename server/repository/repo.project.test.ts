@@ -10,7 +10,7 @@ describe("Project Repository", () => {
     await ProjectRepo.deleteAllProjects();
   })
 
-  it("should be able to create a project", async () => {
+  it("should be able to create and get a project", async () => {
     const project = await ProjectRepo.createNewProject();
     const result = await ProjectRepo.getProjectById(project.id);
 
