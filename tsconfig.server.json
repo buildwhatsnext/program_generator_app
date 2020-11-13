@@ -17,6 +17,7 @@
    },
    "include": ["./server/models/*.ts"],
    "exclude": [
-    "node_modules"
+    "node_modules",
+    "./server/models/*.test.ts"
   ]
 }

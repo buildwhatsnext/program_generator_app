@@ -3,7 +3,7 @@ import { ConnectionOptions } from 'typeorm';
 import Project from '../models/model.project';
 
 const root = process.cwd();
-const entities = `${root}/server/models/*.ts`;
+const entities = `${root}/build/server/models/*.js`;
 const migrations = `${root}/server/migrations/*.ts`;
 
 const options: ConnectionOptions = {
