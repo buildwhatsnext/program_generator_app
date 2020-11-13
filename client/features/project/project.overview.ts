@@ -13,7 +13,7 @@ export class ProjectOverview implements IProjectOverview{
   dateModified: string;
   client: string;
   units: "unknown" | "metric" | "imperial";
-  tenancy: number;
+  tenancy: string;
   hasBroadcast: boolean;
   hasLab: boolean;
   areaGross: number;

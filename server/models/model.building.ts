@@ -13,5 +13,4 @@ export class BuildingModel implements IBuilding {
   totalNumOfWorkseats: number;
   totalNumOfCollabseats: number;
   totalCollaborationRatio: number;
-  
 }

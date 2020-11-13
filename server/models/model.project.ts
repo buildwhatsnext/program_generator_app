@@ -11,20 +11,20 @@ export default class ProjectModel implements IProject {
   @Column({type: 'varchar', default: ''})
   name: string;
 
+  @Column({type: 'varchar',  default: ''})
+  client: string;
+
   @Column({type: 'numeric', default: -1})
-  tenancy: number;
+  tenancy: string;
+
+  @Column({type: 'varchar',  default: ''})
+  units: string;
 
   @Column({type: "boolean", default: false})
   hasBroadcast: boolean;
 
   @Column({type: "boolean", default: false })
   hasLab: boolean;
-
-  @Column({type: 'varchar',  default: ''})
-  client: string;
-
-  @Column({type: 'varchar',  default: ''})
-  units: string;
 
   @Column({type: 'varchar', default: ''})
   createdBy: string;
