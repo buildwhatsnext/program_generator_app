@@ -41,6 +41,29 @@ export default class ProjectModel implements IProject {
   initialize() {
     this.id = uuid.v4();
     this.name = 'Untitled Project';
+    const now = Date.now().toString();
+    this.dateCreated = now
+    this.dateModified = now;
+  }
+
+  updateProject(project: ProjectModel) {
+    if(this.id !== project.id){
+      throw new Error(`This is not the same element - check IDS: ObjA: ${this.id} ObjB: ${project.id}`);
+    }
+
+    this.setProjectData(project);
+  }
+
+  setProjectData(project: ProjectModel) {
+    const { id, name, tenancy, hasBroadcast, hasLab, client, units, modifiedBy } = project;
+    this.id = id;
+    this.name = name;
+    this.tenancy = tenancy;
+    this.hasBroadcast = hasBroadcast;
+    this.hasLab = hasLab;
+    this.client = client;
+    this.units = units;
+    this.modifiedBy = modifiedBy;
   }
 
   constructor() {

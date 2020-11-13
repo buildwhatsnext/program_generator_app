@@ -68,9 +68,6 @@ function BuildingInformation(props: IRestorableState) {
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
-    console.log('saving project!')
-    console.log(`Project ID is: ${overview.id}`)
-    console.log(overview);
     dispatch(saveProject())
   }
 
