@@ -2,6 +2,7 @@ import { Connection, ConnectionOptions, createConnection, getConnection, getConn
 import OptionsDebug from './config.debug';
 import OptionsTesting from './config.testing';
 import OptionsProduction from './config.production';
+import OptionsBase from './config.base';
 
 export type DatabaseConfigType = 'TEST' | 'DEBUG' | 'PRODUCTION';
 
@@ -16,8 +17,10 @@ function setDatabaseOptions(dbType?: DatabaseConfigType ) {
       opts = OptionsTesting;
       break;
     case 'DEBUG':
-    default:
       opts = OptionsDebug;
+      break;
+    default:
+      opts = OptionsBase;
       break;
   }
 

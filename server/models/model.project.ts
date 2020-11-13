@@ -1,6 +1,6 @@
 import * as uuid from 'uuid';
 import 'reflect-metadata';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, PrimaryColumn } from "typeorm"
+import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm"
 import { IProject } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
@@ -16,7 +16,7 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: 'varchar',  default: ''})
   client: string;
 
-  @Column({type: 'numeric', default: ''})
+  @Column({type: 'varchar', default: ''})
   tenancy: string;
 
   @Column({type: 'varchar',  default: ''})

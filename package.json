@@ -4,7 +4,6 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "build:server": "ts-node ./server/config/config.database.ts",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

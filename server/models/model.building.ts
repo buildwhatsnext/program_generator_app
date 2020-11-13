@@ -67,7 +67,7 @@ totalWorkseatRatio: number;
   }
 
 
-  private updateData(bldg?: IBuilding) {
+  updateData(bldg?: IBuilding) {
     this.areaGross = bldg?.areaGross || 0;
     this.areaGross = bldg?.areaGross || 0;
     this.areaNet = bldg?.areaNet || 0;
