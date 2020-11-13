@@ -1,12 +1,15 @@
+import * as uuid from 'uuid';
 import { ISpace } from './ISpace';
 import ISpaceStateContainer from './ISpaceStateContainer';
 import ISpaceTotalContainer from './ISpaceTotalContainer';
+import { IHasId } from './Project';
 
-export interface IFloor extends ISpaceTotalContainer, ISpaceStateContainer {
+export interface IFloor extends ISpaceTotalContainer, ISpaceStateContainer, IHasId {
   
 }
 
 export class FloorState implements IFloor {
+  id: string;
   name: string;
   totalAreaContainer: number;
   totalAreaHold: number;
@@ -31,6 +34,7 @@ export class FloorState implements IFloor {
   }
 
   initialize(name: string) {
+    this.id = uuid.v4();
     this.name = name;
     this.totalAreaContainer = 0;
     this.totalAreaHold = 0;

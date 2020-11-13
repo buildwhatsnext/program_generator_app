@@ -1,6 +1,8 @@
+import * as uuid from 'uuid';
 import { IBuilding } from '../../shared/types/Project';
 
 export class BuildingModel implements IBuilding {
+  id: string;
   areaGross: number;
   areaNet: number;
   floors: number;
@@ -13,4 +15,12 @@ export class BuildingModel implements IBuilding {
   totalNumOfWorkseats: number;
   totalNumOfCollabseats: number;
   totalCollaborationRatio: number;
+
+  initialize() {
+    this.id = uuid.v4();
+  }
+
+  constructor() {
+    this.initialize()
+  }
 }

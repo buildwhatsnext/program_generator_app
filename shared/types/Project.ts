@@ -1,5 +1,8 @@
-export interface IProject {
+export interface IHasId {
   id: string;
+}
+
+export interface IProject extends IHasId {
   name: string;
   client: string;
   tenancy: string;
@@ -12,7 +15,7 @@ export interface IProject {
   dateModified: string;
 }
 
-export interface IBuilding {
+export interface IBuilding extends IHasId {
   areaGross: number;
   areaNet: number;
   floors: number;
