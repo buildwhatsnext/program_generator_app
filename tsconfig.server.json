@@ -1,16 +1,22 @@
 {
    "compilerOptions": {
-      "lib": [
-         "es5",
-         "es6"
-      ],
       "target": "es5",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "es5",
+        "es6"
+      ],
       "module": "commonjs",
       "moduleResolution": "node",
       "outDir": "./build",
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "sourceMap": true,
-      "strict": false
-   }
+      "strict": false,
+      "skipLibCheck": true,
+   },
+   "include": ["./server/models/*.ts"],
+   "exclude": [
+    "node_modules"
+  ]
 }
