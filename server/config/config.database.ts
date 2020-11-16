@@ -1,9 +1,33 @@
-import { Connection, createConnection, getConnection, getConnectionManager } from "typeorm";
+import { Connection, ConnectionOptions, createConnection, getConnection, getConnectionManager } from "typeorm";
 import OptionsDebug from './config.debug';
 import OptionsTesting from './config.testing';
 import OptionsProduction from './config.production';
+import OptionsBase from './config.base';
 
-const connectDB = async (): Promise<Connection> => {
+export type DatabaseConfigType = 'TEST' | 'DEBUG' | 'PRODUCTION';
+
+function setDatabaseOptions(dbType?: DatabaseConfigType ) {
+  let opts: ConnectionOptions;
+
+  switch(dbType) {
+    case 'PRODUCTION':
+      opts = OptionsProduction;
+      break;
+    case 'TEST':
+      opts = OptionsTesting;
+      break;
+    case 'DEBUG':
+      opts = OptionsDebug;
+      break;
+    default:
+      opts = OptionsBase;
+      break;
+  }
+
+  return opts;
+}
+
+const connectDB = async (dbType?: DatabaseConfigType): Promise<Connection> => {
   let connection: Connection;
   try {
     const connectionManager = getConnectionManager();
@@ -11,8 +35,9 @@ const connectDB = async (): Promise<Connection> => {
     if(connectionManager.has('default')) {
       await getConnectionManager().get().close();
     }
-
-    connection = await createConnection(OptionsDebug);
+    const options = setDatabaseOptions(dbType);
+    connection = await createConnection(options);
+    // connection = await createConnection(OptionsBase);
   } catch (error) {
     console.log('Something failed: ');
     console.log(error);
@@ -22,29 +47,3 @@ const connectDB = async (): Promise<Connection> => {
 }
 
 export default connectDB;
-
-
-// class DatabaseConnector {
-//   static connection: Connection;
-
-//   static connectToDatabase = async () => {
-//     const opts = process.env.IS_PROD ? OptionsProduction : OptionsDebug;
-    
-//     try {
-//       DatabaseConnector.connection = getConnection();
-//     } catch (error) {
-//       console.log(`Failed to connect because of an error:`)
-//       console.log(error);
-//     }
-
-//     if(!DatabaseConnector.connection) {
-//       DatabaseConnector.connection = await createConnection(opts);
-//     }
-  
-//     await DatabaseConnector.connection.synchronize();
-  
-//     return DatabaseConnector.connection;
-//   }
-// }
-
-// export default DatabaseConnector;

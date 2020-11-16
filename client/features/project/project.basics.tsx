@@ -16,11 +16,8 @@ import {
   saveProject, 
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
+import { IRestorableState } from '../../components/IRestorableState';
 
-export interface IRestorableState {
-  hasPrevState: boolean;
-  prevState?: any;
-}
 
 function BuildingInformation(props: IRestorableState) {
   const dispatch = useDispatch();
@@ -68,9 +65,6 @@ function BuildingInformation(props: IRestorableState) {
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
-    console.log('saving project!')
-    console.log(`Project ID is: ${overview.id}`)
-    console.log(overview);
     dispatch(saveProject())
   }
 

@@ -1,17 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { AmenitySpace, EnclosedOfficeSpace } from '../../shared/types/Space';
-import { hydrateSpaceState } from '../../client/features/space/space.functions';
-import { selectProgram, setAmenityData, setAmenityTotalArea } from '../../client/features/space/space.slice';
 import { ROUTES } from '../../shared/constants/routes';
-import { GenericSpacePage } from '../../client/features/space/space.generic';
-import SpaceTable from '../../client/components/table/table.component';
-import { SPACE_STANDARDS, SPACE_STATE_NAMES } from '../../shared/constants/ark.standards';
+import { SPACE_STANDARDS } from '../../shared/constants/ark.standards';
 import { selectOverview } from '../../client/features/project/project.slice';
 import { SpaceDataSection } from '../../client/features/space/space.section';
 import { Page } from '../../client/components/pages/page';
+import { BuildingInformationPanel } from '../../client/components/panels/panel.building';
+import { ProgrammedSpaceDisplay } from '../../client/components/display/display.pie';
+import styles from './breakdown.module.scss';
 
-export default function SpaceConfirmationPage() {
+export default function ProjectBreakdown() {
   const { hasLab, hasBroadcast } = useSelector(selectOverview);
   const standards = { ...SPACE_STANDARDS };
   if(!hasLab)
@@ -26,6 +24,7 @@ export default function SpaceConfirmationPage() {
     return (
       <div key={`${index}_${type.name}`} style={{marginBottom: '1rem'}}>
         <SpaceDataSection 
+          readonly
           collapsible
           startHidden={index > 0}
           title={type.sectionTitle}
@@ -39,8 +38,24 @@ export default function SpaceConfirmationPage() {
   })
 
   return (
-    <Page nextRoute={ROUTES.PROJECT.BREAKDOWN} >
-      { sections }
+    <Page 
+      panel={
+        <BuildingInformationPanel 
+          openBasicSection
+          openGeneralSection
+          openTotalsSection
+        />
+      }
+    >
+      <div className="breakdown">
+        <div className={styles.breakdown__pie}>
+          <ProgrammedSpaceDisplay />
+          <ProgrammedSpaceDisplay />
+        </div>
+        <div className={styles.breakdown__data}>
+          { sections }
+        </div>
+      </div>
     </Page>
   )
 }

@@ -68,9 +68,7 @@ const projectSlice = createSlice({
   initialState: project,
   reducers: {
     setId: (state, action) => {
-      const input = Number(action.payload);
-
-      state.id = input;
+      state.id = action.payload;
     },
     setClient: (state, action) => {
       const value = action?.payload ?? 'unknown'

@@ -3,7 +3,7 @@ import TableCell from '@material-ui/core/TableCell';
 import { TextualAnswer } from '../info/answer';
 import { ISpace } from '../../../shared/types/ISpace';
 import { ISpaceColumn } from './table.column';
-import renderCellByColumnType from './table.function';
+import renderCellByColumnType, { renderReadOnlyCells } from './table.function';
 
 import styles from './table.module.scss';
 import { ReadonlyTextBox } from '../info/input';
@@ -26,10 +26,13 @@ export interface ISpaceCell {
   storedData: string;
   deleteHandler?: (x?: unknown) => void;
   dataHandler?: (idCol, idRow, data) => void;
+  allReadonly?: boolean;
 }
 
 export const SpaceCell = (props: ISpaceCell) => {
-  const cell = renderCellByColumnType(props);
+  const cell = props.allReadonly 
+    ? renderReadOnlyCells(props) 
+    : renderCellByColumnType(props);
 
   return cell;
 }
