@@ -9,6 +9,7 @@ interface IToggleButton {
   statusHandler: () => void;
 };
 
+// TODO: document this function
 export function ToggleButton({ content, active, statusHandler }: IToggleButton) : JSX.Element {
   return !active ? (
     <div className={styles.overridebutton}>

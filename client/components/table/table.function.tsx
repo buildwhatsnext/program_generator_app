@@ -54,3 +54,42 @@ export default function renderCellByColumnType(props: ISpaceCell) {
 
   return cell;
 }
+
+export function renderReadOnlyCells(props: ISpaceCell) {
+  const {
+    row,
+    rowIndex,
+    column,
+    columnIndex,
+    storedData,
+    deleteHandler,
+    dataHandler
+  } = props;
+
+  let cell; 
+
+  const readonly = (
+    <ReadonlyCell 
+      id={`readonly-${row.id}-${column.id}`}
+      align={column.align}
+      minWidth={column.minWidth}
+      rowId={rowIndex.toString()}
+      columnId={columnIndex.toString()}
+      dataHandler={dataHandler}
+      cellState={storedData}
+    />
+  )
+
+  const deleteKey = <DeleteKey elementIndex={rowIndex} handler={deleteHandler} />;
+
+  switch(column.id) {
+    case 'delete':
+      cell = deleteKey;
+      break;
+    default:
+      cell = readonly
+      break;
+  }
+
+  return cell;
+}

@@ -15,9 +15,6 @@ export function DataEntrySection({title, collapsible, startHidden, data = null}:
   const [isHidden, setHidden] = React.useState(collapsed);
 
   const toggleHidden = () => {
-    const msg = isHidden ? 'Reveal' : 'Hide';
-    console.log(msg);
-
     setHidden(!isHidden);
   }
 

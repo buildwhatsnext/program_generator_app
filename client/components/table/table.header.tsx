@@ -9,8 +9,8 @@ export interface IHeaderData {
   columns: ISpaceColumn[]
 }
 
-export function SpaceTableHeader() {
-  const columns = SpaceColumns;
+export function SpaceTableHeader({columns}: IHeaderData) {
+  // const columns = SpaceColumns;
 
   return (
     <TableHead>

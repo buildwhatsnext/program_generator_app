@@ -10,6 +10,7 @@ export interface IAnswer {
   currentValue?:string;
 }
 
+// TODO: document all functions & interfaces in this file
 export function TextualAnswer({ answerHandler, label, passedRef, storedValue }: IAnswer): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
   const { value } = inputRef.current ?? { value: null };

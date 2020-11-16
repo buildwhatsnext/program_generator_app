@@ -56,7 +56,7 @@ const calculateTotalSeats = (all: string[][]) => {
 
   all?.forEach((state) => {
     const spaceState = hydrateSpaceState(state);
-    spaceState.forEach((space) => {
+    spaceState?.forEach((space) => {
       seats += space.seatTotal
     })
   });
