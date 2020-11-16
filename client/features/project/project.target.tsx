@@ -59,7 +59,7 @@ function TargetMetric (props: IRestorableState) {
   const Q1 = <p>What&apos;s the <b> target circulation factor? </b> </p>;
   const Q2 = <p>What&apos;s the <b> target loss factor? </b> </p>;
   const Q3 = <p>What&apos;s the <b> target area per workseat </b> </p>;
-  const Q4 = <p>If you have it, what are the <b> target workseats </b> ?</p>;
+  const Q4 = <p>If you have it, what are the <b> target number workseats </b> ?</p>;
   const next = ROUTES.SPACE.START;
 
   return (
