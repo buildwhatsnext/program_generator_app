@@ -7,6 +7,7 @@ import { Space } from '../../../shared/types/Space';
 
 const program = {...new ProgramState()}
 
+// TODO: document these functions
 const programSlice = createSlice({
   name: 'program',
   initialState: program,

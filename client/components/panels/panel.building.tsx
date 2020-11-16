@@ -8,22 +8,28 @@ import { ProgramInfoPanelSection as ProgramSection } from '../panelsections/sect
 import { Panel } from './panel';
 import { selectBuilding } from '../../features/building/building.slice';
 
-export function BuildingInformationPanel() {
+interface props {
+  openGeneralSection?: boolean;
+  openBasicSection?: boolean;
+  openTotalsSection?: boolean;
+}
+
+export function BuildingInformationPanel({openBasicSection, openGeneralSection, openTotalsSection}: props) {
   const title = 'Building Information';
   const overview = useSelector(selectOverview);
   const building = useSelector(selectBuilding);
-  const [generalOpen, setGeneralOpenStatus] = useState(false);
-  const [basicOpen, setBasicOpenStatus] = useState(false);
-  const [totalsOpen, setTotalsOpenStatus] = useState(false);
+  const [isGeneralOpen, setGeneralOpenStatus] = useState(openGeneralSection && openGeneralSection !== undefined);
+  const [isBasicOpen, setBasicOpenStatus] = useState(openBasicSection && openBasicSection !== undefined);
+  const [isTotalsOpen, setTotalsOpenStatus] = useState(openTotalsSection && openTotalsSection !== undefined);
 
   const handleGeneral = () => {
-    setGeneralOpenStatus(!generalOpen);
+    setGeneralOpenStatus(!isGeneralOpen);
   };
   const handleBasic = () => {
-    setBasicOpenStatus(!basicOpen);
+    setBasicOpenStatus(!isBasicOpen);
   };
   const handleTotals = () => {
-    setTotalsOpenStatus(!totalsOpen);
+    setTotalsOpenStatus(!isTotalsOpen);
   };
 
   return (
@@ -31,17 +37,17 @@ export function BuildingInformationPanel() {
       <List>
         <GenSection
           handleClick={handleGeneral}
-          isActive={generalOpen}
+          isActive={isGeneralOpen}
           rawData={overview}
         />
         <BasicSection
           handleClick={handleBasic}
-          isActive={basicOpen}
+          isActive={isBasicOpen}
           rawData={building}
         />
         <ProgramSection
           handleClick={handleTotals}
-          isActive={totalsOpen}
+          isActive={isTotalsOpen}
           rawData={building}
         />
       </List>

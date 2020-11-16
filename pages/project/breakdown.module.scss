@@ -1,0 +1,19 @@
+.breakdown {
+  overflow-y: scroll;
+  height: 100%;
+
+  &__pie {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+
+    canvas {
+      height: 100%;
+    }
+  }
+
+  &__data {
+    height: 100%;
+    // overflow-y: scroll;
+  }
+}
