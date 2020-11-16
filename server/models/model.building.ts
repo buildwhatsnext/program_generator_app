@@ -3,6 +3,7 @@ import { Entity, Column, OneToMany, PrimaryColumn, ManyToOne } from "typeorm"
 import { IBuilding } from '../../shared/types/Building';
 import ProjectModel from './model.project';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
+import { SpaceModel } from './model.space';
 
 @Entity('buildings')
 export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
@@ -53,6 +54,16 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
     }
   )
   project: ProjectModel
+
+  @OneToMany(() => SpaceModel, 
+    space => space.building
+  )
+  spaces: SpaceModel
+
+  // @OneToMany(() => FloorModel, 
+  //   floor => floor.building
+  // )
+  // floors: FloorModel
 
   initialize() {
     this.id = uuid.v4();
