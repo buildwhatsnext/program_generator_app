@@ -2,6 +2,7 @@ import connectDB, { DatabaseConfigType } from "./config.database";
 
 describe("Database Connector", () => {
   let dbType: DatabaseConfigType;
+  jest.setTimeout(10000);
 
   beforeAll(() => {
     dbType = null;
