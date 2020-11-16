@@ -7,6 +7,7 @@ import { SpaceTableBody, ReadonlyBody } from './table.body';
 import { Space } from '../../../shared/types/Space';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import SpaceFactory from '../../../shared/types/SpaceFactory';
+import { SpaceColumns } from './table.column';
 
 interface IGenericTable<T extends Space> {
   type: new () => T;
@@ -63,21 +64,29 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler, pre
     tableDataHandler(rowData);
   })
 
+  const addNew = !readonly 
+                  ? <Button variant='text' onClick={() => addRow()}>Add New</Button>
+                  : null;
+
+  const columns = !readonly ? SpaceColumns : SpaceColumns.slice(1, SpaceColumns.length);
+
   return (
     <>
-      <Button variant='text' onClick={() => addRow()}>Add New</Button>
+        { addNew }
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
-            <SpaceTableHeader />
+            <SpaceTableHeader columns={columns}/>
             {
               readonly 
               ? (
                 <ReadonlyBody 
                   rows={rowData} 
+                  columns={columns}
                 />
               ) : (
                 <SpaceTableBody 
                   rows={rowData} 
+                  columns={columns}
                   deleteHandler={removeRow} 
                   dataHandler={addDataToElement}
                 />
