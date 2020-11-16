@@ -71,8 +71,8 @@ function BuildingInformation(props: IRestorableState) {
 
   const title = 'General Building Information';
   const Q1 = <p>What is your <b>client&apos;s name?</b></p>;
-  const Q2 = <p>Which <b> units </b> should we use to measure your space? </p>;
-  const Q3 = <p>Is your space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
+  const Q2 = <p>Which <b> units </b> should we use to measure the space? </p>;
+  const Q3 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
   const Q4 = <p>Is this space a <b> broadcast </b> studio?</p>;
   const Q5 = <p>Does this program include any <b> lab </b> spaces?</p>;
   const next = ROUTES.INFO.CONSTRAINTS;
