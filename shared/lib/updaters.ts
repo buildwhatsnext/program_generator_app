@@ -1,4 +1,4 @@
-import { setNetArea } from "../../client/features/building/building.slice";
+import { setNetArea } from "../../client/features/project/project.slice";
 import { setHoldArea, setTotalBuildingArea, setUnprogrammedArea } from '../../client/features/space/space.slice';
 import { AppThunk } from "../../client/store"
 
@@ -13,7 +13,7 @@ export const updateBuildingArea = (
 // TODO: document this function
 export const updateAreaOnHold = ()
 : AppThunk => (dispatch, getState) => {
-  const { targetFactorCirculation, targetFactorLoss } = getState().building;
+  const { targetFactorCirculation, targetFactorLoss } = getState().project;
   const { totalAreaContainer, } = getState().program;
 
   const factorTotal = targetFactorCirculation + targetFactorLoss;

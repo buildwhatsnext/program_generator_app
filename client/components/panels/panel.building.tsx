@@ -6,7 +6,6 @@ import { GeneralInfoPanelSection as GenSection } from '../panelsections/section.
 import { BasicInfoPanelSection as BasicSection, } from '../panelsections/section.basic';
 import { ProgramInfoPanelSection as ProgramSection } from '../panelsections/section.program';
 import { Panel } from './panel';
-import { selectBuilding } from '../../features/building/building.slice';
 
 interface props {
   openGeneralSection?: boolean;
@@ -17,7 +16,6 @@ interface props {
 export function BuildingInformationPanel({openBasicSection, openGeneralSection, openTotalsSection}: props) {
   const title = 'Building Information';
   const overview = useSelector(selectOverview);
-  const building = useSelector(selectBuilding);
   const [isGeneralOpen, setGeneralOpenStatus] = useState(openGeneralSection && openGeneralSection !== undefined);
   const [isBasicOpen, setBasicOpenStatus] = useState(openBasicSection && openBasicSection !== undefined);
   const [isTotalsOpen, setTotalsOpenStatus] = useState(openTotalsSection && openTotalsSection !== undefined);
@@ -43,12 +41,12 @@ export function BuildingInformationPanel({openBasicSection, openGeneralSection, 
         <BasicSection
           handleClick={handleBasic}
           isActive={isBasicOpen}
-          rawData={building}
+          rawData={overview}
         />
         <ProgramSection
           handleClick={handleTotals}
           isActive={isTotalsOpen}
-          rawData={building}
+          rawData={overview}
         />
       </List>
     </Panel>

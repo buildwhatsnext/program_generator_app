@@ -6,7 +6,7 @@ import {
   setTotalNumberOfWorkseats, 
   setTotalProgrammedArea, 
   setWorkseatRatio 
-} from '../features/building/building.slice';
+} from '../features/project/project.slice';
 
 import { AppThunk, RootState } from '../store';
 import { hydrateSpaceState } from "../features/space/space.functions";
@@ -107,7 +107,7 @@ export const calculateCollaborationRatio = (): AppThunk =>
     OpenPlanState,
     SupportState
   } = getState().program;
-  const { totalNumOfWorkseats, totalProgrammedArea } = getState().building;
+  const { totalNumOfWorkseats, totalProgrammedArea } = getState().project;
 
   const all = [
     // AmenityState,
@@ -127,7 +127,7 @@ export const calculateCollaborationRatio = (): AppThunk =>
 
 export const calculateWorkseatRatio = (): AppThunk => 
 (dispatch, getState) => {
-  const { totalNumOfWorkseats, totalProgrammedArea } = getState().building;
+  const { totalNumOfWorkseats, totalProgrammedArea } = getState().project;
 
   const ratio = (totalNumOfWorkseats / totalProgrammedArea).toFixed(2);
   console.log(ratio);

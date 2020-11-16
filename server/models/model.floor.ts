@@ -34,18 +34,18 @@ export class FloorModel implements IFloorModel {
   Broadcast: BroadcastSpace[];
   Lab: LabSpace[];
   
-  @ManyToOne(() => BuildingModel, 
-    bldg => bldg.floorsData,
-    { 
-      onUpdate: 'CASCADE', 
-      onDelete: 'CASCADE'
-    }
-  )
-  building: BuildingModel
+  // @ManyToOne(() => BuildingModel, 
+  //   bldg => bldg.floorsData,
+  //   { 
+  //     onUpdate: 'CASCADE', 
+  //     onDelete: 'CASCADE'
+  //   }
+  // )
+  // building: BuildingModel
 
-  @OneToMany(() => SpaceModel, 
-    space => space.floor
-  )
-  spaces: SpaceModel;
+  // @OneToMany(() => SpaceModel, 
+  //   space => space.floor
+  // )
+  // spaces: SpaceModel;
   
 }

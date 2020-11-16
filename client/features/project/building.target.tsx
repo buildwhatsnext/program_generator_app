@@ -6,18 +6,18 @@ import {
   TextualQuestionAnswerCombo as TextQuestion,
 } from '../../components/info/question';
 import { 
-  selectBuilding,
+  selectOverview,
   setCirculation,
   setPlanning,
   setWorkseatArea,
   setWorkseatTarget
-} from './building.slice';
+} from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
 
 function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
-  const building = useSelector(selectBuilding);
+  const building = useSelector(selectOverview);
 
   const [answerOne, setAnswerOne] = React.useState(null);
   const [answerTwo, setAnswerTwo] = React.useState(null);

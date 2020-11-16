@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectBuilding } from '../../client/features/building/building.slice';
-import GeneralConstraints from '../../client/features/building/building.constraints';
+import { selectOverview } from '../../client/features/project/project.slice';
+import GeneralConstraints from '../../client/features/project/project.constraints';
 
 export default function GeneralConstraintsPage() {
-  const { areaGross, areaNet, floors } = useSelector(selectBuilding);
+  const { areaGross, areaNet, floors } = useSelector(selectOverview);
   const state = [areaGross, areaNet, floors];
   const hasPrevState = state.some(val => val !== null);
 

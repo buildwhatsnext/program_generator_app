@@ -22,10 +22,10 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: 'varchar',  default: ''})
   units: string;
 
-  @Column({type: "boolean", default: false})
+  @Column({type: "boolean", nullable: true})
   hasBroadcast: boolean;
 
-  @Column({type: "boolean", default: false })
+  @Column({type: "boolean", nullable: true })
   hasLab: boolean;
 
   @Column({type: 'varchar', default: ''})
@@ -40,6 +40,42 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
+  @Column({type: 'numeric'})
+  areaGross: number;
+
+  @Column({type: 'numeric'})
+  areaNet: number;
+
+  @Column({type: 'numeric'})
+  floors: number;
+
+  @Column({type: 'numeric'})
+  targetFactorCirculation: number;
+
+  @Column({type: 'numeric'})
+  targetFactorLoss: number;
+
+  @Column({type: 'numeric'})
+  targetAreaPerWorkseat: number;
+
+  @Column({type: 'numeric'})
+  targetNumOfWorkseats: number;
+
+  @Column({type: 'numeric'})
+  totalProgrammedArea: number;
+
+  @Column({type: 'numeric'})
+  totalWorkseatRatio: number;
+
+  @Column({type: 'numeric'})
+  totalNumOfWorkseats: number;
+
+  @Column({type: 'numeric'})
+  totalNumOfCollabseats: number;
+
+  @Column({type: 'numeric'})
+  totalCollaborationRatio: number;
+
   @OneToMany(() => BuildingModel, 
     bldg => bldg.project
   )
@@ -51,6 +87,8 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
     const now = Date.now().toString();
     this.dateCreated = now
     this.dateModified = now;
+
+    this.updateData()
   }
 
   updateProject(project: IProject) {
@@ -64,19 +102,30 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
     this.updateData(project);
   }
 
-  updateData(project: IProject) {
-    const { id, name, tenancy, hasBroadcast, hasLab, client, units, modifiedBy } = project;
-    this.id = id;
-    this.name = name;
-    this.tenancy = tenancy;
-    this.hasBroadcast = hasBroadcast;
-    this.hasLab = hasLab;
-    this.client = client;
-    this.units = units;
-    this.modifiedBy = modifiedBy;
+  updateData(project?: IProject) {
+    
+    this.name = project?.name || '';
+    this.tenancy = project?.tenancy || '';
+    this.hasBroadcast = project?.hasBroadcast || null;
+    this.hasLab = project?.hasLab || null;
+    this.client = project?.client || '';
+    this.units = project?.units || '';
+    this.modifiedBy = project?.modifiedBy || '';
+    this.areaGross = project?.areaGross || 0;
+    this.areaNet = project?.areaNet || 0;
+    this.floors = project?.floors || 0;
+    this.targetFactorCirculation = project?.targetFactorCirculation || 0;
+    this.targetFactorLoss = project?.targetFactorLoss || 0;
+    this.targetAreaPerWorkseat = project?.targetAreaPerWorkseat || 0;
+    this.targetNumOfWorkseats = project?.targetNumOfWorkseats || 0;
+    this.totalProgrammedArea = project?.totalProgrammedArea || 0;
+    this.totalWorkseatRatio = project?.totalWorkseatRatio || 0;
+    this.totalNumOfWorkseats = project?.totalNumOfWorkseats || 0;
+    this.totalNumOfCollabseats = project?.totalNumOfCollabseats || 0;
+    this.totalCollaborationRatio = project?.totalCollaborationRatio || 0;
   }
 
   constructor() {
-    this.initialize()
+    this.initialize();
   }
 }

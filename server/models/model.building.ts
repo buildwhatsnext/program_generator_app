@@ -20,32 +20,32 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
   @Column({type: 'numeric'})
   floors: number;
 
-  @Column({type: 'numeric'})
-  targetFactorCirculation: number;
+  // @Column({type: 'numeric'})
+  // targetFactorCirculation: number;
 
-  @Column({type: 'numeric'})
-  targetFactorLoss: number;
+  // @Column({type: 'numeric'})
+  // targetFactorLoss: number;
 
-  @Column({type: 'numeric'})
-  targetAreaPerWorkseat: number;
+  // @Column({type: 'numeric'})
+  // targetAreaPerWorkseat: number;
 
-  @Column({type: 'numeric'})
-  targetNumOfWorkseats: number;
+  // @Column({type: 'numeric'})
+  // targetNumOfWorkseats: number;
 
-  @Column({type: 'numeric'})
-  totalProgrammedArea: number;
+  // @Column({type: 'numeric'})
+  // totalProgrammedArea: number;
 
-  @Column({type: 'numeric'})
-  totalWorkseatRatio: number;
+  // @Column({type: 'numeric'})
+  // totalWorkseatRatio: number;
 
-  @Column({type: 'numeric'})
-  totalNumOfWorkseats: number;
+  // @Column({type: 'numeric'})
+  // totalNumOfWorkseats: number;
 
-  @Column({type: 'numeric'})
-  totalNumOfCollabseats: number;
+  // @Column({type: 'numeric'})
+  // totalNumOfCollabseats: number;
 
-  @Column({type: 'numeric'})
-  totalCollaborationRatio: number;
+  // @Column({type: 'numeric'})
+  // totalCollaborationRatio: number;
 
   @ManyToOne(() => ProjectModel, 
     project => project.buildings,
@@ -61,10 +61,10 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
   )
   spaces: SpaceModel
 
-  @OneToMany(() => FloorModel, 
-    floor => floor.building
-  )
-  floorsData: FloorModel
+  // @OneToMany(() => FloorModel, 
+  //   floor => floor.building
+  // )
+  // floorsData: FloorModel
 
   initialize() {
     this.id = uuid.v4();
@@ -85,18 +85,17 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
 
   updateData(bldg?: IBuilding) {
     this.areaGross = bldg?.areaGross || 0;
-    this.areaGross = bldg?.areaGross || 0;
     this.areaNet = bldg?.areaNet || 0;
     this.floors = bldg?.floors || 0;
-    this.targetFactorCirculation = bldg?.targetFactorCirculation || 0;
-    this.targetFactorLoss = bldg?.targetFactorLoss || 0;
-    this.targetAreaPerWorkseat = bldg?.targetAreaPerWorkseat || 0;
-    this.targetNumOfWorkseats = bldg?.targetNumOfWorkseats || 0;
-    this.totalProgrammedArea = bldg?.totalProgrammedArea || 0;
-    this.totalWorkseatRatio = bldg?.totalWorkseatRatio || 0;
-    this.totalNumOfWorkseats = bldg?.totalNumOfWorkseats || 0;
-    this.totalNumOfCollabseats = bldg?.totalNumOfCollabseats || 0;
-    this.totalCollaborationRatio = bldg?.totalCollaborationRatio || 0;
+    // this.targetFactorCirculation = bldg?.targetFactorCirculation || 0;
+    // this.targetFactorLoss = bldg?.targetFactorLoss || 0;
+    // this.targetAreaPerWorkseat = bldg?.targetAreaPerWorkseat || 0;
+    // this.targetNumOfWorkseats = bldg?.targetNumOfWorkseats || 0;
+    // this.totalProgrammedArea = bldg?.totalProgrammedArea || 0;
+    // this.totalWorkseatRatio = bldg?.totalWorkseatRatio || 0;
+    // this.totalNumOfWorkseats = bldg?.totalNumOfWorkseats || 0;
+    // this.totalNumOfCollabseats = bldg?.totalNumOfCollabseats || 0;
+    // this.totalCollaborationRatio = bldg?.totalCollaborationRatio || 0;
   }
 
   constructor() {
