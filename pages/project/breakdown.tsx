@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ROUTES } from '../../constants/routes';
-import { SPACE_STANDARDS } from '../../constants/ark.standards';
-import { selectOverview } from '../../features/info/info.slice';
-import { SpaceDataSection } from '../../features/space/space.section';
-import { Page } from '../../components/pages/page';
-import { BuildingInformationPanel } from '../../components/panels/panel.building';
-import { ProgrammedSpaceDisplay } from '../../components/display/display.pie';
+import { ROUTES } from '../../shared/constants/routes';
+import { SPACE_STANDARDS } from '../../shared/constants/ark.standards';
+import { selectOverview } from '../../client/features/project/project.slice';
+import { SpaceDataSection } from '../../client/features/space/space.section';
+import { Page } from '../../client/components/pages/page';
+import { BuildingInformationPanel } from '../../client/components/panels/panel.building';
+import { ProgrammedSpaceDisplay } from '../../client/components/display/display.pie';
 import styles from './breakdown.module.scss';
 
 export default function ProjectBreakdown() {
