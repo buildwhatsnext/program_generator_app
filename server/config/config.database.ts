@@ -37,6 +37,7 @@ const connectDB = async (dbType?: DatabaseConfigType): Promise<Connection> => {
     }
     const options = setDatabaseOptions(dbType);
     connection = await createConnection(options);
+    // connection = await createConnection(OptionsBase);
   } catch (error) {
     console.log('Something failed: ');
     console.log(error);

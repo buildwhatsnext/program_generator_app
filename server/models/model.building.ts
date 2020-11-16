@@ -45,7 +45,7 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
   @Column({type: 'numeric'})
   totalCollaborationRatio: number;
 
-  @ManyToOne(type => ProjectModel, 
+  @ManyToOne(() => ProjectModel, 
     project => project.buildings,
     { 
       onUpdate: 'CASCADE', 

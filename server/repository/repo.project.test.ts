@@ -3,7 +3,7 @@ import ProjectRepo from "./repo.project";
 
 describe("Project Repository", () => {
   beforeAll(() => {
-    // ProjectRepo.dbType = 'TEST';
+    ProjectRepo.dbType = 'TEST';
   });
 
   afterEach( async () => {
