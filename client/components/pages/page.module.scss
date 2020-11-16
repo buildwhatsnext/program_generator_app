@@ -7,6 +7,8 @@
   height: 100%;
   display: grid;
   grid-template-rows: 10rem 1fr 8rem;
+  overflow-y: auto;
+  scrollbar-width: none;
   
   &__content {
     overflow-y: scroll;

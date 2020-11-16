@@ -52,7 +52,7 @@ export default function ProjectBreakdown() {
           <ProgrammedSpaceDisplay />
           <ProgrammedSpaceDisplay />
         </div>
-        <div className="section">
+        <div className={styles.breakdown__data}>
           { sections }
         </div>
       </div>
