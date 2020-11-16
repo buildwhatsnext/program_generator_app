@@ -43,12 +43,12 @@ export class SpaceModel implements ISpace {
   )
   building: BuildingModel;
 
-  // @ManyToOne(() => FloorModel, 
-  //   floor => floor.spaces
-  //   { 
-  //     onUpdate: 'CASCADE', 
-  //     onDelete: 'CASCADE'
-  //   }
-  // )
-  // floor: FloorModel;
+  @ManyToOne(() => FloorModel, 
+    floor => floor.spaces,
+    { 
+      onUpdate: 'CASCADE', 
+      onDelete: 'CASCADE'
+    }
+  )
+  floor: FloorModel;
 }
