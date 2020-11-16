@@ -16,6 +16,4 @@ const options: ConnectionOptions = {
   entities: EntityCollection,
 }
 
-
-
 export default options;

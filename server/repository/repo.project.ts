@@ -8,10 +8,14 @@ export default class ProjectRepository {
   public static dbType: DatabaseConfigType;
 
   private static async getRepo() {
-    const connection = await connectDB(this.dbType);
-    const repository = connection.manager.getRepository(Project);
+    try {
+      const connection = await connectDB(this.dbType);
+      const repository = connection.getRepository(Project);
 
-    this.repo = repository;
+      this.repo = repository;
+    } catch(error) {
+      console.log(`There was an error connecting to the database: ${error}`);
+    }
   }
 
   static async getAllProjects() {
