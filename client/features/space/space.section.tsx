@@ -22,12 +22,13 @@ export interface ISpaceDataSection<T extends Space> {
   areaHandler: ActionCreatorWithOptionalPayload<any, string>;
   collapsible?: boolean;
   startHidden?: boolean;
+  readonly?: boolean;
 }
 
 export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>) {
   const [tableData, setTableData] = React.useState(null);
 
-  const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden } = sdsProps;
+  const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly } = sdsProps;
   const dispatch = useDispatch();
   const program = useSelector(selectProgram);
   
@@ -65,6 +66,7 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
           type={type} 
           tableDataHandler={updateTableData}
           prevData={data}
+          readonly={readonly}
         />
       }
     />

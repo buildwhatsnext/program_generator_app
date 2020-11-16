@@ -24,6 +24,7 @@ export default function ProjectBreakdown() {
     return (
       <div key={`${index}_${type.name}`} style={{marginBottom: '1rem'}}>
         <SpaceDataSection 
+          readonly
           collapsible
           startHidden={index > 0}
           title={type.sectionTitle}
@@ -51,8 +52,9 @@ export default function ProjectBreakdown() {
           <ProgrammedSpaceDisplay />
           <ProgrammedSpaceDisplay />
         </div>
-        {/* <div className="section"></div>
-        <div className="section"></div> */}
+        <div className="section">
+          { sections }
+        </div>
       </div>
     </Page>
   )
