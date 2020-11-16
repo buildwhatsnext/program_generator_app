@@ -19,7 +19,7 @@ const options = {
   migrations: [ migrations ],
   migrationsRun: true,
   entities: [ entities ],
-  // entities: EntityCollection,
+  // dropSchema: true
 }
 
 // export default options;
