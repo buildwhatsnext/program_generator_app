@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import { SpaceTableHeader} from './table.header';
-import { SpaceTableBody } from './table.body';
+import { SpaceTableBody, ReadonlyBody } from './table.body';
 import { Space } from '../../../shared/types/Space';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import SpaceFactory from '../../../shared/types/SpaceFactory';
@@ -12,9 +12,10 @@ interface IGenericTable<T extends Space> {
   type: new () => T;
   tableDataHandler: (data: T[]) => void;
   prevData?: T[];
+  readonly?: boolean;
 }
 
-export default function SpaceTable<T extends Space>({type, tableDataHandler, prevData}: IGenericTable<T> ) {
+export default function SpaceTable<T extends Space>({type, tableDataHandler, prevData, readonly}: IGenericTable<T> ) {
   const initialSpace = SpaceFactory.create(type);
   const initialData = 
     (prevData === null || prevData.length < 1) 
@@ -68,11 +69,20 @@ export default function SpaceTable<T extends Space>({type, tableDataHandler, pre
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <SpaceTableHeader />
-            <SpaceTableBody 
-              rows={rowData} 
-              deleteHandler={removeRow} 
-              dataHandler={addDataToElement}
-            />
+            {
+              readonly 
+              ? (
+                <ReadonlyBody 
+                  rows={rowData} 
+                />
+              ) : (
+                <SpaceTableBody 
+                  rows={rowData} 
+                  deleteHandler={removeRow} 
+                  dataHandler={addDataToElement}
+                />
+              )
+            }
           </Table>
         </TableContainer>
     </>

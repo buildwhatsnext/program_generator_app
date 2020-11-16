@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import TableBody from '@material-ui/core/TableBody';
-import { DataEntryRow } from './table.row';
+import { DataEntryRow, ReadonlyRow } from './table.row';
 import { SpaceColumns } from './table.column';
 import { ISpace } from '../../../shared/types/ISpace';
 
@@ -37,4 +37,22 @@ export function SpaceTableBody({ rows, dataHandler, deleteHandler } : ISpaceTabl
   )
 }
 
+export function ReadonlyBody({ rows } : ISpaceTableData) {
+  const columns = SpaceColumns;
 
+  return (
+    <TableBody>
+      {
+        rows.map((row, rowIndex) => {
+          return (
+            <ReadonlyRow 
+              index={rowIndex} 
+              data={row} 
+              columns={columns}
+            />
+          )
+        })
+      }
+    </TableBody>
+  )
+}
