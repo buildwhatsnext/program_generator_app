@@ -4,12 +4,14 @@ import OptionsTesting from './config.testing';
 import OptionsProduction from './config.production';
 import OptionsBase from './config.base';
 
-export type DatabaseConfigType = 'TEST' | 'STAGING' | 'PRODUCTION';
+export type DatabaseConfigType = 'TEST' | 'STAGING' | 'PRODUCTION' | 'LOCAL';
 
 function setDatabaseOptions(dbType?: DatabaseConfigType ) {
   let opts: ConnectionOptions;
 
-  switch(dbType) {
+  const mode = dbType || process.env.APP_ENV;
+
+  switch(mode) {
     case 'PRODUCTION':
       opts = OptionsProduction;
       break;
@@ -19,6 +21,7 @@ function setDatabaseOptions(dbType?: DatabaseConfigType ) {
     case 'STAGING':
       opts = OptionsDebug;
       break;
+    case 'LOCAL':
     default:
       opts = OptionsBase;
       break;
@@ -35,6 +38,7 @@ const connectDB = async (dbType?: DatabaseConfigType): Promise<Connection> => {
     if(connectionManager.has('default')) {
       await getConnectionManager().get().close();
     }
+    console.log(`We're running the app in ${process.env.APP_ENV} MODE`);
     const options = setDatabaseOptions(dbType);
     connection = await createConnection(options);
     // connection = await createConnection(OptionsBase);
