@@ -17,11 +17,11 @@ export default abstract class AbstractRepository<T extends ObjectLiteral> {
   }
 
   static async getAll() {
-    await this.getRepo();
+    // await this.getRepo();
 
-    const projects = await this.repo.find();
+    // const projects = await this.repo.find();
 
-    return projects;
+    // return projects;
   }
 }
 
