@@ -1,7 +1,27 @@
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../store';
-import { createProject, loadProject, setBroadcast, setClient, setId, setLab, setTenancy, setUnits } from "../features/project/project.slice";
+import { 
+  createProject, 
+  loadProject, 
+  setBroadcast, 
+  setClient, 
+  setId, 
+  setLab, 
+  setTenancy, 
+  setUnits,
+  setRsf,
+  setNetArea,
+  setFloorCount,
+  setCirculation,
+  setPlanning,
+  setWorkseatArea,
+  setWorkseatTarget,
+  setTotalProgrammedArea,
+  setWorkseatRatio,
+  setTotalNumberOfWorkseats,
+  setCollaborationRatio 
+} from "../features/project/project.slice";
 import { IProject } from "../../shared/types/Project";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
@@ -11,6 +31,17 @@ function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, 
   api.dispatch(setBroadcast(data.hasBroadcast));
   api.dispatch(setTenancy(data.tenancy));
   api.dispatch(setUnits(data.units));
+  api.dispatch(setRsf(data.areaGross));
+  api.dispatch(setNetArea(data.areaNet));
+  api.dispatch(setFloorCount(data.floors));
+  api.dispatch(setCirculation(data.targetFactorCirculation));
+  api.dispatch(setPlanning(data.targetFactorLoss));
+  api.dispatch(setWorkseatArea(data.targetAreaPerWorkseat));
+  api.dispatch(setWorkseatTarget(data.targetNumOfWorkseats));
+  api.dispatch(setTotalProgrammedArea(data.totalProgrammedArea));
+  api.dispatch(setWorkseatRatio(data.totalWorkseatRatio));
+  api.dispatch(setTotalNumberOfWorkseats(data.totalNumOfWorkseats));
+  api.dispatch(setCollaborationRatio(data.totalCollaborationRatio));
 }
 
 function handleProjectData(action: PayloadAction<IProject>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
