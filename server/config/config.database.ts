@@ -1,10 +1,10 @@
 import { Connection, ConnectionOptions, createConnection, getConnection, getConnectionManager } from "typeorm";
-import OptionsDebug from './config.debug';
+import OptionsDebug from './config.staging';
 import OptionsTesting from './config.testing';
 import OptionsProduction from './config.production';
 import OptionsBase from './config.base';
 
-export type DatabaseConfigType = 'TEST' | 'DEBUG' | 'PRODUCTION';
+export type DatabaseConfigType = 'TEST' | 'STAGING' | 'PRODUCTION';
 
 function setDatabaseOptions(dbType?: DatabaseConfigType ) {
   let opts: ConnectionOptions;
@@ -16,7 +16,7 @@ function setDatabaseOptions(dbType?: DatabaseConfigType ) {
     case 'TEST':
       opts = OptionsTesting;
       break;
-    case 'DEBUG':
+    case 'STAGING':
       opts = OptionsDebug;
       break;
     default:

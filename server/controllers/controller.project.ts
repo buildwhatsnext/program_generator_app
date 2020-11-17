@@ -1,6 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connectDB from "../config/config.database";
-import Project from '../models/model.project';
 import ProjectRepository from "../repository/repo.project";
 
 export default class ProjectCtrl {
