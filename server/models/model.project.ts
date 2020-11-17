@@ -10,16 +10,16 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({type: 'varchar', nullable: true})
   name: string;
 
-  @Column({type: 'varchar',  default: ''})
+  @Column({type: 'varchar', nullable: true})
   client: string;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({type: 'varchar', nullable: true})
   tenancy: string;
 
-  @Column({type: 'varchar',  default: ''})
+  @Column({type: 'varchar', nullable: true})
   units: string;
 
   @Column({type: "boolean", nullable: true})
@@ -28,10 +28,10 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: "boolean", nullable: true })
   hasLab: boolean;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({type: 'varchar', nullable: true})
   createdBy: string;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({type: 'varchar', nullable: true})
   modifiedBy: string;
 
   @Column({type: 'varchar', default: Date.now().toString()})
@@ -104,13 +104,13 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
 
   updateData(project?: IProject) {
     
-    this.name = project?.name || '';
-    this.tenancy = project?.tenancy || '';
+    this.name = project?.name || null;
+    this.tenancy = project?.tenancy || null;
     this.hasBroadcast = project?.hasBroadcast || null;
     this.hasLab = project?.hasLab || null;
-    this.client = project?.client || '';
-    this.units = project?.units || '';
-    this.modifiedBy = project?.modifiedBy || '';
+    this.client = project?.client || null;
+    this.units = project?.units || null;
+    this.modifiedBy = project?.modifiedBy || null;
     this.areaGross = project?.areaGross || 0;
     this.areaNet = project?.areaNet || 0;
     this.floors = project?.floors || 0;
