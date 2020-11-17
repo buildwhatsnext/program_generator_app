@@ -47,19 +47,19 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
   // @Column({type: 'numeric'})
   // totalCollaborationRatio: number;
 
-  @ManyToOne(() => ProjectModel, 
-    project => project.buildings,
-    { 
-      onUpdate: 'CASCADE', 
-      onDelete: 'CASCADE'
-    }
-  )
-  project: ProjectModel
+  // @ManyToOne(() => ProjectModel, 
+  //   project => project.buildings,
+  //   { 
+  //     onUpdate: 'CASCADE', 
+  //     onDelete: 'CASCADE'
+  //   }
+  // )
+  // project: ProjectModel
 
-  @OneToMany(() => SpaceModel, 
-    space => space.building
-  )
-  spaces: SpaceModel
+  // @OneToMany(() => SpaceModel, 
+  //   space => space.building
+  // )
+  // spaces: SpaceModel
 
   // @OneToMany(() => FloorModel, 
   //   floor => floor.building

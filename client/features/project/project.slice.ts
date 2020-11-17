@@ -42,8 +42,7 @@ export const loadProject = createAsyncThunk<any, IProject>(
   }
 )
 
-export const saveProject = 
-  createAsyncThunk<any, void, AppThunkConfig>(
+export const saveProject = createAsyncThunk<any, void, AppThunkConfig>(
   'project/saveProject',
   async (_, thunkAPI) => {
     try {

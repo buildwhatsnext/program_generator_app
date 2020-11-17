@@ -4,22 +4,23 @@ import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm"
 import { IProject } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
+import { SpaceModel } from './model.space';
 
 @Entity('projects')
 export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({ type: 'varchar', nullable: true })
   name: string;
 
-  @Column({type: 'varchar',  default: ''})
+  @Column({ type: 'varchar', nullable: true })
   client: string;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({ type: 'varchar', nullable: true })
   tenancy: string;
 
-  @Column({type: 'varchar',  default: ''})
+  @Column({ type: 'varchar', nullable: true })
   units: string;
 
   @Column({type: "boolean", nullable: true})
@@ -28,10 +29,10 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: "boolean", nullable: true })
   hasLab: boolean;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({ type: 'varchar', nullable: true })
   createdBy: string;
 
-  @Column({type: 'varchar', default: ''})
+  @Column({ type: 'varchar', nullable: true })
   modifiedBy: string;
 
   @Column({type: 'varchar', default: Date.now().toString()})
@@ -40,46 +41,51 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   areaGross: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   areaNet: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   floors: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetFactorCirculation: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetFactorLoss: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetAreaPerWorkseat: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetNumOfWorkseats: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalProgrammedArea: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalWorkseatRatio: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalNumOfWorkseats: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalNumOfCollabseats: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalCollaborationRatio: number;
 
-  @OneToMany(() => BuildingModel, 
-    bldg => bldg.project
+  @OneToMany(() => SpaceModel, 
+    space => space.project
   )
-  buildings: BuildingModel[];
+  spaces: SpaceModel[];
+
+  // @OneToMany(() => BuildingModel, 
+  //   bldg => bldg.project
+  // )
+  // buildings: BuildingModel[];
 
   initialize() {
     this.id = uuid.v4();

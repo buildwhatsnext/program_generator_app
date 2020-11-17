@@ -44,7 +44,7 @@ export default class ProjectRepository {
   static async getProjectById(id: string) {
     await this.getRepo();
 
-    const project = await this.repo.findOne(id);
+    const project = await this.repo.findOne(id, { loadEagerRelations: true });
 
     return project;
   }
