@@ -35,6 +35,7 @@ const connectDB = async (dbType?: DatabaseConfigType): Promise<Connection> => {
     if(connectionManager.has('default')) {
       await getConnectionManager().get().close();
     }
+    console.log(`We're running the app in ${process.env.APP_ENV} MODE`);
     const options = setDatabaseOptions(dbType);
     connection = await createConnection(options);
     // connection = await createConnection(OptionsBase);
