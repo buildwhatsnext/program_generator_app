@@ -97,18 +97,13 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
     this.updateData()
   }
 
-  updateProject(project: IProject) {
+  updateData(project?: IProject | ProjectModel) {
     if(this.id !== project.id){
       throw new Error(
         `This is not the same element.
         check IDS: ObjA: ${this.id} ObjB: ${project.id}`
       );
     }
-
-    this.updateData(project);
-  }
-
-  updateData(project?: IProject) {
     
     this.name = project?.name || '';
     this.tenancy = project?.tenancy || '';
@@ -129,6 +124,7 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
     this.totalNumOfWorkseats = project?.totalNumOfWorkseats || 0;
     this.totalNumOfCollabseats = project?.totalNumOfCollabseats || 0;
     this.totalCollaborationRatio = project?.totalCollaborationRatio || 0;
+    this.spaces = (project as ProjectModel)?.spaces;
   }
 
   constructor() {

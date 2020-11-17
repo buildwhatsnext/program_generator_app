@@ -70,7 +70,7 @@ export default class ProjectRepository {
     await this.getRepo();
 
     const dbProject = await this.repo.findOne(project.id);
-    dbProject.updateProject(project);
+    dbProject.updateData(project);
     // const updated = await this.repo.update(dbProject.id, dbProject);
     const updated = await this.repo.save(dbProject);
 

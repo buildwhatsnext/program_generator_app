@@ -27,7 +27,7 @@ describe("A Project", () => {
     projectB.hasBroadcast = true;
     projectB.hasLab = true;
 
-    projectA.updateProject(projectB);
+    projectA.updateData(projectB);
 
     expect(projectA.hasBroadcast).toBeTruthy();
     expect(projectA.hasLab).toBeTruthy();
@@ -43,7 +43,7 @@ describe("A Project", () => {
     projectB.hasLab = true;
 
     const update = () => {
-      projectA.updateProject(projectB);
+      projectA.updateData(projectB);
     }
 
     expect(update).toThrowError();
@@ -60,7 +60,7 @@ describe("A Project", () => {
     projectB.hasBroadcast = true;
     projectB.hasLab = true;
 
-    projectA.updateProject(projectB);
+    projectA.updateData(projectB);
 
     const propA = Object.keys(projectA);
     const propB = Object.keys(projectB);
