@@ -28,7 +28,6 @@ export class ProjectOverview implements IProject{
   constructor() {
     this.initialize();
   }
-  
 
   initialize(){
     this.id = null;
