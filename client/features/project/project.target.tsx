@@ -14,6 +14,7 @@ import {
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
+import ProjectInformationPage from './page.project';
 
 function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ function TargetMetric (props: IRestorableState) {
   const next = ROUTES.SPACE.START;
 
   return (
-    <Page nextRoute={next} navFx={passToStore}>
+    <ProjectInformationPage nextRoute={next} navFx={passToStore}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{title}</h2>
@@ -98,7 +99,7 @@ function TargetMetric (props: IRestorableState) {
           />
         </div>
       </div>
-    </Page>
+    </ProjectInformationPage>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
 import { ROUTES } from '../../../shared/constants/routes';
-import { Page } from '../../components/pages/page';
 import { 
   TextualQuestionAnswerCombo as TextQuestion,
   ToggleQuestionAnswerCombo as TogQuest 
@@ -13,10 +12,10 @@ import {
   setBroadcast,
   setLab,
   selectOverview,
-  saveProject, 
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
+import ProjectInformationPage from './page.project';
 
 
 function BuildingInformation(props: IRestorableState) {
@@ -65,7 +64,6 @@ function BuildingInformation(props: IRestorableState) {
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
-    dispatch(saveProject())
   }
 
   const title = 'General Building Information';
@@ -77,7 +75,7 @@ function BuildingInformation(props: IRestorableState) {
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
-    <Page nextRoute={next} navFx={passToStore}>
+    <ProjectInformationPage nextRoute={next} navFx={passToStore}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{ title }</h2>
@@ -119,7 +117,7 @@ function BuildingInformation(props: IRestorableState) {
         </div>  
       </div>
       
-    </Page>
+    </ProjectInformationPage>
   );
 }
 

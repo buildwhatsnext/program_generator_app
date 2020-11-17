@@ -13,6 +13,7 @@ import {
 import { updateBuildingArea } from '../../../shared/lib/updaters';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
+import ProjectInformationPage from './page.project';
 
 /**
  TODO: make sure questions 2 & 3 can only accept number values and write tests to confirm it
@@ -62,7 +63,7 @@ function BuildingConstraint(props: IRestorableState) {
   const next = ROUTES.INFO.TARGET;
 
   return (
-    <Page nextRoute={next} navFx={passToStore}>
+    <ProjectInformationPage nextRoute={next} navFx={passToStore}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{title}</h2>
@@ -90,7 +91,7 @@ function BuildingConstraint(props: IRestorableState) {
           />
         </div>
       </div>
-    </Page>
+    </ProjectInformationPage>
   );
 };
 
