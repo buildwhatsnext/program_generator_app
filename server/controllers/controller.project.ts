@@ -26,7 +26,7 @@ export default class ProjectCtrl {
     try {
       const { query: { id } } = req;
       const ID =  Array.isArray(id) ? id[0] : id;
-      const data = ProjectRepository.getProjectById(ID);
+      const data = await ProjectRepository.getProjectById(ID);
       res.status(200).json(data)
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
@@ -37,7 +37,7 @@ export default class ProjectCtrl {
     try {
       const { query: { id } } = req;
       const ID =  Array.isArray(id) ? id[0] : id;
-      ProjectRepository.deleteProjectById(ID);
+      await ProjectRepository.deleteProjectById(ID);
       res.status(200).json({status: `deleted project ${ID}`})
     } catch(error) {
       ProjectCtrl.handleError(error, req, res);
