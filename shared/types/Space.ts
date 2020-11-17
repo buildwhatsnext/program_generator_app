@@ -1,7 +1,7 @@
 import { Guid } from 'guid-typescript';
+import { EntityTarget } from 'typeorm';
 import { ISpace } from './ISpace';
 import SpaceType from './SpaceType';
-
 
 export abstract class Space implements ISpace {
   id: string;
