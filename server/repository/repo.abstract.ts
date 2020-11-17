@@ -5,7 +5,7 @@ export default abstract class AbstractRepository<T extends ObjectLiteral> {
   protected repo: Repository<T>;
   public dbType: DatabaseConfigType;
 
-  async getRepo(type: () => T) {
+  protected async getRepo(type: () => T) {
     try {
       const connection = await connectDB(this.dbType);
       const repository = connection.getRepository<T>(type);
