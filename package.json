@@ -2,6 +2,7 @@
   "name": "with-redux-toolkit",
   "version": "1.0.0",
   "scripts": {
+    "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "dev": "cross-env APP_ENV=LOCAL next",
     "stage": "cross-env APP_ENV=STAGING next",
     "build": "next build",
