@@ -2,7 +2,6 @@ import { Guid } from 'guid-typescript';
 import { ISpace } from './ISpace';
 import SpaceType from './SpaceType';
 
-
 export abstract class Space implements ISpace {
   id: string;
   name: string;
@@ -34,6 +33,25 @@ export abstract class Space implements ISpace {
   }
 
   abstract setSpaceType(): void;
+  updateData(data: Space) {
+    if(this.id !== data.id){
+      throw new Error(
+        `This is not the same element.
+        check IDS: ObjA: ${this.id} ObjB: ${data.id}`
+      );
+    }
+
+    this.name = data.name || null;
+    this.seats = data.seats || null;
+    this.ratio = data.ratio || null;
+    this.area = data.area || null;
+    this.quantitySelected = data.quantitySelected || null;
+    this.seatTotal = data.seatTotal || null;
+    this.areaTotal = data.areaTotal || null;
+    this.type = data.type || null;
+    this.floorID = data.floorID || null;
+    this.buildingID = data.buildingID || null;
+  }
 }
 
 export class EnclosedOfficeSpace extends Space {

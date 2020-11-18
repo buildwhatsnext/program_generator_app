@@ -12,11 +12,11 @@ const options: ConnectionOptions = {
   port: 5432,
   username: 'postgres',
   password: 'admin',
-  synchronize: true,
   logging: true,
   migrations: [ migrations ],
   migrationsRun: true,
   entities: EntityCollection,
+  synchronize: true,
 }
 
 export default options;
