@@ -1,8 +1,6 @@
-import * as dotenv from 'dotenv';
 import { ConnectionOptions } from 'typeorm';
 import EntityCollection from './config.entities';
 
-// dotenv.config();
 const root = process.cwd();
 const migrations = `${root}/build/server/migrations/*.js`;
 
