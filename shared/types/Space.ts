@@ -1,10 +1,8 @@
 import { Guid } from 'guid-typescript';
-import { EntityTarget } from 'typeorm';
 import { ISpace } from './ISpace';
 import SpaceType from './SpaceType';
-import { ICanUpdate, IUpdateable } from './ICanUpdate';
 
-export abstract class Space implements ISpace, ICanUpdate {
+export abstract class Space implements ISpace {
   id: string;
   name: string;
   seats: number;

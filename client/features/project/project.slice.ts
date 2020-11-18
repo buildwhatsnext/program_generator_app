@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunkConfig, RootState } from '../../store';
-import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
-import { IProject } from '../../../shared/types/Project';
+import { IProject, Project } from '../../../shared/types/Project';
 
-const project = {...new ProjectOverview()};
+const project = {...new Project()};
 
 export const createProject = createAsyncThunk(
   'project/createProject',

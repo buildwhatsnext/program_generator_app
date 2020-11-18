@@ -5,13 +5,10 @@ import { IBuildingElement, IFloorElement } from '../../shared/types/IElement';
 import { BuildingModel } from "./model.building";
 import { FloorModel } from "./model.floor";
 import ProjectModel from "./model.project";
-import { IDbObj } from "../repository/repo.abstract";
 import { Space } from "../../shared/types/Space";
 
 @Entity({name: 'spaces'})
-export class SpaceModel implements ISpace, IDbObj {
-  
-
+export class SpaceModel implements ISpace {
   @PrimaryColumn({type: 'uuid'})
   id: string;
 
@@ -48,6 +45,25 @@ export class SpaceModel implements ISpace, IDbObj {
   )
   project: ProjectModel;
 
+  updateData(data: Space) {
+    if(this.id !== data.id){
+      throw new Error(
+        `This is not the same element.
+        check IDS: ObjA: ${this.id} ObjB: ${data.id}`
+      );
+    }
+
+    this.name = data.name || null;
+    this.seats = data.seats || null;
+    this.ratio = data.ratio || null;
+    this.area = data.area || null;
+    this.quantitySelected = data.quantitySelected || null;
+    this.seatTotal = data.seatTotal || null;
+    this.areaTotal = data.areaTotal || null;
+    this.type = data.type || null;
+  }
+}
+
   // @ManyToOne(() => BuildingModel, 
   //   bldg => bldg.spaces,
   //   { 
@@ -65,4 +81,4 @@ export class SpaceModel implements ISpace, IDbObj {
   //   }
   // )
   // floor: FloorModel;
-}
+// }

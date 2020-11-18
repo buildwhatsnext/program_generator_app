@@ -7,7 +7,7 @@ import { SpaceModel } from './model.space';
 import { FloorModel } from './model.floor';
 
 @Entity('buildings')
-export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
+export class BuildingModel implements IBuilding, IUpdateable {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 

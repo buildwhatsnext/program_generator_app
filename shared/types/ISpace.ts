@@ -1,7 +1,7 @@
-import { IHasId } from "./Project";
+import { IUpdateable } from "./ICanUpdate";
 import SpaceType from "./SpaceType";
 
-export interface ISpace extends IHasId {
+export interface ISpace extends IUpdateable {
   name: string;
   seats: number;
   ratio: string;

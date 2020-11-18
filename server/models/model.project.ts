@@ -1,13 +1,13 @@
 import * as uuid from 'uuid';
 import 'reflect-metadata';
 import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm"
-import { IProject } from '../../shared/types/Project';
+import { IProject, Project } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
 import { SpaceModel } from './model.space';
 
 @Entity('projects')
-export default class ProjectModel implements IProject, IUpdateable<IProject> {
+export default class ProjectModel extends Project implements IUpdateable {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 
@@ -88,6 +88,7 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   // buildings: BuildingModel[];
 
   initialize() {
+    super.initialize();
     this.id = uuid.v4();
     this.name = 'Untitled Project';
     const now = Date.now().toString();
@@ -97,7 +98,7 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
     this.updateData()
   }
 
-  updateData(project?: IProject | ProjectModel) {
+  updateData(project?: Partial<IProject> | Partial<ProjectModel>) {
     if(project && this.id !== project?.id){
       throw new Error(
         `This is not the same element.
@@ -128,6 +129,7 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   }
 
   constructor() {
+    super();
     this.initialize();
   }
 }

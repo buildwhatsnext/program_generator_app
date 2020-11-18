@@ -1,16 +1,18 @@
 import { Repository } from "typeorm";
 import { IProject } from "../../shared/types/Project";
 import connectDB, { DatabaseConfigType } from "../config/config.database";
-import Project from '../models/model.project';
+import ProjectModel from "../models/model.project";
+import BaseRepository, { IRepository } from "./repo.abstract";
 
-export default class ProjectRepository {
-  private static repo: Repository<Project>;
-  public static dbType: DatabaseConfigType;
+export interface IProjectRepository extends IRepository<ProjectModel> {
+  createNew(): Promise<ProjectModel>;
+}
 
-  private static async getRepo() {
+export default class ProjectRepository extends BaseRepository<ProjectModel> implements IProjectRepository {
+  async getRepo() {
     try {
-      const connection = await connectDB(this.dbType);
-      const repository = connection.getRepository(Project);
+      const connection = await connectDB();
+      const repository = connection.getRepository(ProjectModel);
 
       this.repo = repository;
     } catch(error) {
@@ -18,62 +20,20 @@ export default class ProjectRepository {
     }
   }
 
-  static async getAllProjects() {
+  async createNew() {
     await this.getRepo();
 
-    const projects = await this.repo.find();
-
-    return projects;
-  }
-
-  static async deleteAllProjects() {
-    await this.getRepo();
-
-    const projects = await this.repo.find();
-    this.repo.delete(projects.map(proj => proj.id));
-  }
-
-  static async getRecentProjects() {
-    await this.getRepo();
-
-    const projects = await this.repo.find({take: 5, order: {dateModified: 'DESC'}});
-
-    return projects;
-  }
-
-  static async getProjectById(id: string) {
-    await this.getRepo();
-
-    const project = await this.repo.findOne(id, { loadEagerRelations: true });
-
-    return project;
-  }
-
-  static async deleteProjectById(id: string) {
-    await this.getRepo();
-
-    const result = await this.repo.delete(id);
-
-    return result;
-  }
-
-  static async createNewProject() {
-    await this.getRepo();
-
-    const project = new Project();
-    const saved = this.repo.save(project);
+    const obj = new ProjectModel();
+    const saved = this.repo.save(obj);
 
     return saved;
   }
 
-  static async updateProject(project: IProject) {
+  async getRecent() {
     await this.getRepo();
 
-    const dbProject = await this.repo.findOne(project.id);
-    dbProject.updateData(project);
-    // const updated = await this.repo.update(dbProject.id, dbProject);
-    const updated = await this.repo.save(dbProject);
+    const data = await this.repo.find({take: 5, order: { dateModified: 'DESC' }});
 
-    return updated;
+    return data;
   }
 }
