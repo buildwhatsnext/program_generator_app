@@ -77,9 +77,9 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({ type: 'numeric', nullable: true })
   totalCollaborationRatio: number;
 
-  @OneToMany(() => SpaceModel, 
-    space => space.project
-  )
+  // @OneToMany(() => SpaceModel, 
+  //   space => space.project
+  // )
   spaces: SpaceModel[];
 
   // @OneToMany(() => BuildingModel, 

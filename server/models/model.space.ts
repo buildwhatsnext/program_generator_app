@@ -5,9 +5,13 @@ import { IBuildingElement, IFloorElement } from '../../shared/types/IElement';
 import { BuildingModel } from "./model.building";
 import { FloorModel } from "./model.floor";
 import ProjectModel from "./model.project";
+import { IDbObj } from "../repository/repo.abstract";
+import { Space } from "../../shared/types/Space";
 
 @Entity({name: 'spaces'})
-export class SpaceModel implements ISpace {
+export class SpaceModel implements ISpace, IDbObj {
+  
+
   @PrimaryColumn({type: 'uuid'})
   id: string;
 

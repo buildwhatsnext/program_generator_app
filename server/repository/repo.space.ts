@@ -2,9 +2,10 @@ import { BaseEntity, ObjectLiteral, Repository } from "typeorm";
 import { ISpace } from "../../shared/types/ISpace";
 import { Space } from "../../shared/types/Space";
 import connectDB from "../config/config.database";
-import AbstractRepository from "./repo.abstract";
+import { SpaceModel } from "../models/model.space";
+import BaseRepository from "./repo.abstract";
 
-export default class SpaceRepository  {
+export default class SpaceRepository implements BaseRepository<SpaceModel> {
   static repo: Repository<Space>;
 
   static async getRepo() {
