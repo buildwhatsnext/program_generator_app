@@ -42,24 +42,13 @@ export default abstract class BaseController<T extends IUpdateable> {
     }
   }
 
-  async deleteProject(req: NextApiRequest, res: NextApiResponse) {
+  async delete(req: NextApiRequest, res: NextApiResponse) {
     try {
       const { query: { id } } = req;
       const ID =  Array.isArray(id) ? id[0] : id;
       const repo = this.getRepo();
       await repo.deleteById(ID);
       res.status(200).json({status: `deleted project ${ID}`})
-    } catch(error) {
-      this.handleError(error, req, res);
-    }
-  }
-
-  async saveProject(req: NextApiRequest, res: NextApiResponse) {
-    try {
-      const { query: { id }, body } = req;
-      const repo = this.getRepo();
-      const project = await repo.updateData({...body});
-      res.status(200).json(project)
     } catch(error) {
       this.handleError(error, req, res);
     }

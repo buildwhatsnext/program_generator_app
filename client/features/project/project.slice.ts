@@ -2,6 +2,9 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunkConfig, RootState } from '../../store';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import { IProject, Project } from '../../../shared/types/Project';
+import ProjectModel from '../../../server/models/model.project';
+import { Space } from '../../../shared/types/Space';
+import { SpaceModel } from '../../../server/models/model.space';
 
 const project = {...new Project()};
 
@@ -41,13 +44,46 @@ export const loadProject = createAsyncThunk<any, IProject>(
   }
 )
 
+const getSpacesFromData = (state: RootState) => {
+  const spaces: SpaceModel[] = [];
+
+  const {
+    EnclosedState,
+    OpenPlanState,
+    MeetingState,
+    AmenityState,
+    SupportState,
+    BroadcastState,
+  } = state.program;
+
+  const all = [
+    EnclosedState,
+    OpenPlanState,
+    MeetingState,
+    AmenityState,
+    SupportState,
+    BroadcastState,
+  ];
+
+  if(all.every(type => type.length < 1))
+    return null;
+
+  all?.forEach(type => {
+    const mapped: SpaceModel[] = type?.map(space => JSON.parse(space));
+    spaces.push(...mapped);
+  });
+
+  return spaces;
+}
+
 export const saveProject = createAsyncThunk<any, void, AppThunkConfig>(
   'project/saveProject',
   async (_, thunkAPI) => {
     try {
       console.log('Attempting to send save request');
-      const projectData = thunkAPI.getState().project;
-      const spaceData = thunkAPI.getState().program;
+      const projectData = thunkAPI.getState().project as ProjectModel;
+      const spaces = getSpacesFromData(thunkAPI.getState());
+      projectData.spaces = spaces;
       const response = await fetch(`/api/projects/${projectData.id}`, {
         method: 'PUT',
         body: JSON.stringify(projectData),

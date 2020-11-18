@@ -13,7 +13,7 @@ export default async function projectHandler(req: NextApiRequest, res: NextApiRe
       await ctrl.saveProject(req, res);
       break;
     case 'DELETE':
-      await ctrl.deleteProject(req, res);
+      await ctrl.delete(req, res);
       break;
     default:
       res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
