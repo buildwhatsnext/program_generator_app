@@ -98,7 +98,7 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   }
 
   updateData(project?: IProject | ProjectModel) {
-    if(this.id !== project.id){
+    if(project && this.id !== project?.id){
       throw new Error(
         `This is not the same element.
         check IDS: ObjA: ${this.id} ObjB: ${project.id}`
