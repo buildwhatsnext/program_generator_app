@@ -9,11 +9,11 @@ const options: ConnectionOptions = {
   database: 'generator_app',
   type: 'postgres',
   url: 'postgres://xxcucpor:KpdDuca5BNUggj-hCdmbO1vrFfDQ_Cc6@lallah.db.elephantsql.com:5432/xxcucpor',
-  synchronize: true,
   logging: ['error'],
   migrations: [migrations],
   migrationsRun: true,
   entities: EntityCollection,
+  synchronize: true,
 }
 
 export default options;

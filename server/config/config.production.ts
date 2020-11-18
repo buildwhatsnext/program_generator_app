@@ -14,6 +14,7 @@ const options: ConnectionOptions = {
   migrations: [migrations],
   migrationsRun: true,
   entities: EntityCollection,
+  synchronize: true,
 }
 
 export default options;
