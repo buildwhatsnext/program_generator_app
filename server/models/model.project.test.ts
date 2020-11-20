@@ -20,7 +20,7 @@ describe("A Project", () => {
 
   it("should be able to update a Project's properties", async () => {
     const projectA = new Project();
-    const projectB = { ...projectA};
+    const projectB = { ...projectA };
 
     projectA.hasBroadcast = false;
     projectA.hasLab = false;
