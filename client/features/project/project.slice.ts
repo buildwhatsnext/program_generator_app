@@ -106,25 +106,32 @@ const projectSlice = createSlice({
       state.id = action.payload;
     },
     setClient: (state, action) => {
-      const value = action?.payload ?? 'unknown'
+      const value = action?.payload // ?? 'unknown'
 
       state.client = value;
     },
     setUnits: (state, action) => {
-      const value = action?.payload ?? 'unknown'
+      const value = action?.payload // ?? 'unknown'
 
       state.units = value;
     },
     setTenancy: (state, action) => {
-      const value = action?.payload ?? 'unknown'
+      const value = action?.payload // ?? 'unknown'
 
       state.tenancy = value;
     },
     setBroadcast: (state, action) => {
+      if(action.payload === null) 
+        return;
+
+      console.log('Still sets things')
       const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
       state.hasBroadcast = value;
     },
     setLab: (state, action) => {
+      if(action.payload === null) 
+        return;
+
       const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
       state.hasLab = value;
     },

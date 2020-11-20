@@ -52,7 +52,6 @@ export function ToggleQuestionAnswerCombo({ question, answerHandler, answers, st
   }
 
   useEffect(() => {
-    // console.log(`There is a stored value of: ${storedValue}`)
     setAnswer(storedValue);
   }, [storedValue])
 

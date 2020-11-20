@@ -12,6 +12,11 @@ const programSlice = createSlice({
   name: 'program',
   initialState: program,
   reducers: {
+    /**
+     * @param state: the current state of the application
+     * @param action: yadda yadda
+     * @summary what does this do?
+     */
     setTotalBuildingArea: (state, action) => {
       console.log('Setting building area')
       const input = tryConvertToNumber(action.payload);

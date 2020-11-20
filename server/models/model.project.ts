@@ -110,13 +110,13 @@ export default class ProjectModel extends Project implements IUpdateable {
       );
     }
     
-    this.name = project?.name || '';
-    this.tenancy = project?.tenancy || '';
+    this.name = project?.name || null;
+    this.tenancy = project?.tenancy || null;
     this.hasBroadcast = project?.hasBroadcast || null;
     this.hasLab = project?.hasLab || null;
-    this.client = project?.client || '';
-    this.units = project?.units || '';
-    this.modifiedBy = project?.modifiedBy || '';
+    this.client = project?.client || null;
+    this.units = project?.units || null;
+    this.modifiedBy = project?.modifiedBy || null;
     this.areaGross = project?.areaGross || 0;
     this.areaNet = project?.areaNet || 0;
     this.floors = project?.floors || 0;
