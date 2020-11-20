@@ -23,8 +23,12 @@ import {
   setCollaborationRatio 
 } from "../features/project/project.slice";
 import { IProject } from "../../shared/types/Project";
+import { ProjectOverview } from "../features/project/project.overview";
 
 function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
+  if(data === null)
+    data = new ProjectOverview();
+
   api.dispatch(setId(data.id))
   api.dispatch(setClient(data.client));
   api.dispatch(setLab(data.hasLab));
