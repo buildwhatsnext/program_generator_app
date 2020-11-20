@@ -34,7 +34,7 @@ const sessionSlice = createSlice({
       state['error']  = action.payload.error;
     },
     [loadProjects.fulfilled.type]: (state, action) => {
-      state.recentProjects = action.payload.data;
+      state.recentProjects = action.payload;
       state.loading = LoadingState.Loaded.toString();
     },
   },

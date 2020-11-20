@@ -1,7 +1,7 @@
+import { IHasId } from "./Project";
 import SpaceType from "./SpaceType";
 
-export interface ISpace {
-  id: string;
+export interface ISpace extends IHasId {
   name: string;
   seats: number;
   ratio: string;

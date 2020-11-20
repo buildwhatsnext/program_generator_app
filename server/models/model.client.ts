@@ -13,9 +13,9 @@ export class ClientModel implements IClient {
   @Column({type: 'varchar', nullable: true})
   company?: string;
 
-  @Column({type: 'datetime', default: Date.now()})
+  @Column({type: 'varchar', default: Date.now().toString()})
   dateCreated: string;
 
-  @Column({type: 'datetime', default: Date.now()})
+  @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 }

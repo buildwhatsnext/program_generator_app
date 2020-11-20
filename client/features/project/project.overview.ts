@@ -1,11 +1,7 @@
-import { IBuilding, IProject } from "../../../shared/types/Project";
+import { IProject } from "../../../shared/types/Project";
 
-export interface IProjectOverview extends IProject, IBuilding {
-  
-}
-
-export class ProjectOverview implements IProjectOverview{
-  id: number;
+export class ProjectOverview implements IProject{
+  id: string;
   name: string;
   createdBy: string;
   modifiedBy: string;
@@ -13,7 +9,7 @@ export class ProjectOverview implements IProjectOverview{
   dateModified: string;
   client: string;
   units: "unknown" | "metric" | "imperial";
-  tenancy: number;
+  tenancy: string;
   hasBroadcast: boolean;
   hasLab: boolean;
   areaGross: number;
@@ -32,9 +28,9 @@ export class ProjectOverview implements IProjectOverview{
   constructor() {
     this.initialize();
   }
-  
 
   initialize(){
+    this.id = null;
     this.client = null;
     this.units = null;
     this.tenancy = null;

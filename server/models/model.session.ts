@@ -5,7 +5,7 @@ import { IUser } from '../../shared/types/User';
 
 // @Entity({name: 'Sessions'})
 export class SessionModel implements ISession {
-
+  id: string;
   application: string;
   company: string;
   user: IUser;

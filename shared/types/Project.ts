@@ -1,18 +1,20 @@
-export interface IProject {
-  id: number;
+import { ICanUpdate } from "./ICanUpdate";
+
+export interface IHasId {
+  id: string;
+}
+
+export interface IProject extends IHasId, ICanUpdate {
   name: string;
-  tenancy: number;
+  client: string;
+  tenancy: string;
   units: string;
   hasBroadcast: boolean;
   hasLab: boolean;
-  client: string;
   createdBy: string;
   modifiedBy: string;
   dateCreated: string;
   dateModified: string;
-}
-
-export interface IBuilding {
   areaGross: number;
   areaNet: number;
   floors: number;
