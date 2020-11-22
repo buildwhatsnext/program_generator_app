@@ -23,8 +23,7 @@ export function ToggleButton({ content, active, statusHandler }: IToggleButton) 
         onClick={() => statusHandler()}
       >
         <p>
-          {/* {content} */}
-          example
+          {content}
         </p>
       </Button>
     </div>
@@ -36,8 +35,7 @@ export function ToggleButton({ content, active, statusHandler }: IToggleButton) 
         onClick={() => statusHandler()}
       >
         <p>
-          {/* {content} */}
-          not really
+          {content}
         </p>
       </Button>
     </div>
