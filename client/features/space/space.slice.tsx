@@ -15,7 +15,7 @@ const programSlice = createSlice({
     /**
      * @param state: number
      * @param action: turning a data that we get from payload into a numerical data
-     * @summary turning a data that we get from payload into a numerical data
+     * @summary this function sets the building's total area
      */
     setTotalBuildingArea: (state, action) => {
       console.log('Setting building area')
@@ -26,7 +26,7 @@ const programSlice = createSlice({
     /**
      * @param state: number
      * @param action: turning a data that we get from payload into a numerical data
-     * @summary turning a data that we get from payload into a numerical data
+     * @summary whats the difference between hold vs unprogrammed?
      */
     setUnprogrammedArea: (state, action) => {
       const input = tryConvertToNumber(action.payload);
@@ -36,7 +36,7 @@ const programSlice = createSlice({
     /**
      * @param state: number
      * @param action: turning a data that we get from payload into a numerical data
-     * @summary turning a data that we get from payload into a numerical data
+     * @summary whats the difference between hold vs unprogrammed?
      */
     setHoldArea: (state, action) => {
       const input = tryConvertToNumber(action.payload);
@@ -64,7 +64,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: string
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -74,7 +74,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: number
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -84,7 +84,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: string
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -94,7 +94,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: number
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -104,7 +104,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: string
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -114,7 +114,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: number
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -124,7 +124,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: string
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -134,7 +134,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: number
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -144,7 +144,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: string
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -154,7 +154,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: number
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -164,7 +164,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: string
      * @param action: yadda yadda
      * @summary what does this do?
      */
@@ -174,7 +174,7 @@ const programSlice = createSlice({
     },
 
     /**
-     * @param state: the current state of the application
+     * @param state: number
      * @param action: yadda yadda
      * @summary what does this do?
      */
