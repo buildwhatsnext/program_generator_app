@@ -3,6 +3,11 @@ import { setHoldArea, setTotalBuildingArea, setUnprogrammedArea } from '../../cl
 import { AppThunk } from "../../client/store"
 
 // TODO: document this function
+
+/**
+ * @summary if there isn't any area, proceed to AppThunk and proceeds to dispatch setTotalBuildingArea's and setNetArea's area data.
+ */
+
 export const updateBuildingArea = (
   area: any
 ): AppThunk => (dispatch, getState) => {
@@ -11,6 +16,11 @@ export const updateBuildingArea = (
 }
 
 // TODO: document this function
+
+/**
+ * @summary getting numerical data from targetFactorCirculation, targetFactorLoss, totalAreaContainer and goes thorough a set of calcuation to get area 
+ */
+
 export const updateAreaOnHold = ()
 : AppThunk => (dispatch, getState) => {
   const { targetFactorCirculation, targetFactorLoss } = getState().project;
