@@ -1,12 +1,12 @@
 import * as uuid from 'uuid';
 import 'reflect-metadata';
-import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm"
+import { Entity, Column, OneToMany, PrimaryColumn, JoinColumn } from "typeorm"
 import { IProject, Project } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
 import SpaceModel from './model.space';
 
-@Entity('projects')
+@Entity()
 export default class ProjectModel extends Project implements IUpdateable {
   @PrimaryColumn({type: 'uuid' })
   id: string;
@@ -77,13 +77,7 @@ export default class ProjectModel extends Project implements IUpdateable {
   @Column({ type: 'numeric', nullable: true })
   totalCollaborationRatio: number;
 
-  @OneToMany(() => SpaceModel, 
-    space => space.project,
-    { 
-      onUpdate: 'CASCADE', 
-      onDelete: 'CASCADE'
-    }
-  )
+  @OneToMany(type => SpaceModel, space => space.project, {cascade: true})
   spaces: Partial<SpaceModel>[];
 
   // @OneToMany(() => BuildingModel, 

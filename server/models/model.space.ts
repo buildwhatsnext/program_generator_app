@@ -1,12 +1,12 @@
 import { Guid } from "guid-typescript";
-import { Check, Column, Entity, PrimaryColumn, OneToMany, ManyToOne } from "typeorm";
+import { Check, Column, Entity, PrimaryColumn, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { ISpace } from "../../shared/types/ISpace";
 import SpaceType from "../../shared/types/SpaceType";
 import ProjectModel from "./model.project";
 import { Space } from "../../shared/types/Space";
 
 
-@Entity({name: 'spaces'})
+@Entity()
 export default class SpaceModel implements ISpace {
   @PrimaryColumn({type: 'uuid'})
   id: string;
@@ -36,12 +36,12 @@ export default class SpaceModel implements ISpace {
   type: SpaceType;
 
   @ManyToOne(() => ProjectModel, 
-    project => project.spaces,
-    { 
-      onUpdate: 'CASCADE', 
-      onDelete: 'CASCADE'
+    project => project.spaces, { 
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
     }
   )
+  @JoinColumn()
   project: ProjectModel;
 
   setSpaceType(): void {
