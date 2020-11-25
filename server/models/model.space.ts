@@ -1,14 +1,12 @@
 import { Check, Column, Entity, PrimaryColumn, OneToMany, ManyToOne } from "typeorm";
 import { ISpace } from "../../shared/types/ISpace";
 import SpaceType from "../../shared/types/SpaceType";
-import { IBuildingElement, IFloorElement } from '../../shared/types/IElement';
-import { BuildingModel } from "./model.building";
-import { FloorModel } from "./model.floor";
 import ProjectModel from "./model.project";
 import { Space } from "../../shared/types/Space";
+import { Guid } from "guid-typescript";
 
 @Entity({name: 'spaces'})
-export class SpaceModel implements ISpace {
+export default class SpaceModel implements ISpace {
   @PrimaryColumn({type: 'uuid'})
   id: string;
 
@@ -45,7 +43,24 @@ export class SpaceModel implements ISpace {
   )
   project: ProjectModel;
 
-  updateData(data: Space) {
+  setSpaceType(): void {
+    console.log('Created a space model');
+  }
+
+  protected initialize(): void {
+    this.id = Guid.create().toString();
+    this.name = '';
+    this.seats = 0;
+    this.ratio = '1:1';
+    this.area = 0;
+    this.quantitySelected = 1;
+    this.seatTotal = 0;
+    this.areaTotal = 0;
+    // this.type = SpaceType.Unknown; // set in the method below
+    this.setSpaceType();
+  }
+
+  updateData(data: Partial<Space>) {
     if(this.id !== data.id){
       throw new Error(
         `This is not the same element.
@@ -61,6 +76,12 @@ export class SpaceModel implements ISpace {
     this.seatTotal = data.seatTotal || null;
     this.areaTotal = data.areaTotal || null;
     this.type = data.type || null;
+    // this.floorID = data.floorID || null;
+    // this.buildingID = data.buildingID || null;
+  }
+
+  public constructor() {
+    this.initialize();
   }
 }
 

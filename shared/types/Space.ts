@@ -12,14 +12,14 @@ export abstract class Space implements ISpace {
   seatTotal: number;
   areaTotal: number;
   type: SpaceType;
-  floorID: string;
-  buildingID: string;
+  // floorID: string;
+  // buildingID: string;
 
-  constructor() {
+  public constructor() {
     this.initialize();
   }
 
-  private initialize(): void {
+  protected initialize(): void {
     this.id = Guid.create().toString();
     this.name = '';
     this.seats = 0;
@@ -33,7 +33,8 @@ export abstract class Space implements ISpace {
   }
 
   abstract setSpaceType(): void;
-  updateData(data: Space) {
+
+  updateData(data: Partial<Space>) {
     if(this.id !== data.id){
       throw new Error(
         `This is not the same element.
@@ -49,8 +50,8 @@ export abstract class Space implements ISpace {
     this.seatTotal = data.seatTotal || null;
     this.areaTotal = data.areaTotal || null;
     this.type = data.type || null;
-    this.floorID = data.floorID || null;
-    this.buildingID = data.buildingID || null;
+    // this.floorID = data.floorID || null;
+    // this.buildingID = data.buildingID || null;
   }
 }
 

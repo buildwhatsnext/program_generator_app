@@ -94,7 +94,6 @@ export default class ProjectModel extends Project implements IUpdateable {
   initialize() {
     super.initialize();
     this.id = uuid.v4();
-    this.name = 'Untitled Project';
     const now = Date.now().toString();
     this.dateCreated = now
     this.dateModified = now;

@@ -9,7 +9,6 @@ describe("A Project", () => {
     expect(result.id).not.toBeNull();
     expect(result.dateCreated).not.toBeNull();
     expect(result.dateModified).not.toBeNull();
-    expect(result.name).not.toBeNull();
   });
 
   it(",on creation, should have the same date for modified & created", async () => {
