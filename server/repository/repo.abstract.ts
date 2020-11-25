@@ -55,9 +55,12 @@ export default abstract class BaseRepository<T extends IUpdateable> implements I
   async updateData(data: Partial<T>): Promise<T> {
     await this.getRepo();
 
-    const dbObj = await this.repo.findOne(data.id);
-    dbObj.updateData(data);
-    const updated = await this.repo.save(dbObj as any);
+    // const dbObj = await this.repo.findOne(data.id);
+    // dbObj.updateData(data);
+    // const updated = await this.repo.save(dbObj as any);
+    const dbObj = data as any;
+    console.log(dbObj);
+    const updated = await this.repo.save(dbObj);
 
     return updated;
   }

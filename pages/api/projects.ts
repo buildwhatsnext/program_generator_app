@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse 
       await ctrl.createNewProject(req, res);
       break;
     case 'GET':
-      await ctrl.getAll(req, res);
+      await ctrl.getRecents(req, res);
       break;
     case 'DELETE':
       await ctrl.deleteAll(req, res);

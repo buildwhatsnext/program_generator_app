@@ -1,11 +1,10 @@
-import { Repository } from "typeorm";
-import { IProject } from "../../shared/types/Project";
 import connectDB, { DatabaseConfigType } from "../config/config.database";
 import ProjectModel from "../models/model.project";
 import BaseRepository, { IRepository } from "./repo.abstract";
 
 export interface IProjectRepository extends IRepository<ProjectModel> {
   createNew(): Promise<ProjectModel>;
+  getRecents(): Promise<ProjectModel[]>
 }
 
 export default class ProjectRepository extends BaseRepository<ProjectModel> implements IProjectRepository {
@@ -29,7 +28,7 @@ export default class ProjectRepository extends BaseRepository<ProjectModel> impl
     return saved;
   }
 
-  async getRecent() {
+  async getRecents() {
     await this.getRepo();
 
     const data = await this.repo.find({take: 5, order: { dateModified: 'DESC' }});

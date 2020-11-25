@@ -21,10 +21,20 @@ export default class ProjectCtrl extends BaseController<ProjectModel> {
 
   async saveProject(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const { query: { id }, body: { project } } = req;
+      const { query: { id }, body } = req;
       const repo = this.getRepo();
-      const updated = await repo.updateData({...project});
+      const updated = await repo.updateData({...body});
       res.status(200).json(updated)
+    } catch(error) {
+      this.handleError(error, req, res);
+    }
+  }
+
+  async getRecents(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const repo = this.getRepo();
+      const projects = await repo.getRecents();
+      res.status(200).json(projects);
     } catch(error) {
       this.handleError(error, req, res);
     }
