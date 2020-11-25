@@ -58,7 +58,7 @@ export class Project {
     this.initialize();
   }
 
-  initialize(){
+  protected initialize(){
     this.id = null;
     this.client = null;
     this.units = null;

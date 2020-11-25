@@ -91,14 +91,14 @@ export default class ProjectModel extends Project implements IUpdateable {
   // )
   // buildings: BuildingModel[];
 
-  initialize() {
+  setData(project: Partial<ProjectModel>) {
     super.initialize();
-    this.id = uuid.v4();
+    this.id = project?.id || uuid.v4();
     const now = Date.now().toString();
-    this.dateCreated = now
+    this.dateCreated = project?.dateCreated || now;
     this.dateModified = now;
 
-    this.updateData()
+    this.updateData(project)
   }
 
   updateData(project?: Partial<IProject> | Partial<ProjectModel>) {
@@ -131,8 +131,8 @@ export default class ProjectModel extends Project implements IUpdateable {
     this.spaces = (project as ProjectModel)?.spaces;
   }
 
-  constructor() {
+  constructor(project?: Partial<ProjectModel>) {
     super();
-    this.initialize();
+    this.setData(project);
   }
 }

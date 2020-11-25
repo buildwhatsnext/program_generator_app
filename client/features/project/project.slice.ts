@@ -81,10 +81,12 @@ export const saveProject = createAsyncThunk<any, void, AppThunkConfig>(
   async (_, thunkAPI) => {
     try {
       console.log('Attempting to send save request');
-      const projectData = thunkAPI.getState().project as ProjectModel;
-      
+      const projectState = thunkAPI.getState().project;
+      const projectData = new ProjectModel(projectState);
       const spaces = getSpacesFromData(thunkAPI.getState());
-      // projectData.spaces = spaces;
+
+      projectData.spaces = spaces;
+      
       const response = await fetch(`/api/projects/${projectData.id}`, {
         method: 'PUT',
         body: JSON.stringify(projectData),
