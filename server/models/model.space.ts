@@ -1,9 +1,10 @@
+import { Guid } from "guid-typescript";
 import { Check, Column, Entity, PrimaryColumn, OneToMany, ManyToOne } from "typeorm";
 import { ISpace } from "../../shared/types/ISpace";
 import SpaceType from "../../shared/types/SpaceType";
 import ProjectModel from "./model.project";
 import { Space } from "../../shared/types/Space";
-import { Guid } from "guid-typescript";
+
 
 @Entity({name: 'spaces'})
 export default class SpaceModel implements ISpace {

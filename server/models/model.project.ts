@@ -4,7 +4,7 @@ import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm"
 import { IProject, Project } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
-import { SpaceModel } from './model.space';
+import SpaceModel from './model.space';
 
 @Entity('projects')
 export default class ProjectModel extends Project implements IUpdateable {
@@ -84,7 +84,7 @@ export default class ProjectModel extends Project implements IUpdateable {
       onDelete: 'CASCADE'
     }
   )
-  spaces: SpaceModel[];
+  spaces: Partial<SpaceModel>[];
 
   // @OneToMany(() => BuildingModel, 
   //   bldg => bldg.project

@@ -1,4 +1,6 @@
+import { EnclosedOfficeSpace } from "../../shared/types/Space";
 import Project from "../models/model.project";
+import SpaceModel from "../models/model.space";
 import ProjectRepo from "./repo.project";
 
 describe("Project Repository", () => {
@@ -44,18 +46,28 @@ describe("Project Repository", () => {
     const original = await repo.createNew();
     const newName = 'Some New Name';
     const newProject = {...original};
+    const space = new EnclosedOfficeSpace();
+    space.name = 'Executive Office';
+    space.area = 150;
+    space.seats = 15;
+    space.quantitySelected = 1;
+    space.seatTotal = space.seats * space.quantitySelected;
+    space.areaTotal = space.area * space.quantitySelected;
 
     newProject.hasLab = true;
     newProject.hasBroadcast = true;
     newProject.name = newName;
+    newProject.spaces = [space];
 
-    await repo.updateData(newProject)
-    const result = await repo.getById(original.id);
+    const result = await repo.updateData(newProject);
 
     expect(result).not.toBeNull();
     expect(result.id).toEqual(original.id);
     expect(result.hasLab).toBeTruthy();
     expect(result.hasBroadcast).toBeTruthy();
     expect(result.name).toEqual(newName);
+    expect(result.spaces).not.toBeNull();
+    expect(result.spaces).not.toBeUndefined();
+    expect(result.spaces.length).toBeGreaterThan(0);
   });
 });

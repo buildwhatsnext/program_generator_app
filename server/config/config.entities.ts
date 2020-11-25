@@ -4,7 +4,7 @@ import { FloorModel } from '../models/model.floor';
 import { ProgramModel } from '../models/model.program';
 import ProjectModel from '../models/model.project';
 import { SessionModel } from '../models/model.session';
-import { SpaceModel } from '../models/model.space';
+import SpaceModel from '../models/model.space';
 import SpaceTypeModel from '../models/model.spacetype';
 import { UserModel } from '../models/model.user';
 

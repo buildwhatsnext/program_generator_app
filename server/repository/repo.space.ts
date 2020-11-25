@@ -1,5 +1,5 @@
 import connectDB from "../config/config.database";
-import { SpaceModel } from "../models/model.space";
+import SpaceModel from "../models/model.space";
 import BaseRepository from "./repo.abstract";
 
 export default class SpaceRepository extends BaseRepository<SpaceModel> {

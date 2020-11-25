@@ -4,7 +4,7 @@ import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import { IProject, Project } from '../../../shared/types/Project';
 import ProjectModel from '../../../server/models/model.project';
 import { Space } from '../../../shared/types/Space';
-import { SpaceModel } from '../../../server/models/model.space';
+import SpaceModel from '../../../server/models/model.space';
 
 const project = {...new Project()};
 

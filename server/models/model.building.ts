@@ -3,7 +3,7 @@ import { Entity, Column, OneToMany, PrimaryColumn, ManyToOne } from "typeorm"
 import { IBuilding } from '../../shared/types/Building';
 import ProjectModel from './model.project';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
-import { SpaceModel } from './model.space';
+import SpaceModel from './model.space';
 import { FloorModel } from './model.floor';
 
 @Entity('buildings')

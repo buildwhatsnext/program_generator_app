@@ -52,7 +52,7 @@ export default abstract class BaseRepository<T extends IUpdateable> implements I
     return result;
   }
 
-  async updateData(data: Partial<T>) {
+  async updateData(data: Partial<T>): Promise<T> {
     await this.getRepo();
 
     const dbObj = await this.repo.findOne(data.id);
