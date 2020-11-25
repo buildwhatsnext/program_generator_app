@@ -39,7 +39,10 @@ export default abstract class BaseRepository<T extends IUpdateable> implements I
   async getById(id: string) {
     await this.getRepo();
 
-    const data = await this.repo.findOne(id);
+    const data = await this.repo.findOne(id, {
+       loadEagerRelations: true,
+       relations: ['spaces']
+      });
 
     return data;
   }
