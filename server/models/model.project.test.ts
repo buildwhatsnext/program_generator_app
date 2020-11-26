@@ -9,7 +9,6 @@ describe("A Project", () => {
     expect(result.id).not.toBeNull();
     expect(result.dateCreated).not.toBeNull();
     expect(result.dateModified).not.toBeNull();
-    expect(result.name).not.toBeNull();
   });
 
   it(",on creation, should have the same date for modified & created", async () => {
@@ -27,7 +26,7 @@ describe("A Project", () => {
     projectB.hasBroadcast = true;
     projectB.hasLab = true;
 
-    projectA.updateProject(projectB);
+    projectA.updateData(projectB);
 
     expect(projectA.hasBroadcast).toBeTruthy();
     expect(projectA.hasLab).toBeTruthy();
@@ -43,7 +42,7 @@ describe("A Project", () => {
     projectB.hasLab = true;
 
     const update = () => {
-      projectA.updateProject(projectB);
+      projectA.updateData(projectB);
     }
 
     expect(update).toThrowError();
@@ -60,7 +59,7 @@ describe("A Project", () => {
     projectB.hasBroadcast = true;
     projectB.hasLab = true;
 
-    projectA.updateProject(projectB);
+    projectA.updateData(projectB);
 
     const propA = Object.keys(projectA);
     const propB = Object.keys(projectB);

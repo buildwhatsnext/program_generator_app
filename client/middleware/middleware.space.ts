@@ -1,25 +1,31 @@
-import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
+import { ActionCreatorWithOptionalPayload, PayloadAction } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
-import { setEnclosedTotalArea } from "../features/space/space.slice";
+import { setAmenityData, setAmenityTotalArea, setBroadcastData, setBroadcastTotalArea, setEnclosedData, setEnclosedTotalArea, setLabData, setLabTotalArea, setMeetingData, setMeetingTotalArea, setOpenOfficeData, setOpenOfficeTotalArea, setSupportData, setSupportTotalArea } from "../features/space/space.slice";
 import { 
   setCollaborationRatio, 
+  setSpaceData, 
   setTotalNumberOfWorkseats, 
   setTotalProgrammedArea, 
   setWorkseatRatio 
 } from '../features/project/project.slice';
 
 import { AppThunk, RootState } from '../store';
-import { hydrateSpaceState } from "../features/space/space.functions";
+import { filterAllSpaceDataByType, hydrateSpaceState, SpaceCollection } from "../features/space/space.functions";
+import SpaceModel from "../../server/models/model.space";
+import SpaceType from "../../shared/types/SpaceType";
+import { updateAreaOnHold } from "../../shared/lib/updaters";
+import { sumTotals } from "../../shared/lib/calculators";
 
 export const calculateTotalSpatialArea = (
     data: string[], 
     areaHandler: ActionCreatorWithOptionalPayload<any, string>
   ): AppThunk => 
   (dispatch, getState) => {
-    const spaces = data?.map(space => JSON.parse(space));
-    let finalArea = 0;
-    spaces?.forEach((space) => finalArea += Number(space.areaTotal));
-    console.log(finalArea);
+    if(data === undefined || data === null || data.length < 1)
+      return;
+
+    const spaces = data?.map<SpaceModel>(space => JSON.parse(space));
+    const finalArea = spaces?.map(space => space.areaTotal).reduce(sumTotals)
     dispatch(areaHandler(finalArea))
 }
 
@@ -62,7 +68,7 @@ const calculateTotalSeats = (all: string[][]) => {
   all?.forEach((state) => {
     const spaceState = hydrateSpaceState(state);
     spaceState?.forEach((space) => {
-      seats += space.seatTotal
+      seats += Number(space.seatTotal)
     })
   });
 
@@ -133,13 +139,52 @@ export const calculateWorkseatRatio = (): AppThunk =>
   console.log(ratio);
 
   dispatch(setWorkseatRatio(ratio.toString()));
+}
 
+const loadSpaceData = (
+  api: MiddlewareAPI<Dispatch<AnyAction>, RootState>, 
+  data: SpaceCollection
+) => {
+  api.dispatch(setAmenityData(data.amenity?.map(s => JSON.stringify(s))));
+  api.dispatch(setBroadcastData(data.broadcast?.map(s => JSON.stringify(s))));
+  api.dispatch(setEnclosedData(data.enclosed?.map(s => JSON.stringify(s))));
+  api.dispatch(setLabData(data.lab?.map(s => JSON.stringify(s))));
+  api.dispatch(setMeetingData(data.meeting?.map(s => JSON.stringify(s))));
+  api.dispatch(setOpenOfficeData(data.open?.map(s => JSON.stringify(s))));
+  api.dispatch(setSupportData(data.support?.map(s => JSON.stringify(s))));
+}
+
+const loadSpaceAreas = (
+  api: MiddlewareAPI<Dispatch<AnyAction>, RootState>, 
+  data: SpaceCollection
+) => {
+  api.dispatch(setAmenityTotalArea(data.amenity.length > 0 ? data.amenity?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setBroadcastTotalArea(data.broadcast.length > 0 ? data.broadcast?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setEnclosedTotalArea(data.enclosed.length > 0 ? data.enclosed?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setLabTotalArea(data.lab.length > 0 ? data.lab?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setMeetingTotalArea(data.meeting.length > 0 ? data.meeting?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setOpenOfficeTotalArea(data.open.length > 0 ? data.open?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setSupportTotalArea(data.support.length > 0 ? data.support?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+}
+
+export const handleSpaceLoading = (
+  action: PayloadAction<Partial<SpaceModel>[]>, 
+  api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
+) => {
+  const data = action.payload;
+
+  if(data === null || data === undefined)
+    return;
+
+  const spaces = filterAllSpaceDataByType(data);
+  loadSpaceAreas(api, spaces);
+  loadSpaceData(api, spaces);
 }
 
 const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: Action) => {
   switch(action.type) {
-    case setEnclosedTotalArea.type:
-      // console.log(`Enclosed space area total is: `, api.getState().program.totalAreaEnclosed)
+    case setSpaceData.type:
+      handleSpaceLoading(action as PayloadAction<Partial<SpaceModel>[]>, api)
       break;
     default:
       break;

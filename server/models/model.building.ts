@@ -3,11 +3,11 @@ import { Entity, Column, OneToMany, PrimaryColumn, ManyToOne } from "typeorm"
 import { IBuilding } from '../../shared/types/Building';
 import ProjectModel from './model.project';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
-import { SpaceModel } from './model.space';
+import SpaceModel from './model.space';
 import { FloorModel } from './model.floor';
 
 @Entity('buildings')
-export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
+export class BuildingModel implements IBuilding, IUpdateable {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 
@@ -47,19 +47,19 @@ export class BuildingModel implements IBuilding, IUpdateable<IBuilding> {
   // @Column({type: 'numeric'})
   // totalCollaborationRatio: number;
 
-  @ManyToOne(() => ProjectModel, 
-    project => project.buildings,
-    { 
-      onUpdate: 'CASCADE', 
-      onDelete: 'CASCADE'
-    }
-  )
-  project: ProjectModel
+  // @ManyToOne(() => ProjectModel, 
+  //   project => project.buildings,
+  //   { 
+  //     onUpdate: 'CASCADE', 
+  //     onDelete: 'CASCADE'
+  //   }
+  // )
+  // project: ProjectModel
 
-  @OneToMany(() => SpaceModel, 
-    space => space.building
-  )
-  spaces: SpaceModel
+  // @OneToMany(() => SpaceModel, 
+  //   space => space.building
+  // )
+  // spaces: SpaceModel
 
   // @OneToMany(() => FloorModel, 
   //   floor => floor.building
