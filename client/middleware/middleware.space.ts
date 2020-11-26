@@ -1,8 +1,9 @@
-import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
+import { ActionCreatorWithOptionalPayload, PayloadAction } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
-import { setEnclosedTotalArea } from "../features/space/space.slice";
+import { setAmenityData, setBroadcastData, setEnclosedData, setEnclosedTotalArea, setLabData, setMeetingData, setOpenOfficeData, setSupportData } from "../features/space/space.slice";
 import { 
   setCollaborationRatio, 
+  setSpaceData, 
   setTotalNumberOfWorkseats, 
   setTotalProgrammedArea, 
   setWorkseatRatio 
@@ -10,6 +11,8 @@ import {
 
 import { AppThunk, RootState } from '../store';
 import { hydrateSpaceState } from "../features/space/space.functions";
+import SpaceModel from "../../server/models/model.space";
+import SpaceType from "../../shared/types/SpaceType";
 
 export const calculateTotalSpatialArea = (
     data: string[], 
@@ -133,13 +136,31 @@ export const calculateWorkseatRatio = (): AppThunk =>
   console.log(ratio);
 
   dispatch(setWorkseatRatio(ratio.toString()));
+}
 
+export const filterSpaces = (action: PayloadAction<Partial<SpaceModel>[]>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) =>{
+  const data = action.payload;
+
+  const dataAmenity = data.filter(space => space.type === SpaceType.Amenity).map(space => JSON.stringify(space));
+  api.dispatch(setAmenityData(dataAmenity));
+  const dataBroadcast = data.filter(space => space.type === SpaceType.Broadcast).map(space => JSON.stringify(space));
+  api.dispatch(setBroadcastData(dataBroadcast));
+  const dataEnclosed = data.filter(space => space.type === SpaceType.Enclosed).map(space => JSON.stringify(space));
+  api.dispatch(setEnclosedData(dataEnclosed));
+  const dataLab = data.filter(space => space.type === SpaceType.Lab).map(space => JSON.stringify(space));
+  api.dispatch(setLabData(dataLab));
+  const dataMeeting = data.filter(space => space.type === SpaceType.Meeting).map(space => JSON.stringify(space));
+  api.dispatch(setMeetingData(dataMeeting));
+  const dataOpenPlan = data.filter(space => space.type === SpaceType.OpenPlan).map(space => JSON.stringify(space));
+  api.dispatch(setOpenOfficeData(dataOpenPlan));
+  const dataSupport = data.filter(space => space.type === SpaceType.Support).map(space => JSON.stringify(space));
+  api.dispatch(setSupportData(dataSupport));
 }
 
 const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: Action) => {
   switch(action.type) {
-    case setEnclosedTotalArea.type:
-      // console.log(`Enclosed space area total is: `, api.getState().program.totalAreaEnclosed)
+    case setSpaceData.type:
+      filterSpaces(action as PayloadAction<Partial<SpaceModel>[]>, api)
       break;
     default:
       break;

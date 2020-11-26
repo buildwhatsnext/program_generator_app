@@ -3,10 +3,10 @@ import { AppThunkConfig, RootState } from '../../store';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import { IProject, Project } from '../../../shared/types/Project';
 import ProjectModel from '../../../server/models/model.project';
-import { Space } from '../../../shared/types/Space';
+import { ISpace } from '../../../shared/types/ISpace';
 import SpaceModel from '../../../server/models/model.space';
 
-const project = {...new Project()};
+const project = {...new ProjectModel()};
 
 export const createProject = createAsyncThunk(
   'project/createProject',
@@ -101,6 +101,8 @@ export const saveProject = createAsyncThunk<any, void, AppThunkConfig>(
   }
 )
 
+
+
 const projectSlice = createSlice({
   name: 'project',
   initialState: project,
@@ -127,7 +129,6 @@ const projectSlice = createSlice({
       if(action.payload === null) 
         return;
 
-      console.log('Still sets things')
       const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
       state.hasBroadcast = value;
     },
@@ -142,7 +143,6 @@ const projectSlice = createSlice({
       state.areaGross = Number(action.payload);
     },
     setNetArea: (state, action) => {
-      console.log('Setting net area')
       const input = tryConvertToNumber(action.payload);
       state.areaNet = input;
     },
@@ -181,6 +181,9 @@ const projectSlice = createSlice({
       const input = Number(action.payload);
       state.totalCollaborationRatio = action.payload;
     },
+    setSpaceData: (state, action: PayloadAction<Partial<SpaceModel>[]>) => {
+      state.spaces = action.payload;
+    }
   },
 });
 
@@ -205,5 +208,6 @@ export const {
   setTotalProgrammedArea,
   setWorkseatRatio,
   setTotalNumberOfWorkseats,
-  setCollaborationRatio
+  setCollaborationRatio,
+  setSpaceData
 } = projectSlice.actions;
