@@ -68,7 +68,7 @@ const calculateTotalSeats = (all: string[][]) => {
   all?.forEach((state) => {
     const spaceState = hydrateSpaceState(state);
     spaceState?.forEach((space) => {
-      seats += space.seatTotal
+      seats += Number(space.seatTotal)
     })
   });
 
@@ -158,13 +158,13 @@ const loadSpaceAreas = (
   api: MiddlewareAPI<Dispatch<AnyAction>, RootState>, 
   data: SpaceCollection
 ) => {
-  api.dispatch(setAmenityTotalArea(data.amenity.length > 0 ? data.amenity?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
-  api.dispatch(setBroadcastTotalArea(data.broadcast.length > 0 ? data.broadcast?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
-  api.dispatch(setEnclosedTotalArea(data.enclosed.length > 0 ? data.enclosed?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
-  api.dispatch(setLabTotalArea(data.lab.length > 0 ? data.lab?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
-  api.dispatch(setMeetingTotalArea(data.meeting.length > 0 ? data.meeting?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
-  api.dispatch(setOpenOfficeTotalArea(data.open.length > 0 ? data.open?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
-  api.dispatch(setSupportTotalArea(data.support.length > 0 ? data.support?.map(s => s.areaTotal)?.reduce(sumTotals) : 0));
+  api.dispatch(setAmenityTotalArea(data.amenity.length > 0 ? data.amenity?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setBroadcastTotalArea(data.broadcast.length > 0 ? data.broadcast?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setEnclosedTotalArea(data.enclosed.length > 0 ? data.enclosed?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setLabTotalArea(data.lab.length > 0 ? data.lab?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setMeetingTotalArea(data.meeting.length > 0 ? data.meeting?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setOpenOfficeTotalArea(data.open.length > 0 ? data.open?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
+  api.dispatch(setSupportTotalArea(data.support.length > 0 ? data.support?.map(s => Number(s.areaTotal))?.reduce(sumTotals) : 0));
 }
 
 export const handleSpaceLoading = (
@@ -175,7 +175,7 @@ export const handleSpaceLoading = (
 
   if(data === null || data === undefined)
     return;
-    
+
   const spaces = filterAllSpaceDataByType(data);
   loadSpaceAreas(api, spaces);
   loadSpaceData(api, spaces);
