@@ -18,7 +18,7 @@ export const updateAreaOnHold = ()
 
   const factorTotal = targetFactorCirculation + targetFactorLoss;
   const percentage = factorTotal / 100;
-  const areaHold = totalAreaContainer * percentage;
+  const areaHold = Number((totalAreaContainer * percentage).toFixed(2));
   const areaLeftover = totalAreaContainer - areaHold;
   dispatch(setHoldArea(areaHold));
   dispatch(setUnprogrammedArea(areaLeftover));
