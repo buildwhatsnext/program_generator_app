@@ -1,6 +1,7 @@
+import { AppThunk, RootState } from '../../client/store';
 import { setNetArea } from "../../client/features/project/project.slice";
 import { setHoldArea, setTotalBuildingArea, setUnprogrammedArea } from '../../client/features/space/space.slice';
-import { AppThunk } from "../../client/store"
+import SpaceModel from "../../server/models/model.space";
 
 // TODO: document this function
 
@@ -20,15 +21,14 @@ export const updateBuildingArea = (
 /**
  * @summary getting numerical data from targetFactorCirculation, targetFactorLoss, totalAreaContainer and goes thorough a set of calcuation to get area 
  */
+export const updateAreaOnHold = (): AppThunk => (dispatch, getState) => {
 
-export const updateAreaOnHold = ()
-: AppThunk => (dispatch, getState) => {
   const { targetFactorCirculation, targetFactorLoss } = getState().project;
   const { totalAreaContainer, } = getState().program;
 
   const factorTotal = targetFactorCirculation + targetFactorLoss;
   const percentage = factorTotal / 100;
-  const areaHold = totalAreaContainer * percentage;
+  const areaHold = Number((totalAreaContainer * percentage).toFixed(2));
   const areaLeftover = totalAreaContainer - areaHold;
   dispatch(setHoldArea(areaHold));
   dispatch(setUnprogrammedArea(areaLeftover));

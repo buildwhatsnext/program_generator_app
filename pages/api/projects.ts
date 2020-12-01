@@ -3,17 +3,18 @@ import { NextApiRequest, NextApiResponse } from "next";
 import ProjectCtrl from "../../server/controllers/controller.project";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse ) {
-  const { method } = req
+  const { method } = req;
+  const ctrl = new ProjectCtrl();
 
   switch (method) {
     case 'POST':
-      await ProjectCtrl.createNewProject(req, res);
+      await ctrl.createNewProject(req, res);
       break;
     case 'GET':
-      await ProjectCtrl.getAllProjects(req, res);
+      await ctrl.getRecents(req, res);
       break;
     case 'DELETE':
-      await ProjectCtrl.deleteAllProjects(req, res);
+      await ctrl.deleteAll(req, res);
       break;
     default:
       res.setHeader('Allow', ['GET', 'POST', 'DELETE'])

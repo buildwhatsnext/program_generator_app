@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunkConfig, RootState } from '../../store';
-import { ProjectOverview } from './project.overview';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
-import { IProject } from '../../../shared/types/Project';
+import { IProject, Project } from '../../../shared/types/Project';
+import ProjectModel from '../../../server/models/model.project';
+import { ISpace } from '../../../shared/types/ISpace';
+import SpaceModel from '../../../server/models/model.space';
 
-const project = {...new ProjectOverview()};
+const project = {...new ProjectModel()};
 
 export const createProject = createAsyncThunk(
   'project/createProject',
@@ -42,13 +44,49 @@ export const loadProject = createAsyncThunk<any, IProject>(
   }
 )
 
-export const saveProject = 
-  createAsyncThunk<any, void, AppThunkConfig>(
+const getSpacesFromData = (state: RootState) => {
+  const spaces: SpaceModel[] = [];
+
+  const {
+    EnclosedState,
+    OpenPlanState,
+    MeetingState,
+    AmenityState,
+    SupportState,
+    BroadcastState,
+  } = state.program;
+
+  const all = [
+    EnclosedState,
+    OpenPlanState,
+    MeetingState,
+    AmenityState,
+    SupportState,
+    BroadcastState,
+  ];
+
+  if(all.every(type => type.length < 1))
+    return null;
+
+  all?.forEach(type => {
+    const mapped: SpaceModel[] = type?.map(space => JSON.parse(space));
+    spaces.push(...mapped);
+  });
+
+  return spaces;
+}
+
+export const saveProject = createAsyncThunk<any, void, AppThunkConfig>(
   'project/saveProject',
   async (_, thunkAPI) => {
     try {
       console.log('Attempting to send save request');
-      const projectData = thunkAPI.getState().project;
+      const projectState = thunkAPI.getState().project;
+      const projectData = new ProjectModel(projectState);
+      const spaces = getSpacesFromData(thunkAPI.getState());
+
+      projectData.spaces = spaces;
+      
       const response = await fetch(`/api/projects/${projectData.id}`, {
         method: 'PUT',
         body: JSON.stringify(projectData),
@@ -62,6 +100,8 @@ export const saveProject =
     }
   }
 )
+
+
 
 const projectSlice = createSlice({
   name: 'project',
@@ -89,7 +129,6 @@ const projectSlice = createSlice({
       if(action.payload === null) 
         return;
 
-      console.log('Still sets things')
       const value = action?.payload && (action.payload.toString().toLowerCase() === 'yes' || action.payload === true)
       state.hasBroadcast = value;
     },
@@ -104,7 +143,6 @@ const projectSlice = createSlice({
       state.areaGross = Number(action.payload);
     },
     setNetArea: (state, action) => {
-      console.log('Setting net area')
       const input = tryConvertToNumber(action.payload);
       state.areaNet = input;
     },
@@ -143,6 +181,9 @@ const projectSlice = createSlice({
       const input = Number(action.payload);
       state.totalCollaborationRatio = action.payload;
     },
+    setSpaceData: (state, action: PayloadAction<Partial<SpaceModel>[]>) => {
+      state.spaces = action.payload;
+    }
   },
 });
 
@@ -167,5 +208,6 @@ export const {
   setTotalProgrammedArea,
   setWorkseatRatio,
   setTotalNumberOfWorkseats,
-  setCollaborationRatio
+  setCollaborationRatio,
+  setSpaceData
 } = projectSlice.actions;

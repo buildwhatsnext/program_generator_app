@@ -20,14 +20,15 @@ import {
   setTotalProgrammedArea,
   setWorkseatRatio,
   setTotalNumberOfWorkseats,
-  setCollaborationRatio 
+  setCollaborationRatio, 
+  setSpaceData
 } from "../features/project/project.slice";
-import { IProject } from "../../shared/types/Project";
-import { ProjectOverview } from "../features/project/project.overview";
+import { IProject, Project } from "../../shared/types/Project";
+import ProjectModel from "../../server/models/model.project";
 
-function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
+function setProjectData(data: Partial<ProjectModel>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   if(data === null)
-    data = new ProjectOverview();
+    data = new Project();
 
   api.dispatch(setId(data.id))
   api.dispatch(setClient(data.client));
@@ -46,15 +47,16 @@ function setProjectData(data: IProject, api: MiddlewareAPI<Dispatch<AnyAction>, 
   api.dispatch(setWorkseatRatio(data.totalWorkseatRatio));
   api.dispatch(setTotalNumberOfWorkseats(data.totalNumOfWorkseats));
   api.dispatch(setCollaborationRatio(data.totalCollaborationRatio));
+  api.dispatch(setSpaceData(data.spaces))
 }
 
-function handleProjectData(action: PayloadAction<IProject>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
+function handleProjectData(action: PayloadAction<Partial<ProjectModel>>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   setProjectData(action.payload, api);
 }
 
 const projectHandler = 
   (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
-  (next: Dispatch) => (action: PayloadAction<IProject>) => {
+  (next: Dispatch) => (action: PayloadAction<any>) => {
     switch(action.type) {
       case loadProject.fulfilled.type:
       case createProject.fulfilled.type: 

@@ -133,6 +133,10 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
     const programVals = Object.values(PROGRAMS);
     const routeName = programKeys[programVals.indexOf(programType)]
     const { route } = standard[routeName];
+
+    if(routeName === 'UNPLANNED') {
+      return;
+    };
     // console.log(route);
     router.push(route);
     // router.push(standard[programType.toUpperCase()].route);

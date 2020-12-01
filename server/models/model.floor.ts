@@ -6,7 +6,7 @@ import ISpaceTotalContainer from "../../shared/types/ISpaceTotalContainer";
 import {IBuildingElement} from '../../shared/types/IElement';
 import { EnclosedOfficeSpace, OpenOfficeSpace, MeetingSpace, AmenitySpace, SupportSpace, BroadcastSpace, LabSpace } from "../../shared/types/Space";
 import { BuildingModel } from "./model.building";
-import { SpaceModel } from "./model.space";
+import SpaceModel from "./model.space";
 
 // export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer, IBuildingElement {
 export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer {

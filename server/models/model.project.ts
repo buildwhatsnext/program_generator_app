@@ -1,25 +1,26 @@
 import * as uuid from 'uuid';
 import 'reflect-metadata';
-import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm"
-import { IProject } from '../../shared/types/Project';
+import { Entity, Column, OneToMany, PrimaryColumn, JoinColumn } from "typeorm"
+import { IProject, Project } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
 import { IUpdateable } from '../../shared/types/ICanUpdate';
+import SpaceModel from './model.space';
 
-@Entity('projects')
-export default class ProjectModel implements IProject, IUpdateable<IProject> {
+@Entity()
+export default class ProjectModel extends Project implements IUpdateable {
   @PrimaryColumn({type: 'uuid' })
   id: string;
 
-  @Column({type: 'varchar', nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   name: string;
 
-  @Column({type: 'varchar', nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   client: string;
 
-  @Column({type: 'varchar', nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   tenancy: string;
 
-  @Column({type: 'varchar', nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   units: string;
 
   @Column({type: "boolean", nullable: true})
@@ -28,10 +29,10 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: "boolean", nullable: true })
   hasLab: boolean;
 
-  @Column({type: 'varchar', nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   createdBy: string;
 
-  @Column({type: 'varchar', nullable: true})
+  @Column({ type: 'varchar', nullable: true })
   modifiedBy: string;
 
   @Column({type: 'varchar', default: Date.now().toString()})
@@ -40,69 +41,67 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
   @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   areaGross: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   areaNet: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   floors: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetFactorCirculation: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetFactorLoss: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetAreaPerWorkseat: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   targetNumOfWorkseats: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalProgrammedArea: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalWorkseatRatio: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalNumOfWorkseats: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalNumOfCollabseats: number;
 
-  @Column({type: 'numeric'})
+  @Column({ type: 'numeric', nullable: true })
   totalCollaborationRatio: number;
 
-  @OneToMany(() => BuildingModel, 
-    bldg => bldg.project
-  )
-  buildings: BuildingModel[];
+  @OneToMany(type => SpaceModel, space => space.project, {cascade: true})
+  spaces: Partial<SpaceModel>[];
 
-  initialize() {
-    this.id = uuid.v4();
-    this.name = 'Untitled Project';
+  // @OneToMany(() => BuildingModel, 
+  //   bldg => bldg.project
+  // )
+  // buildings: BuildingModel[];
+
+  setData(project: Partial<ProjectModel>) {
+    super.initialize();
+    this.id = project?.id || uuid.v4();
     const now = Date.now().toString();
-    this.dateCreated = now
+    this.dateCreated = project?.dateCreated || now;
     this.dateModified = now;
 
-    this.updateData()
+    this.updateData(project)
   }
 
-  updateProject(project: IProject) {
-    if(this.id !== project.id){
+  updateData(project?: Partial<IProject> | Partial<ProjectModel>) {
+    if(project && this.id !== project?.id){
       throw new Error(
         `This is not the same element.
         check IDS: ObjA: ${this.id} ObjB: ${project.id}`
       );
     }
-
-    this.updateData(project);
-  }
-
-  updateData(project?: IProject) {
     
     this.name = project?.name || null;
     this.tenancy = project?.tenancy || null;
@@ -123,9 +122,11 @@ export default class ProjectModel implements IProject, IUpdateable<IProject> {
     this.totalNumOfWorkseats = project?.totalNumOfWorkseats || 0;
     this.totalNumOfCollabseats = project?.totalNumOfCollabseats || 0;
     this.totalCollaborationRatio = project?.totalCollaborationRatio || 0;
+    this.spaces = (project as ProjectModel)?.spaces;
   }
 
-  constructor() {
-    this.initialize();
+  constructor(project?: Partial<ProjectModel>) {
+    super();
+    this.setData(project);
   }
 }
