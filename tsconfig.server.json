@@ -1,0 +1,26 @@
+{
+   "compilerOptions": {
+      "target": "es5",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "es5",
+        "es6"
+      ],
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./build",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "strict": false,
+      "skipLibCheck": true,
+   },
+   "include": [
+     "./server/models/*.ts",
+     "./server/migrations/*.ts"
+    ],
+   "exclude": [
+    "node_modules",
+    "./server/models/*.test.ts"
+  ]
+}

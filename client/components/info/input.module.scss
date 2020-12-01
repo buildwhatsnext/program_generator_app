@@ -1,0 +1,29 @@
+@import '../../styles/styles.colors.scss';
+
+.input {
+  justify-self: center;
+  width: 100%;
+
+  form {
+    justify-self: center;
+    width: 100%;
+
+    .input__text {
+      width: 100%;
+      border-bottom: 3px $blue solid;
+
+      label {
+        color: $blue;
+        opacity: 60%;
+        text-align: center;
+        width: 100%;
+      }
+
+      input {
+        color: $blue;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+}

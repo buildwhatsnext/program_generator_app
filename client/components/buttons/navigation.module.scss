@@ -1,0 +1,20 @@
+@import '../../styles/styles.colors.scss';
+@import './buttons.module.scss';
+
+.nav__next {
+  button {
+    @extend %button__typical;
+  }
+}
+
+.nav__back {
+  button {
+    @extend %button__typical;
+  }
+}
+
+.button__panel {
+  button {
+    @extend .panel__button;
+  }
+}

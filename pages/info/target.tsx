@@ -1,6 +1,24 @@
 import React from 'react';
-import TargetMetric from '../../features/info/general.target';
+import { useSelector } from 'react-redux';
+import { selectOverview } from '../../client/features/project/project.slice';
+import TargetMetric from '../../client/features/project/project.target';
 
 export default function TargetMetricPage() {
-  return <TargetMetric />;
+  const { 
+    targetFactorCirculation, 
+    targetFactorLoss, 
+    targetAreaPerWorkseat, 
+    targetNumOfWorkseats 
+  } = useSelector(selectOverview);
+
+  const state = [ 
+    targetFactorCirculation, 
+    targetFactorLoss, 
+    targetAreaPerWorkseat, 
+    targetNumOfWorkseats 
+  ];
+
+  const hasPrevState = state.some(val => val !== null);
+  
+  return <TargetMetric hasPrevState={hasPrevState} />;
 }

@@ -1,0 +1,30 @@
+@import '../../styles/styles.colors.scss';
+
+.panel {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: $blue;
+  color: $white;
+  // height: 100%;
+  min-width: 20rem;
+  padding: 2rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  /*chrome*/
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  &__title {
+    position: sticky;
+    margin-bottom: 1rem;
+    font-style: normal;
+  }
+
+  &__content {
+    display: flex;
+    // let the interior content align itself
+  }
+}

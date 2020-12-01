@@ -1,4 +1,3 @@
-import Home from '../features/home/home';
 import ProjectSelectionPage from './project/select';
 
 const IndexPage = () => {

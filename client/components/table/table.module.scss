@@ -1,0 +1,13 @@
+@import '../../styles/styles.colors.scss';
+
+.tableCell {
+  &__override {
+    border: 0 !important;
+    background-color: $white !important;
+    color: $blue !important;
+  }
+}
+
+.deleteKey {
+  text-align: center;
+}

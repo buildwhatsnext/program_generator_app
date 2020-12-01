@@ -1,0 +1,45 @@
+@import '../../styles/styles.colors.scss';
+
+%casing {
+  text-transform: initial;
+}
+
+.text__white {
+  @extend %casing;
+  color: $white;
+}
+
+.text__blue {
+  @extend %casing;
+  color: $blue;
+}
+
+.panel__button {
+  @extend.text__white;
+  transition: all .25s;
+  border-radius: 0px;
+
+  &:hover {
+    color: $blue;
+    background-color: $white;
+    border-radius: 0px;
+  }
+}
+
+%button__typical {
+  @extend .text__blue;
+  border: 3px $blue solid;
+  border-radius: 0px;
+  width: auto;
+
+  &:hover {
+    background-color: $blue;
+    color: white;
+  }
+}
+
+.button__typical {
+  button {
+    @extend %button__typical;
+  }
+}

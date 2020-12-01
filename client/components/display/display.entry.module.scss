@@ -1,0 +1,22 @@
+.section {
+  padding: 0 5rem;
+
+  &__title{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: auto;
+
+    &__toggle {
+      padding: 0 1rem;
+      cursor: pointer;
+    }
+  }
+
+  &__content{
+    padding: 0 2rem;
+
+    &__none {
+      display: none;
+    }
+  }
+}
