@@ -4,6 +4,22 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './input.module.scss';
 
+const useStyles = makeStyles({
+  root : {
+    "& .MuiInput-underline:before": {
+      borderBottom: '#06038D 3px solid'
+    },
+
+    "& .MuiInput-underline &hover": {
+      borderBottom: '#06038D 3px solid'
+    },
+
+    "& .MuiInput-underline:after": {
+      borderBottom: '#06038D 3px solid'
+    }
+  }
+})
+
 interface ITextInput {
   content?: string;
   // ref: Ref<HTMLInputElement>;
@@ -14,10 +30,11 @@ interface ITextInput {
 
 const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
   const { content, handler, storedValue, currentValue } = props;
+  const classes = useStyles();
 
   return (
     <div className={styles.input}>
-      <form noValidate autoComplete="off">
+      <form className={classes.root} noValidate autoComplete="off">
         <TextField 
           className={styles.input__text} 
           id="standard-basic" 
@@ -25,8 +42,10 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
           inputRef={ref} 
           onChange={handler} 
           value={currentValue ?? storedValue}
-          InputLabelProps={{
-            shrink: (storedValue !== null && storedValue !== '' && storedValue !== undefined)
+          InputProps={{
+            classes: {
+              root: classes.root,
+            }
           }}
         />
       </form>
