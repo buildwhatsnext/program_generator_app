@@ -1,20 +1,24 @@
 import "reflect-metadata";
 import { NextApiRequest, NextApiResponse } from "next";
-import * as CorsServices from '../../server/services/services.cors';
-import connectDB from '../../server/config/config.database';
-import Project from '../../server/models/model.project';
 import ProjectCtrl from "../../server/controllers/controller.project";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse ) {
-  const { method } = req
+  const { method } = req;
+  const ctrl = new ProjectCtrl();
 
   switch (method) {
     case 'POST':
-      await ProjectCtrl.createNewProject(req, res);
+      await ctrl.createNewProject(req, res);
       break;
     case 'GET':
+      await ctrl.getRecents(req, res);
+      break;
+    case 'DELETE':
+      await ctrl.deleteAll(req, res);
+      break;
     default:
-      await ProjectCtrl.getAllProjects(req, res);
+      res.setHeader('Allow', ['GET', 'POST', 'DELETE'])
+      res.status(405).end(`Method ${method} Not Allowed`)
       break;
   }
 }

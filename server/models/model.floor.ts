@@ -1,11 +1,15 @@
+import { ManyToOne, OneToMany } from "typeorm";
 import { IFloor } from "../../shared/types/Floor";
 import { ISpace } from "../../shared/types/ISpace";
 import ISpaceContainer from "../../shared/types/ISpaceContainer";
 import ISpaceTotalContainer from "../../shared/types/ISpaceTotalContainer";
 import {IBuildingElement} from '../../shared/types/IElement';
 import { EnclosedOfficeSpace, OpenOfficeSpace, MeetingSpace, AmenitySpace, SupportSpace, BroadcastSpace, LabSpace } from "../../shared/types/Space";
+import { BuildingModel } from "./model.building";
+import SpaceModel from "./model.space";
 
-export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer, IBuildingElement {
+// export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer, IBuildingElement {
+export interface IFloorModel extends ISpaceTotalContainer, ISpaceContainer {
   
 }
 
@@ -29,6 +33,19 @@ export class FloorModel implements IFloorModel {
   Support: SupportSpace[];
   Broadcast: BroadcastSpace[];
   Lab: LabSpace[];
-  buildingID: string;
+  
+  // @ManyToOne(() => BuildingModel, 
+  //   bldg => bldg.floorsData,
+  //   { 
+  //     onUpdate: 'CASCADE', 
+  //     onDelete: 'CASCADE'
+  //   }
+  // )
+  // building: BuildingModel
+
+  // @OneToMany(() => SpaceModel, 
+  //   space => space.floor
+  // )
+  // spaces: SpaceModel;
   
 }

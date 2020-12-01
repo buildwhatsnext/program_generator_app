@@ -9,6 +9,7 @@ module.exports = {
     browser: true,
     es2020: true,
     node: true,
+    jest: true,
   },
   extends: [
     "eslint:recommended",
@@ -32,7 +33,9 @@ module.exports = {
     '@typescript-eslint',
   ],
   globals: {
-    'JSX': 'readonly'
+    JSX: 'readonly',
+    React: 'writable',
+    Jest: 'readonly'
   },
   settings: {
     'import/resolver': {
@@ -48,8 +51,10 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': RULESTATE.OFF,
 
     'camelcase': RULESTATE.WARN,
+    'class-methods-use-this': RULESTATE.OFF,
     'no-console': RULESTATE.OFF,
     'global-require': 0,
+    'no-empty-function': RULESTATE.WARN,
     'no-use-before-define': RULESTATE.WARN,
     'no-unused-vars': RULESTATE.OFF,
     'no-param-reassign': RULESTATE.OFF,

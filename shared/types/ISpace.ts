@@ -1,7 +1,7 @@
+import { IUpdateable } from "./ICanUpdate";
 import SpaceType from "./SpaceType";
 
-export interface ISpace {
-  id: string;
+export interface ISpace extends IUpdateable {
   name: string;
   seats: number;
   ratio: string;

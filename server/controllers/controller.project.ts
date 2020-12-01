@@ -1,43 +1,42 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connectDB from "../config/config.database";
-import Project from '../models/model.project';
+import ProjectModel from "../models/model.project";
+import { IRepository } from "../repository/repo.abstract";
+import ProjectRepository, { IProjectRepository } from "../repository/repo.project";
+import BaseController from "./controller.abstract";
 
-export default class ProjectCtrl {
-  static async getAllProjects(req: NextApiRequest, res: NextApiResponse) {
+export default class ProjectCtrl extends BaseController<ProjectModel> {
+  getRepo(): IProjectRepository {
+    return new ProjectRepository();
+  }
+
+  async createNewProject(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const connection = await connectDB();
-      const projects = await connection.getRepository(Project).find({take: 5, order: {dateModified: 'DESC'}});
-      res.status(200).json({ success: true, data: projects })
+      const repo = this.getRepo();
+      const data = await repo.createNew();
+      res.status(200).json(data)
     } catch(error) {
-      ProjectCtrl.handleError(error, req, res);
+      this.handleError(error, req, res);
     }
   }
 
-  static async getProjectById(req: NextApiRequest, res: NextApiResponse) {
+  async saveProject(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const { query: { id } } = req;
-      const ID =  Array.isArray(id) ? id[0] : id;
-      const connection = await connectDB();
-      const data = await connection.getRepository(Project).findOne(ID);
-      res.status(200).json({ success: true, data })
+      const { query: { id }, body } = req;
+      const repo = this.getRepo();
+      const updated = await repo.updateData({...body});
+      res.status(200).json(updated)
     } catch(error) {
-      ProjectCtrl.handleError(error, req, res);
+      this.handleError(error, req, res);
     }
   }
 
-  static async createNewProject(req: NextApiRequest, res: NextApiResponse) {
+  async getRecents(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const connection = await connectDB();
-      const newProject = new Project();
-      const data = await connection.manager.save(newProject);
-      res.status(200).json({ success: true, data })
+      const repo = this.getRepo();
+      const projects = await repo.getRecents();
+      res.status(200).json(projects);
     } catch(error) {
-      ProjectCtrl.handleError(error, req, res);
+      this.handleError(error, req, res);
     }
-  }
-
-  static handleError(error: any, req: NextApiRequest, res: NextApiResponse) {
-    console.log(`Error in process: ${error}`);
-    res.status(400).json({ success: false, error })
   }
 }

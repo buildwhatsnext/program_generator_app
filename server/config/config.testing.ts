@@ -1,13 +1,18 @@
 import { ConnectionOptions } from 'typeorm';
-import path from 'path';
+import EntityCollection from './config.entities';
 
-const root = path.resolve(__dirname, '../../');
+const root = process.cwd();
+const migrations = `${root}/build/server/migrations/*.js`;
 
 const options: ConnectionOptions = {
-  type: "sqlite",
-  database: `${root}/data/testing.sqlite`,
-  // entities: [ User, Message ],
-  logging: true
+  type: 'postgres',
+  database: 'generator_app',
+  url: 'postgres://fviuhhso:zKlZq7oVauEflKNvIsjDIgOv-YIooCpL@suleiman.db.elephantsql.com:5432/fviuhhso',
+  logging: true,
+  migrations: [migrations],
+  migrationsRun: true,
+  entities: EntityCollection,
+  synchronize: true
 }
 
 export default options;
