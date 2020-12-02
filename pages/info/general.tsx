@@ -11,5 +11,5 @@ export default function GeneralBuildingInfoPage() {
   const hasPrevState = state.some(val => val !== null);
   console.log(state);
 
-  return <GeneralBldgInfo hasPrevState={hasPrevState} />;
+  return <GeneralBldgInfo hasPrevState={hasPrevState} prevState={{...state}} />;
 }

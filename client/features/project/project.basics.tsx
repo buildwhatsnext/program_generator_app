@@ -61,7 +61,7 @@ function BuildingInformation(props: IRestorableState) {
     return () => {
       console.log('Cleaning up the subscription');
     }
-  },[props.hasPrevState])
+  },[props.hasPrevState, props.prevState])
 
   const passToStore = () => {
     dispatch(setClient(answerOne));
