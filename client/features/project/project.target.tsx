@@ -60,7 +60,7 @@ function TargetMetric (props: IRestorableState) {
   const Q1 = <p>What&apos;s the <b> target circulation factor? </b> </p>;
   const Q2 = <p>What&apos;s the <b> target loss factor? </b> </p>;
   const Q3 = <p>What&apos;s the <b> target area per workseat </b>?</p>;
-  const Q4 = <p>If you have it, what are the <b> target number workseats </b>?</p>;
+  const Q4 = <p>If you have it, what is the <b> target number of workseats </b>?</p>;
   const next = ROUTES.SPACE.START;
 
   return (
@@ -93,7 +93,7 @@ function TargetMetric (props: IRestorableState) {
 
           <TextQuestion 
             question={Q4}
-            label='Enter the target for total workseats'
+            label='Enter the target number of workseats'
             answerHandler={(x) => setAnswerFour(x)}
             storedValue={answerFour}
           />
