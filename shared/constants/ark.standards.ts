@@ -56,7 +56,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
     route: ROUTES.SPACE.OPEN_PLAN,
     stateName: SPACE_STATE_NAMES.OPEN_OFFICE,
     type: OpenOfficeSpace,
-    sectionTitle: 'Open Offices',
+    sectionTitle: 'Open Office Area',
     storeHandler: spaceSlice.setOpenOfficeData,
     areaHandler: spaceSlice.setOpenOfficeTotalArea
   },
