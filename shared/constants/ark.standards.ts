@@ -34,6 +34,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
     name: PROGRAMS.UNPLANNED,
     color: '#ffffff',
     border: '#06038D',
+    hoverBackgroundColor: '#030146',
     route: ROUTES.INFO.CONSTRAINTS
   },
   CIRCULATION: {
