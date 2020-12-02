@@ -10,6 +10,7 @@ export interface SpaceDisplayStandard {
   name: string;
   color: string;
   border?: string;
+  hoverBackgroundColor?: string;
   route: string;
   stateName?: string;
   type?: new () => Space;
@@ -83,6 +84,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   SUPPORT: {
     name: PROGRAMS.SUPPORT,
     color: '#92d050',
+    hoverBackgroundColor: '#577c30',
     route: ROUTES.SPACE.SUPPORT,
     stateName: SPACE_STATE_NAMES.SUPPORT,
     type: SupportSpace,

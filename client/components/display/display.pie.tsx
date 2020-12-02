@@ -16,6 +16,7 @@ function composeAreaData(state: ProgramState): {
   area: number,  
   name: string;
   color: string;
+  hoverBackgroundColor: string;
   border?: string;
   route: string;
 }[] {
@@ -23,6 +24,7 @@ function composeAreaData(state: ProgramState): {
     area: number,  
     name: string;
     color: string;
+    hoverBackgroundColor: string;
     border?: string;
     route: string;
   }[]  = [];
@@ -59,6 +61,7 @@ function composeAreaData(state: ProgramState): {
       area,
       name: data.name,
       color: data.color,
+      hoverBackgroundColor: data.hoverBackgroundColor,
       border: data.border,
       route: data.route
     });
@@ -98,11 +101,13 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   const labels = Object.values(areaData).map(space => space.name);
   const colors = Object.values(areaData).map(space => space.color);
   const borders = Object.values(areaData).map(space => space.border);
+  const hoverColor = Object.values(areaData).map(space => space.hoverBackgroundColor);
 
   const datasets = [{
     data,
     backgroundColor: colors,
     borderColor: borders,
+    hoverBackgroundColor: hoverColor,
     extraData: ['someData', 'someData', 'someData', 'someData']
   }];
 
