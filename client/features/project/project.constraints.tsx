@@ -58,7 +58,7 @@ function BuildingConstraint(props: IRestorableState) {
   const Q2AreaType = building?.units?.toLowerCase() === 'metric' ? 'usable' : 'net';
   const Q2 = <p>What&apos;s the <b> {Q2AreaType} area</b> of the space?</p>;
   const Q2Label = `Enter the net area of the space`;
-  const Q3 = <p>How many <b>floors</b> are there in this space</p>;
+  const Q3 = <p>How many <b>floors</b> are there in this space?</p>;
   const Q3Label = `Enter the amount of floors`;
   const next = ROUTES.INFO.TARGET;
 
