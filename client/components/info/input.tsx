@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './input.module.scss';
+import { formatLargeNumber, tryConvertToNumber } from '../../../shared/lib/conversion';
 
 const useStyles = makeStyles({
   root : {
@@ -33,9 +34,15 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
   const { content, storedValue, currentValue, handler } = props;  
   const [ error, setError ] = React.useState(false);
 
-  const handleInput = (input: any) => {
+  const handleInput = () => {
+    const conv = ref as React.MutableRefObject<HTMLInputElement>;
+    const input = conv.current.value;
     console.log(input);
-    handler(input);
+    const value = tryConvertToNumber(input);
+    const formatted = formatLargeNumber(value);
+    console.log(formatted);
+    console.log(handler);
+    handler(formatted);
   }
 
   return (
