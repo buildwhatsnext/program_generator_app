@@ -65,8 +65,10 @@ export function NumericalAnswer({ answerHandler, label, passedRef, storedValue }
  */
 
 export const NumericalAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
-  const { answerHandler, label, storedValue, currentValue } = props;
+  NumericalAnswerWithRef.displayName = 'NumericalAnswerWRef';
 
+  const { answerHandler, label, storedValue, currentValue } = props;
+  
   return <NumberInput currentValue={currentValue} content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
 });
 

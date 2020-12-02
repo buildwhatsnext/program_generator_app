@@ -29,11 +29,13 @@ interface ITextInput {
 }
 
 export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
-  const { content, storedValue, currentValue } = props;  
+  NumberInputBox.displayName = 'NumberInputBox';
+  const { content, storedValue, currentValue, handler } = props;  
   const [ error, setError ] = React.useState(false);
 
-  const handleInput = (input: string) => {
+  const handleInput = (input: any) => {
     console.log(input);
+    handler(input);
   }
 
   return (
@@ -49,6 +51,7 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
 })
 
 const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
+  TextInputBox.displayName = 'TextInputBox';
   const { content, handler, storedValue, currentValue, error } = props;
   const classes = useStyles();
 

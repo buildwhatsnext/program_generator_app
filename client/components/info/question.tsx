@@ -34,7 +34,6 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler, sto
 }
 
 export function NumericalQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
-  // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = () => {
