@@ -1,5 +1,5 @@
 import React, { Ref, useEffect, useRef, useState } from 'react';
-import { TextualAnswer, ToggleAnswer } from './answer';
+import { TextualAnswer, ToggleAnswer, NumericalAnswer } from './answer';
 import styles from './question.module.scss';
 
 export interface ITextualQuestion {
@@ -23,6 +23,30 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler, sto
       <div className={styles.QnA__question}>{question}</div>
       <div className={styles.QnA__answer}>
         <TextualAnswer 
+          answerHandler={handleAnswer}
+          label={label}
+          passedRef={answerRef}
+          storedValue={storedValue}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function NumericalQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
+  // const [answer, setAnswer] = useState('');
+  const answerRef = useRef<HTMLInputElement>(null);
+
+  const handleAnswer = () => {
+    const newAnswer = answerRef.current.value;
+    answerHandler(newAnswer);
+  }
+
+  return (
+    <div className={styles.QnA}>
+      <div className={styles.QnA__question}>{question}</div>
+      <div className={styles.QnA__answer}>
+        <NumericalAnswer 
           answerHandler={handleAnswer}
           label={label}
           passedRef={answerRef}

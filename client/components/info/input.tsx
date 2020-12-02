@@ -22,14 +22,34 @@ const useStyles = makeStyles({
 
 interface ITextInput {
   content?: string;
-  // ref: Ref<HTMLInputElement>;
-  handler: () => void;
+  error?: boolean;
+  handler: (x?: any) => void;
   storedValue?: string;
   currentValue?:string;
 }
 
+export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
+  const { content, storedValue, currentValue } = props;  
+  const [ error, setError ] = React.useState(false);
+
+  const handleInput = (input: string) => {
+    console.log(input);
+  }
+
+  return (
+    <TextInputBox 
+      content={content}
+      storedValue={storedValue}
+      currentValue={currentValue}
+      handler={handleInput} 
+      error={error} 
+      ref={ref} 
+    /> 
+  )
+})
+
 const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
-  const { content, handler, storedValue, currentValue } = props;
+  const { content, handler, storedValue, currentValue, error } = props;
   const classes = useStyles();
 
   return (
@@ -42,6 +62,7 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
           inputRef={ref} 
           onChange={handler} 
           value={currentValue ?? storedValue}
+          error={error}
           InputProps={{
             classes: {
               root: classes.root,

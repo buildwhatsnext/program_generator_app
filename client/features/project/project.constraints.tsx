@@ -4,6 +4,7 @@ import { ROUTES } from '../../../shared/constants/routes';
 import { Page } from '../../components/pages/page';
 import { 
   TextualQuestionAnswerCombo as TextQuestion,
+  NumericalQuestionAnswerCombo as NumberQuestion,
 } from '../../components/info/question';
 import { 
   setRsf,
@@ -69,21 +70,21 @@ function BuildingConstraint(props: IRestorableState) {
           <h2>{title}</h2>
         </div>
         <div className={styles.section__questions__content}>
-          <TextQuestion 
+          <NumberQuestion 
             question={Q1}
             label={Q1Label}
             answerHandler={(x) => setAnswerOne(x)}
             storedValue={answerOne}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q2}
             label={Q2Label}
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q3}
             label={Q3Label}
             answerHandler={(x) => setAnswerThree(x)}
