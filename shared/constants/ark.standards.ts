@@ -34,7 +34,6 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
     name: PROGRAMS.UNPLANNED,
     color: '#ffffff',
     border: '#06038D',
-    hoverBackgroundColor: '#030146',
     route: ROUTES.INFO.CONSTRAINTS
   },
   CIRCULATION: {
@@ -45,6 +44,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   ENCLOSED_OFFICE: {
     name: PROGRAMS.ENCLOSED_OFFICE,
     color: '#06038D',
+    hoverBackgroundColor: '#030146',
     route: ROUTES.SPACE.ENCLOSED,
     stateName: SPACE_STATE_NAMES.ENCLOSED,
     type: EnclosedOfficeSpace,
