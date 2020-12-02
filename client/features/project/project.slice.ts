@@ -13,7 +13,7 @@ export const clearProject = createAsyncThunk(
   async (_, thunkAPI) => {
     const cleanProject = new ProjectModel();
     cleanProject.id = null;
-    return cleanProject;
+    return {...cleanProject};
   }
 )
 
