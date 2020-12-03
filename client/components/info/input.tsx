@@ -26,19 +26,17 @@ interface ITextInput {
   error?: boolean;
   handler: (x?: any) => void;
   storedValue?: string;
-  currentValue?:string;
+  // currentValue?:string;
 }
 
 export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
   NumberInputBox.displayName = 'NumberInputBox';
-  const { content, storedValue, currentValue, handler } = props;  
+  const { content, storedValue, handler } = props;  
   const [ error, setError ] = React.useState(false);
 
-  const handleInput = () => {
-    const conv = ref as React.MutableRefObject<HTMLInputElement>;
-    const input = conv.current.value;
-    console.log(input);
-    const value = tryConvertToNumber(input);
+  const handleInput = (data: string) => {
+    console.log(data);
+    const value = tryConvertToNumber(data);
     const formatted = formatLargeNumber(value);
     console.log(formatted);
     console.log(handler);
@@ -49,8 +47,11 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
     <TextInputBox 
       content={content}
       storedValue={storedValue}
-      currentValue={currentValue}
-      handler={handleInput} 
+      // currentValue={currentValue}
+      handler={() => {
+        const conv = ref as React.MutableRefObject<HTMLInputElement>;
+        handleInput(conv.current.value)
+      }} 
       error={error} 
       ref={ref} 
     /> 
@@ -59,7 +60,7 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
 
 const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
   TextInputBox.displayName = 'TextInputBox';
-  const { content, handler, storedValue, currentValue, error } = props;
+  const { content, handler, storedValue, error } = props;
   const classes = useStyles();
 
   return (
@@ -71,7 +72,8 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
           label={content} 
           inputRef={ref} 
           onChange={handler} 
-          value={currentValue ?? storedValue}
+          // value={currentValue ?? storedValue}
+          value={ storedValue }
           error={error}
           InputProps={{
             classes: {

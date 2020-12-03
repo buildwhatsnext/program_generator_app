@@ -14,7 +14,6 @@ export function tryConvertToNumber(data: any) {
   return value;
 }
 
-
 export function removeCommas(input: string): string {
   const commaGlobal = new RegExp(comma, 'g');
   const processed = input.replace(commaGlobal, nothing)
