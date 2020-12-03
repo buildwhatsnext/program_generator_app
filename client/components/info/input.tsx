@@ -67,7 +67,6 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
     } catch (error) {
       if(!(error instanceof UnacceptableInputError)) 
         throw error;
-
       // setErrorState(error.message);
     }
   }
@@ -106,7 +105,11 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
     <div className={styles.input}>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField 
-          className={styles.input__text} 
+          className={
+            error 
+              ? `${styles.input__text} ${styles.input__text__error}` 
+              : `${styles.input__text}`
+            } 
           id="standard-basic" 
           label={content} 
           inputRef={ref} 
