@@ -31,7 +31,7 @@ interface ITextInput {
 }
 
 interface INumberInput extends ITextInput {
-  limit?: string;
+  limit?: string | number;
 }
 
 export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref<HTMLInputElement> ) => {
@@ -62,7 +62,7 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
 
     try {
       const formatted = formatNumberInput(data);
-      evaluateInput(formatted, limit);
+      evaluateInput(formatted, limit as string);
       handler(formatted);
     } catch (error) {
       if(!(error instanceof UnacceptableInputError)) 
@@ -82,7 +82,7 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
   }
 
   useEffect(() => {
-    evaluateInput(storedValue, limit)
+    evaluateInput(storedValue, limit as string)
   }, [limit])
 
   return (
