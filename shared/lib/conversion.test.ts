@@ -1,4 +1,4 @@
-import { formatNumberInput, removeCommas } from './conversion';
+import { formatNumberInput, isInputOverLimit, removeCommas } from './conversion';
 
 describe('Converter', () => {
 
@@ -54,7 +54,6 @@ describe('Converter', () => {
     expect(result2).toEqual(expected2);
     expect(result3).toEqual(expected3);
   });
-  
 
   it('should reprocess numeric inputs even with commas', () => {
     const original = '5,2989';
@@ -81,4 +80,22 @@ describe('Converter', () => {
     expect(() => formatNumberInput(withLetters)).toThrowError();
     expect(() => formatNumberInput(withPunctuation)).toThrowError();
   });
+
+  it('should give a heads up if an input is over the limit', () => {
+    const input = '1,506';
+    const limit = 1500;
+
+    const result = isInputOverLimit(input, limit);
+
+    expect(result).toBeTruthy();
+  })
+
+  it('should return false if under the limit', () => {
+    const input = '1,499';
+    const limit = 1500;
+
+    const result = isInputOverLimit(input, limit);
+
+    expect(result).not.toBeTruthy();
+  })
 })

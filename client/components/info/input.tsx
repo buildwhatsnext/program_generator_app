@@ -1,4 +1,5 @@
-import React, { Ref } from 'react';
+/* eslint-disable no-shadow */
+import React, { Ref, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
@@ -39,9 +40,15 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
   const [ error, setError ] = React.useState(false);
   const [ errorMessage, setErrorMessage ] = React.useState(null);
 
-  // const handleInput = (data: string) => {
+  const evaluateInput = (input: string, limit: any) => {
+    if(isInputOverLimit(input, limit)) {
+      setErrorState('This value is over the limit!');
+    } else {
+      clearErrorState();
+    }
+  }
+
   const handleInput = () => {
-    console.log(ref);
     const conv = ref as React.MutableRefObject<HTMLInputElement>;
     const data = conv.current.value;
 
@@ -55,10 +62,7 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
 
     try {
       const formatted = formatNumberInput(data);
-
-      if(isInputOverLimit(formatted, limit))
-        setErrorState('This value is over the limit!');
-
+      evaluateInput(formatted, limit);
       handler(formatted);
     } catch (error) {
       if(!(error instanceof UnacceptableInputError)) 
@@ -78,15 +82,15 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
     setErrorMessage(msg);
   }
 
+  useEffect(() => {
+    evaluateInput(storedValue, limit)
+  }, [limit])
+
   return (
     <TextInputBox 
       content={errorMessage ?? content}
       storedValue={storedValue}
-      handler={() => {
-        
-        // handleInput(conv.current.value)
-        handleInput()
-      }} 
+      handler={handleInput} 
       error={error} 
       ref={ref} 
     /> 

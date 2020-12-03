@@ -67,6 +67,11 @@ export function isInputOverLimit(input: string, limit?: number) {
   if(!limit)
     return false;
 
+  if(!Number.isInteger(limit)){
+    const convLimit = convertDataToNumber(limit.toString());  
+    return isInputOverLimit(input, convLimit)
+  }
+
   const number = convertDataToNumber(input);
    
   return number > limit;
