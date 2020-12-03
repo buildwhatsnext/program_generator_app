@@ -83,7 +83,7 @@ function BuildingConstraint(props: IRestorableState) {
             label={Q2Label}
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
-            limit={answerOne}
+            // limit={answerOne}
           />
 
           <NumberQuestion 

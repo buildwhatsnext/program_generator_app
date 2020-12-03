@@ -69,7 +69,8 @@ export function isInputOverLimit(input: string, limit?: string | number) {
     return false;
 
   if(!Number.isInteger(limit)){
-    console.log(limit);
+    console.log(`The limit is: ${limit}`);
+    console.log(`The limit's type is: ${typeof limit}`);
     const convLimit = convertDataToNumber(limit.toString());  
     return isInputOverLimit(input, convLimit)
   }

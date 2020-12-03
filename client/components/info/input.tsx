@@ -82,7 +82,7 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
   }
 
   useEffect(() => {
-    // evaluateInput(storedValue, limit)
+    evaluateInput(storedValue, limit)
   }, [limit])
 
   return (
