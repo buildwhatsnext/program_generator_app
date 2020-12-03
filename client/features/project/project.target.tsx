@@ -54,7 +54,7 @@ function TargetMetric (props: IRestorableState) {
     return () => {
       console.log('Cleaning up the subscription');
     }
-  },[props.hasPrevState])
+  },[props.hasPrevState, props.prevState])
 
   const title = 'Target Metrics';
   const Q1 = <p>What&apos;s the <b> target circulation factor? </b> </p>;

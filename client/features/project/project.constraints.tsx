@@ -50,7 +50,7 @@ function BuildingConstraint(props: IRestorableState) {
     return () => {
       console.log('Cleaning up the subscription');
     }
-  },[props.hasPrevState])
+  },[props.hasPrevState, props.prevState])
 
   const title = 'General Building Constraints'
   const Q1 = <p>What&apos;s the <b> total area of the space?</b></p>;

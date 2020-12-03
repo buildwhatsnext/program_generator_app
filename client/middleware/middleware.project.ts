@@ -21,14 +21,15 @@ import {
   setWorkseatRatio,
   setTotalNumberOfWorkseats,
   setCollaborationRatio, 
-  setSpaceData
+  setSpaceData,
+  clearProject
 } from "../features/project/project.slice";
 import { IProject, Project } from "../../shared/types/Project";
 import ProjectModel from "../../server/models/model.project";
 
 function setProjectData(data: Partial<ProjectModel>, api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) {
   if(data === null)
-    data = new Project();
+    data = new ProjectModel();
 
   api.dispatch(setId(data.id))
   api.dispatch(setClient(data.client));
@@ -60,6 +61,7 @@ const projectHandler =
     switch(action.type) {
       case loadProject.fulfilled.type:
       case createProject.fulfilled.type: 
+      case clearProject.fulfilled.type: 
         handleProjectData(action, api)
         break;
       default:

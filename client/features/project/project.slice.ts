@@ -8,6 +8,15 @@ import SpaceModel from '../../../server/models/model.space';
 
 const project = {...new ProjectModel()};
 
+export const clearProject = createAsyncThunk(
+  'project/clearProject',
+  async (_, thunkAPI) => {
+    const cleanProject = new ProjectModel();
+    cleanProject.id = null;
+    return {...cleanProject};
+  }
+)
+
 export const createProject = createAsyncThunk(
   'project/createProject',
   async (_, thunkAPI) => {
