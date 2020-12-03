@@ -95,7 +95,8 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   },
   BROADCAST: {
     name: PROGRAMS.BROADCAST,
-    color: '#7030A0',
+    color: '#FF5CCA',
+    hoverBackgroundColor: '#993779',
     route: ROUTES.SPACE.BROADCAST,
     stateName: SPACE_STATE_NAMES.BROADCAST,
     type: BroadcastSpace,
