@@ -25,9 +25,9 @@ function BuildingConstraint(props: IRestorableState) {
   const dispatch = useDispatch();
   const building = useSelector(selectOverview);
 
-  const [answerOne, setAnswerOne] = React.useState(null);
-  const [answerTwo, setAnswerTwo] = React.useState(null);
-  const [answerThree, setAnswerThree] = React.useState(null);
+  const [answerOne, setAnswerOne] = React.useState<string>(null);
+  const [answerTwo, setAnswerTwo] = React.useState<string>(null);
+  const [answerThree, setAnswerThree] = React.useState<string>(null);
 
   const passToStore = () => {
     dispatch(setRsf(answerOne));

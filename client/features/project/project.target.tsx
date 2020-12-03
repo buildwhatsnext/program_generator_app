@@ -21,10 +21,10 @@ function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
   const building = useSelector(selectOverview);
 
-  const [answerOne, setAnswerOne] = React.useState(null);
-  const [answerTwo, setAnswerTwo] = React.useState(null);
-  const [answerThree, setAnswerThree] = React.useState(null);
-  const [answerFour, setAnswerFour] = React.useState(null);
+  const [answerOne, setAnswerOne] = React.useState<string>('0');
+  const [answerTwo, setAnswerTwo] = React.useState<string>('0');
+  const [answerThree, setAnswerThree] = React.useState<string>('0');
+  const [answerFour, setAnswerFour] = React.useState<string>('0');
 
   const passToStore = () => {
     dispatch(setCirculation(answerOne));
@@ -77,6 +77,7 @@ function TargetMetric (props: IRestorableState) {
             label='Enter the target circulation factor (%)'
             answerHandler={(x) => setAnswerOne(x)}
             storedValue={answerOne}
+            limit={100}
           />
 
           <NumberQuestion 
@@ -84,6 +85,7 @@ function TargetMetric (props: IRestorableState) {
             label='Enter the target loss factor (%)'
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
+            limit={100 - Number(answerOne)}
           />
 
           <NumberQuestion 

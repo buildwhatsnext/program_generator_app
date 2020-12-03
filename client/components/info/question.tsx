@@ -10,7 +10,7 @@ export interface ITextualQuestion {
 };
 
 export interface INumericalQuestion extends ITextualQuestion {
-  limit?: number;
+  limit?: string | number;
 }
 
 export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
