@@ -70,7 +70,8 @@ function BuildingConstraint(props: IRestorableState) {
           <h2>{title}</h2>
         </div>
         <div className={styles.section__questions__content}>
-          <TextQuestion 
+
+          <NumberQuestion 
             question={Q1}
             label={Q1Label}
             answerHandler={(x) => setAnswerOne(x)}

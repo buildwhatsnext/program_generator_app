@@ -4,6 +4,7 @@ import { ROUTES } from '../../../shared/constants/routes';
 import { Page } from '../../components/pages/page';
 import { 
   TextualQuestionAnswerCombo as TextQuestion,
+  NumericalQuestionAnswerCombo as NumberQuestion
 } from '../../components/info/question';
 import { 
   selectOverview,
@@ -70,28 +71,29 @@ function TargetMetric (props: IRestorableState) {
           <h2>{title}</h2>
         </div>
         <div className={styles.section__questions__content}>
-          <TextQuestion 
+
+          <NumberQuestion 
             question={Q1}
             label='Enter the target circulation factor (%)'
             answerHandler={(x) => setAnswerOne(x)}
             storedValue={answerOne}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q2}
             label='Enter the target loss factor (%)'
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q3}
             label='Enter the target area per workseat'
             answerHandler={(x) => setAnswerThree(x)}
             storedValue={answerThree}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q4}
             label='Enter the target for total workseats'
             answerHandler={(x) => setAnswerFour(x)}
