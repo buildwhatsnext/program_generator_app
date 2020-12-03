@@ -57,8 +57,8 @@ export function formatNumberInput(input: string): string {
     throw new UnacceptableInputError('This input only takes numerical data');
 
   const clean = removeCommas(input);
-  // c
-  const number = input.valueOf();
+  const pure = tryConvertToNumber(clean);
+  const number = pure.valueOf();
   const value = number.toString();
   const chars = value.split('');
   const digits = chars.length;
