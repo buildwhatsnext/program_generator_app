@@ -35,11 +35,9 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
   const [ error, setError ] = React.useState(false);
 
   const handleInput = (data: string) => {
-    console.log(data);
     const value = tryConvertToNumber(data);
     const formatted = formatLargeNumber(value);
     console.log(formatted);
-    console.log(handler);
     handler(formatted);
   }
 
@@ -72,7 +70,6 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
           label={content} 
           inputRef={ref} 
           onChange={handler} 
-          // value={currentValue ?? storedValue}
           value={ storedValue }
           error={error}
           InputProps={{
