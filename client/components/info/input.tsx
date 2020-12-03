@@ -4,6 +4,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './input.module.scss';
 import { formatLargeNumber, formatNumberInput, tryConvertToNumber } from '../../../shared/lib/conversion';
+import { UnacceptableInputError } from '../../../shared/lib/errors';
 
 const useStyles = makeStyles({
   root : {
@@ -33,22 +34,41 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
   NumberInputBox.displayName = 'NumberInputBox';
   const { content, storedValue, handler } = props;  
   const [ error, setError ] = React.useState(false);
+  const [ errorMessage, setErrorMessage ] = React.useState(null);
 
   const handleInput = (data: string) => {
+    if(error)
+      clearErrorState()
+
     if(data === null || data === '' || data === undefined) {
       handler(data);
       return;
     }
 
-    console.log(data);
-    const formatted = formatNumberInput(data);
-    console.log(formatted);
-    handler(formatted);
+    try {
+      const formatted = formatNumberInput(data);
+      handler(formatted);
+    } catch (error) {
+      if(!(error instanceof UnacceptableInputError)) 
+        throw error;
+
+      // setErrorState(error.message);
+    }
+  }
+
+  const clearErrorState = () => {
+    setError(false);
+    setErrorMessage(null);
+  }
+
+  const setErrorState = (msg: string) => {
+    setError(true);
+    setErrorMessage(msg);
   }
 
   return (
     <TextInputBox 
-      content={content}
+      content={errorMessage ?? content}
       storedValue={storedValue}
       // currentValue={currentValue}
       handler={() => {
