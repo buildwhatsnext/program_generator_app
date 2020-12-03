@@ -1,6 +1,10 @@
+import { UnacceptableInputError } from "./errors";
+
 const comma = ',';
 const space = ' ';
 const nothing = '';
+const nonDigitPattern = '[^0,-9,]';
+const nonAcceptableChars = new RegExp(nonDigitPattern, 'g');
 
 export function tryConvertToNumber(data: any) {
   let value;
@@ -25,6 +29,35 @@ export function isNumerical(input: string) {
 }
 
 export function formatLargeNumber(input: number): string {
+  const number = input.valueOf();
+  const value = number.toString();
+  const chars = value.split('');
+  const digits = chars.length;
+
+  if(digits < 4)
+    return value;
+
+  let final = [];
+  chars.reverse().forEach((char, index) => {
+    if(index !== 0 && index % 3 === 0 && index !== digits)
+      final.push(comma);
+
+    final.push(char);
+  })
+
+  const reversed = final.reverse();
+  const large = reversed.join('');
+
+  return large;
+}
+
+export function formatNumberInput(input: string): string {
+  const nons = input.match(nonAcceptableChars);
+  if(nons)
+    throw new UnacceptableInputError('This input only takes numerical data');
+
+  const clean = removeCommas(input);
+  // c
   const number = input.valueOf();
   const value = number.toString();
   const chars = value.split('');

@@ -1,4 +1,4 @@
-import { formatLargeNumber, removeCommas } from './conversion';
+import { formatLargeNumber, formatNumberInput, removeCommas } from './conversion';
 
 describe('Converter', () => {
 
@@ -45,6 +45,23 @@ describe('Converter', () => {
     const result = formatLargeNumber(original);
 
     expect(result).toEqual(expected);
+  });
+
+  it('should reprocess numeric inputs even with commas', () => {
+    const original = '5,2989';
+    const expected = '52,989';
+
+    const result = formatNumberInput(original);
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should not accept non-comma characters', () => {
+    const withLetters = '5fgd2989';
+    const withPunctuation = '5,.[!2989';
+
+    expect(() => formatNumberInput(withLetters)).toThrowError();
+    expect(() => formatNumberInput(withPunctuation)).toThrowError();
   });
 
 })
