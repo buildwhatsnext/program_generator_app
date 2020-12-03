@@ -9,8 +9,11 @@ export interface ITextualQuestion {
   storedValue?: string;
 };
 
+export interface INumericalQuestion extends ITextualQuestion {
+  limit?: number;
+}
+
 export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
-  // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = () => {
@@ -25,7 +28,7 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler, sto
         <TextualAnswer 
           answerHandler={handleAnswer}
           label={label}
-          passedRef={answerRef}
+          ref={answerRef}
           storedValue={storedValue}
         />
       </div>
@@ -33,12 +36,10 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler, sto
   );
 }
 
-export function NumericalQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
+export function NumericalQuestionAnswerCombo({ question, label, answerHandler, storedValue, limit }: INumericalQuestion) {
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = (data: string) => {
-    // const newAnswer = answerRef.current.value;
-    // answerHandler(newAnswer);
     answerHandler(data);
   }
 
@@ -49,8 +50,9 @@ export function NumericalQuestionAnswerCombo({ question, label, answerHandler, s
         <NumericalAnswer 
           answerHandler={handleAnswer}
           label={label}
-          passedRef={answerRef}
+          ref={answerRef}
           storedValue={storedValue}
+          limit={limit}
         />
       </div>
     </div>

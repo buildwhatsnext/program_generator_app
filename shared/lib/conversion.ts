@@ -28,8 +28,20 @@ export function isNumerical(input: string) {
   return Number.isInteger(input);
 }
 
-export function formatLargeNumber(input: number): string {
-  const number = input.valueOf();
+export function convertDataToNumber(input: string): number {
+  const nons = input.match(nonAcceptableChars);
+  if(nons)
+    throw new UnacceptableInputError('This input only takes numerical data');
+
+  const clean = removeCommas(input);
+  const pure = tryConvertToNumber(clean);
+  const number = pure.valueOf();
+
+  return number;
+}
+
+export function formatNumberInput(input: string | number): string {
+  const number = !Number.isInteger(input) ? convertDataToNumber(input.toString()) : convertDataToNumber(input as string);
   const value = number.toString();
   const chars = value.split('');
   const digits = chars.length;
@@ -37,7 +49,7 @@ export function formatLargeNumber(input: number): string {
   if(digits < 4)
     return value;
 
-  let final = [];
+  const final = [];
   chars.reverse().forEach((char, index) => {
     if(index !== 0 && index % 3 === 0 && index !== digits)
       final.push(comma);
@@ -51,31 +63,11 @@ export function formatLargeNumber(input: number): string {
   return large;
 }
 
-export function formatNumberInput(input: string): string {
-  const nons = input.match(nonAcceptableChars);
-  if(nons)
-    throw new UnacceptableInputError('This input only takes numerical data');
+export function isInputOverLimit(input: string, limit?: number) {
+  if(!limit)
+    return false;
 
-  const clean = removeCommas(input);
-  const pure = tryConvertToNumber(clean);
-  const number = pure.valueOf();
-  const value = number.toString();
-  const chars = value.split('');
-  const digits = chars.length;
-
-  if(digits < 4)
-    return value;
-
-  let final = [];
-  chars.reverse().forEach((char, index) => {
-    if(index !== 0 && index % 3 === 0 && index !== digits)
-      final.push(comma);
-
-    final.push(char);
-  })
-
-  const reversed = final.reverse();
-  const large = reversed.join('');
-
-  return large;
+  const number = convertDataToNumber(input);
+   
+  return number > limit;
 }

@@ -53,7 +53,7 @@ export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId
       }}
       className={styles.tableCell__override}
     >
-      <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/>
+      <TextualAnswer answerHandler={handleData} ref={valueRef} storedValue={cellState}/>
     </TableCell>
   )
 }

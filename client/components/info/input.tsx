@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './input.module.scss';
-import { formatLargeNumber, formatNumberInput, tryConvertToNumber } from '../../../shared/lib/conversion';
+import { formatNumberInput, isInputOverLimit } from '../../../shared/lib/conversion';
 import { UnacceptableInputError } from '../../../shared/lib/errors';
 
 const useStyles = makeStyles({
@@ -27,16 +27,24 @@ interface ITextInput {
   error?: boolean;
   handler: (x?: any) => void;
   storedValue?: string;
-  // currentValue?:string;
 }
 
-export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputElement> ) => {
+interface INumberInput extends ITextInput {
+  limit?: number;
+}
+
+export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref<HTMLInputElement> ) => {
   NumberInputBox.displayName = 'NumberInputBox';
-  const { content, storedValue, handler } = props;  
+  const { content, storedValue, handler, limit } = props;  
   const [ error, setError ] = React.useState(false);
   const [ errorMessage, setErrorMessage ] = React.useState(null);
 
-  const handleInput = (data: string) => {
+  // const handleInput = (data: string) => {
+  const handleInput = () => {
+    console.log(ref);
+    const conv = ref as React.MutableRefObject<HTMLInputElement>;
+    const data = conv.current.value;
+
     if(error)
       clearErrorState()
 
@@ -47,6 +55,10 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
 
     try {
       const formatted = formatNumberInput(data);
+
+      if(isInputOverLimit(formatted, limit))
+        setErrorState('This value is over the limit!');
+
       handler(formatted);
     } catch (error) {
       if(!(error instanceof UnacceptableInputError)) 
@@ -70,10 +82,10 @@ export const NumberInputBox = React.forwardRef((props : ITextInput , ref : Ref<H
     <TextInputBox 
       content={errorMessage ?? content}
       storedValue={storedValue}
-      // currentValue={currentValue}
       handler={() => {
-        const conv = ref as React.MutableRefObject<HTMLInputElement>;
-        handleInput(conv.current.value)
+        
+        // handleInput(conv.current.value)
+        handleInput()
       }} 
       error={error} 
       ref={ref} 

@@ -1,4 +1,4 @@
-import { formatLargeNumber, formatNumberInput, removeCommas } from './conversion';
+import { formatNumberInput, removeCommas } from './conversion';
 
 describe('Converter', () => {
 
@@ -21,10 +21,10 @@ describe('Converter', () => {
   });
 
   it('should be able to format into millions', () => {
-    const original = 1000000;
+    const original = '1000000';
     const expected = '1,000,000';
 
-    const result = formatLargeNumber(original);
+    const result = formatNumberInput(original);
 
     expect(result).toEqual(expected);
   });
@@ -33,7 +33,7 @@ describe('Converter', () => {
     const original = 1000;
     const expected = '1,000';
 
-    const result = formatLargeNumber(original);
+    const result = formatNumberInput(original);
 
     expect(result).toEqual(expected);
   });
@@ -46,9 +46,9 @@ describe('Converter', () => {
     const original3 = 100;
     const expected3 = '100';
 
-    const result1 = formatLargeNumber(original1);
-    const result2 = formatLargeNumber(original2);
-    const result3 = formatLargeNumber(original3);
+    const result1 = formatNumberInput(original1);
+    const result2 = formatNumberInput(original2);
+    const result3 = formatNumberInput(original3);
 
     expect(result1).toEqual(expected1);
     expect(result2).toEqual(expected2);
