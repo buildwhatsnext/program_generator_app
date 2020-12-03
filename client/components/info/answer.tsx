@@ -7,7 +7,7 @@ export interface IAnswer {
   answerHandler?: (data?: any) => void;
   passedRef?: Ref<HTMLInputElement>;
   storedValue?: string;
-  currentValue?:string;
+  // currentValue?:string;
 }
 
 // TODO: document all functions & interfaces in this file
@@ -30,8 +30,8 @@ export function TextualAnswer({ answerHandler, label, passedRef, storedValue }: 
   }
 
   return passedRef 
-    ? <TextualAnswerWithRef currentValue={value} label={label ?? ''} answerHandler={handleAnswer} ref={passedRef} storedValue={storedValue}/>
-    : <TextInput currentValue={value} content={label ?? ''} ref={inputRef} handler={handleAnswer} storedValue={storedValue} />;
+    ? <TextualAnswerWithRef label={label ?? ''} answerHandler={handleAnswer} ref={passedRef} storedValue={storedValue}/>
+    : <TextInput content={label ?? ''} ref={inputRef} handler={handleAnswer} storedValue={storedValue} />;
 }
 
 /**
@@ -39,9 +39,9 @@ export function TextualAnswer({ answerHandler, label, passedRef, storedValue }: 
  * @param {IToggleButton} props - contains three objects inside which are content, active and statushandler. @see IToggleButton for more details.
  */
 export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
-  const { answerHandler, label, storedValue, currentValue } = props;
+  const { answerHandler, label, storedValue } = props;
 
-  return <TextInput currentValue={currentValue} content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
+  return <TextInput content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
 });
 
 /**
@@ -50,15 +50,15 @@ export const TextualAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<H
  */
 export function NumericalAnswer({ answerHandler, label, passedRef, storedValue }: IAnswer): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { value } = passedRef.current ?? { value: null};
+  // const { value } = (passedRef as React.MutableRefObject<HTMLInputElement>).current ?? { value: null};
 
   const handleAnswer = (data: string) => {
     answerHandler(data);
   }
 
   return passedRef 
-    ? <NumericalAnswerWithRef currentValue={value} label={label ?? ''} answerHandler={handleAnswer} ref={passedRef} storedValue={storedValue}/>
-    : <NumberInput currentValue={value} content={label ?? ''} ref={inputRef} handler={handleAnswer} storedValue={storedValue} />;
+    ? <NumericalAnswerWithRef label={label ?? ''} answerHandler={handleAnswer} ref={passedRef} storedValue={storedValue}/>
+    : <NumberInput content={label ?? ''} ref={inputRef} handler={handleAnswer} storedValue={storedValue} />;
 }
 
 /**
@@ -68,9 +68,9 @@ export function NumericalAnswer({ answerHandler, label, passedRef, storedValue }
 export const NumericalAnswerWithRef = React.forwardRef((props: IAnswer, ref: Ref<HTMLInputElement>) => {
   NumericalAnswerWithRef.displayName = 'NumericalAnswerWRef';
 
-  const { answerHandler, label, storedValue, currentValue } = props;
+  const { answerHandler, label, storedValue } = props;
   
-  return <NumberInput currentValue={currentValue} content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
+  return <NumberInput content={label} ref={ref} handler={answerHandler} storedValue={storedValue}/>;
 });
 
 /**
