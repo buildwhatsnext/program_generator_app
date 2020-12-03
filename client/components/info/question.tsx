@@ -40,7 +40,6 @@ export function NumericalQuestionAnswerCombo({ question, label, answerHandler, s
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = (data: string) => {
-    console.log(`Inside the question, the limit is: ${limit} - it is of type: ${typeof limit}`);
     answerHandler(data);
   }
 

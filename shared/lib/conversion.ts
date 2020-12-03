@@ -29,7 +29,9 @@ export function isNumerical(input: string) {
 }
 
 export function convertDataToNumber(input: string): number {
-  console.log(input);
+  if(Number.isInteger(input))
+    return Number(input);
+
   const nons = input.match(nonAcceptableChars);
   if(nons)
     throw new UnacceptableInputError('This input only takes numerical data');
@@ -68,9 +70,12 @@ export function isInputOverLimit(input: string, limit?: string | number) {
   if(!limit)
     return false;
 
+  console.log(`The limit is: ${limit}`);
+  console.log(`The limit's type is: ${typeof limit}`);
+  console.log(`The limit is: ${input}`);
+  console.log(`The limit's type is: ${typeof input}`);
+
   if(!Number.isInteger(limit)){
-    console.log(`The limit is: ${limit}`);
-    console.log(`The limit's type is: ${typeof limit}`);
     const convLimit = convertDataToNumber(limit.toString());  
     return isInputOverLimit(input, convLimit)
   }
