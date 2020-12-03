@@ -31,7 +31,7 @@ interface ITextInput {
 }
 
 interface INumberInput extends ITextInput {
-  limit?: number;
+  limit?: string;
 }
 
 export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref<HTMLInputElement> ) => {
@@ -40,7 +40,7 @@ export const NumberInputBox = React.forwardRef((props : INumberInput , ref : Ref
   const [ error, setError ] = React.useState(false);
   const [ errorMessage, setErrorMessage ] = React.useState(null);
 
-  const evaluateInput = (input: string, limit: any) => {
+  const evaluateInput = (input: string, limit: string) => {
     if(isInputOverLimit(input, limit)) {
       setErrorState('This value is over the limit!');
     } else {

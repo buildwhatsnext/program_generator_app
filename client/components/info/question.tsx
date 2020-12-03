@@ -10,7 +10,7 @@ export interface ITextualQuestion {
 };
 
 export interface INumericalQuestion extends ITextualQuestion {
-  limit?: string | number;
+  limit?: string;
 }
 
 export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
@@ -40,6 +40,7 @@ export function NumericalQuestionAnswerCombo({ question, label, answerHandler, s
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = (data: string) => {
+    console.log(`Inside the question, the limit is: ${limit} - it is of type: ${typeof limit}`);
     answerHandler(data);
   }
 

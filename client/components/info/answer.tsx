@@ -9,7 +9,7 @@ export interface IAnswer {
 }
 
 export interface INumberAnswer extends IAnswer {
-  limit?: number;
+  limit?: string;
 }
 
 // TODO: document all functions & interfaces in this file

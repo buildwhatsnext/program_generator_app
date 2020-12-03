@@ -64,7 +64,7 @@ export function formatNumberInput(input: string | number): string {
   return large;
 }
 
-export function isInputOverLimit(input: string, limit?: number) {
+export function isInputOverLimit(input: string, limit?: string | number) {
   if(!limit)
     return false;
 
