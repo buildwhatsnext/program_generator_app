@@ -39,17 +39,35 @@ describe('Converter', () => {
   });
 
   it('should not format a small number', () => {
-    const original = 100;
-    const expected = '100';
+    const original1 = 8;
+    const expected1 = '8';
+    const original2 = 10;
+    const expected2 = '10';
+    const original3 = 100;
+    const expected3 = '100';
 
-    const result = formatLargeNumber(original);
+    const result1 = formatLargeNumber(original1);
+    const result2 = formatLargeNumber(original2);
+    const result3 = formatLargeNumber(original3);
 
-    expect(result).toEqual(expected);
+    expect(result1).toEqual(expected1);
+    expect(result2).toEqual(expected2);
+    expect(result3).toEqual(expected3);
   });
+  
 
   it('should reprocess numeric inputs even with commas', () => {
     const original = '5,2989';
     const expected = '52,989';
+
+    const result = formatNumberInput(original);
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should be able to process empty inputs too', () => {
+    const original = null;
+    const expected = '';
 
     const result = formatNumberInput(original);
 
@@ -63,5 +81,4 @@ describe('Converter', () => {
     expect(() => formatNumberInput(withLetters)).toThrowError();
     expect(() => formatNumberInput(withPunctuation)).toThrowError();
   });
-
 })
