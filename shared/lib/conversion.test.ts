@@ -98,4 +98,13 @@ describe('Converter', () => {
 
     expect(result).not.toBeTruthy();
   })
+
+  it('should return true if the input is over a zero limit', () => {
+    const input = '1';
+    const limit = 0;
+
+    const result = isInputOverLimit(input, limit);
+
+    expect(result).toBeTruthy();
+  })
 })

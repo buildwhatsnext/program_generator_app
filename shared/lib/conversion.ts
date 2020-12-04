@@ -41,6 +41,7 @@ export function convertDataToNumber(input: string): number {
   const number = pure.valueOf();
 
   return number;
+  // return pure;
 }
 
 export function formatNumberInput(input: string | number): string {
@@ -67,7 +68,7 @@ export function formatNumberInput(input: string | number): string {
 }
 
 export function isInputOverLimit(input: string, limit?: string | number) {
-  if(!limit)
+  if(limit === null || limit === undefined)
     return false;
 
   if(!Number.isInteger(limit)){
