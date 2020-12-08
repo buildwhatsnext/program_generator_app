@@ -21,13 +21,6 @@ function OpenOptions() {
         execute={createProject}
         customButtonStyle={buttonStyles.button__panel}
       />
-      <DFxRoutingButton
-        content="Open Project"
-        location={ROUTES.TRANSITION.PROJECT}
-        // execute={openProject}
-        // executableData={projectDetails}
-        customButtonStyle={buttonStyles.button__panel}
-      />
     </div>
   );
 }
