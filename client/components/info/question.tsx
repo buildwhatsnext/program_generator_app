@@ -1,5 +1,5 @@
 import React, { Ref, useEffect, useRef, useState } from 'react';
-import { TextualAnswer, ToggleAnswer } from './answer';
+import { TextualAnswer, ToggleAnswer, NumericalAnswer } from './answer';
 import styles from './question.module.scss';
 
 export interface ITextualQuestion {
@@ -9,8 +9,11 @@ export interface ITextualQuestion {
   storedValue?: string;
 };
 
+export interface INumericalQuestion extends ITextualQuestion {
+  limit?: number | string;
+}
+
 export function TextualQuestionAnswerCombo({ question, label, answerHandler, storedValue }: ITextualQuestion) {
-  // const [answer, setAnswer] = useState('');
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleAnswer = () => {
@@ -25,8 +28,31 @@ export function TextualQuestionAnswerCombo({ question, label, answerHandler, sto
         <TextualAnswer 
           answerHandler={handleAnswer}
           label={label}
-          passedRef={answerRef}
+          ref={answerRef}
           storedValue={storedValue}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function NumericalQuestionAnswerCombo({ question, label, answerHandler, storedValue, limit }: INumericalQuestion) {
+  const answerRef = useRef<HTMLInputElement>(null);
+
+  const handleAnswer = (data: string) => {
+    answerHandler(data);
+  }
+
+  return (
+    <div className={styles.QnA}>
+      <div className={styles.QnA__question}>{question}</div>
+      <div className={styles.QnA__answer}>
+        <NumericalAnswer 
+          answerHandler={handleAnswer}
+          label={label}
+          ref={answerRef}
+          storedValue={storedValue}
+          limit={limit}
         />
       </div>
     </div>

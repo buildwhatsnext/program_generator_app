@@ -51,10 +51,13 @@ function composeAreaData(state: ProgramState): {
     totalAreaBroadcast,
     totalAreaLab,
   ]
+  console.log(PROGRAMS);
   
   Object.keys(PROGRAMS).forEach((key, i) => {
     const data = SPACE_STANDARDS[key];
     const area = spatialDataArray[i];
+    console.log(`The area for ${i} is: ${area}`);
+    
     spatialMap.push({
       area,
       name: data.name,
@@ -67,6 +70,7 @@ function composeAreaData(state: ProgramState): {
   let final = []
 
   final = spatialMap.filter((slice) => slice.area > 0);
+  console.log(final);
 
   return final;
 }
@@ -122,6 +126,8 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   });
 
   const handleClick = (pie) => {
+    console.log(pie);
+
     const element = pie[0];
     if(!element)
       return;
@@ -137,9 +143,8 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
     if(routeName === 'UNPLANNED') {
       return;
     };
-    // console.log(route);
+    
     router.push(route);
-    // router.push(standard[programType.toUpperCase()].route);
   }
 
   return (
