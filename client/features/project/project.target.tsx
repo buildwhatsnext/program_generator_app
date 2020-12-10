@@ -4,6 +4,7 @@ import { ROUTES } from '../../../shared/constants/routes';
 import { Page } from '../../components/pages/page';
 import { 
   TextualQuestionAnswerCombo as TextQuestion,
+  NumericalQuestionAnswerCombo as NumberQuestion
 } from '../../components/info/question';
 import { 
   selectOverview,
@@ -20,10 +21,10 @@ function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
   const building = useSelector(selectOverview);
 
-  const [answerOne, setAnswerOne] = React.useState(null);
-  const [answerTwo, setAnswerTwo] = React.useState(null);
-  const [answerThree, setAnswerThree] = React.useState(null);
-  const [answerFour, setAnswerFour] = React.useState(null);
+  const [answerOne, setAnswerOne] = React.useState<string>('0');
+  const [answerTwo, setAnswerTwo] = React.useState<string>('0');
+  const [answerThree, setAnswerThree] = React.useState<string>('0');
+  const [answerFour, setAnswerFour] = React.useState<string>('0');
 
   const passToStore = () => {
     dispatch(setCirculation(answerOne));
@@ -54,13 +55,13 @@ function TargetMetric (props: IRestorableState) {
     return () => {
       console.log('Cleaning up the subscription');
     }
-  },[props.hasPrevState])
+  },[props.hasPrevState, props.prevState])
 
   const title = 'Target Metrics';
   const Q1 = <p>What&apos;s the <b> target circulation factor? </b> </p>;
   const Q2 = <p>What&apos;s the <b> target loss factor? </b> </p>;
-  const Q3 = <p>What&apos;s the <b> target area per workseat </b> </p>;
-  const Q4 = <p>If you have it, what are the <b> target number workseats </b> ?</p>;
+  const Q3 = <p>What&apos;s the <b> target area per workseat? </b></p>;
+  const Q4 = <p>If you have it, what is the <b> target number of workseats? </b></p>;
   const next = ROUTES.SPACE.START;
 
   return (
@@ -70,30 +71,33 @@ function TargetMetric (props: IRestorableState) {
           <h2>{title}</h2>
         </div>
         <div className={styles.section__questions__content}>
-          <TextQuestion 
+
+          <NumberQuestion 
             question={Q1}
             label='Enter the target circulation factor (%)'
             answerHandler={(x) => setAnswerOne(x)}
             storedValue={answerOne}
+            limit={100}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q2}
             label='Enter the target loss factor (%)'
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
+            limit={100 - Number(answerOne)}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q3}
             label='Enter the target area per workseat'
             answerHandler={(x) => setAnswerThree(x)}
             storedValue={answerThree}
           />
 
-          <TextQuestion 
+          <NumberQuestion 
             question={Q4}
-            label='Enter the target for total workseats'
+            label='Enter the target number of workseats'
             answerHandler={(x) => setAnswerFour(x)}
             storedValue={answerFour}
           />

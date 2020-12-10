@@ -9,6 +9,7 @@ export default function GeneralBuildingInfoPage() {
   const state = [client, units, tenancy, hasBroadcast, hasLab];
 
   const hasPrevState = state.some(val => val !== null);
+  console.log(state);
 
-  return <GeneralBldgInfo hasPrevState={hasPrevState} />;
+  return <GeneralBldgInfo hasPrevState={hasPrevState} prevState={{...state}} />;
 }

@@ -1,12 +1,21 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunkConfig, RootState } from '../../store';
-import { tryConvertToNumber } from '../../../shared/lib/conversion';
+import { convertDataToNumber, tryConvertToNumber } from '../../../shared/lib/conversion';
 import { IProject, Project } from '../../../shared/types/Project';
 import ProjectModel from '../../../server/models/model.project';
 import { ISpace } from '../../../shared/types/ISpace';
 import SpaceModel from '../../../server/models/model.space';
 
 const project = {...new ProjectModel()};
+
+export const clearProject = createAsyncThunk(
+  'project/clearProject',
+  async (_, thunkAPI) => {
+    const cleanProject = new ProjectModel();
+    cleanProject.id = null;
+    return {...cleanProject};
+  }
+)
 
 export const createProject = createAsyncThunk(
   'project/createProject',
@@ -140,45 +149,58 @@ const projectSlice = createSlice({
       state.hasLab = value;
     },
     setRsf: (state, action) => {
-      state.areaGross = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
+      state.areaGross = input;
     },
     setNetArea: (state, action) => {
-      const input = tryConvertToNumber(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.areaNet = input;
     },
     setFloorCount: (state, action) => {
-      state.floors = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
+      state.floors = input;
     },
     setCirculation: (state, action) => {
-      const input = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.targetFactorCirculation = input;
     },
     setPlanning: (state, action) => {
-      const input = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.targetFactorLoss = input;
     },
     setWorkseatArea: (state, action) => {
-      const input = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.targetAreaPerWorkseat = input;
     },
     setWorkseatTarget: (state, action) => {
-      const input = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.targetNumOfWorkseats = input;
     },
     setTotalProgrammedArea: (state, action) => {
-      const input = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.totalProgrammedArea = input;
     },
     setWorkseatRatio: (state, action) => {
-      const input = Number(action.payload);
+      // const input = convertDataToNumber(action?.payload);
+
       state.totalWorkseatRatio = action.payload;
     },
     setTotalNumberOfWorkseats: (state, action) => {
-      const input = Number(action.payload);
+      const input = convertDataToNumber(action?.payload);
+
       state.totalNumOfWorkseats = input;
     },
     setCollaborationRatio: (state, action) => {
-      const input = Number(action.payload);
+      // const input = convertDataToNumber(action?.payload);
+
       state.totalCollaborationRatio = action.payload;
     },
     setSpaceData: (state, action: PayloadAction<Partial<SpaceModel>[]>) => {

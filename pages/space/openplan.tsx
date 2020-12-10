@@ -14,7 +14,7 @@ export default function OpenPlanWorkspacePage() {
 
   return (
     <GenericSpacePage 
-      title='Open Offices'
+      title='Open Office Area'
       nextRoute={ROUTES.SPACE.OPEN_PLAN_UPDATE}
       type={OpenOfficeSpace}
       stateName='OpenPlanState'

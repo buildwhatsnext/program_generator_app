@@ -41,6 +41,7 @@ function BuildingInformation(props: IRestorableState) {
     const tenancyData = tenancy?.toLowerCase() === 'unknown' ? '' : tenancy;
     const broadcastData = hasBroadcast ? 'Yes' : 'No';
     const labData = hasLab ? 'Yes' : 'No';
+    
     setAnswerOne(clientData);
     setAnswerTwo(unitData);
     setAnswerThree(tenancyData);
@@ -56,7 +57,7 @@ function BuildingInformation(props: IRestorableState) {
     return () => {
       console.log('Cleaning up the subscription');
     }
-  },[props.hasPrevState])
+  },[props.hasPrevState, props.prevState])
 
   const passToStore = () => {
     dispatch(setClient(answerOne));

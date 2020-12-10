@@ -2,7 +2,7 @@ import { Guid } from 'guid-typescript';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { ProgramState } from '../../../shared/types/Program';
-import { tryConvertToNumber } from '../../../shared/lib/conversion';
+import { convertDataToNumber, tryConvertToNumber } from '../../../shared/lib/conversion';
 import { Space } from '../../../shared/types/Space';
 
 const program = {...new ProgramState()}
@@ -18,8 +18,7 @@ const programSlice = createSlice({
      * @summary this function sets the building's total area
      */
     setTotalBuildingArea: (state, action) => {
-      console.log('Setting building area')
-      const input = tryConvertToNumber(action.payload);
+      const input = convertDataToNumber(action?.payload);
       state.totalAreaContainer = input;
     },
 
@@ -29,7 +28,8 @@ const programSlice = createSlice({
      * @summary whats the difference between hold vs unprogrammed?
      */
     setUnprogrammedArea: (state, action) => {
-      const input = tryConvertToNumber(action.payload);
+      // console.log(`The unprogrammed area is: ${action.payload}`);
+      const input = tryConvertToNumber(action?.payload);
       state.totalAreaUnprogrammed = input;
     },
 
@@ -39,7 +39,8 @@ const programSlice = createSlice({
      * @summary whats the difference between hold vs unprogrammed?
      */
     setHoldArea: (state, action) => {
-      const input = tryConvertToNumber(action.payload);
+      // console.log(`The hold area is: ${action.payload}`);
+      const input = tryConvertToNumber(action?.payload);
       state.totalAreaHold = input;
     },
 

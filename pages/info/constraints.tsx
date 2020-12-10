@@ -8,5 +8,5 @@ export default function GeneralConstraintsPage() {
   const state = [areaGross, areaNet, floors];
   const hasPrevState = state.some(val => val !== null);
 
-  return <GeneralConstraints hasPrevState={hasPrevState} />;
+  return <GeneralConstraints hasPrevState={hasPrevState} prevState={{...state}} />;
 }
