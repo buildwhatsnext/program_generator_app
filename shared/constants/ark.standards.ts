@@ -10,6 +10,7 @@ export interface SpaceDisplayStandard {
   name: string;
   color: string;
   border?: string;
+  hoverBackgroundColor?: string;
   route: string;
   stateName?: string;
   type?: new () => Space;
@@ -43,6 +44,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   ENCLOSED_OFFICE: {
     name: PROGRAMS.ENCLOSED_OFFICE,
     color: '#06038D',
+    hoverBackgroundColor: '#030146',
     route: ROUTES.SPACE.ENCLOSED,
     stateName: SPACE_STATE_NAMES.ENCLOSED,
     type: EnclosedOfficeSpace,
@@ -56,7 +58,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
     route: ROUTES.SPACE.OPEN_PLAN,
     stateName: SPACE_STATE_NAMES.OPEN_OFFICE,
     type: OpenOfficeSpace,
-    sectionTitle: 'Open Offices',
+    sectionTitle: 'Open Office Area',
     storeHandler: spaceSlice.setOpenOfficeData,
     areaHandler: spaceSlice.setOpenOfficeTotalArea
   },
@@ -83,6 +85,7 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   SUPPORT: {
     name: PROGRAMS.SUPPORT,
     color: '#92d050',
+    hoverBackgroundColor: '#577c30',
     route: ROUTES.SPACE.SUPPORT,
     stateName: SPACE_STATE_NAMES.SUPPORT,
     type: SupportSpace,
@@ -92,7 +95,8 @@ export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
   },
   BROADCAST: {
     name: PROGRAMS.BROADCAST,
-    color: '#7030A0',
+    color: '#FF5CCA',
+    hoverBackgroundColor: '#993779',
     route: ROUTES.SPACE.BROADCAST,
     stateName: SPACE_STATE_NAMES.BROADCAST,
     type: BroadcastSpace,

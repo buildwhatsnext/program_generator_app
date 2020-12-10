@@ -10,6 +10,11 @@ interface IToggleButton {
 };
 
 // TODO: document this function
+
+/**
+ * @summary if ToggleButton is not active, the buttons' variant state is outlined. Otherwise, if the button gets activated, change the variant to contained with primary color.
+ * @param {IToggleButton} props - contains three objects inside which are content, active and statushandler. @see IToggleButton for more details.
+ */
 export function ToggleButton({ content, active, statusHandler }: IToggleButton) : JSX.Element {
   return !active ? (
     <div className={styles.overridebutton}>

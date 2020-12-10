@@ -20,5 +20,5 @@ export default function TargetMetricPage() {
 
   const hasPrevState = state.some(val => val !== null);
   
-  return <TargetMetric hasPrevState={hasPrevState} />;
+  return <TargetMetric hasPrevState={hasPrevState} prevState={{...state}} />;
 }

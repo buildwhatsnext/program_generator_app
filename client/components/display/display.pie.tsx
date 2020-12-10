@@ -16,6 +16,7 @@ function composeAreaData(state: ProgramState): {
   area: number,  
   name: string;
   color: string;
+  hoverBackgroundColor: string;
   border?: string;
   route: string;
 }[] {
@@ -23,6 +24,7 @@ function composeAreaData(state: ProgramState): {
     area: number,  
     name: string;
     color: string;
+    hoverBackgroundColor: string;
     border?: string;
     route: string;
   }[]  = [];
@@ -51,14 +53,18 @@ function composeAreaData(state: ProgramState): {
     totalAreaBroadcast,
     totalAreaLab,
   ]
+  console.log(PROGRAMS);
   
   Object.keys(PROGRAMS).forEach((key, i) => {
     const data = SPACE_STANDARDS[key];
     const area = spatialDataArray[i];
+    console.log(`The area for ${i} is: ${area}`);
+    
     spatialMap.push({
       area,
       name: data.name,
       color: data.color,
+      hoverBackgroundColor: data.hoverBackgroundColor,
       border: data.border,
       route: data.route
     });
@@ -67,6 +73,7 @@ function composeAreaData(state: ProgramState): {
   let final = []
 
   final = spatialMap.filter((slice) => slice.area > 0);
+  console.log(final);
 
   return final;
 }
@@ -98,11 +105,13 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   const labels = Object.values(areaData).map(space => space.name);
   const colors = Object.values(areaData).map(space => space.color);
   const borders = Object.values(areaData).map(space => space.border);
+  const hoverColor = Object.values(areaData).map(space => space.hoverBackgroundColor);
 
   const datasets = [{
     data,
     backgroundColor: colors,
     borderColor: borders,
+    hoverBackgroundColor: hoverColor,
     extraData: ['someData', 'someData', 'someData', 'someData']
   }];
 
@@ -122,6 +131,8 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   });
 
   const handleClick = (pie) => {
+    console.log(pie);
+
     const element = pie[0];
     if(!element)
       return;
@@ -137,9 +148,8 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
     if(routeName === 'UNPLANNED') {
       return;
     };
-    // console.log(route);
+    
     router.push(route);
-    // router.push(standard[programType.toUpperCase()].route);
   }
 
   return (
