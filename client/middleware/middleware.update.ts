@@ -10,22 +10,25 @@ import {
   calculateUnplannedArea, 
   calculateWorkseatRatio 
 } from "../../shared/lib/calculators";
+import { convertDataToNumber, tryConvertToNumber } from "../../shared/lib/conversion";
 
 const update = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
   (next: Dispatch) => 
   (action: PayloadAction<number>) => {
   const { targetFactorCirculation, targetFactorLoss } = api.getState().project;
   const { totalAreaContainer, } = api.getState().program;
+  const payload = tryConvertToNumber(action.payload);
 
   switch(action.type) {
+    
     case setNetArea.type:
-      updateArea(action.payload, targetFactorCirculation, targetFactorLoss, api);
+      updateArea(payload, targetFactorCirculation, targetFactorLoss, api);
       break;
     case setCirculation.type:
-      updateArea(totalAreaContainer, action.payload, targetFactorLoss, api);
+      updateArea(totalAreaContainer, payload, targetFactorLoss, api);
       break;
     case setPlanning.type:
-      updateArea(totalAreaContainer, targetFactorCirculation, action.payload, api);
+      updateArea(totalAreaContainer, targetFactorCirculation, payload, api);
       break;
     default:
       break;

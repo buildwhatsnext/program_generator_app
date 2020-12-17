@@ -9,9 +9,9 @@ const handleSpaceCalculations = (
   action: PayloadAction<string[]>, 
   api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
 ) => {
-  console.log('Calculating...');
+  // console.log('Calculating...');
   
-  console.log('Calculations Done!');
+  // console.log('Calculations Done!');
 }
 
 const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: PayloadAction<string[]>) => {
