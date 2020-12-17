@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Page } from '../../components/pages/page';
 import { ISpaceDataSection, SpaceDataSection } from './space.section';
+import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
+import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { Space } from '../../../shared/types/Space';
 import { saveProject } from '../project/project.slice';
 
@@ -16,9 +18,19 @@ export interface IGenericSpacePage<T extends Space> extends ISpaceDataSection<T>
  */
 export function GenericSpacePage<T extends Space>(props: IGenericSpacePage<T>) {
   const { title, nextRoute, type, stateName, storeHandler, areaHandler } = props;
+  const [tableData, setTableData] = React.useState(null);
 
   const dispatch = useDispatch();
+
+  const saveToStore = () => {
+    // console.log('Saving to the app storage');
+    const serialized = dehydrateSpaceData(tableData);
+    dispatch(storeHandler(serialized));
+    dispatch(calculateTotalSpatialArea(serialized, areaHandler))
+  }
+
   const saveData = () => {
+    saveToStore();
     dispatch(saveProject());
   }
 
@@ -30,6 +42,7 @@ export function GenericSpacePage<T extends Space>(props: IGenericSpacePage<T>) {
         stateName={stateName}
         storeHandler={storeHandler}
         areaHandler={areaHandler}
+        externalUpdater={setTableData}
       />
     </Page>
   )

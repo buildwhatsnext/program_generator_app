@@ -92,8 +92,16 @@ function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
   } = api.getState().program;
 
   const allSpaces = [ AmenityState, BroadcastState, EnclosedState, MeetingState, LabState, OpenPlanState, SupportState ];    
+  if(!allSpaces || allSpaces.length < 1)
+    return null;
+
   const hydratedAll: Space[] = [];
-  allSpaces.forEach(cat => hydratedAll.push(...hydrateSpaceState(cat)));
+  allSpaces.forEach(cat => {
+    const hyd = hydrateSpaceState(cat);
+
+    if(hyd && hyd?.length > 0)
+      hydratedAll.push(...hyd)
+  });
   const hydratedPayload = hydrateSpaceState(action.payload);
   const combined = combineSpaces(hydratedAll, hydratedPayload)
 
