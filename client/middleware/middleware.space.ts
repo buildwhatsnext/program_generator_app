@@ -61,71 +61,15 @@ export const calculateTotalProgrammedArea = (): AppThunk =>
 }
 
 // fix this - fast, but not very readable
-const calculateTotalSeats = (all: string[][]) => {
-  const totalSeats = all?.map((spaceState) => {
-    const hyd = hydrateSpaceState(spaceState);
-    const total = hyd?.map(space => space.seatTotal).reduce(sumTotals)
-    return total;
-  }).reduce(sumTotals)
+// const calculateTotalSeats = (all: string[][]) => {
+//   const totalSeats = all?.map((spaceState) => {
+//     const hyd = hydrateSpaceState(spaceState);
+//     const total = hyd?.map(space => space.seatTotal).reduce(sumTotals)
+//     return total;
+//   }).reduce(sumTotals)
 
-  return totalSeats;
-}
-
-export const calculateTotalWorkseats = (): AppThunk => 
-  (dispatch, getState) => {
-  const {
-    AmenityState,
-    BroadcastState,
-    EnclosedState,
-    MeetingState,
-    LabState,
-    OpenPlanState,
-    SupportState
-  } = getState().program;
-
-  const all = [
-    // AmenityState,
-    // BroadcastState,
-    EnclosedState,
-    // MeetingState,
-    // LabState,
-    OpenPlanState,
-    // SupportState
-  ];
-
-  const seats = calculateTotalSeats(all);
-
-  dispatch(setTotalNumberOfWorkseats(seats));
-}
-
-export const calculateCollaborationRatio = (): AppThunk => 
-  (dispatch, getState) => {
-  const {
-    AmenityState,
-    BroadcastState,
-    EnclosedState,
-    MeetingState,
-    LabState,
-    OpenPlanState,
-    SupportState
-  } = getState().program;
-  const { totalNumOfWorkseats, totalProgrammedArea } = getState().project;
-
-  const all = [
-    // AmenityState,
-    // BroadcastState,
-    // EnclosedState,
-    MeetingState,
-    // LabState,
-    // OpenPlanState,
-    // SupportState
-  ];
-
-  const meetingSeats = calculateTotalSeats(all);
-  const ratio = (meetingSeats / totalNumOfWorkseats).toFixed(2);
-
-  dispatch(setCollaborationRatio(ratio));
-}
+//   return totalSeats;
+// }
 
 export const updateWorkseatRatio = (): AppThunk => 
 (dispatch, getState) => {

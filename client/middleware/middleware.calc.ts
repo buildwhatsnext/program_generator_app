@@ -5,12 +5,16 @@ import { setAmenityData, setAmenityTotalArea, setBroadcastData, setBroadcastTota
 import SpaceModel from "../../server/models/model.space";
 import { sumTotals } from "../../shared/lib/calculators";
 
-const handleSpaceCalculations = () => {
+const handleSpaceCalculations = (
+  action: PayloadAction<string[]>, 
+  api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
+) => {
   console.log('Calculating...');
+  
   console.log('Calculations Done!');
 }
 
-const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: Action) => {
+const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => (next: Dispatch) => (action: PayloadAction<string[]>) => {
   switch(action.type) {
     case setAmenityData.type:
     case setBroadcastData.type:
@@ -19,7 +23,7 @@ const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
     case setMeetingData.type:
     case setOpenOfficeData.type:
     case setSupportData.type:
-      handleSpaceCalculations();
+      handleSpaceCalculations(action, api);
       break;
     default:
       break;

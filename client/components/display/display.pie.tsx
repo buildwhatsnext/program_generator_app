@@ -122,11 +122,11 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
 
   useEffect(() => {
     console.log('Calculating...');
-    dispatch(updateAreaOnHold());
-    dispatch(calculateTotalProgrammedArea());
-    dispatch(calculateTotalWorkseats());
-    dispatch(updateWorkseatRatio());
-    dispatch(calculateCollaborationRatio());
+    // dispatch(updateAreaOnHold());
+    // dispatch(calculateTotalProgrammedArea());
+    // dispatch(calculateTotalWorkseats());
+    // dispatch(updateWorkseatRatio());
+    // dispatch(calculateCollaborationRatio());
     console.log('Done!');
   });
 

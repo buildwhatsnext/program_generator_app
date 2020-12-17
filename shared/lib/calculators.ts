@@ -1,10 +1,12 @@
+import { Space } from "../types/Space";
+import SpaceType from "../types/SpaceType";
+
 /**
  * 
  * @param total keeps track of the aggregated total of the counter
  * @param current 
  */
 export const sumTotals = (total: number, current: number) => total + current;
-
 
 /**
  * @param workseats the total number of workseats in the program
@@ -19,4 +21,54 @@ export function calculateWorkseatRatio(workseats: number, area: number): number 
   return Number.isNaN(ratio) 
     ? 0.0 
     : Number(ratio.toFixed(2));
+}
+
+/**
+ * @param workseats the total number of workseats in the program
+ * @param meetingSeats the total number of meeting seats in the program
+ */
+export function calculateCollaborationRatio(workseats: number, meetingSeats: number): number {
+  if(workseats === 0 || meetingSeats === 0)
+    return 0.0;
+
+  const ratio = (workseats/meetingSeats)
+
+  return Number.isNaN(ratio) 
+    ? 0.0 
+    : Number(ratio.toFixed(2));
+}
+
+/**
+ * @summary calculates the area that should be held over
+ * @param area the gross area of the program
+ * @param circFactor the circulation factor as a percentage
+ * @param lossFactor the loss factor as a percentage
+ */
+export function calculateHoldArea(area: number, circFactor: number, lossFactor: number): number {
+  const factorTotal = circFactor + lossFactor;
+  const percent = factorTotal / 100;
+
+  const coreArea = Number((area * percent).toFixed(2));
+
+  return coreArea;
+}
+
+/**
+ * @summary calculates the remaining area that has not been planned yet
+ * @param area the gross area of the program
+ * @param circFactor the circulation factor as a percentage
+ * @param lossFactor the loss factor as a percentage
+ */
+export function calculateUnplannedArea(area: number, circFactor: number, lossFactor: number): number {
+  const areaHeld = calculateHoldArea(area, circFactor, lossFactor);
+  const leftover = area - areaHeld;
+  return leftover;
+}
+
+export function calculateTotalWorkseats(spaces: Space[]) {
+  const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
+
+  const total = workspaces?.map(space => space.seatTotal).reduce(sumTotals);
+
+  return total;
 }
