@@ -1,5 +1,6 @@
 import { Space } from "../types/Space";
 import SpaceType from "../types/SpaceType";
+import { tryConvertToNumber } from "./conversion";
 
 /**
  * 
@@ -45,7 +46,14 @@ export function calculateCollaborationRatio(workseats: number, meetingSeats: num
  * @param lossFactor the loss factor as a percentage
  */
 export function calculateHoldArea(area: number, circFactor: number, lossFactor: number): number {
-  const factorTotal = circFactor + lossFactor;
+  const areNull = [area, circFactor, lossFactor].some(x => x === null || x === undefined);
+  if(areNull)
+    return 0;
+
+  const circ = Number.isInteger(circFactor) ? circFactor : tryConvertToNumber(circFactor);
+  const loss = Number.isInteger(lossFactor) ? lossFactor : tryConvertToNumber(lossFactor);
+  
+  const factorTotal = circ + loss;
   const percent = factorTotal / 100;
 
   const coreArea = Number((area * percent).toFixed(2));

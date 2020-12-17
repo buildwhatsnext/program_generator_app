@@ -15,8 +15,8 @@ import { convertDataToNumber, tryConvertToNumber } from "../../shared/lib/conver
 const update = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
   (next: Dispatch) => 
   (action: PayloadAction<number>) => {
-  const { targetFactorCirculation, targetFactorLoss } = api.getState().project;
-  const { totalAreaContainer, } = api.getState().program;
+  const { targetFactorCirculation, targetFactorLoss, areaNet } = api.getState().project;
+  // const { totalAreaContainer, } = api.getState().program;
   const payload = tryConvertToNumber(action.payload);
 
   switch(action.type) {
@@ -25,10 +25,10 @@ const update = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) =>
       updateArea(payload, targetFactorCirculation, targetFactorLoss, api);
       break;
     case setCirculation.type:
-      updateArea(totalAreaContainer, payload, targetFactorLoss, api);
+      updateArea(areaNet, payload, targetFactorLoss, api);
       break;
     case setPlanning.type:
-      updateArea(totalAreaContainer, targetFactorCirculation, payload, api);
+      updateArea(areaNet, targetFactorCirculation, payload, api);
       break;
     default:
       break;
