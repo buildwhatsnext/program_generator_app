@@ -18,12 +18,16 @@ import {
   calculateHoldArea, 
   calculateTotalWorkseats, 
   calculateUnplannedArea, 
-  calculateWorkseatRatio 
+  calculateWorkseatRatio, 
+  calculateWorkspaceArea,
+  sumTotals
 } from "../../shared/lib/calculators";
 import { tryConvertToNumber } from "../../shared/lib/conversion";
 import { hydrateSpaceState } from "../features/space/space.functions";
+import { Space } from "../../shared/types/Space";
+import SpaceType from "../../shared/types/SpaceType";
 
-export const updateProjectArea = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
+const projectUpdater = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
   (next: Dispatch) => 
   (action: PayloadAction<number>) => {
   const { targetFactorCirculation, targetFactorLoss, areaNet } = api.getState().project;
@@ -46,26 +50,6 @@ export const updateProjectArea = (api: MiddlewareAPI<Dispatch<AnyAction>, RootSt
   return next(action);
 };
 
-export const updateSpaceArea = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
-  (next: Dispatch) => 
-  (action: PayloadAction<string[]>) => {
-
-    const spaces = hydrateSpaceState(action.payload);
-
-  switch(action.type) {
-    case setAmenityData.type:
-    case setBroadcastData.type:
-    case setEnclosedData.type:
-    case setLabData.type:
-    case setMeetingData.type:
-    case setOpenOfficeData.type:
-    case setSupportData.type:
-      break;
-    default:
-      break;
-  }
-}
-
 export const updateArea = ( 
   totalArea: number,
   circFactor: number,
@@ -79,15 +63,4 @@ export const updateArea = (
   api.dispatch(setUnprogrammedArea(unplanned));
 }
 
-export const updateRatios = (
-  api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
-) => {
-
-    const seats = calculateTotalWorkseats();
-    const ratioWork = calculateWorkseatRatio();
-    const ratioColl = calculateCollaborationRatio();
-
-    api.dispatch(setTotalNumberOfWorkseats(seats));
-    api.dispatch(setWorkseatRatio(ratioWork));
-    api.dispatch(setCollaborationRatio(ratioColl));
-}
+export default projectUpdater;

@@ -5,6 +5,9 @@ import { Space } from "../../../shared/types/Space";
 import SpaceType from "../../../shared/types/SpaceType";
 
 export function hydrateSpaceState<T extends Space>(dehydratedState: string[]) {
+  if(!dehydratedState)
+    return null;
+
   console.log('Hydrating space data...')
   const enclosed: T[] = dehydratedState?.map(space => {
     const hydrated: T = JSON.parse(space);

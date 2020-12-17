@@ -80,3 +80,11 @@ export function calculateTotalWorkseats(spaces: Space[]) {
 
   return total;
 }
+
+export function calculateWorkspaceArea(spaces: Space[]) {
+  const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
+
+  const total = workspaces?.map(space => space.areaTotal)?.reduce(sumTotals);
+
+  return total;
+}
