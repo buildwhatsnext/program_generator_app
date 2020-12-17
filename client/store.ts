@@ -8,7 +8,7 @@ import programReducer from './features/space/space.slice';
 import settingsReducer from './features/session/session.slice';
 
 import logger from './middleware/middleware.logging';
-import updater from './middleware/middleware.update';
+import { updateProjectArea, updateSpaceArea } from './middleware/middleware.update';
 import spaceCalc from './middleware/middleware.calc';
 import spaceLoader from './middleware/middleware.space';
 import projHandler from './middleware/middleware.project';
@@ -29,7 +29,8 @@ const store = configureStore({
       spaceCalc,
       spaceLoader, 
       projHandler,
-      updater
+      updateProjectArea, 
+      updateSpaceArea
     ),
   devTools: true,
 })

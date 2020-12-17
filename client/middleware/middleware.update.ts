@@ -2,7 +2,17 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { AppThunk, RootState } from '../store';
 import { setRsf, setNetArea, setCirculation, setPlanning, setTotalNumberOfWorkseats, setWorkseatRatio, setCollaborationRatio, } from '../features/project/project.slice';
-import { setHoldArea, setUnprogrammedArea } from '../features/space/space.slice';
+import { 
+  setAmenityData, 
+  setBroadcastData, 
+  setEnclosedData, 
+  setLabData, 
+  setMeetingData, 
+  setOpenOfficeData, 
+  setSupportData, 
+  setHoldArea, 
+  setUnprogrammedArea
+} from "../features/space/space.slice";
 import { 
   calculateCollaborationRatio, 
   calculateHoldArea, 
@@ -10,17 +20,16 @@ import {
   calculateUnplannedArea, 
   calculateWorkseatRatio 
 } from "../../shared/lib/calculators";
-import { convertDataToNumber, tryConvertToNumber } from "../../shared/lib/conversion";
+import { tryConvertToNumber } from "../../shared/lib/conversion";
+import { hydrateSpaceState } from "../features/space/space.functions";
 
-const update = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
+export const updateProjectArea = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
   (next: Dispatch) => 
   (action: PayloadAction<number>) => {
   const { targetFactorCirculation, targetFactorLoss, areaNet } = api.getState().project;
-  // const { totalAreaContainer, } = api.getState().program;
   const payload = tryConvertToNumber(action.payload);
 
   switch(action.type) {
-    
     case setNetArea.type:
       updateArea(payload, targetFactorCirculation, targetFactorLoss, api);
       break;
@@ -36,6 +45,26 @@ const update = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) =>
 
   return next(action);
 };
+
+export const updateSpaceArea = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
+  (next: Dispatch) => 
+  (action: PayloadAction<string[]>) => {
+
+    const spaces = hydrateSpaceState(action.payload);
+
+  switch(action.type) {
+    case setAmenityData.type:
+    case setBroadcastData.type:
+    case setEnclosedData.type:
+    case setLabData.type:
+    case setMeetingData.type:
+    case setOpenOfficeData.type:
+    case setSupportData.type:
+      break;
+    default:
+      break;
+  }
+}
 
 export const updateArea = ( 
   totalArea: number,
@@ -61,7 +90,4 @@ export const updateRatios = (
     api.dispatch(setTotalNumberOfWorkseats(seats));
     api.dispatch(setWorkseatRatio(ratioWork));
     api.dispatch(setCollaborationRatio(ratioColl));
-
 }
-
-export default update;
