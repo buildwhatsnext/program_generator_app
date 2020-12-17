@@ -12,9 +12,7 @@ import {
 import { AppThunk, RootState } from '../store';
 import { filterAllSpaceDataByType, hydrateSpaceState, SpaceCollection } from "../features/space/space.functions";
 import SpaceModel from "../../server/models/model.space";
-import SpaceType from "../../shared/types/SpaceType";
-import { updateAreaOnHold } from "../../shared/lib/updaters";
-import { sumTotals } from "../../shared/lib/calculators";
+import { calculateWorkseatRatio, sumTotals } from "../../shared/lib/calculators";
 
 export const calculateTotalSpatialArea = (
     data: string[], 
@@ -62,17 +60,15 @@ export const calculateTotalProgrammedArea = (): AppThunk =>
     dispatch(setTotalProgrammedArea(total))
 }
 
+// fix this - fast, but not very readable
 const calculateTotalSeats = (all: string[][]) => {
-  let seats = 0;
+  const totalSeats = all?.map((spaceState) => {
+    const hyd = hydrateSpaceState(spaceState);
+    const total = hyd?.map(space => space.seatTotal).reduce(sumTotals)
+    return total;
+  }).reduce(sumTotals)
 
-  all?.forEach((state) => {
-    const spaceState = hydrateSpaceState(state);
-    spaceState?.forEach((space) => {
-      seats += Number(space.seatTotal)
-    })
-  });
-
-  return seats;
+  return totalSeats;
 }
 
 export const calculateTotalWorkseats = (): AppThunk => 
@@ -131,12 +127,11 @@ export const calculateCollaborationRatio = (): AppThunk =>
   dispatch(setCollaborationRatio(ratio));
 }
 
-export const calculateWorkseatRatio = (): AppThunk => 
+export const updateWorkseatRatio = (): AppThunk => 
 (dispatch, getState) => {
   const { totalNumOfWorkseats, totalProgrammedArea } = getState().project;
 
-  const ratio = (totalNumOfWorkseats / totalProgrammedArea).toFixed(2);
-  console.log(ratio);
+  const ratio = calculateWorkseatRatio(totalNumOfWorkseats, totalProgrammedArea);
 
   dispatch(setWorkseatRatio(ratio.toString()));
 }

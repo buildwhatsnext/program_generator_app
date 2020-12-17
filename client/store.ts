@@ -8,7 +8,8 @@ import programReducer from './features/space/space.slice';
 import settingsReducer from './features/session/session.slice';
 
 import logger from './middleware/middleware.logging';
-import calc from './middleware/middleware.space';
+import spaceCalc from './middleware/middleware.calc';
+import spaceLoader from './middleware/middleware.space';
 import projHandler from './middleware/middleware.project';
 
 
@@ -21,8 +22,13 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(calc, projHandler),
-    // => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware()
+    .concat(
+      spaceCalc,
+      spaceLoader, 
+      projHandler
+    ),
   devTools: true,
 })
 
