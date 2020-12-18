@@ -67,9 +67,9 @@ export function calculateHoldArea(area: number, circFactor: number, lossFactor: 
  * @param circFactor the circulation factor as a percentage
  * @param lossFactor the loss factor as a percentage
  */
-export function calculateUnplannedArea(area: number, circFactor: number, lossFactor: number): number {
-  const areaHeld = calculateHoldArea(area, circFactor, lossFactor);
-  const leftover = area - areaHeld;
+export function calculateUnplannedArea(area: number, areaHold: number, areaProgram: number): number {
+  const combined = areaHold + areaProgram
+  const leftover = area - combined;
   return leftover;
 }
 

@@ -74,15 +74,17 @@ export const updateProgrammedArea = (
   const spaces = mergeSpacesFromState(api, action);
 
   const { areaNet } = api.getState().project;
+  const { totalAreaHold } = api.getState().program;
 
   // console.log(spaces);
   if(!spaces || spaces.length < 1)
     return;
 
-  const area = calculateProgrammedArea(spaces);
-  const unprogram = calculateUnprogrammedArea(areaNet, spaces);
+  const progArea = calculateProgrammedArea(spaces);
+  const remArea = areaNet - totalAreaHold;
+  const unprogram = calculateUnprogrammedArea(remArea, spaces);
 
-  api.dispatch(setTotalProgrammedArea(area));
+  api.dispatch(setTotalProgrammedArea(progArea));
   api.dispatch(setUnprogrammedArea(unprogram));
 }
 
