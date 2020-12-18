@@ -56,10 +56,7 @@ export const updateRatios = (
   const area = calculateWorkspaceArea(spaces);
   const seats = calculateTotalWorkseats(spaces);
   const ratioWork = calculateWorkseatRatio(seats, area);
-  const meetingSeats = spaces
-                        ?.filter(space => space.type === SpaceType.Meeting)
-                        ?.map(space => space.seatTotal)
-                        ?.reduce(sumTotals);
+  const meetingSeats = calculateMeetingSeatTotals(spaces);
   const ratioColl = calculateCollaborationRatio(seats, meetingSeats);
 
   api.dispatch(setTotalNumberOfWorkseats(seats));
@@ -76,6 +73,22 @@ export const combineSpaces = (prevState: Space[], payload: Space[]): Space[] => 
   filtered.push(...payload);
 
   return filtered;
+}
+
+function calculateMeetingSeatTotals(spaces: Space[]): number {
+  const mSpaces = spaces?.filter(space => space.type === SpaceType.Meeting)
+
+  if(mSpaces.length < 1)
+    return 0;
+
+  const seats = mSpaces?.map(space => space.seatTotal);
+
+  if(seats.length <= 1)
+    return seats[0] ?? 0;
+
+  const total = seats?.reduce(sumTotals);
+
+  return total;
 }
 
 function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>, action: PayloadAction<string[]>) {
