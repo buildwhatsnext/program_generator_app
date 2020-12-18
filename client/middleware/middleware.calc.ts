@@ -52,7 +52,7 @@ export const updateRatios = (
 ) => {
   const spaces = mergeSpacesFromState(api, action);
 
-  console.log(spaces);
+  // console.log(spaces);
   if(!spaces || spaces.length < 1)
     return;
 
@@ -73,12 +73,14 @@ export const updateProgrammedArea = (
 ) => {
   const spaces = mergeSpacesFromState(api, action);
 
-  console.log(spaces);
+  const { areaNet } = api.getState().project;
+
+  // console.log(spaces);
   if(!spaces || spaces.length < 1)
     return;
 
   const area = calculateProgrammedArea(spaces);
-  const unprogram = calculateUnprogrammedArea(area, spaces);
+  const unprogram = calculateUnprogrammedArea(areaNet, spaces);
 
   api.dispatch(setTotalProgrammedArea(area));
   api.dispatch(setUnprogrammedArea(unprogram));
@@ -112,7 +114,7 @@ function calculateMeetingSeatTotals(spaces: Space[]): number {
 }
 
 function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>, action: PayloadAction<string[]>) {
-  console.log(action);
+  // console.log(action);
   if(!action || action.payload === null)
     return null;
 

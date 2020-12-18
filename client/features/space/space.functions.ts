@@ -8,13 +8,13 @@ export function hydrateSpaceState<T extends Space>(dehydratedState: string[]) {
   if(!dehydratedState)
     return null;
 
-  console.log('Hydrating space data...')
+  // console.log('Hydrating space data...')
   const enclosed: T[] = dehydratedState?.map(space => {
     const hydrated: T = JSON.parse(space);
     return hydrated;
   });
 
-  console.log('Hydrated!')
+  // console.log('Hydrated!')
 
   return enclosed;
 }
