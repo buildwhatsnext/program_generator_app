@@ -10,22 +10,17 @@ import { selectOverview } from '../../features/project/project.slice';
 import { selectProgram } from '../../features/space/space.slice';
 import { ProgramState } from '../../../shared/types/Program';
 
-function composeAreaData(state: ProgramState): {
+export interface ISpatialMap {
   area: number,  
   name: string;
   color: string;
   hoverBackgroundColor: string;
   border?: string;
   route: string;
-}[] {
-  const spatialMap: {
-    area: number,  
-    name: string;
-    color: string;
-    hoverBackgroundColor: string;
-    border?: string;
-    route: string;
-  }[]  = [];
+}
+
+function composeAreaData(state: ProgramState): ISpatialMap[] { 
+  const spatialMap: ISpatialMap[] = [];
 
   const {
     // totalAreaBuilding,
