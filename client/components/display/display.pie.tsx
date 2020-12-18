@@ -7,10 +7,8 @@ import styles from './display.pie.module.scss';
 import { SPACE_STANDARDS } from '../../../shared/constants/ark.standards';
 import PROGRAMS from '../../../shared/constants/ark.programs';
 import { selectOverview } from '../../features/project/project.slice';
-import { updateAreaOnHold } from '../../../shared/lib/updaters';
 import { selectProgram } from '../../features/space/space.slice';
 import { ProgramState } from '../../../shared/types/Program';
-import { calculateCollaborationRatio, calculateTotalProgrammedArea, calculateTotalWorkseats, updateWorkseatRatio } from '../../middleware/middleware.space';
 
 function composeAreaData(state: ProgramState): {
   area: number,  
@@ -119,16 +117,6 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
     segmentStrokeWidth: 10,
     percentageInnerCutout: 50,
   }
-
-  useEffect(() => {
-    console.log('Calculating...');
-    // dispatch(updateAreaOnHold());
-    // dispatch(calculateTotalProgrammedArea());
-    // dispatch(calculateTotalWorkseats());
-    // dispatch(updateWorkseatRatio());
-    // dispatch(calculateCollaborationRatio());
-    console.log('Done!');
-  });
 
   const handleClick = (pie) => {
     console.log(pie);
