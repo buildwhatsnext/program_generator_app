@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, AnyAction } from "redux";
 import { RootState } from '../store';
-import { setTotalNumberOfWorkseats, setWorkseatRatio, setCollaborationRatio, } from '../features/project/project.slice';
+import { setTotalNumberOfWorkseats, setWorkseatRatio, setCollaborationRatio, setTotalProgrammedArea, } from '../features/project/project.slice';
 import { 
   setAmenityData, 
   setBroadcastData, 
@@ -9,11 +9,14 @@ import {
   setLabData, 
   setMeetingData, 
   setOpenOfficeData, 
-  setSupportData, 
+  setSupportData,
+  setUnprogrammedArea, 
 } from "../features/space/space.slice";
 import { 
   calculateCollaborationRatio, 
+  calculateProgrammedArea, 
   calculateTotalWorkseats, 
+  calculateUnprogrammedArea, 
   calculateWorkseatRatio, 
   calculateWorkspaceArea,
   sumTotals
@@ -33,8 +36,8 @@ const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) =>
     case setMeetingData.type:
     case setOpenOfficeData.type:
     case setSupportData.type:
-      // console.log(action);
       updateRatios(api, action);
+      updateProgrammedArea(api, action);
       break;
     default:
       break;
@@ -62,6 +65,23 @@ export const updateRatios = (
   api.dispatch(setTotalNumberOfWorkseats(seats));
   api.dispatch(setWorkseatRatio(ratioWork));
   api.dispatch(setCollaborationRatio(ratioColl));
+}
+
+export const updateProgrammedArea = (
+  api: MiddlewareAPI<Dispatch<AnyAction>, RootState>,
+  action: PayloadAction<string[]>
+) => {
+  const spaces = mergeSpacesFromState(api, action);
+
+  console.log(spaces);
+  if(!spaces || spaces.length < 1)
+    return;
+
+  const area = calculateProgrammedArea(spaces);
+  const unprogram = calculateUnprogrammedArea(area, spaces);
+
+  api.dispatch(setTotalProgrammedArea(area));
+  api.dispatch(setUnprogrammedArea(unprogram));
 }
 
 export const combineSpaces = (prevState: Space[], payload: Space[]): Space[] => {
