@@ -1,31 +1,10 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { AppThunk, RootState } from '../store';
-import { setRsf, setNetArea, setCirculation, setPlanning, setTotalNumberOfWorkseats, setWorkseatRatio, setCollaborationRatio, } from '../features/project/project.slice';
-import { 
-  setAmenityData, 
-  setBroadcastData, 
-  setEnclosedData, 
-  setLabData, 
-  setMeetingData, 
-  setOpenOfficeData, 
-  setSupportData, 
-  setHoldArea, 
-  setUnprogrammedArea
-} from "../features/space/space.slice";
-import { 
-  calculateCollaborationRatio, 
-  calculateHoldArea, 
-  calculateTotalWorkseats, 
-  calculateUnplannedArea, 
-  calculateWorkseatRatio, 
-  calculateWorkspaceArea,
-  sumTotals
-} from "../../shared/lib/calculators";
+import { setNetArea, setCirculation, setPlanning } from '../features/project/project.slice';
+import { setHoldArea, setUnprogrammedArea } from "../features/space/space.slice";
+import { calculateHoldArea, calculateUnplannedArea } from "../../shared/lib/calculators";
 import { tryConvertToNumber } from "../../shared/lib/conversion";
-import { hydrateSpaceState } from "../features/space/space.functions";
-import { Space } from "../../shared/types/Space";
-import SpaceType from "../../shared/types/SpaceType";
 
 const projectUpdater = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) => 
   (next: Dispatch) => 
