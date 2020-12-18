@@ -33,6 +33,7 @@ const spaceCalculator = (api: MiddlewareAPI<Dispatch<AnyAction>, RootState>) =>
     case setMeetingData.type:
     case setOpenOfficeData.type:
     case setSupportData.type:
+      // console.log(action);
       updateRatios(api, action);
       break;
     default:
@@ -48,6 +49,7 @@ export const updateRatios = (
 ) => {
   const spaces = mergeSpacesFromState(api, action);
 
+  console.log(spaces);
   if(!spaces || spaces.length < 1)
     return;
 
@@ -55,9 +57,9 @@ export const updateRatios = (
   const seats = calculateTotalWorkseats(spaces);
   const ratioWork = calculateWorkseatRatio(seats, area);
   const meetingSeats = spaces
-                        .filter(space => space.type === SpaceType.Meeting)
-                        .map(space => space.seatTotal)
-                        .reduce(sumTotals);
+                        ?.filter(space => space.type === SpaceType.Meeting)
+                        ?.map(space => space.seatTotal)
+                        ?.reduce(sumTotals);
   const ratioColl = calculateCollaborationRatio(seats, meetingSeats);
 
   api.dispatch(setTotalNumberOfWorkseats(seats));
@@ -81,6 +83,7 @@ function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
   if(!action || action.payload === null)
     return null;
 
+  const hydratedPayload = hydrateSpaceState(action.payload);
   const {
     AmenityState,
     BroadcastState,
@@ -93,7 +96,7 @@ function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
 
   const allSpaces = [ AmenityState, BroadcastState, EnclosedState, MeetingState, LabState, OpenPlanState, SupportState ];    
   if(!allSpaces || allSpaces.length < 1)
-    return null;
+    return hydratedPayload;
 
   const hydratedAll: Space[] = [];
   allSpaces.forEach(cat => {
@@ -102,7 +105,7 @@ function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
     if(hyd && hyd?.length > 0)
       hydratedAll.push(...hyd)
   });
-  const hydratedPayload = hydrateSpaceState(action.payload);
+  
   const combined = combineSpaces(hydratedAll, hydratedPayload)
 
   return combined;

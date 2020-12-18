@@ -41,7 +41,7 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   const saveToStore = () => {
     if(!externalUpdater)
       return;
-    // console.log('Saving to the app storage');
+    console.log('Saving to the app storage');
     const serialized = dehydrateSpaceData(tableData);
     dispatch(storeHandler(serialized));
     dispatch(calculateTotalSpatialArea(serialized, areaHandler))
@@ -53,7 +53,7 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
 
   useEffect(() =>{
     setTimeout(() => {
-      console.log('Table data is updating...');
+      // console.log('Table data is updating...');
       saveToStore()
     }
       , 1000)

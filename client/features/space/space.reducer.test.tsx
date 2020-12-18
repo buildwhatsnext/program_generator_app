@@ -3,16 +3,17 @@ import reducer, { setTotalBuildingArea } from './space.slice';
 
 describe('space reducer', () => {
   it('should return the initial state', () => {
-    const program = {...new ProgramState()}
-    expect(reducer(undefined, {type: ''})).toEqual(program);
+    const initialState = {...new ProgramState()}
+    expect(reducer(undefined, {type: ''})).toEqual(initialState);
   });
 
   it('should update the Total Building Area when called', () => {
-    const program = {...new ProgramState()}
+    const state = {...new ProgramState()}
+    const result = {...new ProgramState()}
     const value = 1500;
-    program.totalAreaContainer = value;
+    result.totalAreaContainer = value;
 
-    expect(reducer(undefined, setTotalBuildingArea(value))).toEqual(program);
+    expect(reducer(undefined, setTotalBuildingArea(value))).toEqual(result);
   });
 
   it('should update the Total Building Area when called even with a string', () => {
