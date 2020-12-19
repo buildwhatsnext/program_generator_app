@@ -8,71 +8,9 @@ import { SPACE_STANDARDS } from '../../../shared/constants/ark.standards';
 import PROGRAMS from '../../../shared/constants/ark.programs';
 import { selectOverview } from '../../features/project/project.slice';
 import { selectProgram } from '../../features/space/space.slice';
-import { ProgramState } from '../../../shared/types/Program';
-
-export interface ISpatialMap {
-  area: number,  
-  name: string;
-  color: string;
-  hoverBackgroundColor: string;
-  border?: string;
-  route: string;
-}
-
-function composeAreaData(state: ProgramState): ISpatialMap[] { 
-  const spatialMap: ISpatialMap[] = [];
-
-  const {
-    // totalAreaBuilding,
-    totalAreaUnprogrammed,
-    totalAreaHold,
-    totalAreaEnclosed,
-    totalAreaOpen,
-    totalAreaMeeting,
-    totalAreaAmenity,
-    totalAreaSupport,
-    totalAreaBroadcast,
-    totalAreaLab,
-  } = state;
-
-  const spatialDataArray = [
-    totalAreaUnprogrammed,
-    totalAreaHold,
-    totalAreaEnclosed,
-    totalAreaOpen,
-    totalAreaMeeting,
-    totalAreaAmenity,
-    totalAreaSupport,
-    totalAreaBroadcast,
-    totalAreaLab,
-  ]
-  console.log(PROGRAMS);
-  
-  Object.keys(PROGRAMS).forEach((key, i) => {
-    const data = SPACE_STANDARDS[key];
-    const area = spatialDataArray[i];
-    console.log(`The area for ${i} is: ${area}`);
-    
-    spatialMap.push({
-      area,
-      name: data.name,
-      color: data.color,
-      hoverBackgroundColor: data.hoverBackgroundColor,
-      border: data.border,
-      route: data.route
-    });
-  })
-
-  let final = []
-
-  final = spatialMap.filter((slice) => slice.area > 0);
-  console.log(final);
-
-  return final;
-}
+import { createSpatialDataSet, createSpatialMap } from './display.map';
 
 export interface PieProps {
-
   backgroundColor?: string;
 }
 
@@ -81,32 +19,11 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
   backgroundColor,
   ...props
 }) => {
-  const dispatch = useDispatch();
   const router = useRouter();
   const overview = useSelector(selectOverview);
   const program = useSelector(selectProgram);
-  const { hasLab, hasBroadcast } = overview;
-  const standards = { ...SPACE_STANDARDS};
-  if(!hasLab)
-    delete standards.LAB;
-
-  if (!hasBroadcast)
-    delete standards.BROADCAST;
-
-  const areaData = composeAreaData(program);
-  const data = Object.values(areaData).map(space => space.area);
-  const labels = Object.values(areaData).map(space => space.name);
-  const colors = Object.values(areaData).map(space => space.color);
-  const borders = Object.values(areaData).map(space => space.border);
-  const hoverColor = Object.values(areaData).map(space => space.hoverBackgroundColor);
-
-  const datasets = [{
-    data,
-    backgroundColor: colors,
-    borderColor: borders,
-    hoverBackgroundColor: hoverColor,
-    extraData: ['someData', 'someData', 'someData', 'someData']
-  }];
+  const areaData = createSpatialMap(program, overview, {...SPACE_STANDARDS});
+  const dataset = createSpatialDataSet(areaData);
 
   const options = {
     segmentStrokeWidth: 10,
@@ -139,8 +56,57 @@ export const ProgrammedSpaceDisplay: React.FC<PieProps> = ({
     <div className={styles.pie}>
       <Doughnut
         data={{
-          labels,
-          datasets
+          labels: dataset.labels,
+          datasets: dataset.data
+        }}
+        options={options}
+        height={100}
+        onElementsClick={handleClick}
+      />
+    </div>
+  )
+}
+
+export const RatioSpaceDisplay = () => {
+  const router = useRouter();
+  const overview = useSelector(selectOverview);
+  const program = useSelector(selectProgram);
+  const areaData = createSpatialMap(program, overview, {...SPACE_STANDARDS}, true);
+  const dataset = createSpatialDataSet(areaData);
+
+  const options = {
+    segmentStrokeWidth: 10,
+    percentageInnerCutout: 50,
+  }
+
+  const handleClick = (pie) => {
+    console.log(pie);
+
+    const element = pie[0];
+    if(!element)
+      return;
+
+    const { _model } = element;
+    const standard = SPACE_STANDARDS;
+    const programType = _model.label;
+    const programKeys = Object.keys(PROGRAMS)
+    const programVals = Object.values(PROGRAMS);
+    const routeName = programKeys[programVals.indexOf(programType)]
+    const { route } = standard[routeName];
+
+    if(routeName === 'UNPLANNED') {
+      return;
+    };
+    
+    router.push(route);
+  }
+
+  return (
+    <div className={styles.pie}>
+      <Doughnut
+        data={{
+          labels: dataset.labels,
+          datasets: dataset.data
         }}
         options={options}
         height={100}

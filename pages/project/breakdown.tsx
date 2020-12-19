@@ -6,7 +6,7 @@ import { selectOverview } from '../../client/features/project/project.slice';
 import { SpaceDataSection } from '../../client/features/space/space.section';
 import { Page } from '../../client/components/pages/page';
 import { BuildingInformationPanel } from '../../client/components/panels/panel.building';
-import { ProgrammedSpaceDisplay } from '../../client/components/display/display.pie';
+import { ProgrammedSpaceDisplay, RatioSpaceDisplay } from '../../client/components/display/display.pie';
 import styles from './breakdown.module.scss';
 
 export default function ProjectBreakdown() {
@@ -50,7 +50,7 @@ export default function ProjectBreakdown() {
       <div className="breakdown">
         <div className={styles.breakdown__pie}>
           <ProgrammedSpaceDisplay />
-          <ProgrammedSpaceDisplay />
+          <RatioSpaceDisplay />
         </div>
         <div className={styles.breakdown__data}>
           { sections }
