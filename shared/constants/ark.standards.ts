@@ -29,7 +29,9 @@ export const SPACE_STATE_NAMES = {
   SUPPORT: 'SupportState'
 }
 
-export const SPACE_STANDARDS: Record<string, SpaceDisplayStandard> = {
+export type SpaceDisplayCollection = Record<string, SpaceDisplayStandard>;
+
+export const SPACE_STANDARDS: SpaceDisplayCollection = {
   UNPLANNED: {
     name: PROGRAMS.UNPLANNED,
     color: '#ffffff',
