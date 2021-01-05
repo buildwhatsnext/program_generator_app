@@ -66,8 +66,8 @@ export const TextDataCell = ({id, align, minWidth, dataHandler, rowId, columnId,
 export const NumberDataCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState, limit}: NumberCellProps) => {
   const valueRef = useRef<HTMLInputElement>(null);
 
-  const handleData = () => {
-    dataHandler(rowId, columnId, valueRef.current.value);
+  const handleData = (data: string) => {
+    dataHandler(rowId, columnId, data);
   }
 
   return (
