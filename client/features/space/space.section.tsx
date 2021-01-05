@@ -25,6 +25,7 @@ export interface ISpaceDataSection<T extends Space> {
   collapsible?: boolean;
   startHidden?: boolean;
   readonly?: boolean;
+  externalUpdater?: (data: any) => void;
 }
 
 export function preloadSpaces<T extends Space>(){
@@ -46,7 +47,7 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   const [tableData, setTableData] = React.useState(null);
   // const start = preloadSpaces<T>()
 
-  const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly } = sdsProps;
+  const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly, externalUpdater } = sdsProps;
   const dispatch = useDispatch();
   const program = useSelector(selectProgram);
   
@@ -56,7 +57,9 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   const data = hasPrevState ? hydrateSpaceState<T>(spaceState) : tableData;
 
   const saveToStore = () => {
-    // console.log('Saving to the app storage');
+    if(!externalUpdater)
+      return;
+    console.log('Saving to the app storage');
     const serialized = dehydrateSpaceData(tableData);
     dispatch(storeHandler(serialized));
     dispatch(calculateTotalSpatialArea(serialized, areaHandler))
@@ -82,7 +85,7 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
       data={
         <SpaceData 
           type={type} 
-          tableDataHandler={updateTableData}
+          tableDataHandler={externalUpdater ?? updateTableData }
           prevData={data}
           readonly={readonly}
         />
