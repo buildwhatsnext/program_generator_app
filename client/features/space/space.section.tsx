@@ -8,6 +8,8 @@ import { selectProgram } from './space.slice';
 import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { DataEntrySection } from '../../components/display/display.entry';
+import SpaceType from '../../../shared/types/SpaceType';
+import { loadEnclosedSpaces } from './space.loaders';
 
 /**
  * @summary A data section that takes any Space type and can load it's data to/from the store
@@ -25,8 +27,24 @@ export interface ISpaceDataSection<T extends Space> {
   readonly?: boolean;
 }
 
+export function preloadSpaces<T extends Space>(){
+  let defaultData: Space[] = null;
+  const element: T = null;
+
+  switch(element.type) {
+    case SpaceType.Enclosed:
+      defaultData = loadEnclosedSpaces()
+      break;
+    default:
+      break;
+  }
+
+  return defaultData as T[];
+}
+
 export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>) {
   const [tableData, setTableData] = React.useState(null);
+  const start = preloadSpaces<T>()
 
   const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly } = sdsProps;
   const dispatch = useDispatch();
