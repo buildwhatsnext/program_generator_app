@@ -44,7 +44,7 @@ export function preloadSpaces<T extends Space>(){
 
 export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>) {
   const [tableData, setTableData] = React.useState(null);
-  const start = preloadSpaces<T>()
+  // const start = preloadSpaces<T>()
 
   const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly } = sdsProps;
   const dispatch = useDispatch();

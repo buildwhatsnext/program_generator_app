@@ -56,15 +56,21 @@ export function PanelSection({
   );
 }
 
-export function PanelSectionItem({ name, value }: INamedValue) {
+export interface IPanelSectionItemData {
+  name: string;
+  value: string;
+  error?: boolean;
+}
+
+export function PanelSectionItem({ name: itemName, value: itemValue, error: inErrorState }: IPanelSectionItemData) {
   return (
     <ListItem>
       <NamedValue 
-        name={name} 
-        value={value} 
+        name={itemName} 
+        value={itemValue} 
         className={styles.panelData}
         nameClass={styles.panelData__name}
-        valueClass={styles.panelData__value}
+        valueClass={inErrorState ? styles.panelData__error : styles.panelData__value}
       />
     </ListItem>
   );
