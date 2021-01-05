@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import { convertDataToINamedValues, INamedValue, NamedValue } from '../text/NamedValue';
+import { INamedValue, NamedValue } from '../text/NamedValue';
 import styles from './panel.section.module.scss';
 
 export interface IPanelSection {
@@ -16,10 +16,10 @@ export interface IPanelSection {
 }
 
 export interface INamedPanelSection {
-  // title: string;
   handleClick: () => void;
   isActive: boolean;
   rawData: Record<string,string>;
+  comparisonData?: string[];
 }
 
 export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
@@ -29,6 +29,7 @@ export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
         key={d.name} 
         name={d.name} 
         value={d.value} 
+        error={d?.error}
       />
     );
   });
