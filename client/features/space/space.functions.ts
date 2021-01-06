@@ -1,10 +1,7 @@
-import { ActionCreatorWithOptionalPayload, PayloadAction } from "@reduxjs/toolkit";
-import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
-import { AppThunk, RootState } from '../../store';
 import { Space } from "../../../shared/types/Space";
 import SpaceType from "../../../shared/types/SpaceType";
 
-export function hydrateSpaceState<T extends Space>(dehydratedState: string[]) {
+export function hydrateSpaceState<T extends Partial<Space>>(dehydratedState: string[]) {
   if(!dehydratedState)
     return null;
 
@@ -19,7 +16,7 @@ export function hydrateSpaceState<T extends Space>(dehydratedState: string[]) {
   return enclosed;
 }
 
-export function dehydrateSpaceData<T extends Space>(elements: T[]) {
+export function dehydrateSpaceData<T extends Partial<Space>>(elements: T[]) {
   console.log('Serializing space data...')
   const serialized = elements?.map(space => {
     const reduced = JSON.stringify(space);

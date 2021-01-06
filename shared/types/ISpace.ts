@@ -18,7 +18,7 @@ export interface ISpaceTransitObject extends IUpdateable {
   ratio: string;
   area: string;
   quantitySelected: string;
-  seatTotal: number;
-  areaTotal: number;
+  seatTotal: string;
+  areaTotal: string;
   type: SpaceType;
 }

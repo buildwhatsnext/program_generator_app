@@ -2,10 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Page } from '../../components/pages/page';
 import { ISpaceDataSection, SpaceDataSection } from './space.section';
-import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
+import { dehydrateSpaceData } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { Space } from '../../../shared/types/Space';
 import { saveProject } from '../project/project.slice';
+import { processSpatialData } from '../../../shared/lib/conversion';
 
 export interface IGenericSpacePage<T extends Space> extends ISpaceDataSection<T> {
   nextRoute: string;
@@ -23,7 +24,8 @@ export function GenericSpacePage<T extends Space>(props: IGenericSpacePage<T>) {
   const dispatch = useDispatch();
 
   const saveToStore = () => {
-    const serialized = dehydrateSpaceData(tableData);
+    const converted = processSpatialData(tableData);
+    const serialized = dehydrateSpaceData(converted);
     dispatch(storeHandler(serialized));
     dispatch(calculateTotalSpatialArea(serialized, areaHandler))
   }
