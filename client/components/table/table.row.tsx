@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { ReadonlyCell, SpaceCell } from './table.cell';
 import { ISpaceColumn } from './table.column';
-import { ISpace, ISpaceTransitObject } from '../../../shared/types/ISpace';
+import { ISpace, ISpaceDisplayObject } from '../../../shared/types/ISpace';
 import { formatNumberInput, removeCommas } from '../../../shared/lib/conversion';
 import { calculateTotalArea, calculateTotalSeats } from '../../../shared/lib/calculators';
 
@@ -43,7 +43,7 @@ export function DataEntryRow(props: IDataEntryRow) {
   const {data, columns, index, deleteHandler, dataHandler} = props;
 
   const handleCalculations = () => {
-    const casted = (data as unknown) as ISpaceTransitObject;
+    const casted = (data as unknown) as ISpaceDisplayObject;
 
     const totalArea = calculateTotalArea(casted);
     const totalSeats = calculateTotalSeats(casted);

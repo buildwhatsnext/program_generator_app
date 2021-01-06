@@ -1,4 +1,4 @@
-import { ISpace, ISpaceTransitObject } from "../types/ISpace";
+import { ISpace, ISpaceDisplayObject } from "../types/ISpace";
 import { Space } from "../types/Space";
 import SpaceType from "../types/SpaceType";
 import { convertDataToNumber, removeCommas, tryConvertToNumber } from "./conversion";
@@ -115,7 +115,7 @@ export function calculateUnprogrammedArea(area: number, spaces: Space[]) {
   return total;
 }
 
-export const calculateTotalArea = (data: ISpaceTransitObject) => {
+export const calculateTotalArea = (data: ISpaceDisplayObject) => {
   const { area, quantitySelected } = data;
   
   const areaFmt = convertDataToNumber(area);
@@ -126,7 +126,7 @@ export const calculateTotalArea = (data: ISpaceTransitObject) => {
   return totalArea;
 }
 
-export const calculateTotalSeats = (row: ISpaceTransitObject) => {
+export const calculateTotalSeats = (row: ISpaceDisplayObject) => {
   const { seats, quantitySelected } = row;
 
   const seatsFmt = convertDataToNumber(seats);

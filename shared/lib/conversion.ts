@@ -1,5 +1,5 @@
 import { UnacceptableInputError } from "./errors";
-import { ISpace, ISpaceTransitObject } from '../types/ISpace';
+import { ISpace, ISpaceDisplayObject } from '../types/ISpace';
 import { Space } from '../types/Space';
 
 const comma = ',';
@@ -86,13 +86,13 @@ export function isInputOverLimit(input: string, limit?: string | number) {
   return number > limit;
 }
 
-export function processSpatialData<T extends ISpace | ISpaceTransitObject>(data :T[]) {
-  const processed = data.map(s => convertTransitObjectToSpace(s as ISpaceTransitObject))
+export function processSpatialData<T extends ISpace | ISpaceDisplayObject>(data :T[]) {
+  const processed = data.map(s => convertTransitObjectToSpace(s as ISpaceDisplayObject))
 
   return processed;
 }
 
-export function convertTransitObjectToSpace(data: ISpaceTransitObject): Partial<ISpace> {
+export function convertTransitObjectToSpace(data: ISpaceDisplayObject): Partial<ISpace> {
   const { id, name, seats, ratio, area, quantitySelected, seatTotal, areaTotal, type } = data;
 
   const seatsFmt = convertDataToNumber(seats);

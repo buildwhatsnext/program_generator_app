@@ -12,7 +12,7 @@ export interface ISpace extends IUpdateable {
   type: SpaceType;
 }
 
-export interface ISpaceTransitObject extends IUpdateable {
+export interface ISpaceDisplayObject extends IUpdateable {
   name: string;
   seats: string;
   ratio: string;
