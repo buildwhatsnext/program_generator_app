@@ -8,7 +8,7 @@ import { calculateTotalArea, calculateTotalSeats } from '../../../shared/lib/cal
 
 interface IDataEntryRow {
   index: number;
-  data: ISpace;
+  data: Partial<ISpaceDisplayObject>;
   columns: ISpaceColumn[];
   deleteHandler?: (x?: unknown) => void;
   dataHandler?: (idCol, idRow, data) => void;

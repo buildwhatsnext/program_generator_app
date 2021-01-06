@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import { NumericalAnswer, TextualAnswer } from '../info/answer';
-import { ISpace } from '../../../shared/types/ISpace';
+import { ISpace, ISpaceDisplayObject } from '../../../shared/types/ISpace';
 import { ISpaceColumn } from './table.column';
 import renderCellByColumnType, { renderReadOnlyCells } from './table.function';
 
@@ -23,7 +23,7 @@ export interface NumberCellProps extends CellProps{
 }
 
 export interface ISpaceCell {
-  row: ISpace;
+  row: Partial<ISpaceDisplayObject>;
   rowIndex: number;
   column: ISpaceColumn;
   columnIndex: number;

@@ -74,7 +74,7 @@ export function calculateUnplannedArea(area: number, areaHold: number, areaProgr
   return leftover;
 }
 
-export function calculateTotalWorkseats(spaces: Space[]) {
+export function calculateTotalWorkseats(spaces: Partial<Space>[]) {
   const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
 
   const total = workspaces?.map(space => {
@@ -86,7 +86,7 @@ export function calculateTotalWorkseats(spaces: Space[]) {
   return total;
 }
 
-export function calculateWorkspaceArea(spaces: Space[]) {
+export function calculateWorkspaceArea(spaces: Partial<Space>[]) {
   const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
 
   const total = workspaces?.map(space => {
@@ -98,7 +98,7 @@ export function calculateWorkspaceArea(spaces: Space[]) {
   return total;
 }
 
-export function calculateProgrammedArea(spaces: Space[]) {
+export function calculateProgrammedArea(spaces: Partial<Space>[]) {
   const total = spaces?.map(space => {
     return Number.isInteger(space.areaTotal)
       ? space.areaTotal
@@ -108,7 +108,7 @@ export function calculateProgrammedArea(spaces: Space[]) {
   return total;
 }
 
-export function calculateUnprogrammedArea(area: number, spaces: Space[]) {
+export function calculateUnprogrammedArea(area: number, spaces: Partial<Space>[]) {
   const programmed = calculateProgrammedArea(spaces);
   const total = area - programmed;
 
