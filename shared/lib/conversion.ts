@@ -5,6 +5,7 @@ const space = ' ';
 const nothing = '';
 const nonDigitPattern = '[^0,-9,]';
 const nonAcceptableChars = new RegExp(nonDigitPattern, 'g');
+const commaGlobal = new RegExp(comma, 'g');
 
 export function tryConvertToNumber(data: any) {
   let value;
@@ -18,8 +19,11 @@ export function tryConvertToNumber(data: any) {
   return value;
 }
 
+export function hasCommas(input: string): boolean {
+  return input.match(commaGlobal).length > 0;
+}
+
 export function removeCommas(input: string): string {
-  const commaGlobal = new RegExp(comma, 'g');
   const processed = input.replace(commaGlobal, nothing)
   return processed;
 }

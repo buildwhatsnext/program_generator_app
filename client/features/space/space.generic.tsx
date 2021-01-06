@@ -23,7 +23,6 @@ export function GenericSpacePage<T extends Space>(props: IGenericSpacePage<T>) {
   const dispatch = useDispatch();
 
   const saveToStore = () => {
-    // console.log('Saving to the app storage');
     const serialized = dehydrateSpaceData(tableData);
     dispatch(storeHandler(serialized));
     dispatch(calculateTotalSpatialArea(serialized, areaHandler))

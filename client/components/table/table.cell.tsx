@@ -87,8 +87,8 @@ export const NumberDataCell = ({id, align, minWidth, dataHandler, rowId, columnI
 export const ReadonlyCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
   const valueRef = useRef<HTMLInputElement>(null);
 
-  const handleData = () => {
-    // dataHandler(rowId, columnId, valueRef.current.value);
+  const handleData = (data: string) => {
+    dataHandler(rowId, columnId, data);
   }
 
   return (
