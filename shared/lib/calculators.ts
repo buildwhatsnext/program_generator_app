@@ -76,6 +76,9 @@ export function calculateUnplannedArea(area: number, areaHold: number, areaProgr
 export function calculateTotalWorkseats(spaces: Space[]) {
   const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
 
+  if(!workspaces || workspaces.length < 1)
+    return 0;
+
   const total = workspaces?.map(space => {
     return Number.isInteger(space.seatTotal)
       ? space.seatTotal
@@ -91,13 +94,20 @@ export function calculateWorkspaceArea(spaces: Space[]): number {
 
   const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
 
-  const total = workspaces?.map(space => {
+  if(!workspaces || workspaces.length < 1)
+    return 0;
+
+  const totals = workspaces?.map(space => {
+    const conv = tryConvertToNumber(space.areaTotal);
+    console.log(conv);
     return Number.isInteger(space.areaTotal)
       ? space.areaTotal
       : tryConvertToNumber(space.areaTotal)
-  })?.reduce(sumTotals);
+  });
 
-  return total;
+  const finalTotal = totals.reduce(sumTotals);
+
+  return finalTotal;
 }
 
 export function calculateProgrammedArea(spaces: Space[]) {
