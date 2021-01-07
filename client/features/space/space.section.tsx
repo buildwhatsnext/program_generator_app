@@ -38,15 +38,16 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   const hasPrevState = spaceState?.length > 0;
 
   const data = hasPrevState ? hydrateSpaceState<T>(spaceState) : tableData;
-  console.log(data);
 
   const saveToStore = () => {
     if(!externalUpdater)
       return;
-    console.log('Saving to the app storage');
-    const serialized = dehydrateSpaceData(tableData);
-    dispatch(storeHandler(serialized));
-    dispatch(calculateTotalSpatialArea(serialized, areaHandler))
+
+    externalUpdater(tableData);
+    // console.log('Saving to the app storage');
+    // const serialized = dehydrateSpaceData(tableData);
+    // dispatch(storeHandler(serialized));
+    // dispatch(calculateTotalSpatialArea(serialized, areaHandler))
   }
 
   const updateTableData = (updatedData: T[]) => {

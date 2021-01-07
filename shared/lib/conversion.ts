@@ -6,8 +6,8 @@ const nothing = '';
 const nonDigitPattern = '[^0,-9,]';
 const nonAcceptableChars = new RegExp(nonDigitPattern, 'g');
 
-export function tryConvertToNumber(data: any) {
-  let value;
+export function tryConvertToNumber(data: any): number {
+  let value: number;
 
   try {
     value = Number.isInteger(data) ? data : Number(data);
