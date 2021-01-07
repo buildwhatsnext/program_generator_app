@@ -20,43 +20,27 @@ export abstract class Space implements ISpace {
   }
 
   protected initialize(space?: Partial<ISpace>): void {
-    if(space) {
+    if(space)
       this.updateData(space);
-      return;
-    }
-
-    this.id = Guid.create().toString();
-    this.name = '';
-    this.seats = 0;
-    this.ratio = '1:1';
-    this.area = 0;
-    this.quantitySelected = 1;
-    this.seatTotal = 0;
-    this.areaTotal = 0;
-    // this.type = SpaceType.Unknown; // set in the method below
-    this.setSpaceType();
   }
 
   abstract setSpaceType(): void;
 
   updateData(data: Partial<Space>) {
-    if(this.id !== data.id){
-      throw new Error(
-        `This is not the same element.
-        check IDS: ObjA: ${this.id} ObjB: ${data.id}`
-      );
-    }
+    this.id = data.id ?? Guid.create().toString();
+    this.name = data.name ?? '';
+    this.seats = data.seats ?? 0;
+    this.ratio = data.ratio ?? '1:1';
+    this.area = data.area ?? 0;
+    this.quantitySelected = data.quantitySelected ?? 0;
+    this.seatTotal = data.seatTotal ?? 0;
+    this.areaTotal = data.areaTotal ?? 0;
 
-    this.name = data.name || null;
-    this.seats = data.seats || null;
-    this.ratio = data.ratio || null;
-    this.area = data.area || null;
-    this.quantitySelected = data.quantitySelected || null;
-    this.seatTotal = data.seatTotal || null;
-    this.areaTotal = data.areaTotal || null;
-    this.type = data.type || null;
-    // this.floorID = data.floorID || null;
-    // this.buildingID = data.buildingID || null;
+    if(data.type) {
+      this.type = data.type
+    } else {
+      this.setSpaceType();
+    }
   }
 }
 
