@@ -15,4 +15,16 @@ describe('A Space', () => {
     expect(space.seats).toEqual(seats);
     expect(space.type).toEqual(SpaceType.Enclosed);
   })
+
+  it('when newly created without props should have a type', () => {
+    const space = new EnclosedOfficeSpace();
+
+    expect(space.name).not.toBeNull();
+    expect(space.name).not.toBeUndefined();
+    expect(space.area).not.toBeNull();
+    expect(space.area).not.toBeUndefined();
+    expect(space.seats).not.toBeNull();
+    expect(space.seats).not.toBeUndefined();
+    expect(space.type).toEqual(SpaceType.Enclosed);
+  })
 });

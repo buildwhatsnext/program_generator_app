@@ -20,24 +20,23 @@ export abstract class Space implements ISpace {
   }
 
   protected initialize(space?: Partial<ISpace>): void {
-    if(space)
-      this.updateData(space);
+    this.updateData(space);
   }
 
   abstract setSpaceType(): void;
 
   updateData(data: Partial<Space>) {
-    this.id = data.id ?? Guid.create().toString();
-    this.name = data.name ?? '';
-    this.seats = data.seats ?? 0;
-    this.ratio = data.ratio ?? '1:1';
-    this.area = data.area ?? 0;
-    this.quantitySelected = data.quantitySelected ?? 0;
-    this.seatTotal = data.seatTotal ?? 0;
-    this.areaTotal = data.areaTotal ?? 0;
+    this.id = data?.id ?? Guid.create().toString();
+    this.name = data?.name ?? '';
+    this.seats = data?.seats ?? 0;
+    this.ratio = data?.ratio ?? '1:1';
+    this.area = data?.area ?? 0;
+    this.quantitySelected = data?.quantitySelected ?? 0;
+    this.seatTotal = data?.seatTotal ?? 0;
+    this.areaTotal = data?.areaTotal ?? 0;
 
-    if(data.type) {
-      this.type = data.type
+    if(data && data.type) {
+      this.type = data?.type
     } else {
       this.setSpaceType();
     }
