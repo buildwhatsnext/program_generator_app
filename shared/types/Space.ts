@@ -15,11 +15,16 @@ export abstract class Space implements ISpace {
   // floorID: string;
   // buildingID: string;
 
-  public constructor() {
-    this.initialize();
+  public constructor(space?: Partial<ISpace>) {
+    this.initialize(space);
   }
 
-  protected initialize(): void {
+  protected initialize(space?: Partial<ISpace>): void {
+    if(space) {
+      this.updateData(space);
+      return;
+    }
+
     this.id = Guid.create().toString();
     this.name = '';
     this.seats = 0;
