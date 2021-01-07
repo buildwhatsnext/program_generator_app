@@ -8,8 +8,7 @@ import { selectProgram } from './space.slice';
 import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { DataEntrySection } from '../../components/display/display.entry';
-import SpaceType from '../../../shared/types/SpaceType';
-import { loadEnclosedSpaces } from './space.loaders';
+import { preloadSpaces } from './space.loaders';
 
 /**
  * @summary A data section that takes any Space type and can load it's data to/from the store
@@ -28,26 +27,10 @@ export interface ISpaceDataSection<T extends Space> {
   externalUpdater?: (data: any) => void;
 }
 
-export function preloadSpaces<T extends Space>(){
-  let defaultData: Space[] = null;
-  const element: T = null;
-
-  switch(element.type) {
-    case SpaceType.Enclosed:
-      defaultData = loadEnclosedSpaces()
-      break;
-    default:
-      break;
-  }
-
-  return defaultData as T[];
-}
-
 export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>) {
-  const [tableData, setTableData] = React.useState(null);
-  // const start = preloadSpaces<T>()
-
   const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly, externalUpdater } = sdsProps;
+  const start = preloadSpaces(type)
+  const [tableData, setTableData] = React.useState(start);
   const dispatch = useDispatch();
   const program = useSelector(selectProgram);
   
@@ -55,6 +38,7 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   const hasPrevState = spaceState?.length > 0;
 
   const data = hasPrevState ? hydrateSpaceState<T>(spaceState) : tableData;
+  console.log(data);
 
   const saveToStore = () => {
     if(!externalUpdater)
@@ -71,7 +55,6 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
 
   useEffect(() =>{
     setTimeout(() => {
-      // console.log('Table data is updating...');
       saveToStore()
     }
       , 1000)
