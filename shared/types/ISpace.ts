@@ -11,3 +11,14 @@ export interface ISpace extends IUpdateable {
   areaTotal: number;
   type: SpaceType;
 }
+
+export interface ISpaceDisplayObject extends IUpdateable {
+  name: string;
+  seats: string;
+  ratio: string;
+  area: string;
+  quantitySelected: string;
+  seatTotal: string;
+  areaTotal: string;
+  type: SpaceType;
+}

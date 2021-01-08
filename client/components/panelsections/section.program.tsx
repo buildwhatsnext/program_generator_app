@@ -1,7 +1,7 @@
 import React from 'react';
 import { tryConvertToNumber } from '../../../shared/lib/conversion';
 import { convertDataToINamedValues } from '../text/NamedValue';
-import { INamedPanelSection, PanelSection, reMapPanelData } from './panel.section';
+import { INamedPanelSection, PanelSection } from './panel.section';
 
 export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: INamedPanelSection ) {
   // let data = new StructuredProgramPanelData();
@@ -16,7 +16,10 @@ export function ProgramInfoPanelSection({ handleClick, isActive, rawData}: IName
   data["Workseat Ratio"] = tryConvertToNumber(rawData.totalWorkseatRatio);
   data["Total Number of Work Seats"] = tryConvertToNumber(rawData.totalNumOfWorkseats);
   data["Collaboration Ratio"] = tryConvertToNumber(rawData.totalCollaborationRatio);
+
   const basicData = convertDataToINamedValues(data);
+
+  basicData[0].error = rawData.totalProgrammedArea > rawData.areaNet;
 
   return (
     <PanelSection
