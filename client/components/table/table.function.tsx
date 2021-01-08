@@ -1,5 +1,5 @@
 import { DeleteKey } from './table.keys';
-import { ISpaceCell, DataEntryCell, ReadonlyCell } from './table.cell';
+import { ISpaceCell, TextDataCell, ReadonlyCell, NumberDataCell } from './table.cell';
 
 export default function renderCellByColumnType(props: ISpaceCell) {
   const {
@@ -9,12 +9,13 @@ export default function renderCellByColumnType(props: ISpaceCell) {
     columnIndex,
     storedData,
     deleteHandler,
-    dataHandler
+    dataHandler,
+    limit
   } = props;
 
   let cell;
-  const data = (
-    <DataEntryCell 
+  const text = (
+    <TextDataCell 
       id={`${row.id}-${column.id}`}
       align={column.align}
       minWidth={column.minWidth}
@@ -22,6 +23,19 @@ export default function renderCellByColumnType(props: ISpaceCell) {
       columnId={columnIndex.toString()}
       dataHandler={dataHandler}
       cellState={storedData}
+    />
+  )
+
+  const number = (
+    <NumberDataCell 
+      id={`${row.id}-${column.id}`}
+      align={column.align}
+      minWidth={column.minWidth}
+      rowId={rowIndex.toString()}
+      columnId={columnIndex.toString()}
+      dataHandler={dataHandler}
+      cellState={storedData}
+      limit={limit}
     />
   )
 
@@ -47,8 +61,13 @@ export default function renderCellByColumnType(props: ISpaceCell) {
     case 'areaTotal':
       cell = readonly;
       break;
+    case 'seats':
+    case 'area':
+    case 'quantitySelected':
+      cell = number;
+      break;
     default:
-      cell = data;
+      cell = text;
       break;
   }
 

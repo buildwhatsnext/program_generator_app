@@ -1,10 +1,13 @@
 import { UnacceptableInputError } from "./errors";
+import { ISpace, ISpaceDisplayObject } from '../types/ISpace';
+import { Space } from '../types/Space';
 
 const comma = ',';
 const space = ' ';
 const nothing = '';
 const nonDigitPattern = '[^0,-9,]';
 const nonAcceptableChars = new RegExp(nonDigitPattern, 'g');
+const commaGlobal = new RegExp(comma, 'g');
 
 export function tryConvertToNumber(data: any): number {
   let value: number;
@@ -18,8 +21,11 @@ export function tryConvertToNumber(data: any): number {
   return value;
 }
 
+export function hasCommas(input: string): boolean {
+  return input.match(commaGlobal).length > 0;
+}
+
 export function removeCommas(input: string): string {
-  const commaGlobal = new RegExp(comma, 'g');
   const processed = input.replace(commaGlobal, nothing)
   return processed;
 }
@@ -41,7 +47,6 @@ export function convertDataToNumber(input: string): number {
   const number = pure.valueOf();
 
   return number;
-  // return pure;
 }
 
 export function formatNumberInput(input: string | number): string {
@@ -79,4 +84,34 @@ export function isInputOverLimit(input: string, limit?: string | number) {
   const number = convertDataToNumber(input);
    
   return number > limit;
+}
+
+export function processSpatialData<T extends ISpace | ISpaceDisplayObject>(data :T[]) {
+  const processed = data.map(s => convertTransitObjectToSpace(s as ISpaceDisplayObject))
+
+  return processed;
+}
+
+export function convertTransitObjectToSpace(data: ISpaceDisplayObject): Partial<ISpace> {
+  const { id, name, seats, ratio, area, quantitySelected, seatTotal, areaTotal, type } = data;
+
+  const seatsFmt = convertDataToNumber(seats);
+  const areaFmt = convertDataToNumber(area);
+  const seatsTotalFmt = convertDataToNumber(seatTotal);
+  const areaTotalFmt = convertDataToNumber(areaTotal)
+  const qtySelFmt = convertDataToNumber(quantitySelected);
+
+  const converted = {
+    id,
+    name,
+    seats: seatsFmt,
+    area: areaFmt,
+    ratio,
+    quantitySelected: qtySelFmt,
+    seatTotal: seatsTotalFmt,
+    areaTotal: areaTotalFmt,
+    type
+  }
+
+  return converted;
 }
