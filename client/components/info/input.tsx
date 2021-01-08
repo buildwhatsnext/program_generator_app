@@ -9,17 +9,17 @@ import { UnacceptableInputError } from '../../../shared/lib/errors';
 
 const useStyles = makeStyles({
   root : {
-    "& .MuiInput-underline:before": {
-      borderBottom: '#06038D 3px solid'
-    },
+    // "& .MuiInput-underline:before": {
+    //   borderBottom: '#06038D 3px solid'
+    // },
 
-    "& .MuiInput-underline &hover": {
-      borderBottom: '#06038D 3px solid'
-    },
+    // "& .MuiInput-underline &hover": {
+    //   borderBottom: '#06038D 3px solid'
+    // },
 
-    "& .MuiInput-underline:after": {
-      borderBottom: '#06038D 3px solid'
-    }
+    // "& .MuiInput-underline:after": {
+    //   borderBottom: '#06038D 3px solid'
+    // }
   }
 })
 

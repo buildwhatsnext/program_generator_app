@@ -52,7 +52,7 @@ export const updateRatios = (
 ) => {
   const spaces = mergeSpacesFromState(api, action);
 
-  // console.log(spaces);
+  console.log(spaces);
   if(!spaces || spaces.length < 1)
     return;
 

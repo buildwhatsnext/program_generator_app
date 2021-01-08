@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import { convertDataToINamedValues, INamedValue, NamedValue } from '../text/NamedValue';
+import { INamedValue, NamedValue } from '../text/NamedValue';
 import styles from './panel.section.module.scss';
 
 export interface IPanelSection {
@@ -16,10 +16,10 @@ export interface IPanelSection {
 }
 
 export interface INamedPanelSection {
-  // title: string;
   handleClick: () => void;
   isActive: boolean;
   rawData: Record<string,string>;
+  comparisonData?: string[];
 }
 
 export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
@@ -29,6 +29,7 @@ export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
         key={d.name} 
         name={d.name} 
         value={d.value} 
+        error={d?.error}
       />
     );
   });
@@ -56,15 +57,21 @@ export function PanelSection({
   );
 }
 
-export function PanelSectionItem({ name, value }: INamedValue) {
+export interface IPanelSectionItemData {
+  name: string;
+  value: string;
+  error?: boolean;
+}
+
+export function PanelSectionItem({ name: itemName, value: itemValue, error: inErrorState }: IPanelSectionItemData) {
   return (
     <ListItem>
       <NamedValue 
-        name={name} 
-        value={value} 
+        name={itemName} 
+        value={itemValue} 
         className={styles.panelData}
         nameClass={styles.panelData__name}
-        valueClass={styles.panelData__value}
+        valueClass={inErrorState ? styles.panelData__error : styles.panelData__value}
       />
     </ListItem>
   );

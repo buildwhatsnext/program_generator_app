@@ -15,6 +15,7 @@ export const NamedValue = (props: INamedValue) => {
 export interface INamedValue {
   name: string;
   value: string;
+  error?: boolean;
   className?: string;
   nameClass?: string;
   valueClass?: string;
@@ -38,10 +39,17 @@ export function convertDataToINamedValues(
   try {
     const names = Object.keys(data);
 
-    const result = names.map((n) => ({ name: n, value: data[n].toString() }));
+    const result = names.map((n) => ({ 
+      name: n, 
+      value: data[n].toString() 
+    }));
   
     return result;  
   } catch (error) {
-    return null;
+    return [{
+      name: null,
+      value: null,
+      error: true
+    }]
   }
 }

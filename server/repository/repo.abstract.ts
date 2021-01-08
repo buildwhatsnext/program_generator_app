@@ -15,7 +15,7 @@ export interface IRepository<T> {
 export default abstract class BaseRepository<T extends IUpdateable> implements IRepository<T> {
   repo: Repository<T>;
   dbType: DatabaseConfigType;
-  abstract async getRepo();
+  abstract getRepo();
 
   constructor(_dbType?: DatabaseConfigType) {
     this.dbType = _dbType || null;
