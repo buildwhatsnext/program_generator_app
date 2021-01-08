@@ -74,8 +74,11 @@ export const ReadonlyCell = ({id, align, minWidth, dataHandler, rowId, columnId,
       }}
       className={styles.tableCell__override}
     >
-      <ReadonlyTextBox storedValue={cellState} handler={handleData} />
-      {/* <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/> */}
+      <ReadonlyTextBox 
+        storedValue={cellState} 
+        handler={handleData} 
+        // classOverride={styles.tableCell__readonly} 
+      />
     </TableCell>
   )
 }

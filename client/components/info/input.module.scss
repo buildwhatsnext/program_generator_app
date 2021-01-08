@@ -28,6 +28,15 @@
       &__error {
         border: 1px red solid;
       }
+
+      &__readonly {
+        input {
+          background-color: $blue;
+          color: $white;
+          text-align: center;
+          width: 100%;
+        }
+      }
     }
   }
 }
