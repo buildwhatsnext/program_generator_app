@@ -1,6 +1,7 @@
+import { ISpace, ISpaceDisplayObject } from "../types/ISpace";
 import { Space } from "../types/Space";
 import SpaceType from "../types/SpaceType";
-import { tryConvertToNumber } from "./conversion";
+import { convertDataToNumber, removeCommas, tryConvertToNumber } from "./conversion";
 
 /**
  * 
@@ -73,8 +74,11 @@ export function calculateUnplannedArea(area: number, areaHold: number, areaProgr
   return leftover;
 }
 
-export function calculateTotalWorkseats(spaces: Space[]) {
+export function calculateTotalWorkseats(spaces: Partial<Space>[]) {
   const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
+
+  if(!workspaces || workspaces.length < 1)
+    return 0;
 
   const total = workspaces?.map(space => {
     return Number.isInteger(space.seatTotal)
@@ -85,19 +89,29 @@ export function calculateTotalWorkseats(spaces: Space[]) {
   return total;
 }
 
-export function calculateWorkspaceArea(spaces: Space[]) {
+export function calculateWorkspaceArea(spaces: Partial<Space>[]) {
+  if(!spaces || spaces.length < 1)
+    return 0;
+
   const workspaces = spaces.filter(space => space.type === SpaceType.Enclosed || space.type === SpaceType.OpenPlan);
 
-  const total = workspaces?.map(space => {
+  if(!workspaces || workspaces.length < 1)
+    return 0;
+
+  const totals = workspaces?.map(space => {
+    const conv = tryConvertToNumber(space.areaTotal);
+    console.log(conv);
     return Number.isInteger(space.areaTotal)
       ? space.areaTotal
       : tryConvertToNumber(space.areaTotal)
-  })?.reduce(sumTotals);
+  });
 
-  return total;
+  const finalTotal = totals.reduce(sumTotals);
+
+  return finalTotal;
 }
 
-export function calculateProgrammedArea(spaces: Space[]) {
+export function calculateProgrammedArea(spaces: Partial<Space>[]) {
   const total = spaces?.map(space => {
     return Number.isInteger(space.areaTotal)
       ? space.areaTotal
@@ -107,9 +121,31 @@ export function calculateProgrammedArea(spaces: Space[]) {
   return total;
 }
 
-export function calculateUnprogrammedArea(area: number, spaces: Space[]) {
+export function calculateUnprogrammedArea(area: number, spaces: Partial<Space>[]) {
   const programmed = calculateProgrammedArea(spaces);
   const total = area - programmed;
 
   return total;
+}
+
+export const calculateTotalArea = (data: ISpaceDisplayObject) => {
+  const { area, quantitySelected } = data;
+  
+  const areaFmt = convertDataToNumber(area);
+  const qtyFmt = convertDataToNumber(quantitySelected);
+
+  const totalArea = areaFmt * qtyFmt;
+
+  return totalArea;
+}
+
+export const calculateTotalSeats = (row: ISpaceDisplayObject) => {
+  const { seats, quantitySelected } = row;
+
+  const seatsFmt = convertDataToNumber(seats);
+  const qtyFmt = convertDataToNumber(quantitySelected);
+
+  const totalArea = seatsFmt * qtyFmt;
+
+  return totalArea;
 }

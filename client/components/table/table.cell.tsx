@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import TableCell from '@material-ui/core/TableCell';
-import { TextualAnswer } from '../info/answer';
-import { ISpace } from '../../../shared/types/ISpace';
+import { NumericalAnswer, TextualAnswer } from '../info/answer';
+import { ISpace, ISpaceDisplayObject } from '../../../shared/types/ISpace';
 import { ISpaceColumn } from './table.column';
 import renderCellByColumnType, { renderReadOnlyCells } from './table.function';
 
@@ -18,8 +18,12 @@ export interface CellProps {
   cellState: string;
 }
 
+export interface NumberCellProps extends CellProps{
+  limit?: string | number;
+}
+
 export interface ISpaceCell {
-  row: ISpace;
+  row: Partial<ISpaceDisplayObject>;
   rowIndex: number;
   column: ISpaceColumn;
   columnIndex: number;
@@ -27,6 +31,7 @@ export interface ISpaceCell {
   deleteHandler?: (x?: unknown) => void;
   dataHandler?: (idCol, idRow, data) => void;
   allReadonly?: boolean;
+  limit?: string | number;
 }
 
 export const SpaceCell = (props: ISpaceCell) => {
@@ -37,7 +42,7 @@ export const SpaceCell = (props: ISpaceCell) => {
   return cell;
 }
 
-export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
+export const TextDataCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
   const valueRef = useRef<HTMLInputElement>(null);
 
   const handleData = () => {
@@ -58,11 +63,11 @@ export const DataEntryCell = ({id, align, minWidth, dataHandler, rowId, columnId
   )
 }
 
-export const ReadonlyCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
+export const NumberDataCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState, limit}: NumberCellProps) => {
   const valueRef = useRef<HTMLInputElement>(null);
 
-  const handleData = () => {
-    // dataHandler(rowId, columnId, valueRef.current.value);
+  const handleData = (data: string) => {
+    dataHandler(rowId, columnId, data);
   }
 
   return (
@@ -74,8 +79,32 @@ export const ReadonlyCell = ({id, align, minWidth, dataHandler, rowId, columnId,
       }}
       className={styles.tableCell__override}
     >
-      <ReadonlyTextBox storedValue={cellState} handler={handleData} />
-      {/* <TextualAnswer answerHandler={handleData} passedRef={valueRef} storedValue={cellState}/> */}
+      <NumericalAnswer answerHandler={handleData} ref={valueRef} storedValue={cellState} limit={limit} />
+    </TableCell>
+  )
+}
+
+export const ReadonlyCell = ({id, align, minWidth, dataHandler, rowId, columnId, cellState}: CellProps) => {
+  const valueRef = useRef<HTMLInputElement>(null);
+
+  const handleData = (data: string) => {
+    dataHandler(rowId, columnId, data);
+  }
+
+  return (
+    <TableCell 
+      key={id}
+      align={align} 
+      style={{ 
+        minWidth: `${minWidth}rem`,
+      }}
+      className={styles.tableCell__override}
+    >
+      <ReadonlyTextBox 
+        storedValue={cellState} 
+        handler={handleData} 
+        // classOverride={styles.tableCell__readonly} 
+      />
     </TableCell>
   )
 }

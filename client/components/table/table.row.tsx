@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { ReadonlyCell, SpaceCell } from './table.cell';
 import { ISpaceColumn } from './table.column';
-import { ISpace } from '../../../shared/types/ISpace';
+import { ISpace, ISpaceDisplayObject } from '../../../shared/types/ISpace';
+import { formatNumberInput, removeCommas } from '../../../shared/lib/conversion';
+import { calculateTotalArea, calculateTotalSeats } from '../../../shared/lib/calculators';
 
 interface IDataEntryRow {
   index: number;
-  data: ISpace;
+  data: Partial<ISpaceDisplayObject>;
   columns: ISpaceColumn[];
   deleteHandler?: (x?: unknown) => void;
   dataHandler?: (idCol, idRow, data) => void;
@@ -39,24 +41,18 @@ export function ReadonlyRow(props: IDataEntryRow) {
 
 export function DataEntryRow(props: IDataEntryRow) {
   const {data, columns, index, deleteHandler, dataHandler} = props;
-  
-  const calculateTotalArea = (row: ISpace) => {
-    const { area, quantitySelected } = row;
-    const totalArea = area * quantitySelected;
-    return totalArea;
-  }
-
-  const calculateTotalSeats = (row: ISpace) => {
-    const { seats, quantitySelected } = row;
-    const totalArea = seats * quantitySelected;
-    return totalArea;
-  }
 
   const handleCalculations = () => {
-    const totalArea = calculateTotalArea(data);
-    const totalSeats = calculateTotalSeats(data);
-    data.areaTotal = totalArea;
-    data.seatTotal = totalSeats;
+    const casted = (data as unknown) as ISpaceDisplayObject;
+
+    const totalArea = calculateTotalArea(casted);
+    const totalSeats = calculateTotalSeats(casted);
+
+    const areaFmtd = formatNumberInput(totalArea);
+    const seatsFmtd = formatNumberInput(totalSeats);
+
+    data.areaTotal = areaFmtd;
+    data.seatTotal = seatsFmtd;
   }
 
   useEffect(() => {

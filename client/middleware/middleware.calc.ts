@@ -52,7 +52,7 @@ export const updateRatios = (
 ) => {
   const spaces = mergeSpacesFromState(api, action);
 
-  // console.log(spaces);
+  console.log(spaces);
   if(!spaces || spaces.length < 1)
     return;
 
@@ -88,7 +88,7 @@ export const updateProgrammedArea = (
   api.dispatch(setUnprogrammedArea(unprogram));
 }
 
-export const combineSpaces = (prevState: Space[], payload: Space[]): Space[] => {
+export const combineSpaces = (prevState: Partial<Space>[], payload: Partial<Space>[]): Partial<Space>[] => {
   if(!payload || payload.length < 1)
     return prevState;
 
@@ -99,7 +99,7 @@ export const combineSpaces = (prevState: Space[], payload: Space[]): Space[] => 
   return filtered;
 }
 
-function calculateMeetingSeatTotals(spaces: Space[]): number {
+function calculateMeetingSeatTotals(spaces: Partial<Space>[]): number {
   const mSpaces = spaces?.filter(space => space.type === SpaceType.Meeting)
 
   if(mSpaces.length < 1)
@@ -135,7 +135,7 @@ function mergeSpacesFromState(api: MiddlewareAPI<Dispatch<AnyAction>, RootState>
   if(!allSpaces || allSpaces.length < 1)
     return hydratedPayload;
 
-  const hydratedAll: Space[] = [];
+  const hydratedAll: Partial<Space>[] = [];
   allSpaces.forEach(cat => {
     const hyd = hydrateSpaceState(cat);
 

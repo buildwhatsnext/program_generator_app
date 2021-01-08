@@ -6,6 +6,22 @@
     background-color: $white !important;
     color: $blue !important;
   }
+
+  &__readonly {
+    border: 0 !important;
+    background-color: $blue !important;
+    
+    .input {
+      form {
+        .input__text {
+          input {
+            color: $white !important;
+          }
+        }
+      }
+    }
+
+  }
 }
 
 .deleteKey {

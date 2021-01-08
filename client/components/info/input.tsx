@@ -9,17 +9,17 @@ import { UnacceptableInputError } from '../../../shared/lib/errors';
 
 const useStyles = makeStyles({
   root : {
-    "& .MuiInput-underline:before": {
-      borderBottom: '#06038D 3px solid'
-    },
+    // "& .MuiInput-underline:before": {
+    //   borderBottom: '#06038D 3px solid'
+    // },
 
-    "& .MuiInput-underline &hover": {
-      borderBottom: '#06038D 3px solid'
-    },
+    // "& .MuiInput-underline &hover": {
+    //   borderBottom: '#06038D 3px solid'
+    // },
 
-    "& .MuiInput-underline:after": {
-      borderBottom: '#06038D 3px solid'
-    }
+    // "& .MuiInput-underline:after": {
+    //   borderBottom: '#06038D 3px solid'
+    // }
   }
 })
 
@@ -28,6 +28,7 @@ interface ITextInput {
   error?: boolean;
   handler: (x?: any) => void;
   storedValue?: string;
+  classOverride?: string;
 }
 
 interface INumberInput extends ITextInput {
@@ -135,13 +136,13 @@ const TextInputBox = React.forwardRef((props : ITextInput , ref : Ref<HTMLInputE
  * @param {ITextInput} props - same as typical TextInput, @see TextInputBox for more details
  */
 export const ReadonlyTextBox = (props: ITextInput) => {
-  const { storedValue } = props;
+  const { storedValue, classOverride } = props;
 
   return (
     <div className={styles.input}>
       <form noValidate autoComplete="off">
         <TextField 
-          className={styles.input__text} 
+          className={ classOverride ?? styles.input__text__readonly} 
           id="standard-basic" 
           value={storedValue}
         />
