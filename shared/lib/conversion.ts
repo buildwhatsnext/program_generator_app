@@ -35,6 +35,10 @@ export function isNumerical(input: string) {
 }
 
 export function convertDataToNumber(input: string): number {
+
+  if(input=undefined)
+    return;
+
   if(Number.isInteger(input))
     return Number(input);
 
