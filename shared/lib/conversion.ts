@@ -44,8 +44,8 @@ export function convertDataToNumber(input: string | undefined | null): number {
 
   const nons = input.match(nonAcceptableChars);
 
-  // if(nons === undefined || nons === null)
-  //   return;
+  if(nons === undefined || nons === null)
+    return;
 
   if(nons)
     throw new UnacceptableInputError('This input only takes numerical data');
