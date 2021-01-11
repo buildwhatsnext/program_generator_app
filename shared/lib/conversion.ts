@@ -34,15 +34,19 @@ export function isNumerical(input: string) {
   return Number.isInteger(input);
 }
 
-export function convertDataToNumber(input: string): number {
+export function convertDataToNumber(input: string | undefined | null): number {
 
-  if(input=undefined)
+  if(input === undefined || input === null)
     return;
 
   if(Number.isInteger(input))
     return Number(input);
 
   const nons = input.match(nonAcceptableChars);
+
+  // if(nons === undefined || nons === null)
+  //   return;
+
   if(nons)
     throw new UnacceptableInputError('This input only takes numerical data');
 
