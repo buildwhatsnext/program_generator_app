@@ -73,6 +73,15 @@ describe('Converter', () => {
     expect(result).toEqual(expected);
   });
 
+  it('should be able to process undefined values, () => {
+    const inputValue = undefined;
+    const expected = '';
+
+    const result = convertDataToNumber(inputValue);
+
+    expect(result).toEqual(expected);
+  });
+
   it('should not accept non-comma characters', () => {
     const withLetters = '5fgd2989';
     const withPunctuation = '5,.[!2989';

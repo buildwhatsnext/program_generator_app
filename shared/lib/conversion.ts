@@ -36,17 +36,12 @@ export function isNumerical(input: string) {
 
 export function convertDataToNumber(input: string | undefined | null): number {
 
-  if(input === undefined || input === null)
-    return;
-
   if(Number.isInteger(input))
     return Number(input);
 
   const nons = input.match(nonAcceptableChars);
 
-  if(nons === undefined || nons === null)
-    return;
-
+ 
   if(nons)
     throw new UnacceptableInputError('This input only takes numerical data');
 
@@ -57,7 +52,9 @@ export function convertDataToNumber(input: string | undefined | null): number {
   return number;
 }
 
-export function formatNumberInput(input: string | number): string {
+export function formatNumberInput(input: string | number | undefined | null): string {
+
+
   const number = !Number.isInteger(input) ? convertDataToNumber(input.toString()) : convertDataToNumber(input as string);
   const value = number.toString();
   const chars = value.split('');
