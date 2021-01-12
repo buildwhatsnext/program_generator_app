@@ -36,12 +36,13 @@ export function isNumerical(input: string) {
 
 export function convertDataToNumber(input: unknown): number {
 
+  if(input === undefined || input === null)
+    return;
 
   if(Number.isInteger(input))
     return Number(input);
 
   const nons = input.match(nonAcceptableChars);
-
  
   if(nons)
     throw new UnacceptableInputError('This input only takes numerical data');
