@@ -45,7 +45,8 @@ export function convertDataToNumber(input: unknown): number {
   const nons = input.match(nonAcceptableChars);
  
   if(nons)
-    throw new UnacceptableInputError('This input only takes numerical data');
+    // throw new UnacceptableInputError('This input only takes numerical data');
+    alert(input);
 
   const clean = removeCommas(input);
   const pure = tryConvertToNumber(clean);
@@ -54,8 +55,10 @@ export function convertDataToNumber(input: unknown): number {
   return number;
 }
 
-export function formatNumberInput(input: string | number | undefined | null): string {
+export function formatNumberInput(input: unknown): string {
 
+  if(input === undefined || input === null)
+    alert(input);
 
   const number = !Number.isInteger(input) ? convertDataToNumber(input.toString()) : convertDataToNumber(input as string);
   const value = number.toString();

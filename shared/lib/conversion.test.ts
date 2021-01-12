@@ -73,6 +73,15 @@ describe('Converter', () => {
     expect(result).toEqual(expected);
   });
 
+  it('should be able to process number value', () => {
+    const inputValue = 10;
+    const expected = 10;
+
+    const result = convertDataToNumber(inputValue);
+
+    expect(result).toEqual(expected);
+  });
+
   it('should be able to process undefined values', () => {
     const inputValue = undefined;
     const expected = '';
