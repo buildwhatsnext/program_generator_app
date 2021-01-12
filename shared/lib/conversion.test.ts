@@ -1,4 +1,4 @@
-import { formatNumberInput, isInputOverLimit, removeCommas } from './conversion';
+import { formatNumberInput, isInputOverLimit, removeCommas, convertDataToNumber } from './conversion';
 
 describe('Converter', () => {
 
@@ -73,7 +73,7 @@ describe('Converter', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should be able to process undefined values, () => {
+  it('should be able to process undefined values', () => {
     const inputValue = undefined;
     const expected = '';
 

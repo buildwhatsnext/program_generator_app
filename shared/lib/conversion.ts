@@ -34,7 +34,8 @@ export function isNumerical(input: string) {
   return Number.isInteger(input);
 }
 
-export function convertDataToNumber(input: string | undefined | null): number {
+export function convertDataToNumber(input: unknown): number {
+
 
   if(Number.isInteger(input))
     return Number(input);
