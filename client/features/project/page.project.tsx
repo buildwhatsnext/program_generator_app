@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 import { IPage, Page } from '../../components/pages/page';
 import { saveProject } from './project.functions';
-import { selectOverview } from './project.slice';
 
 const ProjectInformationPage = (props: IPage) => {
   const { children, nextRoute, navFx, loadingState } = props;
@@ -16,13 +15,13 @@ const ProjectInformationPage = (props: IPage) => {
   }
 
   useEffect(() => {
-    const evaled = loadingState !== LoadingState.Loaded && loadingState !== LoadingState.Error;
-    const msg = evaled ? "Loading" : "Not Loading";
-    console.log(msg)
-    console.log(loadingState);
-    console.log(LoadingState.Loaded);
-    console.log(loadingState === LoadingState.Loaded);
-    setLoading(evaled);
+    const loadState = loadingState !== LoadingState.Loaded && loadingState !== LoadingState.Error;
+    // const msg = evaled ? "Loading" : "Not Loading";
+    // console.log(msg)
+    // console.log(loadingState);
+    // console.log(LoadingState.Loaded);
+    // console.log(loadingState === LoadingState.Loaded);
+    setLoading(loadState);
   }, [loadingState])
 
   return (

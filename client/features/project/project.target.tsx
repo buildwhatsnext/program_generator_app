@@ -20,7 +20,7 @@ import ProjectInformationPage from './page.project';
 function TargetMetric (props: IRestorableState) {
   const dispatch = useDispatch();
   const building = useSelector(selectOverview);
-
+  const { loading } = building;
   const [answerOne, setAnswerOne] = React.useState<string>('0');
   const [answerTwo, setAnswerTwo] = React.useState<string>('0');
   const [answerThree, setAnswerThree] = React.useState<string>('0');
@@ -65,7 +65,7 @@ function TargetMetric (props: IRestorableState) {
   const next = ROUTES.SPACE.START;
 
   return (
-    <ProjectInformationPage nextRoute={next} navFx={passToStore}>
+    <ProjectInformationPage nextRoute={next} navFx={passToStore} loadingState={loading}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{title}</h2>
