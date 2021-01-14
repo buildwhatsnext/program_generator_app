@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOverview, clearProject } from '../../features/project/project.slice';
+import { selectOverview } from '../../features/project/project.slice';
 import { selectSession } from '../../features/session/session.slice';
 import styles from './page.module.scss';
 import { ROUTES } from '../../../shared/constants/routes';
+import { clearProject } from '../../features/project/project.functions';
 
 export function ProgramHeader() {
   const router = useRouter();

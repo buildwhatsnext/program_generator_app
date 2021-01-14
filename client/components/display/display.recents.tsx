@@ -5,7 +5,7 @@ import { loadProjects, selectSession } from '../../features/session/session.slic
 import { IProject } from '../../../shared/types/Project';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
-import { loadProject } from '../../features/project/project.slice';
+import { loadProject } from '../../features/project/project.functions';
 import { ROUTES } from '../../../shared/constants/routes';
 
 const RecentProjectList = (projects?: IProject[]) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IPage, Page } from '../../components/pages/page';
-import { saveProject } from './project.slice';
+import { saveProject } from './project.functions';
 
 const ProjectInformationPage = (props: IPage) => {
   // const { children, showPanel, nav, panel, nextRoute, extraNavClasses, navFx } = props;
