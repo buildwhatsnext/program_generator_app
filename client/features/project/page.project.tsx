@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Loading from '../../components/display/display.loader';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 import { IPage, Page } from '../../components/pages/page';
 import { saveProject } from './project.functions';
@@ -28,7 +29,7 @@ const ProjectInformationPage = (props: IPage) => {
     <Page nextRoute={nextRoute} navFx={handleSaving}>
       { 
         isLoading 
-          ? 'Loading...!' 
+          ? <Loading />
           : children 
       }
     </Page>

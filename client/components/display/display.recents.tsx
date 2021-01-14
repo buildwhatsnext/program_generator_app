@@ -7,6 +7,7 @@ import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.functions';
 import { ROUTES } from '../../../shared/constants/routes';
+import LoadingSection from './display.loader';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -60,17 +61,17 @@ export function ProjectSelection() {
   const recent = displayRecentProjects(recentProjects);
 
   return (
-    loading === LoadingState.Loading
-      ? <p>Loading...</p>
-      : (
-        <div className={styles.section}>
-          <div className={styles.section__title}>
-            <h2>Recent Projects</h2>
-          </div>
-          <div className={styles.section__content}>
-            {recent}
-          </div>
-        </div>
-      )
+    <div className={styles.section}>
+      <div className={styles.section__title}>
+        <h2>Recent Projects</h2>
+      </div>
+      <div className={styles.section__content}>
+        { 
+          loading === LoadingState.Loading
+            ? <LoadingSection />
+            : recent
+        }
+      </div>
+    </div>
   );
 }
