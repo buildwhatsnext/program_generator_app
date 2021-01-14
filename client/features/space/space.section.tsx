@@ -5,7 +5,7 @@ import SpaceData from '../../components/table/table.component';
 // import { IRestorableState } from '../../features/info/general.building';
 import { Space } from '../../../shared/types/Space';
 import { selectProgram } from './space.slice';
-import { hydrateSpaceState, dehydrateSpaceData } from './space.functions';
+import { hydrateSpaceState, dehydrateSpaceData, handleUpdate } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { DataEntrySection } from '../../components/display/display.entry';
 import { preloadSpaces } from './space.loaders';
@@ -43,14 +43,11 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   console.log(data);
 
   const saveToStore = () => {
-    if(!externalUpdater)
-      return;
-
-    externalUpdater(tableData);
-    // console.log('Saving to the app storage');
-    // const serialized = dehydrateSpaceData(tableData);
-    // dispatch(storeHandler(serialized));
-    // dispatch(calculateTotalSpatialArea(serialized, areaHandler))
+    if(externalUpdater) {
+      externalUpdater(tableData);
+    } else {
+      handleUpdate(tableData, storeHandler, areaHandler, dispatch);
+    }
   }
 
   const updateTableData = (updatedData: T[]) => {

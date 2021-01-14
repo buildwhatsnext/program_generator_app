@@ -1,5 +1,9 @@
+import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit";
+import { processSpatialData } from "../../../shared/lib/conversion";
 import { Space } from "../../../shared/types/Space";
 import SpaceType from "../../../shared/types/SpaceType";
+import { calculateTotalSpatialArea } from "../../middleware/middleware.space";
+import { AppDispatch } from "../../store";
 
 export function hydrateSpaceState<T extends Partial<Space>>(dehydratedState: string[]) {
   if(!dehydratedState)
@@ -49,6 +53,19 @@ export const filterAllSpaceDataByType = (data: Partial<Space>[]): SpaceCollectio
     open: dataOpenPlan,
     support: dataSupport
   }
+}
+
+export function handleUpdate<T extends Space>(
+  tableData: T[], 
+  storeHandler: ActionCreatorWithOptionalPayload<string[], string>,
+  areaHandler: ActionCreatorWithOptionalPayload<any, string>,
+  dispatch: AppDispatch
+  ) {
+  console.log('Saving to the app storage');
+  const converted = processSpatialData(tableData);
+    const serialized = dehydrateSpaceData(converted);
+  dispatch(storeHandler(serialized));
+  dispatch(calculateTotalSpatialArea(serialized, areaHandler))
 }
 
 export type SpaceCollection = {
