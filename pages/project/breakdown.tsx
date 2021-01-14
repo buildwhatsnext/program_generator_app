@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ROUTES } from '../../shared/constants/routes';
 import { SPACE_STANDARDS } from '../../shared/constants/ark.standards';
@@ -8,9 +8,12 @@ import { Page } from '../../client/components/pages/page';
 import { BuildingInformationPanel } from '../../client/components/panels/panel.building';
 import { ProgrammedSpaceDisplay, RatioSpaceDisplay } from '../../client/components/display/display.pie';
 import styles from './breakdown.module.scss';
+import { LoadingState } from '../../shared/types/LoadingStates';
+import LoadingSection from '../../client/components/display/display.loader';
 
 export default function ProjectBreakdown() {
-  const { hasLab, hasBroadcast } = useSelector(selectOverview);
+  const { hasLab, hasBroadcast, loading } = useSelector(selectOverview);
+  const [ isLoading, setLoading ] = React.useState(true);
   const standards = { ...SPACE_STANDARDS };
   if(!hasLab)
     delete standards.LAB;
@@ -18,13 +21,18 @@ export default function ProjectBreakdown() {
   if (!hasBroadcast)
     delete standards.BROADCAST;
 
+  useEffect(() => {
+    const loadState = loading !== LoadingState.Loaded && loading !== LoadingState.Error;
+    setLoading(loadState);
+  }, [loading])
+
   const types = Object.values(standards).filter(standard => standard.type)
 
   const sections = types.map((type, index) => {
     return (
       <div key={`${index}_${type.name}`} style={{marginBottom: '1rem'}}>
         <SpaceDataSection 
-          readonly
+          // readonly
           collapsible
           startHidden={index > 0}
           title={type.sectionTitle}
@@ -47,15 +55,21 @@ export default function ProjectBreakdown() {
         />
       }
     >
-      <div className="breakdown">
-        <div className={styles.breakdown__pie}>
-          <ProgrammedSpaceDisplay />
-          <RatioSpaceDisplay />
-        </div>
-        <div className={styles.breakdown__data}>
-          { sections }
-        </div>
-      </div>
+      {
+        isLoading
+        ? <LoadingSection />
+        : (
+          <div className="breakdown">
+            <div className={styles.breakdown__pie}>
+              <ProgrammedSpaceDisplay />
+              <RatioSpaceDisplay />
+            </div>
+            <div className={styles.breakdown__data}>
+              { sections }
+            </div>
+          </div>
+        )
+      }
     </Page>
   )
 }
