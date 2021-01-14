@@ -24,7 +24,7 @@ import ProjectInformationPage from './page.project';
 function BuildingConstraint(props: IRestorableState) {
   const dispatch = useDispatch();
   const building = useSelector(selectOverview);
-
+  const { loading } = building;
   const [answerOne, setAnswerOne] = React.useState<string>(null);
   const [answerTwo, setAnswerTwo] = React.useState<string>(null);
   const [answerThree, setAnswerThree] = React.useState<string>(null);
@@ -64,7 +64,7 @@ function BuildingConstraint(props: IRestorableState) {
   const next = ROUTES.INFO.TARGET;
 
   return (
-    <ProjectInformationPage nextRoute={next} navFx={passToStore}>
+    <ProjectInformationPage nextRoute={next} navFx={passToStore} loadingState={loading}>
       <div className={styles.section__questions}>
         <div className={styles.section__questions__title}>
           <h2>{title}</h2>

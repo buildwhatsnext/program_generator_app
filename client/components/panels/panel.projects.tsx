@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './panel.project.module.scss';
 import buttonStyles from '../buttons/navigation.module.scss';
 import { Panel } from './panel';
-import { createProject } from '../../features/project/project.slice';
+import { createProject } from '../../features/project/project.functions';
 import { DFxRoutingButton } from '../buttons/navigation';
 import { ROUTES } from '../../../shared/constants/routes';
 
