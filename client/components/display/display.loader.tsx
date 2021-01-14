@@ -10,7 +10,7 @@ export default function LoadingSection(props: ILoadingMessage) {
 
   return (
     <div className={styles.loading}>
-      { msg ?? defaultMsg}
+      { msg ?? defaultMsg }
     </div>
   )
 }
