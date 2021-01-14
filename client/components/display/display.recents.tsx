@@ -8,6 +8,44 @@ import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.functions';
 import { ROUTES } from '../../../shared/constants/routes';
 import LoadingSection from './display.loader';
+import { DFxRoutingButton } from '../buttons/navigation';
+
+const RecentProject = (project: IProject) => {
+  const {id, client, dateModified} = project;
+  const name = client ?? '';
+
+  return (
+    <div className="project__recent">
+      <h3>{ name }</h3>
+      <div className={styles.project__buttons}>
+        <ButtonEditInformation {...project} />
+        <ButtonEditProgram {...project} />
+      </div>
+    </div>
+  );
+}
+
+const ButtonEditInformation = (project: IProject) => {
+  return (
+    <DFxRoutingButton 
+      content='Edit Building Info'
+      location={ ROUTES.INFO.GENERAL}
+      execute={ loadProject }
+      executableData={{...project}}
+    />
+  )
+}
+
+const ButtonEditProgram = (project: IProject) => {
+  return (
+    <DFxRoutingButton 
+      content='Edit Program'
+      location={ ROUTES.PROJECT.BREAKDOWN}
+      execute={ loadProject }
+      executableData={{...project}}
+    />
+  )
+}
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -17,15 +55,16 @@ const RecentProjectList = (projects?: IProject[]) => {
     const name = p.client ?? '';
 
     return (
-      <DispatchableText 
-        key={p.id} 
-        name={name} 
-        value={p.dateModified} 
-        className={styles.recent__item}
-        executableData={p}
-        execute={loadProject}
-        location={ROUTES.TRANSITION.PROJECT}
-      />
+      <RecentProject {...p} />
+      // <DispatchableText 
+      //   key={p.id} 
+      //   name={name} 
+      //   value={p.dateModified} 
+      //   className={styles.recent__item}
+      //   executableData={p}
+      //   execute={loadProject}
+      //   location={ROUTES.TRANSITION.PROJECT}
+      // />
     );
   });
 
