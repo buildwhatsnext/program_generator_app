@@ -13,6 +13,7 @@ export interface IPage {
   nextRoute?: string;
   extraNavClasses?: string;
   navFx?: () => void;
+  loadingState?: string;
 }
 
 export function Page({
