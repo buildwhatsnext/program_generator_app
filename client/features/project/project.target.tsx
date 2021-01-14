@@ -62,7 +62,7 @@ function TargetMetric (props: IRestorableState) {
   const Q2 = <p>What&apos;s the <b> target loss factor? </b> </p>;
   const Q3 = <p>What&apos;s the <b> target area per workseat? </b></p>;
   const Q4 = <p>If you have it, what is the <b> target number of workseats? </b></p>;
-  const next = ROUTES.SPACE.START;
+  const next = ROUTES.PROJECT.BREAKDOWN;
 
   return (
     <ProjectInformationPage nextRoute={next} navFx={passToStore} loadingState={loading}>
