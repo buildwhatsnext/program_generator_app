@@ -5,7 +5,7 @@ import { Space } from '../types/Space';
 const comma = ',';
 const space = ' ';
 const nothing = '';
-const nonDigitPattern = '[^0,-9,]';
+const nonDigitPattern = '[^0-9]';
 const nonAcceptableChars = new RegExp(nonDigitPattern, 'g');
 const commaGlobal = new RegExp(comma, 'g');
 
@@ -43,10 +43,13 @@ export function convertDataToNumber(input: unknown): number {
     return Number(input);
 
   const nons = input.match(nonAcceptableChars);
+
+  // if(nons === !Number )
+  //   return;
  
   if(nons)
     // throw new UnacceptableInputError('This input only takes numerical data');
-    alert(input);
+    return;
 
   const clean = removeCommas(input);
   const pure = tryConvertToNumber(clean);
