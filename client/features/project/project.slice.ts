@@ -1,8 +1,11 @@
+/* eslint-disable dot-notation */
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunkConfig, RootState } from '../../store';
 import { convertDataToNumber, tryConvertToNumber } from '../../../shared/lib/conversion';
 import LoadableProject from './project.loadable';
 import SpaceModel from '../../../server/models/model.space';
+import { loadProject } from './project.functions';
+import { LoadingState } from '../../../shared/types/LoadingStates';
 
 const project = {...new LoadableProject()};
 
@@ -100,6 +103,20 @@ const projectSlice = createSlice({
     setSpaceData: (state, action: PayloadAction<Partial<SpaceModel>[]>) => {
       state.spaces = action.payload;
     }
+  },
+  extraReducers: {
+    [loadProject.pending.type]: (state) => {
+      state.loading = LoadingState.Loading;
+      delete state['error'];
+    },
+    [loadProject.rejected.type]: (state, action) => {
+      console.log('Error while trying to load projects...')
+      state.loading = LoadingState.Error;
+      state['error']  = action.payload.error;
+    },
+    [loadProject.fulfilled.type]: (state, action) => {
+      state.loading = LoadingState.Loaded;
+    },
   },
 });
 
