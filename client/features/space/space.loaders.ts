@@ -99,6 +99,6 @@ export function preloadSpaces<T extends Space>(type: new () => T){
       break;
   }
 
-  console.log(defaultData);
+  // console.log(defaultData);
   return defaultData as T[];
 }

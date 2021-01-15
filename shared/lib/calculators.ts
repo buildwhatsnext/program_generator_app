@@ -100,7 +100,7 @@ export function calculateWorkspaceArea(spaces: Partial<Space>[]) {
 
   const totals = workspaces?.map(space => {
     const conv = tryConvertToNumber(space.areaTotal);
-    console.log(conv);
+    // console.log(conv);
     return Number.isInteger(space.areaTotal)
       ? space.areaTotal
       : tryConvertToNumber(space.areaTotal)

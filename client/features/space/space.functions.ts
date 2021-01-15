@@ -3,6 +3,7 @@ import { processSpatialData } from "../../../shared/lib/conversion";
 import { Space } from "../../../shared/types/Space";
 import SpaceType from "../../../shared/types/SpaceType";
 import { calculateTotalSpatialArea } from "../../middleware/middleware.space";
+import { saveProject } from '../project/project.functions';
 import { AppDispatch } from "../../store";
 
 export function hydrateSpaceState<T extends Partial<Space>>(dehydratedState: string[]) {
@@ -66,6 +67,7 @@ export function handleUpdate<T extends Space>(
     const serialized = dehydrateSpaceData(converted);
   dispatch(storeHandler(serialized));
   dispatch(calculateTotalSpatialArea(serialized, areaHandler))
+  // dispatch(saveProject());
 }
 
 export type SpaceCollection = {

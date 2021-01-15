@@ -29,7 +29,7 @@ export interface ISpaceDataSection<T extends Space> {
 
 export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>) {
   const { title, type, stateName, storeHandler, areaHandler, collapsible, startHidden, readonly, externalUpdater } = sdsProps;
-  console.log(type);
+  // console.log(type);
   const start = preloadSpaces(type)
   const [tableData, setTableData] = React.useState(start);
   const dispatch = useDispatch();
@@ -38,9 +38,9 @@ export function SpaceDataSection<T extends Space>(sdsProps: ISpaceDataSection<T>
   const spaceState = program[stateName];
   const hasPrevState = spaceState?.length > 0;
 
-  console.log(tableData);
+  // console.log(tableData);
   const data = hasPrevState ? hydrateSpaceState<T>(spaceState) : tableData;
-  console.log(data);
+  // console.log(data);
 
   const saveToStore = () => {
     if(externalUpdater) {

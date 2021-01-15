@@ -51,7 +51,7 @@ export function createSpatialMap(state: ProgramState, overview: ProjectModel, st
   if (!hasBroadcast)
     delete standards.BROADCAST;
   
-  console.log(spatialDataArray);
+  // console.log(spatialDataArray);
   const keys = !ratiosOnly 
     ? PROGRAMS 
     : { 
