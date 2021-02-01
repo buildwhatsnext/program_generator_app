@@ -1,0 +1,3 @@
+[submodule "desktop"]
+	path = desktop
+	url = https://github.com/buildwhatsnext/program_generator_desktop.git
