@@ -2,8 +2,6 @@ import { MiddlewareAPI, Dispatch, Action, AnyAction } from "redux";
 import { PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../store';
 import { 
-  createProject, 
-  loadProject, 
   setBroadcast, 
   setClient, 
   setId, 
@@ -22,8 +20,8 @@ import {
   setTotalNumberOfWorkseats,
   setCollaborationRatio, 
   setSpaceData,
-  clearProject
 } from "../features/project/project.slice";
+import { clearProject, createProject, loadProject } from '../features/project/project.functions';
 import { IProject, Project } from "../../shared/types/Project";
 import ProjectModel from "../../server/models/model.project";
 

@@ -5,8 +5,8 @@ import { ISpaceDataSection, SpaceDataSection } from './space.section';
 import { dehydrateSpaceData } from './space.functions';
 import { calculateTotalSpatialArea } from '../../middleware/middleware.space';
 import { Space } from '../../../shared/types/Space';
-import { saveProject } from '../project/project.slice';
 import { processSpatialData } from '../../../shared/lib/conversion';
+import { saveProject } from '../project/project.functions';
 
 export interface IGenericSpacePage<T extends Space> extends ISpaceDataSection<T> {
   nextRoute: string;

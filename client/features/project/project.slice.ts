@@ -1,116 +1,13 @@
+/* eslint-disable dot-notation */
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunkConfig, RootState } from '../../store';
 import { convertDataToNumber, tryConvertToNumber } from '../../../shared/lib/conversion';
-import { IProject, Project } from '../../../shared/types/Project';
-import ProjectModel from '../../../server/models/model.project';
-import { ISpace } from '../../../shared/types/ISpace';
+import LoadableProject from './project.loadable';
 import SpaceModel from '../../../server/models/model.space';
+import { loadProject } from './project.functions';
+import { LoadingState } from '../../../shared/types/LoadingStates';
 
-const project = {...new ProjectModel()};
-
-export const clearProject = createAsyncThunk(
-  'project/clearProject',
-  async (_, thunkAPI) => {
-    const cleanProject = new ProjectModel();
-    cleanProject.id = null;
-    return {...cleanProject};
-  }
-)
-
-export const createProject = createAsyncThunk(
-  'project/createProject',
-  async (_, thunkAPI) => {
-    try {
-      const response = await fetch('/api/projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return response.json();
-    } catch (error) {
-      return thunkAPI.rejectWithValue({ error: error.message })
-    }
-  }
-)
-
-export const loadProject = createAsyncThunk<any, IProject>(
-  'project/loadProject',
-  async (projectData, thunkAPI) => {
-    try {
-      console.log('Loading project...')
-      const { id } = projectData;
-      const response = await fetch(`/api/projects/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return response.json();
-    } catch (error) {
-      return thunkAPI.rejectWithValue({ error: error.message })
-    }
-  }
-)
-
-const getSpacesFromData = (state: RootState) => {
-  const spaces: SpaceModel[] = [];
-
-  const {
-    EnclosedState,
-    OpenPlanState,
-    MeetingState,
-    AmenityState,
-    SupportState,
-    BroadcastState,
-  } = state.program;
-
-  const all = [
-    EnclosedState,
-    OpenPlanState,
-    MeetingState,
-    AmenityState,
-    SupportState,
-    BroadcastState,
-  ];
-
-  if(all.every(type => type.length < 1))
-    return null;
-
-  all?.forEach(type => {
-    const mapped: SpaceModel[] = type?.map(space => JSON.parse(space));
-    spaces.push(...mapped);
-  });
-
-  return spaces;
-}
-
-export const saveProject = createAsyncThunk<any, void, AppThunkConfig>(
-  'project/saveProject',
-  async (_, thunkAPI) => {
-    try {
-      console.log('Attempting to send save request');
-      const projectState = thunkAPI.getState().project;
-      const projectData = new ProjectModel(projectState);
-      const spaces = getSpacesFromData(thunkAPI.getState());
-
-      projectData.spaces = spaces;
-      
-      const response = await fetch(`/api/projects/${projectData.id}`, {
-        method: 'PUT',
-        body: JSON.stringify(projectData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return response.json();
-    } catch (error) {
-      return thunkAPI.rejectWithValue({ error: error.message })
-    }
-  }
-)
-
-
+const project = {...new LoadableProject()};
 
 const projectSlice = createSlice({
   name: 'project',
@@ -206,6 +103,20 @@ const projectSlice = createSlice({
     setSpaceData: (state, action: PayloadAction<Partial<SpaceModel>[]>) => {
       state.spaces = action.payload;
     }
+  },
+  extraReducers: {
+    [loadProject.pending.type]: (state) => {
+      state.loading = LoadingState.Loading;
+      delete state['error'];
+    },
+    [loadProject.rejected.type]: (state, action) => {
+      console.log('Error while trying to load projects...')
+      state.loading = LoadingState.Error;
+      state['error']  = action.payload.error;
+    },
+    [loadProject.fulfilled.type]: (state, action) => {
+      state.loading = LoadingState.Loaded;
+    },
   },
 });
 
