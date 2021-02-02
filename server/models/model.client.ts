@@ -14,9 +14,9 @@ export class ClientModel implements IClient {
   @Column({type: 'varchar', nullable: true})
   company?: string;
 
-  @Column({type: 'varchar', default: moment().format('LL')})
+  @Column({type: 'varchar', default: moment().format('L')})
   dateCreated: string;
 
-  @Column({type: 'varchar', default: moment().format('LL')})
+  @Column({type: 'varchar', default: moment().format('L')})
   dateModified: string;
 }

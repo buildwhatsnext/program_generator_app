@@ -19,9 +19,9 @@ export class UserModel implements IUser {
   @Column({type: 'varchar'})
   department: string;
 
-  @Column({name: 'dateCreated', type: 'varchar', default: moment().format('LL')})
+  @Column({name: 'dateCreated', type: 'varchar', default: moment().format('L')})
   dateCreated: string;
 
-  @Column({name: 'dateModified', type: 'varchar', default: moment().format('LL')})
+  @Column({name: 'dateModified', type: 'varchar', default: moment().format('L')})
   dateModified: string;
 }

@@ -36,10 +36,10 @@ export default class ProjectModel extends Project implements IUpdateable {
   @Column({ type: 'varchar', nullable: true })
   modifiedBy: string;
 
-  @Column({type: 'varchar', default: moment().format('LL')})
+  @Column({type: 'varchar', default: moment().format('L')})
   dateCreated: string;
 
-  @Column({type: 'varchar', default: moment().format('LL')})
+  @Column({type: 'varchar', default: moment().format('L')})
   dateModified: string;
 
   @Column({ type: 'numeric', nullable: true })
@@ -89,7 +89,7 @@ export default class ProjectModel extends Project implements IUpdateable {
   setData(project: Partial<ProjectModel>) {
     super.initialize();
     this.id = project?.id || uuid.v4();
-    const now = moment().format('LL');
+    const now = moment().format('L');
     this.dateCreated = project?.dateCreated || now;
     this.dateModified = now;
 
