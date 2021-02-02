@@ -227,7 +227,7 @@ export function preloadSpaces<T extends Space>(type: new () => T){
     case SpaceType.Broadcast: 
       defaultData = loadBroadcastSpaces();
       break;  
-    case SpaceType.Broadcast: 
+    case SpaceType.Lab: 
       defaultData = loadLabSpaces();
       break;
     default:
