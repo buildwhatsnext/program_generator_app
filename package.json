@@ -6,10 +6,12 @@
     "dev": "cross-env APP_ENV=LOCAL next",
     "stage": "cross-env APP_ENV=STAGING next",
     "build": "next build",
+    "build:app": "cd desktop && yarn install && yarn make && cd ../",
     "build:server": "tsc -p tsconfig.server.json",
     "start": "cross-env APP_ENV=PRODUCTION next start",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest"
   },
   "lint-staged": {
     "*.js": [
