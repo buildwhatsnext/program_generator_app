@@ -12,6 +12,6 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
-    - run: yarn install    
-    - run: yarn jest
+        node-version: '10.x'
+    - run: yarn install --network-timeout 1000000000    
+    - run: yarn test
