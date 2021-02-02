@@ -10,11 +10,34 @@ import SpaceFactory from "../../../shared/types/SpaceFactory";
 import SpaceType from "../../../shared/types/SpaceType";
 
 export function loadAmenitySpaces() {
+  const cafeSeating = new AmenitySpace({ name: `Cafeteria / Seating`, area: 0, seats: 0 });
+  const cafeServery = new AmenitySpace({ name: `Cafeteria / Servery`, area: 0, seats: 0 });
+  const cafeBoh = new AmenitySpace({ name: `Cafeteria / Back-of-House`, area: 0, seats: 0 });
+  const kitchen = new AmenitySpace({ name: `Kitchen`, area: 0, seats: 0 });
   const pantry = new AmenitySpace({ name: 'Pantry / Teapoint', area: 120, seats: 0 });
   const reception = new AmenitySpace({ name: 'Reception', area: 360, seats: 0 });
   const wellness = new AmenitySpace({ name: `Wellness or Mother's Room`, area: 120, seats: 0 });
 
-  return [pantry, reception, wellness];
+  return [
+    cafeSeating,
+    cafeServery,
+    cafeBoh,
+    pantry, 
+    kitchen,
+    lounge,
+    fitEquip,
+    fitStudio,
+    fitLock,
+    vcroom,
+    training, 
+    reception,
+    assembly, 
+    wellness,
+    multifunction,
+    library,
+    nap,
+    showroom,
+  ];
 }
 
 export function loadEnclosedSpaces() {
