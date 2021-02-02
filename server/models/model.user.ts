@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
+import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
+import moment from 'moment';
 import { IUser } from '../../shared/types/User';
 
 @Entity({name: 'Users'})
@@ -18,9 +19,9 @@ export class UserModel implements IUser {
   @Column({type: 'varchar'})
   department: string;
 
-  @Column({name: 'dateCreated', type: 'varchar', default: Date.now().toString()})
+  @Column({name: 'dateCreated', type: 'varchar', default: moment().format('LL')})
   dateCreated: string;
 
-  @Column({name: 'dateModified', type: 'varchar', default: Date.now().toString()})
+  @Column({name: 'dateModified', type: 'varchar', default: moment().format('LL')})
   dateModified: string;
 }

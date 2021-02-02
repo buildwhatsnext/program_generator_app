@@ -7,6 +7,7 @@ import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.slice';
 import { ROUTES } from '../../../shared/constants/routes';
+import moment from 'moment';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -14,12 +15,13 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
+    const dateModified = moment().format('L');
 
     return (
       <DispatchableText 
         key={p.id} 
         name={name} 
-        value={p.dateModified} 
+        value={dateModified}
         className={styles.recent__item}
         executableData={p}
         execute={loadProject}
