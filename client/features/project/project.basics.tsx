@@ -12,6 +12,7 @@ import {
   setBroadcast,
   setLab,
   selectOverview,
+  setLabel,
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
@@ -27,6 +28,7 @@ function BuildingInformation(props: IRestorableState) {
   const [answerThree, setAnswerThree] = React.useState(null);
   const [answerFour, setAnswerFour] = React.useState(null);
   const [answerFive, setAnswerFive] = React.useState(null);
+  const [answerSix, setAnswerSix] = React.useState(null);
 
   const restoreState = () => {
     const msg = (props.hasPrevState)
@@ -34,19 +36,21 @@ function BuildingInformation(props: IRestorableState) {
         : 'No previous state for this page';
 
     console.log(msg);
-    const { client, units, tenancy, hasBroadcast, hasLab } = overview;
+    const { client, units, tenancy, hasBroadcast, hasLab, label } = overview;
   
     const clientData = client?.toLowerCase() === 'unknown' ? '' : client;
     const unitData = units?.toLowerCase() === 'unknown' ? '' : units;
     const tenancyData = tenancy?.toLowerCase() === 'unknown' ? '' : tenancy;
     const broadcastData = hasBroadcast ? 'Yes' : 'No';
     const labData = hasLab ? 'Yes' : 'No';
+    const labelData = label?.toLowerCase() === 'unknown' ? '' : label;
     
     setAnswerOne(clientData);
     setAnswerTwo(unitData);
     setAnswerThree(tenancyData);
     setAnswerFour(broadcastData);
     setAnswerFive(labData);
+    setAnswerSix(labelData)
   }
 
   useEffect(() => {
@@ -65,6 +69,7 @@ function BuildingInformation(props: IRestorableState) {
     dispatch(setTenancy(answerThree));
     dispatch(setBroadcast(answerFour));
     dispatch(setLab(answerFive));
+    dispatch(setLabel(answerSix));
   }
 
   const title = 'General Building Information';
@@ -73,6 +78,7 @@ function BuildingInformation(props: IRestorableState) {
   const Q3 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
   const Q4 = <p>Is this space a <b> broadcast </b> studio?</p>;
   const Q5 = <p>Does this program include any <b> lab </b> spaces?</p>;
+  const Q6 = <p>What is the <b>project&apos;s label?</b></p>;
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
@@ -114,6 +120,13 @@ function BuildingInformation(props: IRestorableState) {
             answers={[ 'Yes', 'No']}
             answerHandler={(x) => setAnswerFive(x)}
             storedValue={answerFive}
+          />
+
+          <TextQuestion 
+            question={Q6}
+            label='Give us an extra label for this project'
+            answerHandler={(x) => setAnswerSix(x)}
+            storedValue={answerSix}
           />
         </div>  
       </div>
