@@ -13,7 +13,7 @@ const RecentProjectList = (projects?: IProject[]) => {
     return null;
 
   const recent = projects.map((p: IProject) => {
-    const name = p.client ?? '-';
+    const name = p.client ?? '';
 
     return (
       <DispatchableText 
