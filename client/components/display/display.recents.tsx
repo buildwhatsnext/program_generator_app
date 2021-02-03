@@ -14,10 +14,10 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
-    const nameArray = [p.client];
-    nameArray.push.apply(nameArray, ['Katerina']);
+    // const nameArray = [p.client];
+    // nameArray.push.apply(nameArray, ['Katerina']);
 
-    console.log(nameArray);
+    // console.log(nameArray);
 
 
     return (

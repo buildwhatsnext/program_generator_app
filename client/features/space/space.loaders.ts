@@ -26,7 +26,7 @@ export function loadAmenitySpaces() {
   const reception = new AmenitySpace({ name: 'Reception', area: 360, seats: 0 });
   const assembly = new AmenitySpace({ name: `Assembly Space`, area: 0, seats: 0 });
   const wellness = new AmenitySpace({ name: `Wellness or Mother's Room`, area: 0, seats: 0 });
-  const multifunction = new AmenitySpace({ name: `Wellness or Mother's Room`, area: 0, seats: 0 });
+  const multifunction = new AmenitySpace({ name: `Multi-Functional Space`, area: 0, seats: 0 });
   const library = new AmenitySpace({ name: `Library`, area: 0, seats: 0 });
   const nap = new AmenitySpace({ name: `Nap Room`, area: 0, seats: 0 });
   const showroom = new AmenitySpace({ name: `Demo Room or Showroom`, area: 0, seats: 0 });
@@ -78,8 +78,8 @@ export function loadSupportSpaces() {
   const mail = new SupportSpace({ name: 'Mail Room', area: 0, seats: 0 });
   const ship = new SupportSpace({ name: 'Shipping Room', area: 0, seats: 0 });
   const copy = new SupportSpace({ name: 'Copy Room or Copy Area', area: 80, seats: 0 });
-  const filex = new SupportSpace({ name: 'File Area (Enclosed)', area: 0, seats: 0 });
-  const fileo = new SupportSpace({ name: 'File Area (Open)', area: 0, seats: 0 });
+  const filex = new SupportSpace({ name: 'File Room (Enclosed)', area: 0, seats: 0 });
+  const fileo = new SupportSpace({ name: 'File Room (Open)', area: 0, seats: 0 });
   const tech = new SupportSpace({ name: 'Tech Stop / Help Desk', area: 0, seats: 0 });
   const ware = new SupportSpace({ name: 'Warehouse', area: 0, seats: 0 });
   const mdf = new SupportSpace({ name: 'MDF', area: 240, seats: 0 });
@@ -237,3 +237,6 @@ export function preloadSpaces<T extends Space>(type: new () => T){
   console.log(defaultData);
   return defaultData as T[];
 }
+
+// display issue - page that actually displays - add a function that does conversion from imperial to metric
+// conversion.ts - write a test
