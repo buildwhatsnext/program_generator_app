@@ -16,8 +16,6 @@ const RecentProjectList = (projects?: IProject[]) => {
     const name = p.client ?? '';
     const label = p.label ?? 'No Info';
 
-    console.log(p.label)
-
     return (
       <DispatchableText 
         key={p.id} 

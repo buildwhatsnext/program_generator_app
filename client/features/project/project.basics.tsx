@@ -39,18 +39,18 @@ function BuildingInformation(props: IRestorableState) {
     const { client, units, tenancy, hasBroadcast, hasLab, label } = overview;
   
     const clientData = client?.toLowerCase() === 'unknown' ? '' : client;
+    const labelData = label?.toLowerCase() === 'unknown' ? '' : label;
     const unitData = units?.toLowerCase() === 'unknown' ? '' : units;
     const tenancyData = tenancy?.toLowerCase() === 'unknown' ? '' : tenancy;
     const broadcastData = hasBroadcast ? 'Yes' : 'No';
     const labData = hasLab ? 'Yes' : 'No';
-    const labelData = label?.toLowerCase() === 'unknown' ? '' : label;
     
     setAnswerOne(clientData);
-    setAnswerTwo(unitData);
-    setAnswerThree(tenancyData);
-    setAnswerFour(broadcastData);
-    setAnswerFive(labData);
-    setAnswerSix(labelData)
+    setAnswerTwo(labelData);
+    setAnswerThree(unitData);
+    setAnswerFour(tenancyData);
+    setAnswerFive(broadcastData);
+    setAnswerSix(labData)
   }
 
   useEffect(() => {
@@ -65,20 +65,20 @@ function BuildingInformation(props: IRestorableState) {
 
   const passToStore = () => {
     dispatch(setClient(answerOne));
-    dispatch(setUnits(answerTwo));
-    dispatch(setTenancy(answerThree));
-    dispatch(setBroadcast(answerFour));
-    dispatch(setLab(answerFive));
-    dispatch(setLabel(answerSix));
+    dispatch(setLabel(answerTwo));
+    dispatch(setUnits(answerThree));
+    dispatch(setTenancy(answerFour));
+    dispatch(setBroadcast(answerFive));
+    dispatch(setLab(answerSix));
   }
 
   const title = 'General Building Information';
   const Q1 = <p>What is your <b>client&apos;s name?</b></p>;
-  const Q2 = <p>Which <b> units </b> should we use to measure the space? </p>;
-  const Q3 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
-  const Q4 = <p>Is this space a <b> broadcast </b> studio?</p>;
-  const Q5 = <p>Does this program include any <b> lab </b> spaces?</p>;
-  const Q6 = <p>What is the <b>project&apos;s label?</b></p>;
+  const Q2 = <p>What is the <b>project&apos;s label?</b></p>;
+  const Q3 = <p>Which <b> units </b> should we use to measure the space? </p>;
+  const Q4 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
+  const Q5 = <p>Is this space a <b> broadcast </b> studio?</p>;
+  const Q6 = <p>Does this program include any <b> lab </b> spaces?</p>;
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
@@ -94,23 +94,23 @@ function BuildingInformation(props: IRestorableState) {
             answerHandler={(x) => setAnswerOne(x)}
             storedValue={answerOne}
           />
-          <TogQuest 
+
+          <TextQuestion 
             question={Q2}
-            answers={[ 'Metric', 'Imperial']}
+            label='Give us an extra label for this project'
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
           />
-
           <TogQuest 
             question={Q3}
-            answers={[ 'Single', 'Multi']}
+            answers={[ 'Metric', 'Imperial']}
             answerHandler={(x) => setAnswerThree(x)}
             storedValue={answerThree}
           />
 
           <TogQuest 
             question={Q4}
-            answers={[ 'Yes', 'No']}
+            answers={[ 'Single', 'Multi']}
             answerHandler={(x) => setAnswerFour(x)}
             storedValue={answerFour}
           />
@@ -122,9 +122,9 @@ function BuildingInformation(props: IRestorableState) {
             storedValue={answerFive}
           />
 
-          <TextQuestion 
+          <TogQuest 
             question={Q6}
-            label='Give us an extra label for this project'
+            answers={[ 'Yes', 'No']}
             answerHandler={(x) => setAnswerSix(x)}
             storedValue={answerSix}
           />
