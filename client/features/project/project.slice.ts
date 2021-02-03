@@ -223,10 +223,10 @@ export const selectOverview = (state: RootState) => state.project;
 export const { 
   setId,
   setClient, 
-  setLabel,
   setUnits, 
   setTenancy, 
   setBroadcast, 
+  setLabel,
   setLab,
   setRsf,
   setNetArea,

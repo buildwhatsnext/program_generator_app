@@ -14,7 +14,7 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
-    const label = p.label ?? '-';
+    const label = p.label ?? 'No Info';
 
     return (
       <DispatchableText 
