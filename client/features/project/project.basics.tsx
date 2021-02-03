@@ -74,7 +74,7 @@ function BuildingInformation(props: IRestorableState) {
 
   const title = 'General Building Information';
   const Q1 = <p>What is your <b>client&apos;s name?</b></p>;
-  const Q2 = <p>What is the <b>project&apos;s label?</b></p>;
+  const Q2 = <p>What is the <b>project&apos;s name?</b></p>;
   const Q3 = <p>Which <b> units </b> should we use to measure the space? </p>;
   const Q4 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
   const Q5 = <p>Is this space a <b> broadcast </b> studio?</p>;
@@ -97,7 +97,7 @@ function BuildingInformation(props: IRestorableState) {
 
           <TextQuestion 
             question={Q2}
-            label='Give us an extra label for this project'
+            label='Please enter the name of your project'
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
           />
