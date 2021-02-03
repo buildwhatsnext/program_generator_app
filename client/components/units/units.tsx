@@ -27,7 +27,7 @@ export function formatAreaData(data: INamedValue[]) {
   const { units } = overview;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
   const areaUnitType = units?.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
-  const percentage = units?.toString().toLowerCase() === 'metric' || 'imperial' ? '%' : '';
+  const factorPercentage = units?.toString().toLowerCase() === 'metric' || 'imperial' ? '%' : '';
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
       const { value } = data[i];
@@ -37,7 +37,7 @@ export function formatAreaData(data: INamedValue[]) {
 
     if(d.name.toLowerCase().includes('factor')) {
       const { value } = data[i];
-      const newFactorVal = `${value} ${percentage}`;
+      const newFactorVal = `${value} ${factorPercentage}`;
       data[i].value = newFactorVal;
     }
   });
