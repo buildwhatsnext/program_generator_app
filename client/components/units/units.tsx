@@ -27,11 +27,18 @@ export function formatAreaData(data: INamedValue[]) {
   const { units } = overview;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
   const areaUnitType = units?.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
+  const percentage = units?.toString().toLowerCase() === 'metric' || 'imperial' ? '%' : '';
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
       const { value } = data[i];
       const newVal = `${value} ${areaUnitType}`;
       data[i].value = newVal;
+    }
+
+    if(d.name.toLowerCase().includes('factor')) {
+      const { value } = data[i];
+      const newFactorVal = `${value} ${percentage}`;
+      data[i].value = newFactorVal;
     }
   });
 
