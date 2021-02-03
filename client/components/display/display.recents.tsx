@@ -14,11 +14,15 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
+    const label = p.label ?? 'No Info';
+
+    console.log(p.label)
 
     return (
       <DispatchableText 
         key={p.id} 
         name={name} 
+        label={label}
         value={p.dateModified} 
         className={styles.recent__item}
         executableData={p}

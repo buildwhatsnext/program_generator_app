@@ -9,6 +9,7 @@ export interface IProject extends IUpdateable {
   client: string;
   tenancy: string;
   units: string;
+  label: string;
   hasBroadcast: boolean;
   hasLab: boolean;
   createdBy: string;
@@ -39,6 +40,7 @@ export class Project {
   client: string;
   units: string;
   tenancy: string;
+  label: string;
   hasBroadcast: boolean;
   hasLab: boolean;
   areaGross: number;
@@ -63,6 +65,7 @@ export class Project {
     this.client = null;
     this.units = null;
     this.tenancy = null;
+    this.label = null;
     this.hasBroadcast = null;
     this.hasLab = null;
     this.areaGross = null;
