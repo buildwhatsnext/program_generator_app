@@ -115,5 +115,3 @@ export function convertTransitObjectToSpace(data: ISpaceDisplayObject): Partial<
 
   return converted;
 }
-
-export function convertImperialtoMetric
