@@ -15,7 +15,7 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
-    const dateModified = moment().format('L');
+    const dateModified = Date.now().toString();
 
     return (
       <DispatchableText 
