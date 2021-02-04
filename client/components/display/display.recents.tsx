@@ -14,6 +14,11 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
+    // const nameArray = [p.client];
+    // nameArray.push.apply(nameArray, ['Katerina']);
+
+    // console.log(nameArray);
+
 
     return (
       <DispatchableText 
@@ -27,8 +32,8 @@ const RecentProjectList = (projects?: IProject[]) => {
       />
     );
   });
-
   return recent;
+
 }
 
 function displayRecentProjects(projects?: Array<IProject>) {
