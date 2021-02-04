@@ -14,6 +14,7 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
+    const empty = '';
     // const nameArray = [p.client];
     // nameArray.push.apply(nameArray, ['Katerina']);
 
@@ -25,6 +26,7 @@ const RecentProjectList = (projects?: IProject[]) => {
         key={p.id} 
         name={name} 
         value={p.dateModified}
+        type={empty}
         className={styles.recent__item}
         executableData={p}
         execute={loadProject}
