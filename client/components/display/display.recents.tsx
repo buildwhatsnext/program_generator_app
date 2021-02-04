@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './display.project.module.scss';
 import { loadProjects, selectSession } from '../../features/session/session.slice';
@@ -7,7 +8,6 @@ import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.slice';
 import { ROUTES } from '../../../shared/constants/routes';
-import moment from 'moment';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)

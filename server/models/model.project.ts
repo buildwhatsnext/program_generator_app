@@ -1,6 +1,5 @@
 import * as uuid from 'uuid';
 import 'reflect-metadata';
-import moment from 'moment';
 import { Entity, Column, OneToMany, PrimaryColumn, JoinColumn } from "typeorm"
 import { IProject, Project } from '../../shared/types/Project';
 import { BuildingModel } from './model.building';
@@ -36,10 +35,10 @@ export default class ProjectModel extends Project implements IUpdateable {
   @Column({ type: 'varchar', nullable: true })
   modifiedBy: string;
 
-  @Column({type: 'varchar', default: moment().format('L')})
+  @Column({type: 'varchar', default: Date.now().toString()})
   dateCreated: string;
 
-  @Column({type: 'varchar', default: moment().format('L')})
+  @Column({type: 'varchar', default: Date.now().toString()})
   dateModified: string;
 
   @Column({ type: 'numeric', nullable: true })
@@ -89,7 +88,7 @@ export default class ProjectModel extends Project implements IUpdateable {
   setData(project: Partial<ProjectModel>) {
     super.initialize();
     this.id = project?.id || uuid.v4();
-    const now = moment().format('L');
+    const now = Date.now().toString()})
     this.dateCreated = project?.dateCreated || now;
     this.dateModified = now;
 
