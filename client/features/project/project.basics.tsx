@@ -12,7 +12,7 @@ import {
   setBroadcast,
   setLab,
   selectOverview,
-  setLabel,
+  setProjectName,
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
@@ -36,17 +36,17 @@ function BuildingInformation(props: IRestorableState) {
         : 'No previous state for this page';
 
     console.log(msg);
-    const { client, units, tenancy, hasBroadcast, hasLab, label } = overview;
+    const { client, units, tenancy, hasBroadcast, hasLab, ProjectName } = overview;
   
     const clientData = client?.toLowerCase() === 'unknown' ? '' : client;
-    const labelData = label?.toLowerCase() === 'unknown' ? '' : label;
+    const ProjectNameData = ProjectName?.toLowerCase() === 'unknown' ? '' : ProjectName;
     const unitData = units?.toLowerCase() === 'unknown' ? '' : units;
     const tenancyData = tenancy?.toLowerCase() === 'unknown' ? '' : tenancy;
     const broadcastData = hasBroadcast ? 'Yes' : 'No';
     const labData = hasLab ? 'Yes' : 'No';
     
     setAnswerOne(clientData);
-    setAnswerTwo(labelData);
+    setAnswerTwo(ProjectNameData);
     setAnswerThree(unitData);
     setAnswerFour(tenancyData);
     setAnswerFive(broadcastData);
@@ -65,7 +65,7 @@ function BuildingInformation(props: IRestorableState) {
 
   const passToStore = () => {
     dispatch(setClient(answerOne));
-    dispatch(setLabel(answerTwo));
+    dispatch(setProjectName(answerTwo));
     dispatch(setUnits(answerThree));
     dispatch(setTenancy(answerFour));
     dispatch(setBroadcast(answerFive));

@@ -6,7 +6,7 @@ import {
   loadProject, 
   setBroadcast, 
   setClient, 
-  setLabel,
+  setProjectName,
   setId, 
   setLab, 
   setTenancy, 
@@ -34,7 +34,7 @@ function setProjectData(data: Partial<ProjectModel>, api: MiddlewareAPI<Dispatch
 
   api.dispatch(setId(data.id))
   api.dispatch(setClient(data.client));
-  api.dispatch(setLabel(data.label));
+  api.dispatch(setProjectName(data.ProjectName));
   api.dispatch(setLab(data.hasLab));
   api.dispatch(setBroadcast(data.hasBroadcast));
   api.dispatch(setTenancy(data.tenancy));

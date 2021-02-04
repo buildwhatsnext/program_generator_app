@@ -125,10 +125,10 @@ const projectSlice = createSlice({
       state.client = value;
     },
 
-    setLabel: (state, action) => {
+    setProjectName: (state, action) => {
       const value = action?.payload // ?? 'unknown'
 
-      state.label = value;
+      state.ProjectName = value;
     },
     
     setUnits: (state, action) => {
@@ -226,7 +226,7 @@ export const {
   setUnits, 
   setTenancy, 
   setBroadcast, 
-  setLabel,
+  setProjectName,
   setLab,
   setRsf,
   setNetArea,
