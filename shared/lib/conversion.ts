@@ -5,7 +5,7 @@ import { Space } from '../types/Space';
 const comma = ',';
 const space = ' ';
 const nothing = '';
-const nonDigitPattern = '[^0,-9,]';
+const nonDigitPattern = '[^0-9,]';
 const nonAcceptableChars = new RegExp(nonDigitPattern, 'g');
 const commaGlobal = new RegExp(comma, 'g');
 

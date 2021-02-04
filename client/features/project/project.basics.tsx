@@ -90,7 +90,7 @@ function BuildingInformation(props: IRestorableState) {
           />
           <TogQuest 
             question={Q2}
-            answers={[ 'Metric', 'Imperial']}
+            answers={[ 'Imperial', 'Metric']}
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
           />
