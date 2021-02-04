@@ -2,31 +2,34 @@ import React from 'react';
 import styles from './NamedValue.module.scss';
 
 export const NamedValue = (props: INamedValue) => {
-  const { name, value, className, nameClass, valueClass } = props;
+  const { name, unitValue, unitType, className, nameClass, unitValueClass, unitTypeClass } = props;
 
   return (
     <div className={className ?? `${styles.data}`}>
       <p className={nameClass ?? `${styles.data__name}`}>{name}</p>
-      <p className={valueClass ?? `${styles.data__value}`}>{value}</p>
+      <p className={unitValueClass ?? `${styles.data__unitValue}`}>{unitValue}</p>
+      <p className={unitTypeClass ?? `${styles.data__unitType}`}>{unitType}</p>
     </div>
   );
 };
 
 export interface INamedValue {
   name: string;
-  value: string;
+  unitValue: string;
+  unitType: string;
   error?: boolean;
   className?: string;
   nameClass?: string;
-  valueClass?: string;
+  unitValueClass?: string;
+  unitTypeClass?: string;
 }
 
 export function convertDataToNamedValues(data: Record<string, string>) {
   // const names = Object.getOwnPropertyNames(data);
   const names = Object.keys(data);
 
-  const result = names.map((n, i) => (
-    <NamedValue key={i} name={n} value={data[n]} />
+  const result = names.map((n, i, t) => (
+    <NamedValue key={i} name={n} unitValue={data[n]} unitType={data[t]} />
   ));
 
   return result;
@@ -48,7 +51,8 @@ export function convertDataToINamedValues(
   } catch (error) {
     return [{
       name: null,
-      value: null,
+      unitValue: null,
+      unitType: null,
       error: true
     }]
   }

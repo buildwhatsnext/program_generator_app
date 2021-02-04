@@ -30,7 +30,9 @@ export function formatAreaData(data: INamedValue[]) {
   const Percentage = '%';
   // eslint-disable-next-line no-useless-concat
   const workseatRatio = `${areaUnitType} /workseat`;
-  const collabRatio = 'meeting seat / workseat ';
+  const collabRatio =  (
+    <div className={styles.units}>meeting seat / workseat</div>
+  )
   
 
   data.forEach((d, i) => {
