@@ -44,7 +44,8 @@ export function convertDataToINamedValues(
 
     const result = names.map((n) => ({ 
       name: n, 
-      value: data[n].toString() 
+      value: data[n].toString(),
+      type : n,
     }));
   
     return result;  
