@@ -18,6 +18,9 @@ export default class ProjectModel extends Project implements IUpdateable {
   client: string;
 
   @Column({ type: 'varchar', nullable: true })
+  ProjectName: string;
+
+  @Column({ type: 'varchar', nullable: true })
   tenancy: string;
 
   @Column({ type: 'varchar', nullable: true })
@@ -108,6 +111,7 @@ export default class ProjectModel extends Project implements IUpdateable {
     this.hasBroadcast = project?.hasBroadcast || null;
     this.hasLab = project?.hasLab || null;
     this.client = project?.client || null;
+    this.ProjectName = project?.ProjectName || null;
     this.units = project?.units || null;
     this.modifiedBy = project?.modifiedBy || null;
     this.areaGross = project?.areaGross || 0;

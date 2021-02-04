@@ -7,6 +7,8 @@ import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.slice';
 import { ROUTES } from '../../../shared/constants/routes';
+import { convertDataToNumber } from '../../../shared/lib/conversion';
+import moment from 'moment';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -14,17 +16,20 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
-    // const nameArray = [p.client];
-    // nameArray.push.apply(nameArray, ['Katerina']);
 
-    // console.log(nameArray);
+    const date = p.dateModified;
+    const dateNumber = Number(date);
+    const dateFullLength = new Date(dateNumber);
+    const dateBack2String = String(dateFullLength);
+
+    const dateFinalFormat = moment(dateBack2String).format('LLL');
 
 
     return (
       <DispatchableText 
         key={p.id} 
         name={name} 
-        value={p.dateModified} 
+        value={dateFinalFormat} 
         className={styles.recent__item}
         executableData={p}
         execute={loadProject}
