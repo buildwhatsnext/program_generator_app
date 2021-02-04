@@ -28,7 +28,8 @@ export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
       <PanelSectionItem 
         key={d.name} 
         name={d.name} 
-        value={d.value} 
+        unitValue={d.unitValue} 
+        unitType={d.unitType} 
         error={d?.error}
       />
     );
@@ -59,19 +60,22 @@ export function PanelSection({
 
 export interface IPanelSectionItemData {
   name: string;
-  value: string;
+  unitValue: string;
+  unitType: string;
   error?: boolean;
 }
 
-export function PanelSectionItem({ name: itemName, value: itemValue, error: inErrorState }: IPanelSectionItemData) {
+export function PanelSectionItem({ name: itemName, unitValue: itemValue, unitType: itemType, error: inErrorState }: IPanelSectionItemData) {
   return (
     <ListItem>
       <NamedValue 
         name={itemName} 
-        value={itemValue} 
+        unitValue={itemValue} 
+        unitType={itemType} 
         className={styles.panelData}
         nameClass={styles.panelData__name}
-        valueClass={inErrorState ? styles.panelData__error : styles.panelData__value}
+        unitValueClass={inErrorState ? styles.panelData__error : styles.panelData__value}
+        unitTypeClass={inErrorState ? styles.panelData__error : styles.panelData__type}
       />
     </ListItem>
   );

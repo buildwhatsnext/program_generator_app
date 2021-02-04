@@ -28,8 +28,8 @@ export function convertDataToNamedValues(data: Record<string, string>) {
   // const names = Object.getOwnPropertyNames(data);
   const names = Object.keys(data);
 
-  const result = names.map((n, i, t) => (
-    <NamedValue key={i} name={n} unitValue={data[n]} unitType={data[t]} />
+  const result = names.map((n, i) => (
+    <NamedValue key={i} name={n} unitValue={data[n]} unitType={data[n]} />
   ));
 
   return result;
