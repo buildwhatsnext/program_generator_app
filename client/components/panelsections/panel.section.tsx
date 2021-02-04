@@ -7,6 +7,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { INamedValue, NamedValue } from '../text/NamedValue';
 import styles from './panel.section.module.scss';
+import { types } from '@babel/core';
 
 export interface IPanelSection {
   title: string;
@@ -29,6 +30,7 @@ export function buildPanelSectionItem(data: Array<INamedValue>): JSX.Element[] {
         key={d.name} 
         name={d.name} 
         value={d.value} 
+        type={d.type}
         error={d?.error}
       />
     );
@@ -60,18 +62,21 @@ export function PanelSection({
 export interface IPanelSectionItemData {
   name: string;
   value: string;
+  type: strings;
   error?: boolean;
 }
 
-export function PanelSectionItem({ name: itemName, value: itemValue, error: inErrorState }: IPanelSectionItemData) {
+export function PanelSectionItem({ name: itemName, value: itemValue, type: itemType, error: inErrorState }: IPanelSectionItemData) {
   return (
     <ListItem>
       <NamedValue 
         name={itemName} 
         value={itemValue} 
+        type={itemType}
         className={styles.panelData}
         nameClass={styles.panelData__name}
         valueClass={inErrorState ? styles.panelData__error : styles.panelData__value}
+        typeClass={inErrorState ? styles.panelData__error : styles.panelData__type}
       />
     </ListItem>
   );
