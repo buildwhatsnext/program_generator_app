@@ -24,7 +24,7 @@ const RecentProjectList = (projects?: IProject[]) => {
       <DispatchableText 
         key={p.id} 
         name={name} 
-        value={p.dateModified} 
+        value={p.dateModified}
         className={styles.recent__item}
         executableData={p}
         execute={loadProject}
