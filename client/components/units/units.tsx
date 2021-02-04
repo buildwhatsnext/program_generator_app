@@ -34,27 +34,35 @@ export function formatAreaData(data: INamedValue[]) {
 
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
-      const { unitValue } = data[i];
-      const newVal = `${unitValue} ${areaUnitType}`;
-      data[i].unitValue = newVal;
+      const { value } = data[i];
+      const newVal = `${value}`;
+      const newType = `${areaUnitType}`;
+      data[i].value = newVal;
+      data[i].type = newType;
     }
 
     if(d.name.toLowerCase().includes('factor')) {
       const { value } = data[i];
-      const newFactorVal = `${value} ${Percentage}`;
+      const newFactorVal = `${value}`;
+      const newType = `${Percentage}`
       data[i].value = newFactorVal;
+      data[i].type = newType;
     }
 
     if(d.name.toLowerCase().includes('workseat')) {
       const { value } = data[i];
-      const newWorkseatVal = `${value} ${workseatRatio}`;
+      const newWorkseatVal = `${value}`;
+      const newType = `${workseatRatio}`;
       data[i].value = newWorkseatVal;
+      data[i].type = newType;
     }
 
     if(d.name.toLowerCase().includes('collaboration')) {
       const { value } = data[i];
-      const newCollabVal = `${value} ${collabRatio}`;
+      const newCollabVal = `${value}`;
+      const newType = `${collabRatio}`;
       data[i].value = newCollabVal;
+      data[i].type = newType;
     }
   });
 
