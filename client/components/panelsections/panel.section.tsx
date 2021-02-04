@@ -62,7 +62,7 @@ export function PanelSection({
 export interface IPanelSectionItemData {
   name: string;
   value: string;
-  type: strings;
+  type: string;
   error?: boolean;
 }
 
