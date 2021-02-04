@@ -29,7 +29,7 @@ export function formatAreaData(data: INamedValue[]) {
   const areaUnitType = units?.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
   const Percentage = '%';
   // eslint-disable-next-line no-useless-concat
-  const workseatRatio = `${areaUnitType} / workseat`;
+  const workseatRatio = `${areaUnitType} /workseat`;
   const collabRatio = 'meeting seat / workseat ';
   
 
