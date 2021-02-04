@@ -23,7 +23,7 @@ const RecentProjectList = (projects?: IProject[]) => {
     const dateFullLength = new Date(dateNumber);
     const dateBack2String = String(dateFullLength);
 
-    const dateFinalFormat = moment(dateBack2String).format('LLL');
+    const dateFinalFormat = moment(dateBack2String).format('MMMM Do YYYY⠀h:mm a');
 
 
     return (
