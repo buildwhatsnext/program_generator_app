@@ -18,7 +18,8 @@ const RecentProjectList = (projects?: IProject[]) => {
     const name = p.client ?? '';
 
     const date = p.dateModified;
-    const dateNumber = Number(date);
+    //new Date will only accept Number -> new Date will accept the number and format milliseconds into date -> momentjs requires string for formatting// 
+    const dateNumber = convertDataToNumber(date);
     const dateFullLength = new Date(dateNumber);
     const dateBack2String = String(dateFullLength);
 
