@@ -27,7 +27,11 @@ export function formatAreaData(data: INamedValue[]) {
   const { units } = overview;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
   const areaUnitType = units?.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
-  const factorPercentage = units?.toString().toLowerCase() === 'metric' || 'imperial' ? '%' : '';
+  const factorPercentage = '%';
+  // eslint-disable-next-line no-useless-concat
+  const workseatRatio = `${areaUnitType}/workseat`;
+  
+
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
       const { value } = data[i];
@@ -37,8 +41,14 @@ export function formatAreaData(data: INamedValue[]) {
 
     if(d.name.toLowerCase().includes('factor')) {
       const { value } = data[i];
-      const newFactorVal = `${value} ${factorPercentage}`;
+      const newFactorVal = `${value} ${workseatRatio}`;
       data[i].value = newFactorVal;
+    }
+
+    if(d.name.toLowerCase().includes('Workseat')) {
+      const { value } = data[i];
+      const newWorkseatVal = `${value} ${factorPercentage}`;
+      data[i].value = newWorkseatVal;
     }
   });
 
