@@ -37,8 +37,13 @@
     
   }
 
-  &__error {
+  &__valueError {
     @extend .panelData__value;
+    color: $red;
+  }
+
+  &__typeError {
+    @extend .panelData__type;
     color: $red;
   }
 }

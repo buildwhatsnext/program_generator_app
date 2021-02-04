@@ -75,8 +75,8 @@ export function PanelSectionItem({ name: itemName, value: itemValue, type: itemT
         type={itemType}
         className={styles.panelData}
         nameClass={styles.panelData__name}
-        valueClass={inErrorState ? styles.panelData__error : styles.panelData__value}
-        typeClass={inErrorState ? styles.panelData__error : styles.panelData__type}
+        valueClass={inErrorState ? styles.panelData__valueError : styles.panelData__value}
+        typeClass={inErrorState ? styles.panelData__typeError : styles.panelData__type}
       />
     </ListItem>
   );

@@ -49,7 +49,7 @@ export function formatAreaData(data: INamedValue[]) {
       data[i].type = newType;
     }
 
-    if(d.name.toLowerCase().includes('workseat')) {
+    if(d.name.toLowerCase().includes('workseat ratio')) {
       const { value } = data[i];
       const newWorkseatVal = `${value}`;
       const newType = `${workseatRatio}`;
@@ -57,7 +57,15 @@ export function formatAreaData(data: INamedValue[]) {
       data[i].type = newType;
     }
 
-    if(d.name.toLowerCase().includes('collaboration')) {
+    if(d.name.toLowerCase().includes('total number of work')) {
+      const { value } = data[i];
+      const newWorkseatVal = `${value}`;
+      const newType = ``;
+      data[i].value = newWorkseatVal;
+      data[i].type = newType;
+    }
+
+    if(d.name.toLowerCase().includes('collaboration ratio')) {
       const { value } = data[i];
       const newCollabVal = `${value}`;
       const newType = `${collabRatio}`;
