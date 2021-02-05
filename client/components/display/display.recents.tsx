@@ -30,6 +30,7 @@ const RecentProjectList = (projects?: IProject[]) => {
       <DispatchableText 
         key={p.id} 
         name={name} 
+        ProjectName=''
         value={dateFinalFormat} 
         type=''
         className={styles.recent__item}
