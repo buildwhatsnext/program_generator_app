@@ -12,6 +12,7 @@ import {
   setBroadcast,
   setLab,
   selectOverview,
+  setProjectName,
 } from './project.slice';
 import styles from '../../components/transition/section.module.scss';
 import { IRestorableState } from '../../components/IRestorableState';
@@ -27,6 +28,7 @@ function BuildingInformation(props: IRestorableState) {
   const [answerThree, setAnswerThree] = React.useState(null);
   const [answerFour, setAnswerFour] = React.useState(null);
   const [answerFive, setAnswerFive] = React.useState(null);
+  const [answerSix, setAnswerSix] = React.useState(null);
 
   const restoreState = () => {
     const msg = (props.hasPrevState)
@@ -34,19 +36,21 @@ function BuildingInformation(props: IRestorableState) {
         : 'No previous state for this page';
 
     console.log(msg);
-    const { client, units, tenancy, hasBroadcast, hasLab } = overview;
+    const { client, units, tenancy, hasBroadcast, hasLab, ProjectName } = overview;
   
     const clientData = client?.toLowerCase() === 'unknown' ? '' : client;
+    const ProjectNameData = ProjectName?.toLowerCase() === 'unknown' ? '' : ProjectName;
     const unitData = units?.toLowerCase() === 'unknown' ? '' : units;
     const tenancyData = tenancy?.toLowerCase() === 'unknown' ? '' : tenancy;
     const broadcastData = hasBroadcast ? 'Yes' : 'No';
     const labData = hasLab ? 'Yes' : 'No';
     
     setAnswerOne(clientData);
-    setAnswerTwo(unitData);
-    setAnswerThree(tenancyData);
-    setAnswerFour(broadcastData);
-    setAnswerFive(labData);
+    setAnswerTwo(ProjectNameData);
+    setAnswerThree(unitData);
+    setAnswerFour(tenancyData);
+    setAnswerFive(broadcastData);
+    setAnswerSix(labData)
   }
 
   useEffect(() => {
@@ -61,18 +65,20 @@ function BuildingInformation(props: IRestorableState) {
 
   const passToStore = () => {
     dispatch(setClient(answerOne));
-    dispatch(setUnits(answerTwo));
-    dispatch(setTenancy(answerThree));
-    dispatch(setBroadcast(answerFour));
-    dispatch(setLab(answerFive));
+    dispatch(setProjectName(answerTwo));
+    dispatch(setUnits(answerThree));
+    dispatch(setTenancy(answerFour));
+    dispatch(setBroadcast(answerFive));
+    dispatch(setLab(answerSix));
   }
 
   const title = 'General Building Information';
   const Q1 = <p>What is your <b>client&apos;s name?</b></p>;
-  const Q2 = <p>Which <b> units </b> should we use to measure the space? </p>;
-  const Q3 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
-  const Q4 = <p>Is this space a <b> broadcast </b> studio?</p>;
-  const Q5 = <p>Does this program include any <b> lab </b> spaces?</p>;
+  const Q2 = <p>What is the <b>project&apos;s name?</b></p>;
+  const Q3 = <p>Which <b> units </b> should we use to measure the space? </p>;
+  const Q4 = <p>Is this space a <b> multi-tenant </b> or <b> single-tenant? </b> </p>;
+  const Q5 = <p>Is this space a <b> broadcast </b> studio?</p>;
+  const Q6 = <p>Does this program include any <b> lab </b> spaces?</p>;
   const next = ROUTES.INFO.CONSTRAINTS;
 
   return (
@@ -88,23 +94,23 @@ function BuildingInformation(props: IRestorableState) {
             answerHandler={(x) => setAnswerOne(x)}
             storedValue={answerOne}
           />
-          <TogQuest 
+
+          <TextQuestion 
             question={Q2}
-            answers={[ 'Imperial', 'Metric']}
+            label='Please enter the name of your project'
             answerHandler={(x) => setAnswerTwo(x)}
             storedValue={answerTwo}
           />
-
           <TogQuest 
             question={Q3}
-            answers={[ 'Single', 'Multi']}
+            answers={[ 'Metric', 'Imperial']}
             answerHandler={(x) => setAnswerThree(x)}
             storedValue={answerThree}
           />
 
           <TogQuest 
             question={Q4}
-            answers={[ 'Yes', 'No']}
+            answers={[ 'Single', 'Multi']}
             answerHandler={(x) => setAnswerFour(x)}
             storedValue={answerFour}
           />
@@ -114,6 +120,13 @@ function BuildingInformation(props: IRestorableState) {
             answers={[ 'Yes', 'No']}
             answerHandler={(x) => setAnswerFive(x)}
             storedValue={answerFive}
+          />
+
+          <TogQuest 
+            question={Q6}
+            answers={[ 'Yes', 'No']}
+            answerHandler={(x) => setAnswerSix(x)}
+            storedValue={answerSix}
           />
         </div>  
       </div>

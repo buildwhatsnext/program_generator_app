@@ -15,7 +15,8 @@ const RecentProjectList = (projects?: IProject[]) => {
     return null;
 
   const recent = projects.map((p: IProject) => {
-    const name = p.client ?? '';
+    const name = p.client ?? '-';
+    const ProjectName = p.ProjectName ?? '-';
 
     const date = p.dateModified;
     const dateNumber = convertDataToNumber(date);
@@ -29,6 +30,7 @@ const RecentProjectList = (projects?: IProject[]) => {
       <DispatchableText 
         key={p.id} 
         name={name} 
+        ProjectName={ProjectName}
         value={dateFinalFormat} 
         type=''
         className={styles.recent__item}

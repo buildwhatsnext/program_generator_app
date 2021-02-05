@@ -124,6 +124,13 @@ const projectSlice = createSlice({
 
       state.client = value;
     },
+
+    setProjectName: (state, action) => {
+      const value = action?.payload // ?? 'unknown'
+
+      state.ProjectName = value;
+    },
+    
     setUnits: (state, action) => {
       const value = action?.payload // ?? 'unknown'
 
@@ -219,6 +226,7 @@ export const {
   setUnits, 
   setTenancy, 
   setBroadcast, 
+  setProjectName,
   setLab,
   setRsf,
   setNetArea,
