@@ -7,6 +7,8 @@ import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.slice';
 import { ROUTES } from '../../../shared/constants/routes';
+import { convertDataToNumber } from '../../../shared/lib/conversion';
+import moment from 'moment';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -14,19 +16,21 @@ const RecentProjectList = (projects?: IProject[]) => {
 
   const recent = projects.map((p: IProject) => {
     const name = p.client ?? '';
-    const empty = '';
-    // const nameArray = [p.client];
-    // nameArray.push.apply(nameArray, ['Katerina']);
 
-    // console.log(nameArray);
+    const date = p.dateModified;
+    //new Date will only accept Number -> new Date will accept the number and format milliseconds into date -> momentjs requires string for formatting// 
+    const dateNumber = convertDataToNumber(date);
+    const dateFullLength = new Date(dateNumber);
+    const dateBack2String = String(dateFullLength);
+
+    const dateFinalFormat = moment(dateBack2String).format('MMMM Do YYYY⠀h:mm a');
 
 
     return (
       <DispatchableText 
         key={p.id} 
         name={name} 
-        value={p.dateModified}
-        type={empty}
+        value={dateFinalFormat} 
         className={styles.recent__item}
         executableData={p}
         execute={loadProject}
