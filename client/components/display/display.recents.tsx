@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import styles from './display.project.module.scss';
+import { convertDataToNumber } from '../../../shared/lib/conversion';
 import { loadProjects, selectSession } from '../../features/session/session.slice';
 import { IProject } from '../../../shared/types/Project';
 import { LoadingState } from '../../../shared/types/LoadingStates';
 import { DispatchableText } from '../text/text.dispatchable';
 import { loadProject } from '../../features/project/project.slice';
 import { ROUTES } from '../../../shared/constants/routes';
-import { convertDataToNumber } from '../../../shared/lib/conversion';
-import moment from 'moment';
 
 const RecentProjectList = (projects?: IProject[]) => {
   if(!projects)
@@ -18,7 +18,6 @@ const RecentProjectList = (projects?: IProject[]) => {
     const name = p.client ?? '';
 
     const date = p.dateModified;
-    //new Date will only accept Number -> new Date will accept the number and format milliseconds into date -> momentjs requires string for formatting// 
     const dateNumber = convertDataToNumber(date);
     const dateFullLength = new Date(dateNumber);
     const dateBack2String = String(dateFullLength);
@@ -31,6 +30,7 @@ const RecentProjectList = (projects?: IProject[]) => {
         key={p.id} 
         name={name} 
         value={dateFinalFormat} 
+        type=''
         className={styles.recent__item}
         executableData={p}
         execute={loadProject}
