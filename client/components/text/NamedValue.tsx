@@ -15,7 +15,8 @@ export const NamedValue = (props: INamedValue) => {
 
 export interface INamedValue {
   name: string;
-  value: any;
+  value: string;
+  type: string;
   error?: boolean;
   className?: string;
   nameClass?: string;
