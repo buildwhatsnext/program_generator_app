@@ -68,7 +68,7 @@ export interface IPanelSectionItemData {
   error?: boolean;
 }
 
-export function PanelSectionItem({ name: itemName, ProjectName: itemProjectName, type: itemType, value: itemValue, error: inErrorState }: IPanelSectionItemData) {
+export function PanelSectionItem({ name: itemName, type: itemType, ProjectName: itemProjectName, value: itemValue, error: inErrorState }: IPanelSectionItemData) {
   return (
     <ListItem>
       <NamedValue 
