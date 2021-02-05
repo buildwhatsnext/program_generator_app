@@ -1,5 +1,6 @@
 import { Guid } from "guid-typescript";
 import { Entity, PrimaryColumn, PrimaryGeneratedColumn, Column } from "typeorm";
+
 import { IClient } from "../../shared/types/Client";
 
 @Entity({name: 'Clients'})

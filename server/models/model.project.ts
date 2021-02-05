@@ -18,6 +18,9 @@ export default class ProjectModel extends Project implements IUpdateable {
   client: string;
 
   @Column({ type: 'varchar', nullable: true })
+  ProjectName: string;
+
+  @Column({ type: 'varchar', nullable: true })
   tenancy: string;
 
   @Column({ type: 'varchar', nullable: true })
