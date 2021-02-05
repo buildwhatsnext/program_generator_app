@@ -73,7 +73,7 @@ export function PanelSectionItem({ name: itemName, ProjectName: itemProjectName,
     <ListItem>
       <NamedValue 
         name={itemName} 
-        ProjectName={itemProjectName}
+        ProjectName=''
         value={itemValue} 
         type={itemType}
         className={styles.panelData}
