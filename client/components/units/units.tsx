@@ -27,18 +27,50 @@ export function formatAreaData(data: INamedValue[]) {
   const { units } = overview;
   // const areaUnitType = units.toString().toLowerCase() === 'metric' ? areaMeters : areaFeet;
   const areaUnitType = units?.toString().toLowerCase() === 'metric' ? 'sqm' : 'sqft';
-  const factorPercentage = units?.toString().toLowerCase() === 'metric' || 'imperial' ? '%' : '';
+  const Percentage = '%';
+  // eslint-disable-next-line no-useless-concat
+  const workseatRatio = `${areaUnitType} /workseat`;
+  const collabRatio =  `meeting seat / workseat`;
+
   data.forEach((d, i) => {
     if(d.name.toLowerCase().includes('area')) {
       const { value } = data[i];
-      const newVal = `${value} ${areaUnitType}`;
+      const newVal = `${value}`;
+      const newType = `${areaUnitType}`;
       data[i].value = newVal;
+      data[i].type = newType;
     }
 
     if(d.name.toLowerCase().includes('factor')) {
       const { value } = data[i];
-      const newFactorVal = `${value} ${factorPercentage}`;
+      const newFactorVal = `${value}`;
+      const newType = `${Percentage}`
       data[i].value = newFactorVal;
+      data[i].type = newType;
+    }
+
+    if(d.name.toLowerCase().includes('workseat ratio')) {
+      const { value } = data[i];
+      const newWorkseatVal = `${value}`;
+      const newType = `${workseatRatio}`;
+      data[i].value = newWorkseatVal;
+      data[i].type = newType;
+    }
+
+    if(d.name.toLowerCase().includes('total number of work')) {
+      const { value } = data[i];
+      const newWorkseatVal = `${value}`;
+      const newType = ``;
+      data[i].value = newWorkseatVal;
+      data[i].type = newType;
+    }
+
+    if(d.name.toLowerCase().includes('collaboration ratio')) {
+      const { value } = data[i];
+      const newCollabVal = `${value}`;
+      const newType = `${collabRatio}`;
+      data[i].value = newCollabVal;
+      data[i].type = newType;
     }
   });
 
